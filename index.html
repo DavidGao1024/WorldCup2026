@@ -8,26 +8,35 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <div class="header-wrap">
   <header class="header">
+    <canvas class="header-particles" id="header-canvas"></canvas>
     <div class="header-left">
-      <h1 id="title">2026 世界杯</h1>
-      <div class="subtitle" id="subtitle">美国 · 加拿大 · 墨西哥</div>
+      <div class="header-title-row">
+        <img src="favicon.jpg" alt="" class="header-logo">
+        <h1 id="title">2026 世界杯</h1>
+      </div>
+      <div class="subtitle" id="subtitle">大卫 · 高</div>
     </div>
     <div class="header-right">
-      <button class="lang-btn" id="lang-btn" onclick="toggleLang()">EN</button>
       <select id="timezone-select">
         <option value="beijing">🇨🇳 北京时间 (UTC+8)</option>
         <option value="eastern">🇺🇸 美东时间 (UTC-4)</option>
         <option value="gmt">🌐 GMT (UTC+0)</option>
       </select>
+      <div class="lang-toggle" id="lang-toggle">
+        <span data-lang="zh" class="active">中</span>
+        <span data-lang="en">EN</span>
+      </div>
     </div>
   </header>
 
   <nav class="tabs">
     <div class="tab active" id="tab-schedule" data-i18n="schedule" onclick="switchTab('schedule')">赛程</div>
     <div class="tab" id="tab-standings" data-i18n="standings" onclick="switchTab('standings')">积分榜</div>
-    <div class="tab" id="tab-knockout" data-i18n="knockout" onclick="switchTab('knockout')">淘汰赛</div>
+    <div class="tab" id="tab-champions" data-i18n="champions" onclick="switchTab('champions')">历届冠军</div>
   </nav>
+  </div>
 
   <main class="content">
     <div class="tab-content active" id="schedule-content">
@@ -39,6 +48,7 @@
     </div>
     <div class="tab-content" id="standings-content"></div>
     <div class="tab-content" id="knockout-content"></div>
+    <div class="tab-content" id="champions-content"></div>
   </main>
 
   <footer class="footer">
@@ -51,6 +61,7 @@
   <script src="js/schedule.js"></script>
   <script src="js/standings.js"></script>
   <script src="js/knockout.js"></script>
+  <script src="js/champions.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

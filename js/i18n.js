@@ -2,7 +2,7 @@
 const I18N = {
   zh: {
     title: '2026 世界杯',
-    subtitle: '美国 · 加拿大 · 墨西哥',
+    subtitle: '大卫的世界杯数据库',
     schedule: '赛程',
     standings: '积分榜',
     knockout: '淘汰赛',
@@ -35,13 +35,14 @@ const I18N = {
     noData: '暂无数据',
     advanced: '晋级',
     today: '今天',
+    champions: '历届冠军',
     filterByGroup: '按小组筛选',
     filterByTeam: '按球队筛选',
     matchday: '比赛日'
   },
   en: {
     title: 'World Cup 2026',
-    subtitle: 'USA · Canada · Mexico',
+    subtitle: 'David\'s World Cup Database',
     schedule: 'Schedule',
     standings: 'Standings',
     knockout: 'Knockout',
@@ -74,6 +75,7 @@ const I18N = {
     noData: 'No data',
     advanced: 'Advances',
     today: 'Today',
+    champions: 'Past Champions',
     filterByGroup: 'Filter by group',
     filterByTeam: 'Filter by team',
     matchday: 'Matchday'
@@ -109,6 +111,7 @@ var TEAM_ZH = {
   'Portugal': '葡萄牙', 'DR Congo': '刚果(金)', 'Uzbekistan': '乌兹别克斯坦', 'Colombia': '哥伦比亚',
   'England': '英格兰', 'Croatia': '克罗地亚', 'Ghana': '加纳', 'Panama': '巴拿马',
   'Ukraine': '乌克兰', 'Denmark': '丹麦', 'Serbia': '塞尔维亚', 'Chile': '智利',
+  'Russia': '俄罗斯', 'Hungary': '匈牙利', 'Czechoslovakia': '捷克斯洛伐克',
   'Peru': '秘鲁', 'Mali': '马里', 'Italy': '意大利', 'Poland': '波兰'
 };
 
@@ -131,6 +134,9 @@ function trTeam(name) {
     return name.replace(/^(\d)([A-Z])/, function(_, n, g) {
       return g + '组第' + n + '名';
     }).replace(/\//g, '/');
+  }
+  if (name.indexOf('/') !== -1) {
+    return name.split('/').map(function(s) { return TEAM_ZH[s.trim()] || s.trim(); }).join('/');
   }
   return TEAM_ZH[name] || name;
 }

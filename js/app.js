@@ -57,6 +57,8 @@ function switchTab(tab) {
     renderStandings();
   } else if (tab === 'knockout') {
     renderKnockout();
+  } else if (tab === 'champions') {
+    renderChampions();
   }
 }
 
@@ -82,7 +84,56 @@ function refreshCurrentTab() {
   switchTab(currentTab);
 }
 
+function initParticles() {
+  var canvas = document.getElementById('header-canvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var particles = [];
+  var count = 60;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  for (var i = 0; i < count; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.5 + 0.5,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      alpha: Math.random() * 0.6 + 0.2,
+      pulse: Math.random() * Math.PI * 2
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+      p.pulse += 0.02;
+      var a = p.alpha + Math.sin(p.pulse) * 0.2;
+      if (p.x < 0) p.x = canvas.width;
+      if (p.x > canvas.width) p.x = 0;
+      if (p.y < 0) p.y = canvas.height;
+      if (p.y > canvas.height) p.y = 0;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255,215,0,' + Math.max(0, Math.min(1, a)) + ')';
+      ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
 async function init() {
+  initParticles();
   document.getElementById('schedule-list').innerHTML = '<div class="spinner"></div>';
 
   await loadData();
@@ -90,6 +141,11 @@ async function init() {
   var tzSelect = document.getElementById('timezone-select');
   tzSelect.value = currentTZ;
   tzSelect.addEventListener('change', onTimezoneChange);
+
+  var toggleSpans = document.querySelectorAll('#lang-toggle span');
+  toggleSpans.forEach(function(s) {
+    s.addEventListener('click', function() { toggleLang(); });
+  });
 
   updateUIText();
   populateFilters();
@@ -99,7 +155,10 @@ async function init() {
 function updateUIText() {
   document.getElementById('title').textContent = t('title');
   document.getElementById('subtitle').textContent = t('subtitle');
-  document.getElementById('lang-btn').textContent = currentLang === 'zh' ? 'EN' : '中';
+  var spans = document.querySelectorAll('#lang-toggle span');
+  spans.forEach(function(s) {
+    s.classList.toggle('active', s.dataset.lang === currentLang);
+  });
 
   var i18nEls = document.querySelectorAll('[data-i18n]');
   for (var i = 0; i < i18nEls.length; i++) {
