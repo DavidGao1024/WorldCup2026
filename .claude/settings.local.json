@@ -19,7 +19,18 @@
       "mcp__chrome-devtools__click",
       "mcp__chrome-devtools__wait_for",
       "Bash(node -e ' *)",
-      "Bash(node *)"
+      "Bash(node *)",
+      "Bash(curl -sL -o \"E:/GitHub/WorldCup2026/favicon-test.png\" \"https://cdnlogo.com/logo/2026-fifa-world-cup_198509.html\")",
+      "Bash(curl -sL -o \"E:/GitHub/WorldCup2026/favicon.ico\" \"https://www.fifa.com/favicon.ico\")",
+      "Bash(curl -sL -o \"E:/GitHub/WorldCup2026/favicon.ico\" \"https://en.wikipedia.org/wiki/File:2026_FIFA_World_Cup_emblem.svg\")",
+      "Bash(curl -sL \"https://upload.wikimedia.org/wikipedia/en/thumb/1/1e/2026_FIFA_World_Cup_emblem.svg/1200px-2026_FIFA_World_Cup_emblem.svg.png\" -o \"E:/GitHub/WorldCup2026/favicon.png\")",
+      "Bash(curl -sL \"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/2026_FIFA_World_Cup_emblem.svg/640px-2026_FIFA_World_Cup_emblem.svg.png\" -o \"E:/GitHub/WorldCup2026/favicon.png\")",
+      "WebFetch(domain:www.edigitalagency.com.au)",
+      "WebFetch(domain:cdnlogo.com)",
+      "Bash(curl -sL -o \"E:/GitHub/WorldCup2026/favicon.png\" \"https://logodownload.org/wp-content/uploads/2023/05/2026-fifa-world-cup-logo.png\")",
+      "Bash(xxd)",
+      "WebFetch(domain:en.wikipedia.org)",
+      "Bash(curl -sL -o \"E:/GitHub/WorldCup2026/favicon.svg\" \"https://commons.wikimedia.org/wiki/Special:FilePath/2026_FIFA_World_Cup_emblem.svg\")"
     ]
   }
 }
