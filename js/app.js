@@ -138,9 +138,8 @@ async function init() {
 
   await loadData();
 
-  var tzSelect = document.getElementById('timezone-select');
-  tzSelect.value = currentTZ;
-  tzSelect.addEventListener('change', onTimezoneChange);
+  populateTimezoneSelect();
+  document.getElementById('timezone-select').addEventListener('change', onTimezoneChange);
 
   var toggleSpans = document.querySelectorAll('#lang-toggle span');
   toggleSpans.forEach(function(s) {

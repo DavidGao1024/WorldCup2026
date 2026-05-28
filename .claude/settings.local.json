@@ -30,7 +30,8 @@
       "Bash(curl -sL -o \"E:/GitHub/WorldCup2026/favicon.png\" \"https://logodownload.org/wp-content/uploads/2023/05/2026-fifa-world-cup-logo.png\")",
       "Bash(xxd)",
       "WebFetch(domain:en.wikipedia.org)",
-      "Bash(curl -sL -o \"E:/GitHub/WorldCup2026/favicon.svg\" \"https://commons.wikimedia.org/wiki/Special:FilePath/2026_FIFA_World_Cup_emblem.svg\")"
+      "Bash(curl -sL -o \"E:/GitHub/WorldCup2026/favicon.svg\" \"https://commons.wikimedia.org/wiki/Special:FilePath/2026_FIFA_World_Cup_emblem.svg\")",
+      "Bash(del \"D:\\\\DavidGao\\\\GitHub\\\\WorldCup2026\\\\tmp_check.js\")"
     ]
   }
 }

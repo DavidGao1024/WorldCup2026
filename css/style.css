@@ -226,25 +226,39 @@ body {
 .match-card .match-teams {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
+  margin-top: 20px;
+  margin-bottom: 8px;
 }
 .match-card .team {
   flex: 1;
   text-align: center;
 }
-.match-card .team .name { font-weight: 600; font-size: 0.95rem; }
+.match-card .team .name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: block;
+  line-height: 1.3;
+  word-break: break-word;
+}
 
 /* === Flag Images === */
 .flag-img { display: block; margin: 0 auto 4px; vertical-align: middle; }
 .standings-table .flag-img { display: inline; margin: 0 4px 0 0; vertical-align: middle; }
 .match-card .team .flag { font-size: 1.5rem; display: block; margin-bottom: 4px; }
+.match-card .flag-img {
+  width: 48px !important;
+  height: 32px !important;
+  margin-bottom: 20px;
+}
 .match-card .score {
   font-size: 1.3rem;
   font-weight: 700;
   color: #ffd700;
   min-width: 60px;
   text-align: center;
+  margin-top: 5px;
 }
 .match-card .match-ground {
   font-size: 0.75rem;

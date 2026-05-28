@@ -2,7 +2,7 @@
 const I18N = {
   zh: {
     title: '2026 世界杯',
-    subtitle: '大卫的世界杯数据库',
+    subtitle: '大卫的赛事手册',
     schedule: '赛程',
     standings: '积分榜',
     knockout: '淘汰赛',
@@ -17,9 +17,9 @@ const I18N = {
     gd: '净胜',
     pts: '积分',
     timezone: '时区',
-    beijing: '北京时间',
-    eastern: '美东时间',
-    gmt: '格林威治',
+    beijing: '北京时间 (UTC+8)',
+    eastern: '美东时间 (UTC-4)',
+    gmt: '格林威治 (UTC+0)',
     allGroups: '全部小组',
     allTeams: '全部球队',
     groupStage: '小组赛',
@@ -42,7 +42,7 @@ const I18N = {
   },
   en: {
     title: 'World Cup 2026',
-    subtitle: 'David\'s World Cup Database',
+    subtitle: 'David\'s Match Handbook',
     schedule: 'Schedule',
     standings: 'Standings',
     knockout: 'Knockout',
@@ -93,6 +93,7 @@ function toggleLang() {
   localStorage.setItem('wc-lang', currentLang);
   updateUIText();
   populateFilters();
+  populateTimezoneSelect();
   refreshCurrentTab();
 }
 

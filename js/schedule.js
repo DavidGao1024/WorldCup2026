@@ -17,8 +17,11 @@ function renderSchedule(filterGroup, filterTeam) {
 
   var byDate = {};
   filtered.forEach(function(m) {
-    if (!byDate[m.date]) byDate[m.date] = [];
-    byDate[m.date].push(m);
+    var c = convertTime(m.time, m.date);
+    m._displayTime = c.time;
+    m._displayDate = c.date;
+    if (!byDate[c.date]) byDate[c.date] = [];
+    byDate[c.date].push(m);
   });
 
   var today = new Date().toISOString().slice(0, 10);
@@ -45,7 +48,7 @@ function renderSchedule(filterGroup, filterTeam) {
     html += displayDate + '</div><div class="matches-grid">';
 
     dayMatches.forEach(function(m) {
-      var time = convertTime(m.time);
+      var time = m._displayTime;
       var isGroup = m.group && m.group.indexOf('Group ') === 0;
       var stageLabel = isGroup ? m.group : t(roundKey(m.round));
       var hasScore = m.score1 != null && m.score2 != null;

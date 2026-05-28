@@ -22,6 +22,7 @@ function renderKnockout() {
   activeRounds.forEach(function(round) {
     html += '<div class="bracket-round"><h3>' + t(roundKey(round)) + '</h3>';
     byRound[round].forEach(function(m) {
+      var ct = convertTime(m.time, m.date);
       var hasScore = m.score1 != null && m.score2 != null;
       var w1 = hasScore && m.score1 > m.score2;
       var w2 = hasScore && m.score2 > m.score1;
@@ -36,7 +37,7 @@ function renderKnockout() {
             (hasScore ? '<span>' + m.score2 + '</span>' : '') +
           '</div>' +
         '</div>' +
-        '<div class="bm-info">' + m.date + ' · ' + convertTime(m.time) + ' · ' + trVenue(m.ground) + '</div>' +
+        '<div class="bm-info">' + ct.date + ' · ' + ct.time + ' · ' + trVenue(m.ground) + '</div>' +
       '</div>';
     });
     html += '</div>';

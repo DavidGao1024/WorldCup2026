@@ -16,14 +16,9 @@
         <img src="favicon.jpg" alt="" class="header-logo">
         <h1 id="title">2026 世界杯</h1>
       </div>
-      <div class="subtitle" id="subtitle">大卫 · 高</div>
+      <div class="subtitle" id="subtitle">大卫的赛事手册</div>
     </div>
     <div class="header-right">
-      <select id="timezone-select">
-        <option value="beijing">🇨🇳 北京时间 (UTC+8)</option>
-        <option value="eastern">🇺🇸 美东时间 (UTC-4)</option>
-        <option value="gmt">🌐 GMT (UTC+0)</option>
-      </select>
       <div class="lang-toggle" id="lang-toggle">
         <span data-lang="zh" class="active">中</span>
         <span data-lang="en">EN</span>
@@ -43,6 +38,7 @@
       <div class="filters">
         <select id="filter-group" onchange="onFilterChange()"></select>
         <select id="filter-team" onchange="onTeamFilterChange()"></select>
+        <select id="timezone-select"></select>
       </div>
       <div id="schedule-list"></div>
     </div>
