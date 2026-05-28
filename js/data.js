@@ -78,6 +78,20 @@ function isPlaceholder(name) {
   return name[0] === 'W' || name[0] === 'L' || /^\d[A-Z]/.test(name);
 }
 
+function getTeamsByGroup(groupName) {
+  var teams = [];
+  var seen = {};
+  getGroupMatches().forEach(function(m) {
+    if (groupName && m.group !== groupName) return;
+    [m.team1, m.team2].forEach(function(t) {
+      if (t && !isPlaceholder(t) && !seen[t]) {
+        seen[t] = true; teams.push(t);
+      }
+    });
+  });
+  return teams.sort();
+}
+
 function computeStandings(groupName) {
   var matches = getGroupMatches().filter(function(m) { return m.group === groupName; });
   var teams = {};

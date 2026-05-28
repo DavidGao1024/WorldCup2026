@@ -46,22 +46,21 @@ function renderSchedule(filterGroup, filterTeam) {
 
     dayMatches.forEach(function(m) {
       var time = convertTime(m.time);
-      var flag1 = getFlag(m.team1);
-      var flag2 = getFlag(m.team2);
       var isGroup = m.group && m.group.indexOf('Group ') === 0;
       var stageLabel = isGroup ? m.group : t(roundKey(m.round));
       var hasScore = m.score1 != null && m.score2 != null;
       var scoreDisplay = hasScore ? m.score1 + ' - ' + m.score2 : t('vs');
+      var venueName = trVenue(m.ground);
 
       html += '<div class="match-card">' +
         (!isGroup ? '<span class="match-round">' + stageLabel + '</span>' : '') +
-        '<div class="match-time">' + time + ' (' + getUTCOffsetStr() + ') · ' + m.ground + '</div>' +
+        '<div class="match-time">' + time + ' (' + getUTCOffsetStr() + ') · ' + venueName + '</div>' +
         '<div class="match-teams">' +
-          '<div class="team"><span class="flag">' + flag1 + '</span><span class="name">' + m.team1 + '</span></div>' +
+          '<div class="team">' + getFlagImg(m.team1) + '<span class="name">' + trTeam(m.team1) + '</span></div>' +
           '<div class="score">' + scoreDisplay + '</div>' +
-          '<div class="team"><span class="flag">' + flag2 + '</span><span class="name">' + m.team2 + '</span></div>' +
+          '<div class="team">' + getFlagImg(m.team2) + '<span class="name">' + trTeam(m.team2) + '</span></div>' +
         '</div>' +
-        '<div class="match-ground">' + (isGroup ? stageLabel : m.ground) + '</div>' +
+        '<div class="match-ground">' + (isGroup ? stageLabel : venueName) + '</div>' +
       '</div>';
     });
 
@@ -74,14 +73,24 @@ function renderSchedule(filterGroup, filterTeam) {
 function populateFilters() {
   var groupFilter = document.getElementById('filter-group');
   var teamFilter = document.getElementById('filter-team');
+  var savedGroup = groupFilter.value;
+  var savedTeam = teamFilter.value;
 
   groupFilter.innerHTML = '<option value="all">' + t('allGroups') + '</option>';
   getGroups().forEach(function(g) {
     groupFilter.innerHTML += '<option value="' + g + '">' + g + '</option>';
   });
+  groupFilter.value = savedGroup || 'all';
 
+  populateTeamFilter(savedGroup || 'all', savedTeam);
+}
+
+function populateTeamFilter(groupName, savedTeam) {
+  var teamFilter = document.getElementById('filter-team');
+  var teams = groupName === 'all' ? getTeams() : getTeamsByGroup(groupName);
   teamFilter.innerHTML = '<option value="all">' + t('allTeams') + '</option>';
-  getTeams().forEach(function(t) {
-    teamFilter.innerHTML += '<option value="' + t + '">' + t + '</option>';
+  teams.forEach(function(t) {
+    teamFilter.innerHTML += '<option value="' + t + '">' + trTeam(t) + '</option>';
   });
+  teamFilter.value = savedTeam || 'all';
 }

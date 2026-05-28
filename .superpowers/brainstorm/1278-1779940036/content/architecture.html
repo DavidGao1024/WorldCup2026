@@ -1,0 +1,63 @@
+<h2>整体架构设计</h2>
+<p class="subtitle">纯前端单页应用，数据从 jsDelivr CDN 加载</p>
+
+<div class="section">
+  <h3>技术选型</h3>
+  <div class="pros-cons" style="display:block">
+    <div style="background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:16px;margin-bottom:12px">
+      <strong>纯 HTML/CSS/JS（无框架）</strong>
+      <p style="margin:4px 0 0;color:#64748b">零依赖、零构建、体积小、加载快。GitHub Pages 直接托管，无需编译。</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>页面结构</h3>
+  <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px;font-family:monospace;font-size:13px;line-height:1.8">
+    ┌─────────────────────────────────┐<br>
+    │ &nbsp;Header: 标题 + 时区选择器 &nbsp;│<br>
+    ├─────────────────────────────────┤<br>
+    │ &nbsp;[ 赛程 ] [ 积分榜 ] [ 淘汰赛 ] &nbsp;│<br>
+    ├─────────────────────────────────┤<br>
+    │ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内容区 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>
+    │ &nbsp;• 日期分组 / 小组筛选 &nbsp;&nbsp;&nbsp;&nbsp;│<br>
+    │ &nbsp;• 比赛卡片列表 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>
+    │ &nbsp;• 积分榜表格 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>
+    │ &nbsp;• 淘汰赛对阵树 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>
+    ├─────────────────────────────────┤<br>
+    │ &nbsp;Footer: 数据来源 / 开源链接 &nbsp;│<br>
+    └─────────────────────────────────┘
+  </div>
+</div>
+
+<div class="section">
+  <h3>数据流</h3>
+  <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px;font-size:14px;line-height:2">
+    <strong>1.</strong> 页面加载 → fetch CDN worldcup.json<br>
+    <strong>2.</strong> 解析 JSON → 按 round/group/date 分类<br>
+    <strong>3.</strong> 计算积分榜：从比赛结果累加胜/平/负/积分/净胜球<br>
+    <strong>4.</strong> 构建淘汰赛对阵树：匹配 round 引用（W89→Match 89 胜者）<br>
+    <strong>5.</strong> 时区转换：解析 UTC±N → 转换为用户所选时区<br>
+    <strong>6.</strong> 渲染到对应 Tab 内容区
+  </div>
+</div>
+
+<div class="section">
+  <h3>文件结构</h3>
+  <div style="background:#1e293b;color:#e2e8f0;border-radius:8px;padding:16px;font-family:monospace;font-size:13px;line-height:1.8">
+    / (root)<br>
+    ├── index.html &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 主页面<br>
+    ├── css/<br>
+    │&nbsp;&nbsp; └── style.css &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 全局样式<br>
+    ├── js/<br>
+    │&nbsp;&nbsp; ├── app.js &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 入口 & 初始化<br>
+    │&nbsp;&nbsp; ├── data.js &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 数据加载 & 处理<br>
+    │&nbsp;&nbsp; ├── schedule.js &nbsp;&nbsp;&nbsp;&nbsp;# 赛程 Tab<br>
+    │&nbsp;&nbsp; ├── standings.js &nbsp;&nbsp;&nbsp;# 积分榜 Tab<br>
+    │&nbsp;&nbsp; ├── knockout.js &nbsp;&nbsp;&nbsp;&nbsp;# 淘汰赛 Tab<br>
+    │&nbsp;&nbsp; ├── timezone.js &nbsp;&nbsp;&nbsp;&nbsp;# 时区转换<br>
+    │&nbsp;&nbsp; └── i18n.js &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# 中英文切换<br>
+    └── data/<br>
+    &nbsp;&nbsp;&nbsp; └── (本地备用数据)
+  </div>
+</div>

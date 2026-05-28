@@ -28,15 +28,15 @@ function renderKnockout() {
       html += '<div class="bracket-match">' +
         '<div class="bm-teams">' +
           '<div class="bm-team' + (w1 ? ' winner' : '') + '">' +
-            '<span>' + getFlag(m.team1) + ' ' + m.team1 + '</span>' +
+            '<span>' + trTeam(m.team1) + '</span>' +
             (hasScore ? '<span>' + m.score1 + '</span>' : '') +
           '</div>' +
           '<div class="bm-team' + (w2 ? ' winner' : '') + '">' +
-            '<span>' + getFlag(m.team2) + ' ' + m.team2 + '</span>' +
+            '<span>' + trTeam(m.team2) + '</span>' +
             (hasScore ? '<span>' + m.score2 + '</span>' : '') +
           '</div>' +
         '</div>' +
-        '<div class="bm-info">' + m.date + ' · ' + convertTime(m.time) + ' · ' + m.ground + '</div>' +
+        '<div class="bm-info">' + m.date + ' · ' + convertTime(m.time) + ' · ' + trVenue(m.ground) + '</div>' +
       '</div>';
     });
     html += '</div>';

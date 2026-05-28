@@ -1,0 +1,45 @@
+<h2>功能模块详细设计</h2>
+<p class="subtitle">三个 Tab 的核心功能和交互方式</p>
+
+<div class="section">
+  <h3>Tab 1 — 赛程</h3>
+  <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px;font-size:14px;line-height:1.8">
+    <strong>日期分组：</strong>按比赛日（如 "6月11日 周四"）分组展示，今天自动高亮<br>
+    <strong>筛选栏：</strong>下拉选择小组（Group A-L）或球队名称过滤<br>
+    <strong>比赛卡片</strong>每张包含：<br>
+    &nbsp;&nbsp;• 时间（已转换时区）<br>
+    &nbsp;&nbsp;• 队名 + 国旗 emoji 🇲🇽 vs 🇿🇦<br>
+    &nbsp;&nbsp;• 比分（赛前显示 "vs"，赛后显示结果）<br>
+    &nbsp;&nbsp;• 场馆<br>
+    <strong>小组赛/淘汰赛</strong>分组标签区分
+  </div>
+</div>
+
+<div class="section">
+  <h3>Tab 2 — 积分榜</h3>
+  <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px;font-size:14px;line-height:1.8">
+    <strong>小组选择：</strong>下拉切换 12 个小组（A-L）<br>
+    <strong>积分表格：</strong>球队 | 赛 | 胜 | 平 | 负 | 进球 | 失球 | 净胜 | 积分<br>
+    <strong>晋级标识：</strong>前两名球队行高亮，显示晋级标记<br>
+    <strong>排序规则：</strong>积分 → 净胜球 → 进球数
+  </div>
+</div>
+
+<div class="section">
+  <h3>Tab 3 — 淘汰赛</h3>
+  <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px;font-size:14px;line-height:1.8">
+    <strong>对阵树：</strong>从 Round of 32 → 决赛，树形展示<br>
+    <strong>横向滚动：</strong>移动端可左右滑动查看完整对阵<br>
+    <strong>晋级连线：</strong>胜者自动连接到下一轮位置<br>
+    <strong>赛前占位：</strong>未确定球队显示 "Group X Winner" 等
+  </div>
+</div>
+
+<div class="section">
+  <h3>时区选择器（Header 右侧）</h3>
+  <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px;font-size:14px;line-height:1.8">
+    <strong>下拉菜单：</strong>🇨🇳 北京时间 (UTC+8) | 🇺🇸 美东时间 (UTC-4) | 🌐 GMT (UTC+0)<br>
+    <strong>自动检测：</strong>首次访问根据浏览器时区预选<br>
+    <strong>持久化：</strong>选择存入 LocalStorage，下次自动恢复
+  </div>
+</div>

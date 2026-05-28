@@ -89,5 +89,53 @@ function t(key) {
 function toggleLang() {
   currentLang = currentLang === 'zh' ? 'en' : 'zh';
   localStorage.setItem('wc-lang', currentLang);
-  location.reload();
+  updateUIText();
+  populateFilters();
+  refreshCurrentTab();
+}
+
+// Team and venue Chinese translations
+var TEAM_ZH = {
+  'Mexico': '墨西哥', 'South Africa': '南非', 'South Korea': '韩国', 'Czech Republic': '捷克',
+  'Canada': '加拿大', 'Bosnia & Herzegovina': '波黑', 'Qatar': '卡塔尔', 'Switzerland': '瑞士',
+  'Brazil': '巴西', 'Morocco': '摩洛哥', 'Haiti': '海地', 'Scotland': '苏格兰',
+  'USA': '美国', 'Paraguay': '巴拉圭', 'Australia': '澳大利亚', 'Turkey': '土耳其',
+  'Germany': '德国', 'Cura\u00e7ao': '库拉索', 'Ivory Coast': '科特迪瓦', 'Ecuador': '厄瓜多尔',
+  'Netherlands': '荷兰', 'Japan': '日本', 'Sweden': '瑞典', 'Tunisia': '突尼斯',
+  'Belgium': '比利时', 'Egypt': '埃及', 'Iran': '伊朗', 'New Zealand': '新西兰',
+  'Spain': '西班牙', 'Cape Verde': '佛得角', 'Saudi Arabia': '沙特', 'Uruguay': '乌拉圭',
+  'France': '法国', 'Senegal': '塞内加尔', 'Iraq': '伊拉克', 'Norway': '挪威',
+  'Argentina': '阿根廷', 'Algeria': '阿尔及利亚', 'Austria': '奥地利', 'Jordan': '约旦',
+  'Portugal': '葡萄牙', 'DR Congo': '刚果(金)', 'Uzbekistan': '乌兹别克斯坦', 'Colombia': '哥伦比亚',
+  'England': '英格兰', 'Croatia': '克罗地亚', 'Ghana': '加纳', 'Panama': '巴拿马',
+  'Ukraine': '乌克兰', 'Denmark': '丹麦', 'Serbia': '塞尔维亚', 'Chile': '智利',
+  'Peru': '秘鲁', 'Mali': '马里', 'Italy': '意大利', 'Poland': '波兰'
+};
+
+var VENUE_ZH = {
+  'Mexico City': '墨西哥城', 'Guadalajara (Zapopan)': '瓜达拉哈拉', 'Atlanta': '亚特兰大',
+  'Monterrey (Guadalupe)': '蒙特雷', 'Toronto': '多伦多',
+  'San Francisco Bay Area (Santa Clara)': '旧金山湾区', 'Los Angeles (Inglewood)': '洛杉矶',
+  'Vancouver': '温哥华', 'Seattle': '西雅图',
+  'New York/New Jersey (East Rutherford)': '纽约/新泽西', 'Boston (Foxborough)': '波士顿',
+  'Philadelphia': '费城', 'Miami (Miami Gardens)': '迈阿密', 'Houston': '休斯顿',
+  'Kansas City': '堪萨斯城', 'Dallas (Arlington)': '达拉斯'
+};
+
+function trTeam(name) {
+  if (currentLang !== 'zh') return name;
+  if (!name) return name;
+  if (name[0] === 'W') return name.replace('W', '胜者');
+  if (name[0] === 'L') return name.replace('L', '败者');
+  if (/^\d[A-Z]/.test(name)) {
+    return name.replace(/^(\d)([A-Z])/, function(_, n, g) {
+      return g + '组第' + n + '名';
+    }).replace(/\//g, '/');
+  }
+  return TEAM_ZH[name] || name;
+}
+
+function trVenue(name) {
+  if (currentLang !== 'zh') return name;
+  return VENUE_ZH[name] || name;
 }

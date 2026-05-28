@@ -139,6 +139,10 @@ body {
   text-align: center;
 }
 .match-card .team .name { font-weight: 600; font-size: 0.95rem; }
+
+/* === Flag Images === */
+.flag-img { display: block; margin: 0 auto 4px; vertical-align: middle; }
+.standings-table .flag-img { display: inline; margin: 0 4px 0 0; vertical-align: middle; }
 .match-card .team .flag { font-size: 1.5rem; display: block; margin-bottom: 4px; }
 .match-card .score {
   font-size: 1.3rem;
@@ -164,6 +168,14 @@ body {
 }
 
 /* === Standings Table === */
+.group-title {
+  color: #ffd700;
+  font-size: 1.1rem;
+  margin: 24px 0 8px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #2d8a4e;
+}
+.group-title:first-child { margin-top: 0; }
 .standings-table {
   width: 100%;
   border-collapse: collapse;

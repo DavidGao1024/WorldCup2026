@@ -33,6 +33,11 @@ function roundKey(round) {
   return map[round] || 'groupStage';
 }
 
+function getFlagImg(name) {
+  if (!name || name[0] === 'W' || name[0] === 'L' || /^\d[A-Z]/.test(name)) return '';
+  return '<img class="flag-img" src="img/flags/' + name + '.png" alt="" width="24" height="16">';
+}
+
 var currentTab = 'schedule';
 
 function switchTab(tab) {
@@ -56,6 +61,13 @@ function switchTab(tab) {
 }
 
 function onFilterChange() {
+  var g = document.getElementById('filter-group').value;
+  var savedTeam = g === 'all' ? 'all' : document.getElementById('filter-team').value;
+  populateTeamFilter(g, savedTeam);
+  renderSchedule(g, document.getElementById('filter-team').value);
+}
+
+function onTeamFilterChange() {
   var g = document.getElementById('filter-group').value;
   var tf = document.getElementById('filter-team').value;
   renderSchedule(g, tf);
