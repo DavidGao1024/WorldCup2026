@@ -11,7 +11,10 @@ var FLAG_MAP = {
   'Belgium': '🇧🇪', 'Colombia': '🇨🇴', 'Senegal': '🇸🇳', 'Iran': '🇮🇷',
   'Croatia': '🇭🇷', 'Denmark': '🇩🇰', 'Sweden': '🇸🇪', 'Poland': '🇵🇱',
   'Serbia': '🇷🇸', 'Chile': '🇨🇱', 'Peru': '🇵🇪', 'Mali': '🇲🇱',
-  'Algeria': '🇩🇿', 'New Zealand': '🇳🇿', 'Saudi Arabia': '🇸🇦'
+  'Algeria': '🇩🇿', 'New Zealand': '🇳🇿', 'Saudi Arabia': '🇸🇦',
+  'Tunisia': '🇹🇳', 'Cape Verde': '🇨🇻', 'Iraq': '🇮🇶', 'Austria': '🇦🇹',
+  'DR Congo': '🇨🇩', 'Uzbekistan': '🇺🇿', 'Ghana': '🇬🇭', 'Panama': '🇵🇦',
+  'Jordan': '🇯🇴'
 };
 
 function getFlag(teamName) {

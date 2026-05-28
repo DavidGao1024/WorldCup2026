@@ -65,14 +65,17 @@ function getTeams() {
   var teams = [];
   var seen = {};
   getMatches().forEach(function(m) {
-    if (m.team1 && m.team1[0] !== 'W' && m.team1[0] !== 'L' && !seen[m.team1]) {
-      seen[m.team1] = true; teams.push(m.team1);
-    }
-    if (m.team2 && m.team2[0] !== 'W' && m.team2[0] !== 'L' && !seen[m.team2]) {
-      seen[m.team2] = true; teams.push(m.team2);
-    }
+    [m.team1, m.team2].forEach(function(t) {
+      if (t && !isPlaceholder(t) && !seen[t]) {
+        seen[t] = true; teams.push(t);
+      }
+    });
   });
   return teams.sort();
+}
+
+function isPlaceholder(name) {
+  return name[0] === 'W' || name[0] === 'L' || /^\d[A-Z]/.test(name);
 }
 
 function computeStandings(groupName) {
