@@ -134,12 +134,11 @@ function initParticles() {
 
 async function init() {
   initParticles();
+  populateTimezoneSelect();
+  document.getElementById('timezone-select').addEventListener('change', onTimezoneChange);
   document.getElementById('schedule-list').innerHTML = '<div class="spinner"></div>';
 
   await loadData();
-
-  populateTimezoneSelect();
-  document.getElementById('timezone-select').addEventListener('change', onTimezoneChange);
 
   var toggleSpans = document.querySelectorAll('#lang-toggle span');
   toggleSpans.forEach(function(s) {

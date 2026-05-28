@@ -2,37 +2,46 @@
 var CDN_URL = 'https://cdn.jsdelivr.net/gh/openfootball/worldcup.json@master/2026/worldcup.json';
 var CACHE_KEY = 'wc-data';
 var CACHE_TIME_KEY = 'wc-data-time';
-var CACHE_TTL = 3600000;
 
 var worldCupData = null;
 
 async function loadData() {
   var cached = localStorage.getItem(CACHE_KEY);
-  var cacheTime = localStorage.getItem(CACHE_TIME_KEY);
-  if (cached && cacheTime && (Date.now() - parseInt(cacheTime) < CACHE_TTL)) {
+  if (cached) {
     worldCupData = JSON.parse(cached);
-    return worldCupData;
   }
 
-  try {
-    var resp = await fetch(CDN_URL);
-    if (resp.ok) {
-      worldCupData = await resp.json();
-      localStorage.setItem(CACHE_KEY, JSON.stringify(worldCupData));
-      localStorage.setItem(CACHE_TIME_KEY, String(Date.now()));
-      return worldCupData;
-    }
-  } catch (e) {
-    console.warn('CDN load failed, trying fallback...');
-  }
+  // Always try to fetch fresh data in background
+  fetchFreshData();
+
+  // If we have cache, return immediately; otherwise wait for local fallback
+  if (worldCupData) return worldCupData;
 
   try {
-    var resp2 = await fetch('data/worldcup.json');
-    worldCupData = await resp2.json();
+    var resp = await fetch('data/worldcup.json');
+    worldCupData = await resp.json();
     return worldCupData;
   } catch (e) {
     console.error('Failed to load data');
     return null;
+  }
+}
+
+async function fetchFreshData() {
+  try {
+    var resp = await fetch(CDN_URL);
+    if (!resp.ok) return;
+    var newData = await resp.json();
+    var oldStr = worldCupData ? JSON.stringify(worldCupData.matches) : '';
+    var newStr = newData.matches ? JSON.stringify(newData.matches) : '';
+    localStorage.setItem(CACHE_KEY, JSON.stringify(newData));
+    localStorage.setItem(CACHE_TIME_KEY, String(Date.now()));
+    if (oldStr !== newStr) {
+      worldCupData = newData;
+      if (typeof refreshCurrentTab === 'function') refreshCurrentTab();
+    }
+  } catch (e) {
+    // silent fail, cached data still in use
   }
 }
 
