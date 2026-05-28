@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World Cup 2026</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-left">
+      <h1 id="title">2026 世界杯</h1>
+      <div class="subtitle" id="subtitle">美国 · 加拿大 · 墨西哥</div>
+    </div>
+    <div class="header-right">
+      <button class="lang-btn" id="lang-btn" onclick="toggleLang()">EN</button>
+      <select id="timezone-select">
+        <option value="beijing">🇨🇳 北京时间 (UTC+8)</option>
+        <option value="eastern">🇺🇸 美东时间 (UTC-4)</option>
+        <option value="gmt">🌐 GMT (UTC+0)</option>
+      </select>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <div class="tab active" id="tab-schedule" data-i18n="schedule" onclick="switchTab('schedule')">赛程</div>
+    <div class="tab" id="tab-standings" data-i18n="standings" onclick="switchTab('standings')">积分榜</div>
+    <div class="tab" id="tab-knockout" data-i18n="knockout" onclick="switchTab('knockout')">淘汰赛</div>
+  </nav>
+
+  <main class="content">
+    <div class="tab-content active" id="schedule-content">
+      <div class="filters">
+        <select id="filter-group" onchange="onFilterChange()"></select>
+        <select id="filter-team" onchange="onFilterChange()"></select>
+      </div>
+      <div id="schedule-list"></div>
+    </div>
+    <div class="tab-content" id="standings-content"></div>
+    <div class="tab-content" id="knockout-content"></div>
+  </main>
+
+  <footer class="footer">
+    <p>Data: <a href="https://github.com/openfootball/worldcup.json" target="_blank" rel="noopener">openfootball/worldcup.json</a></p>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/timezone.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/schedule.js"></script>
+  <script src="js/standings.js"></script>
+  <script src="js/knockout.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
