@@ -32,7 +32,9 @@
       "WebFetch(domain:en.wikipedia.org)",
       "Bash(curl -sL -o \"E:/GitHub/WorldCup2026/favicon.svg\" \"https://commons.wikimedia.org/wiki/Special:FilePath/2026_FIFA_World_Cup_emblem.svg\")",
       "Bash(del \"D:\\\\DavidGao\\\\GitHub\\\\WorldCup2026\\\\tmp_check.js\")",
-      "Bash(cd:*)"
+      "Bash(cd:*)",
+      "Bash(identify \"E:/GitHub/WorldCup2026/favicon.jpg\")",
+      "Bash(python -c \"from PIL import Image; img = Image.open\\('E:/GitHub/WorldCup2026/favicon.jpg'\\); print\\('Dimensions:', img.size\\); import os; print\\('Size:', round\\(os.path.getsize\\('E:/GitHub/WorldCup2026/favicon.jpg'\\) / 1024, 1\\), 'KB'\\)\")"
     ]
   }
 }
