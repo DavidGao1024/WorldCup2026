@@ -40,7 +40,8 @@
       "Bash(curl -s \"https://davidgao1024.github.io/WorldCup2026/\")",
       "Bash(curl -v \"https://davidgao1024.github.io/WorldCup2026/\")",
       "WebFetch(domain:davidgao1024.github.io)",
-      "Bash(git *)"
+      "Bash(git *)",
+      "Bash(curl -sI \"https://tellyes-oldage.oss-cn-beijing.aliyuncs.com/da1024/wx_pic.jpg\")"
     ]
   }
 }
