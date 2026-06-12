@@ -11,15 +11,17 @@ async function loadData() {
     worldCupData = JSON.parse(cached);
   }
 
-  // Always try to fetch fresh data in background
+  // 后台拉取最新数据（CDN + ESPN 并行）
   fetchFreshData();
+  fetchEspnAndMerge();
 
-  // If we have cache, return immediately; otherwise wait for local fallback
   if (worldCupData) return worldCupData;
 
+  // 无缓存 → 加载本地 fallback
   try {
     var resp = await fetch('data/worldcup.json');
     worldCupData = await resp.json();
+    fetchEspnAndMerge();
     return worldCupData;
   } catch (e) {
     console.error('Failed to load data');
@@ -27,21 +29,60 @@ async function loadData() {
   }
 }
 
+async function fetchEspnAndMerge() {
+  var scoreMap = await fetchEspnScores();
+  if (!scoreMap) return;
+
+  if (mergeScoresIntoData(scoreMap)) {
+    saveToCache();
+    if (typeof refreshCurrentTab === 'function') refreshCurrentTab();
+  }
+}
+
+function mergeScoresIntoData(scoreMap) {
+  if (!worldCupData || !worldCupData.matches) return false;
+  var changed = false;
+  worldCupData.matches.forEach(function(m) {
+    var key = m.date + '|' + m.team1 + '|' + m.team2;
+    var entry = scoreMap[key];
+    if (!entry) {
+      key = m.date + '|' + m.team2 + '|' + m.team1;
+      entry = scoreMap[key];
+    }
+    if (entry) {
+      if (m.score1 !== entry.score1 || m.score2 !== entry.score2) {
+        m.score1 = entry.score1;
+        m.score2 = entry.score2;
+        changed = true;
+      }
+    }
+  });
+  return changed;
+}
+
+function saveToCache() {
+  try {
+    localStorage.setItem(CACHE_KEY, JSON.stringify(worldCupData));
+    localStorage.setItem(CACHE_TIME_KEY, String(Date.now()));
+  } catch (e) {}
+}
+
 async function fetchFreshData() {
   try {
     var resp = await fetch(CDN_URL);
     if (!resp.ok) return;
     var newData = await resp.json();
-    var oldStr = worldCupData ? JSON.stringify(worldCupData.matches) : '';
-    var newStr = newData.matches ? JSON.stringify(newData.matches) : '';
-    localStorage.setItem(CACHE_KEY, JSON.stringify(newData));
-    localStorage.setItem(CACHE_TIME_KEY, String(Date.now()));
-    if (oldStr !== newStr) {
+    var oldMatches = worldCupData ? JSON.stringify(worldCupData.matches) : '';
+    var newMatches = newData.matches ? JSON.stringify(newData.matches) : '';
+    if (oldMatches !== newMatches) {
+      // CDN 有更新 → 合并 ESPN 比分后替换
       worldCupData = newData;
-      if (typeof refreshCurrentTab === 'function') refreshCurrentTab();
+      saveToCache();
+      // 重新拉 ESPN 比分覆盖 CDN 中可能为空的比分
+      fetchEspnAndMerge();
     }
   } catch (e) {
-    // silent fail, cached data still in use
+    // 静默失败
   }
 }
 

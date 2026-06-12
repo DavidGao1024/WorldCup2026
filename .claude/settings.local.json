@@ -41,7 +41,15 @@
       "Bash(curl -v \"https://davidgao1024.github.io/WorldCup2026/\")",
       "WebFetch(domain:davidgao1024.github.io)",
       "Bash(git *)",
-      "Bash(curl -sI \"https://tellyes-oldage.oss-cn-beijing.aliyuncs.com/da1024/wx_pic.jpg\")"
+      "Bash(curl -sI \"https://tellyes-oldage.oss-cn-beijing.aliyuncs.com/da1024/wx_pic.jpg\")",
+      "WebFetch(domain:site.api.espn.com)",
+      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260611-20260612\")",
+      "Bash(curl -s \"https://site.api.espn.com/apis/v2/sports/soccer/fifa.world/standings\")",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); [print\\(json.dumps\\({'group':g['name'],'teams':[{'name':e['team']['displayName'],'stats':{s['name']:s['displayValue'] for s in e['stats']}} for e in g['standings']['entries']]}, indent=2, ensure_ascii=False\\)\\) for g in d.get\\('children',[]\\)]\")",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_snapshot",
+      "mcp__playwright__browser_click",
+      "mcp__playwright__browser_take_screenshot"
     ]
   }
 }
