@@ -43,10 +43,11 @@ function mergeScoresIntoData(scoreMap) {
   if (!worldCupData || !worldCupData.matches) return false;
   var changed = false;
   worldCupData.matches.forEach(function(m) {
-    var key = m.date + '|' + m.team1 + '|' + m.team2;
+    var utcDate = toUTCDate(m.date, m.time);
+    var key = utcDate + '|' + m.team1 + '|' + m.team2;
     var entry = scoreMap[key];
     if (!entry) {
-      key = m.date + '|' + m.team2 + '|' + m.team1;
+      key = utcDate + '|' + m.team2 + '|' + m.team1;
       entry = scoreMap[key];
     }
     if (entry) {
@@ -58,6 +59,22 @@ function mergeScoresIntoData(scoreMap) {
     }
   });
   return changed;
+}
+
+// 将 worldcup.json 的本地日期+时间转为 UTC 日期，用于和 ESPN API 匹配
+// 例如 date="2026-06-11" time="20:00 UTC-6" → "2026-06-12"
+function toUTCDate(dateStr, timeStr) {
+  var m = timeStr.match(/UTC([+-]\d+)/);
+  if (!m) return dateStr;
+  var offset = parseInt(m[1], 10);
+  var parts = timeStr.split(' ')[0].split(':');
+  var h = parseInt(parts[0], 10);
+  var min = parseInt(parts[1], 10) || 0;
+  // UTC = 本地时间 - 偏移量（UTC-6 → 减 -6 = 加 6）
+  var totalMin = h * 60 + min - offset * 60;
+  var d = new Date(dateStr + 'T00:00:00Z');
+  d.setUTCMinutes(d.getUTCMinutes() + totalMin);
+  return d.toISOString().split('T')[0];
 }
 
 function saveToCache() {
