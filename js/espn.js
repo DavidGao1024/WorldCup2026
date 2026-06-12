@@ -3,10 +3,13 @@
 var ESPN_SCOREBOARD = 'https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard';
 var ESPN_STANDINGS = 'https://site.api.espn.com/apis/v2/sports/soccer/fifa.world/standings';
 
-// ESPN 和 worldcup.json 之间的队名映射
+// ESPN 和 worldcup.json 之间的队名映射（2026-06-12 全量对比，48支球队差异尽在于此）
 var ESPN_TEAM_MAP = {
+  'Bosnia-Herzegovina': 'Bosnia & Herzegovina',
+  'Congo DR': 'DR Congo',
   'Czechia': 'Czech Republic',
-  'Bosnia-Herzegovina': 'Bosnia & Herzegovina'
+  'Türkiye': 'Turkey',
+  'United States': 'USA'
 };
 
 function mapEspnName(name) {

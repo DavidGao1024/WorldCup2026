@@ -27,20 +27,38 @@ Scripts load in this sequence in `index.html` because later files depend on earl
 
 1. **i18n.js** — `t(key)`, `currentLang`, `toggleLang()`, `trTeam()`, `trVenue()`, `TEAM_ZH`, `VENUE_ZH`
 2. **timezone.js** — `currentTZ`, `convertTime()`, `getUTCOffsetStr()`, `setTimezone()`
-3. **data.js** — `loadData()`, `getMatches()`, `getGroupMatches()`, `getKnockoutMatches()`, `getGroups()`, `getTeams()`, `getTeamsByGroup()`, `computeStandings()`, `isPlaceholder()`
-4. **schedule.js** — `renderSchedule()`, `populateFilters()`, `populateTeamFilter()`
-5. **standings.js** — `renderStandings()`, `onStandingsGroupChange()`
-6. **knockout.js** — `renderKnockout()`
-7. **app.js** — `init()`, `switchTab()`, `onFilterChange()`, `onTeamFilterChange()`, `getFlagImg()`, `getFlag()`, `roundKey()`, `updateUIText()`, `refreshCurrentTab()`, `FLAG_MAP`
+3. **espn.js** — `fetchEspnScores()`, `fetchEspnStandings()`, `mapEspnName()`, `ESPN_TEAM_MAP` — 从 ESPN 非官方 API 拉取实时比分和积分榜
+4. **data.js** — `loadData()`, `getMatches()`, `getGroupMatches()`, `getKnockoutMatches()`, `getGroups()`, `getTeams()`, `getTeamsByGroup()`, `computeStandings()`, `isPlaceholder()`, `fetchEspnAndMerge()`, `mergeScoresIntoData()`
+5. **schedule.js** — `renderSchedule()`, `populateFilters()`, `populateTeamFilter()`
+6. **standings.js** — `renderStandings()`, `onStandingsGroupChange()`
+7. **knockout.js** — `renderKnockout()`
+8. **app.js** — `init()`, `switchTab()`, `onFilterChange()`, `onTeamFilterChange()`, `getFlagImg()`, `getFlag()`, `roundKey()`, `updateUIText()`, `refreshCurrentTab()`, `FLAG_MAP`
 
 All variables are global (`var`). No modules or bundler.
 
 ### Data flow
 
-1. `init()` calls `loadData()` → fetches from jsDelivr CDN, falls back to `data/worldcup.json`, caches in `LocalStorage` (1h TTL)
-2. `getMatches()` fills missing `num` fields by array index (some knockout matches lack them)
-3. `computeStandings()` calculates group tables from matches with `score1`/`score2` fields (currently all null — pre-tournament)
-4. Tab switch calls the corresponding render function
+1. `init()` calls `loadData()` → 先读 LocalStorage 缓存（1h TTL），无缓存则加载 `data/worldcup.json`
+2. 后台并行：`fetchEspnAndMerge()` 从 ESPN API 拉取实时比分，合并到 `worldCupData.matches`；`fetchFreshData()` 从 jsDelivr CDN 拉取最新赛程
+3. ESPN 拉取成功 → 比分写入 match 的 `score1`/`score2` → 更新缓存 + 刷新 UI
+4. ESPN 失败 → 静默 fallback，使用缓存或 CDN 中的旧数据
+5. `computeStandings()` 根据已有 `score1`/`score2` 计算小组积分（null 的比赛不参与计算）
+6. Tab 切换时调用对应的 render 函数
+
+### ESPN API
+
+- **Scoreboard**: `https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260611-20260719&limit=200`
+  - 免 Key，无需认证
+  - 返回 `events[].competitions[0].competitors[]` → `score`, `homeAway`, `team.displayName`
+  - 只合并 `state === 'post'` 或 `'in'` 的比赛比分
+- **Standings**: `https://site.api.espn.com/apis/v2/sports/soccer/fifa.world/standings`
+  - 备用，当前积分榜由 `computeStandings()` 从比分本地计算
+- **队名映射**（ESPN → worldcup.json）见 `espn.js` 中的 `ESPN_TEAM_MAP`（48 支球队中仅 5 个差异，已全量覆盖）：
+  - `Bosnia-Herzegovina` → `Bosnia & Herzegovina`
+  - `Congo DR` → `DR Congo`
+  - `Czechia` → `Czech Republic`
+  - `Türkiye` → `Turkey`
+  - `United States` → `USA`
 
 ### Match data structure (worldcup.json)
 
