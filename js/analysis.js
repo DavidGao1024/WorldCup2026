@@ -19,10 +19,10 @@ function loadAnalysisData() {
 // ---- Scoring engine ----
 
 function computeMatchScore(team, opponent, ground, matchDate) {
-  var rank = analysisData.rankings;
-  var form = analysisData.forms;
-  var h2h = analysisData.h2h;
-  var stadiums = analysisData.stadiums;
+  var rank = analysisData.rankings || {};
+  var form = analysisData.forms || {};
+  var h2h = analysisData.h2h || {};
+  var stadiums = analysisData.stadiums || {};
 
   var t = rank[team] || { rank: 60, elo: 1100, squadValue: '€0.2亿', avgAge: 27, conf: 'UEFA' };
   var o = rank[opponent] || { rank: 60, elo: 1100, squadValue: '€0.2亿', avgAge: 27, conf: 'UEFA' };
@@ -337,9 +337,14 @@ function renderAnalysis() {
     container.innerHTML = '<div class="spinner"></div>';
     loadAnalysisData().then(function() {
       renderAnalysis();
-    }).catch(function() {
-      container.innerHTML = '<div style="text-align:center;padding:40px;color:#aaa;">' + t('noData') + '</div>';
+    }).catch(function(err) {
+      container.innerHTML = '<div class="analysis-empty">' + t('analysisLoadFailed') + '<br><small>' + t('analysisRetry') + ' <a href="javascript:renderAnalysis()">' + t('analysisClickRetry') + '</a></small></div>';
     });
+    return;
+  }
+
+  if (typeof worldCupData === 'undefined' || !worldCupData.matches || worldCupData.matches.length === 0) {
+    container.innerHTML = '<div class="analysis-empty">' + t('analysisNoSchedule') + '</div>';
     return;
   }
 
@@ -375,6 +380,12 @@ function renderAnalysis() {
   }
 
   var html = '';
+
+  if (target.length === 0) {
+    container.innerHTML = '<div class="analysis-empty">' + t('analysisNoMatches') + '</div>';
+    return;
+  }
+
   html += '<div class="analysis-header">';
   html += '<h2>' + t('analysisTitle') + '</h2>';
   html += '<p class="analysis-subtitle">' + t('analysisSubtitle') + '</p>';

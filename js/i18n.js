@@ -107,7 +107,12 @@ const I18N = {
     analysisOddsMostlyMatch: '分析与赔率基本吻合',
     analysisOddsValue: '分析看好但赔率偏高，具投注价值',
     analysisOddsCaution: '赔率看好但分析有保留，建议谨慎',
-    analysisOddsNormal: '分析与赔率基本一致'
+    analysisOddsNormal: '分析与赔率基本一致',
+    analysisLoadFailed: '分析数据加载失败',
+    analysisRetry: '检查网络连接后',
+    analysisClickRetry: '点击重试',
+    analysisNoSchedule: '赛程数据不可用，请先切换到赛程页签加载数据',
+    analysisNoMatches: '当前无可分析的小组赛比赛'
   },
   en: {
     title: 'World Cup 2026',
@@ -216,7 +221,12 @@ const I18N = {
     analysisOddsMostlyMatch: 'Analysis mostly matches odds',
     analysisOddsValue: 'Analysis bullish, odds undervalued — potential value',
     analysisOddsCaution: 'Odds bullish but analysis cautious',
-    analysisOddsNormal: 'Analysis aligns with odds'
+    analysisOddsNormal: 'Analysis aligns with odds',
+    analysisLoadFailed: 'Failed to load analysis data',
+    analysisRetry: 'Check your network and',
+    analysisClickRetry: 'tap to retry',
+    analysisNoSchedule: 'Schedule data unavailable, please load the schedule tab first',
+    analysisNoMatches: 'No group stage matches available for analysis'
   }
 };
 
