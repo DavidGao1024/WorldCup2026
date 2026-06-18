@@ -1,0 +1,361 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - heading "World Cup 2026" [level=1] [ref=e1692]
+        - generic [ref=e7]: David's Match Handbook
+      - generic [ref=e9]:
+        - generic [ref=e10] [cursor=pointer]: 中
+        - generic [ref=e11] [cursor=pointer]: EN
+    - navigation [ref=e12]:
+      - generic [ref=e13] [cursor=pointer]: Schedule
+      - generic [ref=e14] [cursor=pointer]: Standings
+      - generic [ref=e15] [cursor=pointer]: Past Champions
+      - generic [ref=e16] [cursor=pointer]: Lottery
+  - main [ref=e17]:
+    - generic [ref=e1097]:
+      - generic [ref=e1988]:
+        - generic [ref=e1989]: "Updated: 6/16 17:23"
+        - generic [ref=e1990]: 12 matches
+      - generic [ref=e1991]:
+        - generic [ref=e1992]:
+          - generic [ref=e1993]:
+            - generic [ref=e1994]: 周二017
+            - generic [ref=e1995]: 2026-06-17 03:00
+          - generic [ref=e1996]:
+            - generic [ref=e1997]:
+              - generic [ref=e1998]: France
+              - text: "[I组1]"
+            - generic [ref=e1999]: VS
+            - generic [ref=e2000]:
+              - generic [ref=e2001]: Senegal
+              - text: "[I组2]"
+          - generic [ref=e2002]:
+            - generic [ref=e2003] [cursor=pointer]: 1X2
+            - generic [ref=e2004] [cursor=pointer]: Handicap
+            - generic [ref=e2005] [cursor=pointer]: Total Goals
+            - generic [ref=e2006] [cursor=pointer]: Half/Full
+          - generic [ref=e2008]:
+            - generic [ref=e2009] [cursor=pointer]:
+              - generic [ref=e2010]: Home
+              - text: "2.12"
+              - generic [ref=e2011]: Line -1
+            - generic [ref=e2012] [cursor=pointer]:
+              - generic [ref=e2013]: Draw
+              - text: "3.45"
+              - generic [ref=e2014]: Line -1
+            - generic [ref=e2015] [cursor=pointer]:
+              - generic [ref=e2016]: Away
+              - text: "2.72"
+              - generic [ref=e2017]: Line -1
+        - generic [ref=e2018]:
+          - generic [ref=e2019]:
+            - generic [ref=e2020]:
+              - generic [ref=e2021]: 周二018
+              - generic [ref=e2022]: 2026-06-17 06:00
+            - generic [ref=e2023]:
+              - generic [ref=e2024]:
+                - generic [ref=e2025]: Iraq
+                - text: "[I组3]"
+              - generic [ref=e2026]: VS
+              - generic [ref=e2027]:
+                - generic [ref=e2028]: Norway
+                - text: "[I组4]"
+            - generic [ref=e2029]:
+              - generic [ref=e2030] [cursor=pointer]: 1X2
+              - generic [ref=e2031] [cursor=pointer]: Handicap
+              - generic [ref=e2032] [cursor=pointer]: Total Goals
+              - generic [ref=e2033] [cursor=pointer]: Half/Full
+            - generic [ref=e2035]: No data yet
+          - generic [ref=e2036]:
+            - generic [ref=e2037]:
+              - generic [ref=e2038]:
+                - generic [ref=e2039]: 周二019
+                - generic [ref=e2040]: 2026-06-17 09:00
+              - generic [ref=e2041]:
+                - generic [ref=e2042]:
+                  - generic [ref=e2043]: Argentina
+                  - text: "[J组1]"
+                - generic [ref=e2044]: VS
+                - generic [ref=e2045]:
+                  - generic [ref=e2046]: Algeria
+                  - text: "[J组2]"
+              - generic [ref=e2047]:
+                - generic [ref=e2048] [cursor=pointer]: 1X2
+                - generic [ref=e2049] [cursor=pointer]: Handicap
+                - generic [ref=e2050] [cursor=pointer]: Total Goals
+                - generic [ref=e2051] [cursor=pointer]: Half/Full
+              - generic [ref=e2053]:
+                - generic [ref=e2054] [cursor=pointer]:
+                  - generic [ref=e2055]: Home
+                  - text: "1.26"
+                - generic [ref=e2056] [cursor=pointer]:
+                  - generic [ref=e2057]: Draw
+                  - text: "4.40"
+                - generic [ref=e2058] [cursor=pointer]:
+                  - generic [ref=e2059]: Away
+                  - text: "9.20"
+            - generic [ref=e2060]:
+              - generic [ref=e2061]:
+                - generic [ref=e2062]:
+                  - generic [ref=e2063]: 周二020
+                  - generic [ref=e2064]: 2026-06-17 12:00
+                - generic [ref=e2065]:
+                  - generic [ref=e2066]:
+                    - generic [ref=e2067]: Austria
+                    - text: "[J组3]"
+                  - generic [ref=e2068]: VS
+                  - generic [ref=e2069]:
+                    - generic [ref=e2070]: Jordan
+                    - text: "[J组4]"
+                - generic [ref=e2071]:
+                  - generic [ref=e2072] [cursor=pointer]: 1X2
+                  - generic [ref=e2073] [cursor=pointer]: Handicap
+                  - generic [ref=e2074] [cursor=pointer]: Total Goals
+                  - generic [ref=e2075] [cursor=pointer]: Half/Full
+                - generic [ref=e2077]:
+                  - generic [ref=e2078] [cursor=pointer]:
+                    - generic [ref=e2079]: Home
+                    - text: "1.25"
+                  - generic [ref=e2080] [cursor=pointer]:
+                    - generic [ref=e2081]: Draw
+                    - text: "4.75"
+                  - generic [ref=e2082] [cursor=pointer]:
+                    - generic [ref=e2083]: Away
+                    - text: "8.40"
+              - generic [ref=e2084]:
+                - generic [ref=e2085]:
+                  - generic [ref=e2086]:
+                    - generic [ref=e2087]: 周三021
+                    - generic [ref=e2088]: 2026-06-18 01:00
+                  - generic [ref=e2089]:
+                    - generic [ref=e2090]:
+                      - generic [ref=e2091]: Portugal
+                      - text: "[K组1]"
+                    - generic [ref=e2092]: VS
+                    - generic [ref=e2093]:
+                      - generic [ref=e2094]: DR Congo
+                      - text: "[K组2]"
+                  - generic [ref=e2095]:
+                    - generic [ref=e2096] [cursor=pointer]: 1X2
+                    - generic [ref=e2097] [cursor=pointer]: Handicap
+                    - generic [ref=e2098] [cursor=pointer]: Total Goals
+                    - generic [ref=e2099] [cursor=pointer]: Half/Full
+                  - generic [ref=e2101]:
+                    - generic [ref=e2102] [cursor=pointer]:
+                      - generic [ref=e2103]: Home
+                      - text: "1.13"
+                    - generic [ref=e2104] [cursor=pointer]:
+                      - generic [ref=e2105]: Draw
+                      - text: "5.86"
+                    - generic [ref=e2106] [cursor=pointer]:
+                      - generic [ref=e2107]: Away
+                      - text: "13.50"
+                - generic [ref=e2108]:
+                  - generic [ref=e2109]:
+                    - generic [ref=e2110]:
+                      - generic [ref=e2111]: 周三022
+                      - generic [ref=e2112]: 2026-06-18 04:00
+                    - generic [ref=e2113]:
+                      - generic [ref=e2114]:
+                        - generic [ref=e2115]: England
+                        - text: "[L组1]"
+                      - generic [ref=e2116]: VS
+                      - generic [ref=e2117]:
+                        - generic [ref=e2118]: Croatia
+                        - text: "[L组2]"
+                    - generic [ref=e2119]:
+                      - generic [ref=e2120] [cursor=pointer]: 1X2
+                      - generic [ref=e2121] [cursor=pointer]: Handicap
+                      - generic [ref=e2122] [cursor=pointer]: Total Goals
+                      - generic [ref=e2123] [cursor=pointer]: Half/Full
+                    - generic [ref=e2125]:
+                      - generic [ref=e2126] [cursor=pointer]:
+                        - generic [ref=e2127]: Home
+                        - text: "1.53"
+                      - generic [ref=e2128] [cursor=pointer]:
+                        - generic [ref=e2129]: Draw
+                        - text: "3.50"
+                      - generic [ref=e2130] [cursor=pointer]:
+                        - generic [ref=e2131]: Away
+                        - text: "5.25"
+                  - generic [ref=e2132]:
+                    - generic [ref=e2133]:
+                      - generic [ref=e2134]:
+                        - generic [ref=e2135]: 周三023
+                        - generic [ref=e2136]: 2026-06-18 07:00
+                      - generic [ref=e2137]:
+                        - generic [ref=e2138]:
+                          - generic [ref=e2139]: Ghana
+                          - text: "[L组3]"
+                        - generic [ref=e2140]: VS
+                        - generic [ref=e2141]:
+                          - generic [ref=e2142]: Panama
+                          - text: "[L组4]"
+                      - generic [ref=e2143]:
+                        - generic [ref=e2144] [cursor=pointer]: 1X2
+                        - generic [ref=e2145] [cursor=pointer]: Handicap
+                        - generic [ref=e2146] [cursor=pointer]: Total Goals
+                        - generic [ref=e2147] [cursor=pointer]: Half/Full
+                      - generic [ref=e2149]:
+                        - generic [ref=e2150] [cursor=pointer]:
+                          - generic [ref=e2151]: Home
+                          - text: "1.96"
+                        - generic [ref=e2152] [cursor=pointer]:
+                          - generic [ref=e2153]: Draw
+                          - text: "3.00"
+                        - generic [ref=e2154] [cursor=pointer]:
+                          - generic [ref=e2155]: Away
+                          - text: "3.50"
+                    - generic [ref=e2156]:
+                      - generic [ref=e2157]:
+                        - generic [ref=e2158]:
+                          - generic [ref=e2159]: 周三024
+                          - generic [ref=e2160]: 2026-06-18 10:00
+                        - generic [ref=e2161]:
+                          - generic [ref=e2162]:
+                            - generic [ref=e2163]: Uzbekistan
+                            - text: "[K组3]"
+                          - generic [ref=e2164]: VS
+                          - generic [ref=e2165]:
+                            - generic [ref=e2166]: Colombia
+                            - text: "[K组4]"
+                        - generic [ref=e2167]:
+                          - generic [ref=e2168] [cursor=pointer]: 1X2
+                          - generic [ref=e2169] [cursor=pointer]: Handicap
+                          - generic [ref=e2170] [cursor=pointer]: Total Goals
+                          - generic [ref=e2171] [cursor=pointer]: Half/Full
+                        - generic [ref=e2173]:
+                          - generic [ref=e2174] [cursor=pointer]:
+                            - generic [ref=e2175]: Home
+                            - text: "9.10"
+                          - generic [ref=e2176] [cursor=pointer]:
+                            - generic [ref=e2177]: Draw
+                            - text: "4.55"
+                          - generic [ref=e2178] [cursor=pointer]:
+                            - generic [ref=e2179]: Away
+                            - text: "1.25"
+                      - generic [ref=e2180]:
+                        - generic [ref=e2181]:
+                          - generic [ref=e2182]:
+                            - generic [ref=e2183]: 周四025
+                            - generic [ref=e2184]: 2026-06-19 00:00
+                          - generic [ref=e2185]:
+                            - generic [ref=e2186]:
+                              - generic [ref=e2187]: Czech Republic
+                              - text: "[A组3]"
+                            - generic [ref=e2188]: VS
+                            - generic [ref=e2189]:
+                              - generic [ref=e2190]: South Africa
+                              - text: "[A组4]"
+                          - generic [ref=e2191]:
+                            - generic [ref=e2192] [cursor=pointer]: 1X2
+                            - generic [ref=e2193] [cursor=pointer]: Handicap
+                            - generic [ref=e2194] [cursor=pointer]: Total Goals
+                            - generic [ref=e2195] [cursor=pointer]: Half/Full
+                          - generic [ref=e2197]:
+                            - generic [ref=e2198] [cursor=pointer]:
+                              - generic [ref=e2199]: Home
+                              - text: "1.74"
+                            - generic [ref=e2200] [cursor=pointer]:
+                              - generic [ref=e2201]: Draw
+                              - text: "3.20"
+                            - generic [ref=e2202] [cursor=pointer]:
+                              - generic [ref=e2203]: Away
+                              - text: "4.15"
+                        - generic [ref=e2204]:
+                          - generic [ref=e2205]:
+                            - generic [ref=e2206]:
+                              - generic [ref=e2207]: 周四026
+                              - generic [ref=e2208]: 2026-06-19 03:00
+                            - generic [ref=e2209]:
+                              - generic [ref=e2210]:
+                                - generic [ref=e2211]: Switzerland
+                                - text: "[B组1]"
+                              - generic [ref=e2212]: VS
+                              - generic [ref=e2213]:
+                                - generic [ref=e2214]: Bosnia & Herzegovina
+                                - text: "[B组4]"
+                            - generic [ref=e2215]:
+                              - generic [ref=e2216] [cursor=pointer]: 1X2
+                              - generic [ref=e2217] [cursor=pointer]: Handicap
+                              - generic [ref=e2218] [cursor=pointer]: Total Goals
+                              - generic [ref=e2219] [cursor=pointer]: Half/Full
+                            - generic [ref=e2221]:
+                              - generic [ref=e2222] [cursor=pointer]:
+                                - generic [ref=e2223]: Home
+                                - text: "1.35"
+                              - generic [ref=e2224] [cursor=pointer]:
+                                - generic [ref=e2225]: Draw
+                                - text: "4.10"
+                              - generic [ref=e2226] [cursor=pointer]:
+                                - generic [ref=e2227]: Away
+                                - text: "6.90"
+                          - generic [ref=e2228]:
+                            - generic [ref=e2229]:
+                              - generic [ref=e2230]:
+                                - generic [ref=e2231]: 周四027
+                                - generic [ref=e2232]: 2026-06-19 06:00
+                              - generic [ref=e2233]:
+                                - generic [ref=e2234]:
+                                  - generic [ref=e2235]: Canada
+                                  - text: "[B组2]"
+                                - generic [ref=e2236]: VS
+                                - generic [ref=e2237]:
+                                  - generic [ref=e2238]: Qatar
+                                  - text: "[B组3]"
+                              - generic [ref=e2239]:
+                                - generic [ref=e2240] [cursor=pointer]: 1X2
+                                - generic [ref=e2241] [cursor=pointer]: Handicap
+                                - generic [ref=e2242] [cursor=pointer]: Total Goals
+                                - generic [ref=e2243] [cursor=pointer]: Half/Full
+                              - generic [ref=e2245]:
+                                - generic [ref=e2246] [cursor=pointer]:
+                                  - generic [ref=e2247]: Home
+                                  - text: "1.24"
+                                - generic [ref=e2248] [cursor=pointer]:
+                                  - generic [ref=e2249]: Draw
+                                  - text: "4.70"
+                                - generic [ref=e2250] [cursor=pointer]:
+                                  - generic [ref=e2251]: Away
+                                  - text: "9.10"
+                            - generic [ref=e2252]:
+                              - generic [ref=e2253]:
+                                - generic [ref=e2254]:
+                                  - generic [ref=e2255]: 周四028
+                                  - generic [ref=e2256]: 2026-06-19 09:00
+                                - generic [ref=e2257]:
+                                  - generic [ref=e2258]:
+                                    - generic [ref=e2259]: Mexico
+                                    - text: "[A组1]"
+                                  - generic [ref=e2260]: VS
+                                  - generic [ref=e2261]:
+                                    - generic [ref=e2262]: South Korea
+                                    - text: "[A组2]"
+                                - generic [ref=e2263]:
+                                  - generic [ref=e2264] [cursor=pointer]: 1X2
+                                  - generic [ref=e2265] [cursor=pointer]: Handicap
+                                  - generic [ref=e2266] [cursor=pointer]: Total Goals
+                                  - generic [ref=e2267] [cursor=pointer]: Half/Full
+                                - generic [ref=e2269]:
+                                  - generic [ref=e2270] [cursor=pointer]:
+                                    - generic [ref=e2271]: Home
+                                    - text: "1.86"
+                                  - generic [ref=e2272] [cursor=pointer]:
+                                    - generic [ref=e2273]: Draw
+                                    - text: "3.00"
+                                  - generic [ref=e2274] [cursor=pointer]:
+                                    - generic [ref=e2275]: Away
+                                    - text: "3.87"
+                              - generic [ref=e2276]:
+                                - generic [ref=e2277]: 法国 vs 塞内加尔 — 1X2 1.33
+                                - generic [ref=e2278]:
+                                  - generic [ref=e2279]: Multiplier
+                                  - spinbutton [ref=e2280]: "1"
+                                - generic [ref=e2281]: "Est. Payout: ¥2.66"
+                                - generic [ref=e2282]: 1x = ¥2
+  - contentinfo [ref=e1094]:
+    - paragraph [ref=e1095]:
+      - text: "比分 & 积分榜: ESPN | 赛程:"
+      - link "openfootball/worldcup.json" [ref=e1096] [cursor=pointer]:
+        - /url: https://github.com/openfootball/worldcup.json

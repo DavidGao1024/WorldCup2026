@@ -60,7 +60,10 @@ var _hmt = _hmt || [];
   <nav class="tabs">
     <div class="tab active" id="tab-schedule" data-i18n="schedule" onclick="switchTab('schedule')">赛程</div>
     <div class="tab" id="tab-standings" data-i18n="standings" onclick="switchTab('standings')">积分榜</div>
-    <div class="tab" id="tab-champions" data-i18n="champions" onclick="switchTab('champions')">历届冠军</div>
+    <div class="tab" id="tab-analysis" data-i18n="analysis" onclick="switchTab('analysis')">深度分析</div>
+    <div class="tab" id="tab-lottery" data-i18n="lottery" onclick="switchTab('lottery')">体彩世界</div>
+    <div class="tab" id="tab-champions" data-i18n="champions" onclick="switchTab('champions')" style="display:none">历届冠军</div>
+    <div class="tab" id="tab-knockout" style="display:none">淘汰赛</div>
   </nav>
   </div>
 
@@ -76,6 +79,8 @@ var _hmt = _hmt || [];
     <div class="tab-content" id="standings-content"></div>
     <div class="tab-content" id="knockout-content"></div>
     <div class="tab-content" id="champions-content"></div>
+    <div class="tab-content" id="lottery-content"></div>
+    <div class="tab-content" id="analysis-content"></div>
   </main>
 
   <footer class="footer">
@@ -90,6 +95,8 @@ var _hmt = _hmt || [];
   <script src="js/standings.js"></script>
   <script src="js/knockout.js"></script>
   <script src="js/champions.js"></script>
+  <script src="js/lottery.js"></script>
+  <script src="js/analysis.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

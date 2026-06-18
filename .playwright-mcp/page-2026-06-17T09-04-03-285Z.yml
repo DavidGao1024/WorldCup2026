@@ -1,0 +1,386 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - heading "2026 世界杯" [level=1] [ref=e6]
+        - generic [ref=e7]: 大卫的赛事手册
+      - generic [ref=e9]:
+        - generic [ref=e10] [cursor=pointer]: 中
+        - generic [ref=e11] [cursor=pointer]: EN
+    - navigation [ref=e12]:
+      - generic [ref=e13] [cursor=pointer]: 赛程
+      - generic [ref=e14] [cursor=pointer]: 积分榜
+      - generic [ref=e15] [cursor=pointer]: 历届冠军
+      - generic [ref=e16] [cursor=pointer]: 体彩世界
+  - main [ref=e17]:
+    - generic [ref=e1097]:
+      - generic [ref=e1676]:
+        - generic [ref=e1677]: "更新时间: 6/17 16:33"
+        - generic [ref=e1678]: 共 12 场比赛
+      - generic [ref=e1679]:
+        - generic [ref=e1680]:
+          - generic [ref=e1681]:
+            - generic [ref=e1682]: 周三021
+            - generic [ref=e1683]: 2026-06-18 01:00
+          - generic [ref=e1684]:
+            - generic [ref=e1685]:
+              - generic [ref=e1686]: 葡萄牙
+              - text: "[K组1]"
+            - generic [ref=e1687]: VS
+            - generic [ref=e1688]:
+              - generic [ref=e1689]: 刚果(金)
+              - text: "[K组2]"
+          - generic [ref=e1690]:
+            - generic [ref=e1691] [cursor=pointer]: 胜平负◐
+            - generic [ref=e1692] [cursor=pointer]: 让球胜平负◐
+            - generic [ref=e1693] [cursor=pointer]: 总进球●
+            - generic [ref=e1694] [cursor=pointer]: 半全场●
+          - generic [ref=e1696]:
+            - generic [ref=e1697] [cursor=pointer]:
+              - generic [ref=e1698]: 主胜
+              - text: "1.13"
+            - generic [ref=e1699] [cursor=pointer]:
+              - generic [ref=e1700]: 平
+              - text: "5.86"
+            - generic [ref=e1701] [cursor=pointer]:
+              - generic [ref=e1702]: 客胜
+              - text: "13.50"
+        - generic [ref=e1703]:
+          - generic [ref=e1704]:
+            - generic [ref=e1705]:
+              - generic [ref=e1706]: 周三022
+              - generic [ref=e1707]: 2026-06-18 04:00
+            - generic [ref=e1708]:
+              - generic [ref=e1709]:
+                - generic [ref=e1710]: 英格兰
+                - text: "[L组1]"
+              - generic [ref=e1711]: VS
+              - generic [ref=e1712]:
+                - generic [ref=e1713]: 克罗地亚
+                - text: "[L组2]"
+            - generic [ref=e1714]:
+              - generic [ref=e1715] [cursor=pointer]: 胜平负●
+              - generic [ref=e1716] [cursor=pointer]: 让球胜平负◐
+              - generic [ref=e1717] [cursor=pointer]: 总进球●
+              - generic [ref=e1718] [cursor=pointer]: 半全场●
+            - generic [ref=e1720]:
+              - generic [ref=e1721] [cursor=pointer]:
+                - generic [ref=e1722]: 主胜
+                - text: "1.52"
+              - generic [ref=e1723] [cursor=pointer]:
+                - generic [ref=e1724]: 平
+                - text: "3.55"
+              - generic [ref=e1725] [cursor=pointer]:
+                - generic [ref=e1726]: 客胜
+                - text: "5.27"
+          - generic [ref=e1727]:
+            - generic [ref=e1728]:
+              - generic [ref=e1729]:
+                - generic [ref=e1730]: 周三023
+                - generic [ref=e1731]: 2026-06-18 07:00
+              - generic [ref=e1732]:
+                - generic [ref=e1733]:
+                  - generic [ref=e1734]: 加纳
+                  - text: "[L组3]"
+                - generic [ref=e1735]: VS
+                - generic [ref=e1736]:
+                  - generic [ref=e1737]: 巴拿马
+                  - text: "[L组4]"
+              - generic [ref=e1738]:
+                - generic [ref=e1739] [cursor=pointer]: 胜平负●
+                - generic [ref=e1740] [cursor=pointer]: 让球胜平负◐
+                - generic [ref=e1741] [cursor=pointer]: 总进球●
+                - generic [ref=e1742] [cursor=pointer]: 半全场●
+              - generic [ref=e1744]:
+                - generic [ref=e1745] [cursor=pointer]:
+                  - generic [ref=e1746]: 主胜
+                  - text: "2.07"
+                - generic [ref=e1747] [cursor=pointer]:
+                  - generic [ref=e1748]: 平
+                  - text: "3.00"
+                - generic [ref=e1749] [cursor=pointer]:
+                  - generic [ref=e1750]: 客胜
+                  - text: "3.20"
+            - generic [ref=e1751]:
+              - generic [ref=e1752]:
+                - generic [ref=e1753]:
+                  - generic [ref=e1754]: 周三024
+                  - generic [ref=e1755]: 2026-06-18 10:00
+                - generic [ref=e1756]:
+                  - generic [ref=e1757]:
+                    - generic [ref=e1758]: 乌兹别克斯坦
+                    - text: "[K组3]"
+                  - generic [ref=e1759]: VS
+                  - generic [ref=e1760]:
+                    - generic [ref=e1761]: 哥伦比亚
+                    - text: "[K组4]"
+                - generic [ref=e1762]:
+                  - generic [ref=e1763] [cursor=pointer]: 胜平负◐
+                  - generic [ref=e1764] [cursor=pointer]: 让球胜平负◐
+                  - generic [ref=e1765] [cursor=pointer]: 总进球●
+                  - generic [ref=e1766] [cursor=pointer]: 半全场●
+                - generic [ref=e1768]:
+                  - generic [ref=e1769] [cursor=pointer]:
+                    - generic [ref=e1770]: 主胜
+                    - text: "9.65"
+                  - generic [ref=e1771] [cursor=pointer]:
+                    - generic [ref=e1772]: 平
+                    - text: "4.85"
+                  - generic [ref=e1773] [cursor=pointer]:
+                    - generic [ref=e1774]: 客胜
+                    - text: "1.22"
+              - generic [ref=e1775]:
+                - generic [ref=e1776]:
+                  - generic [ref=e1777]:
+                    - generic [ref=e1778]: 周四025
+                    - generic [ref=e1779]: 2026-06-19 00:00
+                  - generic [ref=e1780]:
+                    - generic [ref=e1781]:
+                      - generic [ref=e1782]: 捷克
+                      - text: "[A组3]"
+                    - generic [ref=e1783]: VS
+                    - generic [ref=e1784]:
+                      - generic [ref=e1785]: 南非
+                      - text: "[A组4]"
+                  - generic [ref=e1786]:
+                    - generic [ref=e1787] [cursor=pointer]: 胜平负●
+                    - generic [ref=e1788] [cursor=pointer]: 让球胜平负◐
+                    - generic [ref=e1789] [cursor=pointer]: 总进球●
+                    - generic [ref=e1790] [cursor=pointer]: 半全场●
+                  - generic [ref=e1792]:
+                    - generic [ref=e1793] [cursor=pointer]:
+                      - generic [ref=e1794]: 主胜
+                      - text: "1.74"
+                    - generic [ref=e1795] [cursor=pointer]:
+                      - generic [ref=e1796]: 平
+                      - text: "3.20"
+                    - generic [ref=e1797] [cursor=pointer]:
+                      - generic [ref=e1798]: 客胜
+                      - text: "4.15"
+                - generic [ref=e1799]:
+                  - generic [ref=e1800]:
+                    - generic [ref=e1801]:
+                      - generic [ref=e1802]: 周四026
+                      - generic [ref=e1803]: 2026-06-19 03:00
+                    - generic [ref=e1804]:
+                      - generic [ref=e1805]:
+                        - generic [ref=e1806]: 瑞士
+                        - text: "[B组1]"
+                      - generic [ref=e1807]: VS
+                      - generic [ref=e1808]:
+                        - generic [ref=e1809]: 波黑
+                        - text: "[B组4]"
+                    - generic [ref=e1810]:
+                      - generic [ref=e1811] [cursor=pointer]: 胜平负◐
+                      - generic [ref=e1812] [cursor=pointer]: 让球胜平负◐
+                      - generic [ref=e1813] [cursor=pointer]: 总进球●
+                      - generic [ref=e1814] [cursor=pointer]: 半全场●
+                    - generic [ref=e1816]:
+                      - generic [ref=e1817] [cursor=pointer]:
+                        - generic [ref=e1818]: 主胜
+                        - text: "1.35"
+                      - generic [ref=e1819] [cursor=pointer]:
+                        - generic [ref=e1820]: 平
+                        - text: "4.10"
+                      - generic [ref=e1821] [cursor=pointer]:
+                        - generic [ref=e1822]: 客胜
+                        - text: "6.90"
+                  - generic [ref=e1823]:
+                    - generic [ref=e1824]:
+                      - generic [ref=e1825]:
+                        - generic [ref=e1826]: 周四027
+                        - generic [ref=e1827]: 2026-06-19 06:00
+                      - generic [ref=e1828]:
+                        - generic [ref=e1829]:
+                          - generic [ref=e1830]: 加拿大
+                          - text: "[B组2]"
+                        - generic [ref=e1831]: VS
+                        - generic [ref=e1832]:
+                          - generic [ref=e1833]: 卡塔尔
+                          - text: "[B组3]"
+                      - generic [ref=e1834]:
+                        - generic [ref=e1835] [cursor=pointer]: 胜平负◐
+                        - generic [ref=e1836] [cursor=pointer]: 让球胜平负◐
+                        - generic [ref=e1837] [cursor=pointer]: 总进球●
+                        - generic [ref=e1838] [cursor=pointer]: 半全场●
+                      - generic [ref=e1840]:
+                        - generic [ref=e1841] [cursor=pointer]:
+                          - generic [ref=e1842]: 主胜
+                          - text: "1.24"
+                        - generic [ref=e1843] [cursor=pointer]:
+                          - generic [ref=e1844]: 平
+                          - text: "4.70"
+                        - generic [ref=e1845] [cursor=pointer]:
+                          - generic [ref=e1846]: 客胜
+                          - text: "9.10"
+                    - generic [ref=e1847]:
+                      - generic [ref=e1848]:
+                        - generic [ref=e1849]:
+                          - generic [ref=e1850]: 周四028
+                          - generic [ref=e1851]: 2026-06-19 09:00
+                        - generic [ref=e1852]:
+                          - generic [ref=e1853]:
+                            - generic [ref=e1854]: 墨西哥
+                            - text: "[A组1]"
+                          - generic [ref=e1855]: VS
+                          - generic [ref=e1856]:
+                            - generic [ref=e1857]: 韩国
+                            - text: "[A组2]"
+                        - generic [ref=e1858]:
+                          - generic [ref=e1859] [cursor=pointer]: 胜平负●
+                          - generic [ref=e1860] [cursor=pointer]: 让球胜平负◐
+                          - generic [ref=e1861] [cursor=pointer]: 总进球●
+                          - generic [ref=e1862] [cursor=pointer]: 半全场●
+                        - generic [ref=e1864]:
+                          - generic [ref=e1865] [cursor=pointer]:
+                            - generic [ref=e1866]: 主胜
+                            - text: "1.86"
+                          - generic [ref=e1867] [cursor=pointer]:
+                            - generic [ref=e1868]: 平
+                            - text: "3.00"
+                          - generic [ref=e1869] [cursor=pointer]:
+                            - generic [ref=e1870]: 客胜
+                            - text: "3.87"
+                      - generic [ref=e1871]:
+                        - generic [ref=e1872]:
+                          - generic [ref=e1873]:
+                            - generic [ref=e1874]: 周五029
+                            - generic [ref=e1875]: 2026-06-20 03:00
+                          - generic [ref=e1876]:
+                            - generic [ref=e1877]:
+                              - generic [ref=e1878]: 美国
+                              - text: "[D组1]"
+                            - generic [ref=e1879]: VS
+                            - generic [ref=e1880]:
+                              - generic [ref=e1881]: 澳大利亚
+                              - text: "[D组2]"
+                          - generic [ref=e1882]:
+                            - generic [ref=e1883] [cursor=pointer]: 胜平负●
+                            - generic [ref=e1884] [cursor=pointer]: 让球胜平负◐
+                            - generic [ref=e1885] [cursor=pointer]: 总进球●
+                            - generic [ref=e1886] [cursor=pointer]: 半全场●
+                          - generic [ref=e1888]:
+                            - generic [ref=e1889] [cursor=pointer]:
+                              - generic [ref=e1890]: 主胜
+                              - text: "1.47"
+                            - generic [ref=e1891] [cursor=pointer]:
+                              - generic [ref=e1892]: 平
+                              - text: "3.70"
+                            - generic [ref=e1893] [cursor=pointer]:
+                              - generic [ref=e1894]: 客胜
+                              - text: "5.60"
+                        - generic [ref=e1895]:
+                          - generic [ref=e1896]:
+                            - generic [ref=e1897]:
+                              - generic [ref=e1898]: 周五030
+                              - generic [ref=e1899]: 2026-06-20 06:00
+                            - generic [ref=e1900]:
+                              - generic [ref=e1901]:
+                                - generic [ref=e1902]: 苏格兰
+                                - text: "[C组1]"
+                              - generic [ref=e1903]: VS
+                              - generic [ref=e1904]:
+                                - generic [ref=e1905]: 摩洛哥
+                                - text: "[C组2]"
+                            - generic [ref=e1906]:
+                              - generic [ref=e1907] [cursor=pointer]: 胜平负●
+                              - generic [ref=e1908] [cursor=pointer]: 让球胜平负◐
+                              - generic [ref=e1909] [cursor=pointer]: 总进球●
+                              - generic [ref=e1910] [cursor=pointer]: 半全场●
+                            - generic [ref=e1912]:
+                              - generic [ref=e1913] [cursor=pointer]:
+                                - generic [ref=e1914]: 主胜
+                                - text: "4.90"
+                              - generic [ref=e1915] [cursor=pointer]:
+                                - generic [ref=e1916]: 平
+                                - text: "3.25"
+                              - generic [ref=e1917] [cursor=pointer]:
+                                - generic [ref=e1918]: 客胜
+                                - text: "1.62"
+                          - generic [ref=e1919]:
+                            - generic [ref=e1920]:
+                              - generic [ref=e1921]:
+                                - generic [ref=e1922]: 周五031
+                                - generic [ref=e1923]: 2026-06-20 08:30
+                              - generic [ref=e1924]:
+                                - generic [ref=e1925]:
+                                  - generic [ref=e1926]: 巴西
+                                  - text: "[C组3]"
+                                - generic [ref=e1927]: VS
+                                - generic [ref=e1928]:
+                                  - generic [ref=e1929]: 海地
+                                  - text: "[C组4]"
+                              - generic [ref=e1930]:
+                                - generic [ref=e1931] [cursor=pointer]: 胜平负
+                                - generic [ref=e1932] [cursor=pointer]: 让球胜平负◐
+                                - generic [ref=e1933] [cursor=pointer]: 总进球●
+                                - generic [ref=e1934] [cursor=pointer]: 半全场●
+                              - generic [ref=e1936]: 暂无数据
+                            - generic [ref=e1937]:
+                              - generic [ref=e1938]:
+                                - generic [ref=e1939]:
+                                  - generic [ref=e1940]: 周五032
+                                  - generic [ref=e1941]: 2026-06-20 11:00
+                                - generic [ref=e1942]:
+                                  - generic [ref=e1943]:
+                                    - generic [ref=e1944]: 土耳其
+                                    - text: "[D组3]"
+                                  - generic [ref=e1945]: VS
+                                  - generic [ref=e1946]:
+                                    - generic [ref=e1947]: 巴拉圭
+                                    - text: "[D组4]"
+                                - generic [ref=e1948]:
+                                  - generic [ref=e1949] [cursor=pointer]: 胜平负◐
+                                  - generic [ref=e1950] [cursor=pointer]: 让球胜平负◐
+                                  - generic [ref=e1951] [cursor=pointer]: 总进球●
+                                  - generic [ref=e1952] [cursor=pointer]: 半全场●
+                                - generic [ref=e1954]:
+                                  - generic [ref=e1955] [cursor=pointer]:
+                                    - generic [ref=e1956]: 主胜
+                                    - text: "1.96"
+                                  - generic [ref=e1957] [cursor=pointer]:
+                                    - generic [ref=e1958]: 平
+                                    - text: "3.05"
+                                  - generic [ref=e1959] [cursor=pointer]:
+                                    - generic [ref=e1960]: 客胜
+                                    - text: "3.43"
+                              - generic [ref=e1962]:
+                                - generic [ref=e1963]: 已选 2 场
+                                - generic [ref=e1964]: 2串1 @1.72
+                                - button "详情" [ref=e1965] [cursor=pointer]
+                              - generic [ref=e1967]:
+                                - generic [ref=e1968]:
+                                  - generic [ref=e1969]: 详情
+                                  - button "✕" [ref=e1970] [cursor=pointer]
+                                - generic [ref=e1971]:
+                                  - generic [ref=e1972]:
+                                    - generic [ref=e1973]:
+                                      - generic [ref=e1974]: 葡萄牙 vs 刚果(金)
+                                      - text: 胜平负 主胜
+                                    - generic [ref=e1975]: "@1.13"
+                                    - generic [ref=e1976] [cursor=pointer]: ✕
+                                  - generic [ref=e1977]:
+                                    - generic [ref=e1978]:
+                                      - generic [ref=e1979]: 英格兰 vs 克罗地亚
+                                      - text: 胜平负 主胜
+                                    - generic [ref=e1980]: "@1.52"
+                                    - generic [ref=e1981] [cursor=pointer]: ✕
+                                - generic [ref=e1982]:
+                                  - generic [ref=e1983]:
+                                    - generic [ref=e1984]: 倍数
+                                    - generic [ref=e1985]:
+                                      - button "−" [ref=e1986] [cursor=pointer]
+                                      - spinbutton [ref=e1987]: "2"
+                                      - button "+" [active] [ref=e1988] [cursor=pointer]
+                                  - generic [ref=e1989]:
+                                    - generic [ref=e1990]: 2串1 综合赔率
+                                    - generic [ref=e1991]: "1.72"
+                                  - generic [ref=e1992]:
+                                    - generic [ref=e1993]: 预计奖金
+                                    - generic [ref=e1994]: ¥6.87
+                                  - generic [ref=e1995]: 1倍=2元
+  - contentinfo [ref=e1094]:
+    - paragraph [ref=e1095]:
+      - text: "比分 & 积分榜: ESPN | 赛程:"
+      - link "openfootball/worldcup.json" [ref=e1096] [cursor=pointer]:
+        - /url: https://github.com/openfootball/worldcup.json

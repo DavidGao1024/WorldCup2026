@@ -1,0 +1,18 @@
+{
+  "Mexico City":                {"city":"墨西哥城","country":"墨西哥","lat":19.30,"lng":-99.15,"alt":2240,"tz":"UTC-6"},
+  "Guadalajara (Zapopan)":      {"city":"瓜达拉哈拉","country":"墨西哥","lat":20.67,"lng":-103.35,"alt":1566,"tz":"UTC-6"},
+  "Monterrey (Guadalupe)":      {"city":"蒙特雷","country":"墨西哥","lat":25.67,"lng":-100.30,"alt":538,"tz":"UTC-6"},
+  "Toronto":                    {"city":"多伦多","country":"加拿大","lat":43.65,"lng":-79.38,"alt":76,"tz":"UTC-4"},
+  "Vancouver":                  {"city":"温哥华","country":"加拿大","lat":49.28,"lng":-123.12,"alt":2,"tz":"UTC-7"},
+  "Seattle":                    {"city":"西雅图","country":"美国","lat":47.61,"lng":-122.33,"alt":50,"tz":"UTC-7"},
+  "San Francisco Bay Area (Santa Clara)":{"city":"旧金山湾区","country":"美国","lat":37.40,"lng":-121.98,"alt":4,"tz":"UTC-7"},
+  "Los Angeles (Inglewood)":    {"city":"洛杉矶","country":"美国","lat":33.95,"lng":-118.34,"alt":38,"tz":"UTC-7"},
+  "New York/New Jersey (East Rutherford)":{"city":"纽约/新泽西","country":"美国","lat":40.82,"lng":-74.07,"alt":2,"tz":"UTC-4"},
+  "Boston (Foxborough)":        {"city":"波士顿","country":"美国","lat":42.09,"lng":-71.26,"alt":90,"tz":"UTC-4"},
+  "Philadelphia":               {"city":"费城","country":"美国","lat":39.90,"lng":-75.17,"alt":3,"tz":"UTC-4"},
+  "Atlanta":                    {"city":"亚特兰大","country":"美国","lat":33.75,"lng":-84.40,"alt":320,"tz":"UTC-4"},
+  "Miami":                      {"city":"迈阿密","country":"美国","lat":25.96,"lng":-80.24,"alt":2,"tz":"UTC-4"},
+  "Houston":                    {"city":"休斯敦","country":"美国","lat":29.68,"lng":-95.41,"alt":13,"tz":"UTC-5"},
+  "Dallas (Arlington)":         {"city":"达拉斯","country":"美国","lat":32.75,"lng":-97.08,"alt":180,"tz":"UTC-5"},
+  "Kansas City":                {"city":"堪萨斯城","country":"美国","lat":39.05,"lng":-94.48,"alt":277,"tz":"UTC-5"}
+}

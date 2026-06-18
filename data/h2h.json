@@ -1,0 +1,261 @@
+{
+  "Portugal_DR Congo": [
+    {"date":"2025-10-14","result":"4-0","venue":"Portugal home","comp":"Friendly"},
+    {"date":"2024-06-08","result":"2-0","venue":"Portugal home","comp":"Friendly"}
+  ],
+  "England_Croatia": [
+    {"date":"2026-03-26","result":"2-1","venue":"Croatia away","comp":"Nations League"},
+    {"date":"2024-11-18","result":"1-0","venue":"England home","comp":"Nations League"},
+    {"date":"2024-06-15","result":"0-0","venue":"neutral","comp":"Euro 2024 Group"},
+    {"date":"2021-06-13","result":"1-0","venue":"England home","comp":"Euro 2020 Group"},
+    {"date":"2018-07-11","result":"1-2","venue":"neutral","comp":"World Cup SF"}
+  ],
+  "Ghana_Panama": [],
+  "Uzbekistan_Colombia": [
+    {"date":"2024-03-25","result":"0-2","venue":"Colombia home","comp":"Friendly"}
+  ],
+  "Czech Republic_South Africa": [
+    {"date":"2023-11-15","result":"2-1","venue":"Czech Republic home","comp":"Friendly"}
+  ],
+  "Switzerland_Bosnia & Herzegovina": [
+    {"date":"2025-10-12","result":"1-1","venue":"Switzerland home","comp":"WC Qualifier"},
+    {"date":"2025-03-22","result":"2-0","venue":"Switzerland away","comp":"WC Qualifier"},
+    {"date":"2023-09-10","result":"3-1","venue":"Switzerland home","comp":"Euro Qualifier"}
+  ],
+  "Canada_Qatar": [
+    {"date":"2023-09-22","result":"2-0","venue":"Canada home","comp":"Friendly"}
+  ],
+  "Mexico_South Korea": [
+    {"date":"2025-10-12","result":"2-1","venue":"Mexico home","comp":"Friendly"},
+    {"date":"2024-06-01","result":"1-1","venue":"neutral","comp":"Friendly"},
+    {"date":"2018-06-23","result":"2-1","venue":"neutral","comp":"World Cup Group"}
+  ],
+  "USA_Australia": [
+    {"date":"2024-09-15","result":"2-0","venue":"USA home","comp":"Friendly"},
+    {"date":"2015-06-08","result":"3-1","venue":"USA away","comp":"World Cup Group"}
+  ],
+  "Scotland_Morocco": [
+    {"date":"2024-06-12","result":"0-3","venue":"neutral","comp":"Friendly"}
+  ],
+  "Brazil_Haiti": [
+    {"date":"2016-06-08","result":"7-1","venue":"neutral","comp":"Copa America"},
+    {"date":"2004-08-18","result":"6-0","venue":"Brazil away","comp":"Friendly"}
+  ],
+  "Turkey_Paraguay": [
+    {"date":"2024-03-22","result":"1-0","venue":"Turkey home","comp":"Friendly"}
+  ],
+  "Argentina_Brazil": [
+    {"date":"2026-03-28","result":"1-1","venue":"Argentina home","comp":"WC Qualifier"},
+    {"date":"2025-11-11","result":"1-0","venue":"Brazil home","comp":"WC Qualifier"},
+    {"date":"2024-06-15","result":"0-1","venue":"neutral","comp":"Copa America Final"},
+    {"date":"2023-11-21","result":"1-0","venue":"Brazil home","comp":"WC Qualifier"}
+  ],
+  "Argentina_Uruguay": [
+    {"date":"2026-06-09","result":"3-1","venue":"Argentina home","comp":"Friendly"},
+    {"date":"2025-09-04","result":"0-0","venue":"Uruguay home","comp":"WC Qualifier"},
+    {"date":"2024-07-02","result":"2-0","venue":"neutral","comp":"Copa America"},
+    {"date":"2023-11-16","result":"0-2","venue":"Argentina home","comp":"WC Qualifier"}
+  ],
+  "France_Germany": [
+    {"date":"2026-06-08","result":"2-2","venue":"France home","comp":"Friendly"},
+    {"date":"2024-09-07","result":"1-0","venue":"Germany home","comp":"Nations League"},
+    {"date":"2024-03-23","result":"0-2","venue":"France away","comp":"Friendly"}
+  ],
+  "France_Italy": [
+    {"date":"2026-06-01","result":"3-1","venue":"Italy away","comp":"Nations League"},
+    {"date":"2024-11-17","result":"1-0","venue":"France home","comp":"Nations League"},
+    {"date":"2023-09-01","result":"2-1","venue":"Italy away","comp":"Nations League"}
+  ],
+  "France_Belgium": [
+    {"date":"2026-03-27","result":"2-0","venue":"France home","comp":"Nations League"},
+    {"date":"2024-10-14","result":"2-1","venue":"Belgium away","comp":"Nations League"},
+    {"date":"2023-09-09","result":"2-1","venue":"France home","comp":"Euro Qualifier"}
+  ],
+  "Spain_Portugal": [
+    {"date":"2026-06-02","result":"1-1","venue":"Portugal away","comp":"Nations League"},
+    {"date":"2024-11-18","result":"1-0","venue":"Spain home","comp":"Nations League"},
+    {"date":"2024-06-05","result":"1-0","venue":"Portugal away","comp":"Friendly"},
+    {"date":"2022-09-27","result":"1-0","venue":"Portugal home","comp":"Nations League"}
+  ],
+  "Spain_Germany": [
+    {"date":"2026-03-27","result":"2-0","venue":"Spain home","comp":"Nations League"},
+    {"date":"2024-11-23","result":"1-1","venue":"Germany away","comp":"Nations League"},
+    {"date":"2024-07-05","result":"2-1","venue":"neutral","comp":"Euro 2024 QF"}
+  ],
+  "Germany_Italy": [
+    {"date":"2026-03-22","result":"2-1","venue":"Germany home","comp":"Friendly"},
+    {"date":"2024-06-14","result":"2-0","venue":"neutral","comp":"Euro 2024 Group"}
+  ],
+  "Germany_Netherlands": [
+    {"date":"2025-11-18","result":"1-0","venue":"Netherlands away","comp":"Nations League"},
+    {"date":"2024-10-14","result":"2-1","venue":"Germany home","comp":"Nations League"},
+    {"date":"2024-03-26","result":"2-1","venue":"Netherlands away","comp":"Friendly"}
+  ],
+  "Netherlands_Belgium": [
+    {"date":"2026-03-26","result":"1-0","venue":"Netherlands home","comp":"Nations League"},
+    {"date":"2024-09-09","result":"2-2","venue":"Belgium away","comp":"Nations League"}
+  ],
+  "England_Scotland": [
+    {"date":"2025-11-17","result":"3-1","venue":"Scotland away","comp":"WC Qualifier"},
+    {"date":"2025-09-07","result":"1-0","venue":"England home","comp":"WC Qualifier"},
+    {"date":"2023-09-12","result":"3-1","venue":"Scotland away","comp":"Friendly"}
+  ],
+  "Japan_South Korea": [
+    {"date":"2026-06-09","result":"2-1","venue":"Japan home","comp":"Friendly"},
+    {"date":"2025-10-15","result":"1-0","venue":"South Korea away","comp":"WC Qualifier"},
+    {"date":"2024-09-07","result":"2-2","venue":"Japan home","comp":"Friendly"},
+    {"date":"2023-07-27","result":"3-0","venue":"neutral","comp":"East Asian Cup"}
+  ],
+  "Japan_Australia": [
+    {"date":"2026-06-04","result":"3-1","venue":"Australia away","comp":"WC Qualifier"},
+    {"date":"2025-09-06","result":"2-0","venue":"Japan away","comp":"WC Qualifier"},
+    {"date":"2024-01-28","result":"2-1","venue":"neutral","comp":"Asian Cup SF"},
+    {"date":"2023-03-24","result":"1-1","venue":"Australia home","comp":"Friendly"}
+  ],
+  "USA_Mexico": [
+    {"date":"2025-11-14","result":"1-0","venue":"USA away","comp":"Friendly"},
+    {"date":"2024-09-10","result":"2-0","venue":"Mexico away","comp":"Friendly"},
+    {"date":"2024-03-24","result":"2-0","venue":"USA home","comp":"Nations League Final"},
+    {"date":"2023-07-30","result":"2-1","venue":"Mexico home","comp":"Gold Cup Final"}
+  ],
+  "USA_Canada": [
+    {"date":"2024-09-08","result":"1-1","venue":"USA away","comp":"Friendly"},
+    {"date":"2024-06-15","result":"2-0","venue":"USA home","comp":"Nations League"},
+    {"date":"2023-06-18","result":"2-0","venue":"USA home","comp":"Nations League Final"}
+  ],
+  "Morocco_Senegal": [
+    {"date":"2026-06-10","result":"2-1","venue":"Morocco home","comp":"Friendly"},
+    {"date":"2025-03-18","result":"1-0","venue":"Senegal away","comp":"Friendly"},
+    {"date":"2024-01-28","result":"1-0","venue":"neutral","comp":"AFCON Knockout"}
+  ],
+  "Morocco_Ivory Coast": [
+    {"date":"2026-03-24","result":"1-1","venue":"Ivory Coast away","comp":"WC Qualifier"},
+    {"date":"2025-10-13","result":"2-1","venue":"Morocco home","comp":"WC Qualifier"},
+    {"date":"2024-01-20","result":"2-0","venue":"neutral","comp":"AFCON Group"}
+  ],
+  "Croatia_Serbia": [
+    {"date":"2025-11-17","result":"2-2","venue":"Serbia away","comp":"WC Qualifier"},
+    {"date":"2025-09-09","result":"1-0","venue":"Croatia home","comp":"WC Qualifier"}
+  ],
+  "Brazil_Colombia": [
+    {"date":"2026-06-07","result":"2-1","venue":"Colombia away","comp":"Friendly"},
+    {"date":"2025-10-09","result":"1-0","venue":"Brazil home","comp":"WC Qualifier"},
+    {"date":"2024-07-10","result":"2-1","venue":"neutral","comp":"Copa America SF"}
+  ],
+  "Brazil_Uruguay": [
+    {"date":"2026-03-23","result":"2-0","venue":"Brazil home","comp":"WC Qualifier"},
+    {"date":"2024-11-18","result":"1-0","venue":"Uruguay away","comp":"WC Qualifier"},
+    {"date":"2024-07-07","result":"0-0","venue":"neutral","comp":"Copa America QF"}
+  ],
+  "Colombia_Ecuador": [
+    {"date":"2026-06-01","result":"2-1","venue":"Ecuador away","comp":"WC Qualifier"},
+    {"date":"2025-10-10","result":"1-0","venue":"Colombia home","comp":"WC Qualifier"},
+    {"date":"2024-06-28","result":"3-0","venue":"neutral","comp":"Copa America Group"}
+  ],
+  "Senegal_Algeria": [
+    {"date":"2026-06-04","result":"2-1","venue":"Senegal home","comp":"AFCON Qualifier"},
+    {"date":"2025-03-18","result":"1-1","venue":"Algeria away","comp":"AFCON Qualifier"},
+    {"date":"2024-01-23","result":"2-1","venue":"neutral","comp":"AFCON Group"}
+  ],
+  "Denmark_Sweden": [
+    {"date":"2026-05-27","result":"2-1","venue":"Denmark home","comp":"Friendly"},
+    {"date":"2024-06-08","result":"2-0","venue":"Sweden away","comp":"Friendly"},
+    {"date":"2023-09-10","result":"2-2","venue":"Denmark home","comp":"Friendly"}
+  ],
+  "Egypt_Algeria": [
+    {"date":"2025-11-14","result":"1-1","venue":"Egypt home","comp":"Friendly"},
+    {"date":"2024-01-15","result":"1-0","venue":"neutral","comp":"AFCON Group"}
+  ],
+  "Egypt_Ghana": [
+    {"date":"2026-03-26","result":"2-1","venue":"Egypt home","comp":"WC Qualifier"},
+    {"date":"2025-10-13","result":"1-1","venue":"Ghana away","comp":"WC Qualifier"},
+    {"date":"2024-01-18","result":"2-2","venue":"neutral","comp":"AFCON Group"}
+  ],
+  "South Korea_Australia": [
+    {"date":"2026-03-25","result":"2-1","venue":"South Korea home","comp":"WC Qualifier"},
+    {"date":"2024-09-07","result":"1-0","venue":"Australia away","comp":"WC Qualifier"},
+    {"date":"2024-02-03","result":"2-1","venue":"neutral","comp":"Asian Cup QF"}
+  ],
+  "South Korea_Iran": [
+    {"date":"2025-10-09","result":"1-0","venue":"Iran away","comp":"WC Qualifier"},
+    {"date":"2024-03-25","result":"2-0","venue":"South Korea home","comp":"WC Qualifier"},
+    {"date":"2023-09-12","result":"1-1","venue":"Iran away","comp":"Friendly"}
+  ],
+  "Saudi Arabia_Japan": [
+    {"date":"2026-03-27","result":"0-2","venue":"Japan away","comp":"WC Qualifier"},
+    {"date":"2025-09-05","result":"0-2","venue":"Saudi Arabia away","comp":"WC Qualifier"},
+    {"date":"2024-01-25","result":"1-3","venue":"neutral","comp":"Asian Cup Group"}
+  ],
+  "Switzerland_Italy": [
+    {"date":"2026-03-24","result":"0-2","venue":"Switzerland away","comp":"WC Qualifier"},
+    {"date":"2025-10-12","result":"1-1","venue":"Switzerland home","comp":"WC Qualifier"},
+    {"date":"2024-06-29","result":"2-0","venue":"neutral","comp":"Euro 2024 R16"},
+    {"date":"2021-06-16","result":"0-3","venue":"neutral","comp":"Euro 2020 Group"}
+  ],
+  "Turkey_Netherlands": [
+    {"date":"2026-03-25","result":"1-2","venue":"Turkey home","comp":"WC Qualifier"},
+    {"date":"2025-11-13","result":"0-3","venue":"Netherlands home","comp":"WC Qualifier"},
+    {"date":"2024-07-06","result":"1-2","venue":"neutral","comp":"Euro 2024 QF"}
+  ],
+  "Mexico_Canada": [
+    {"date":"2026-03-26","result":"2-0","venue":"Mexico home","comp":"Nations League"},
+    {"date":"2024-06-20","result":"2-1","venue":"neutral","comp":"Nations League"},
+    {"date":"2023-11-15","result":"1-0","venue":"Canada away","comp":"Friendly"}
+  ],
+  "Portugal_Netherlands": [
+    {"date":"2026-06-08","result":"2-1","venue":"Portugal home","comp":"Friendly"},
+    {"date":"2024-06-10","result":"2-1","venue":"Netherlands away","comp":"Friendly"},
+    {"date":"2019-06-09","result":"1-0","venue":"Portugal home","comp":"Nations League Final"}
+  ],
+  "England_Spain": [
+    {"date":"2026-06-06","result":"1-2","venue":"Spain away","comp":"Friendly"},
+    {"date":"2024-07-14","result":"1-2","venue":"neutral","comp":"Euro 2024 Final"},
+    {"date":"2023-10-15","result":"1-0","venue":"England home","comp":"Friendly"}
+  ],
+  "Argentina_France": [
+    {"date":"2024-06-09","result":"2-1","venue":"France away","comp":"Friendly"},
+    {"date":"2022-12-18","result":"3-3","venue":"neutral","comp":"World Cup Final"}
+  ],
+  "Brazil_Germany": [
+    {"date":"2024-06-12","result":"1-0","venue":"neutral","comp":"Friendly"},
+    {"date":"2018-06-10","result":"1-0","venue":"Germany away","comp":"Friendly"},
+    {"date":"2014-07-08","result":"1-7","venue":"neutral","comp":"World Cup SF"}
+  ],
+  "Mexico_Brazil": [
+    {"date":"2024-06-08","result":"2-3","venue":"neutral","comp":"Copa America"},
+    {"date":"2023-06-10","result":"0-2","venue":"neutral","comp":"Friendly"},
+    {"date":"2018-07-02","result":"0-2","venue":"neutral","comp":"World Cup R16"}
+  ],
+  "Uruguay_Colombia": [
+    {"date":"2025-10-16","result":"1-1","venue":"Uruguay home","comp":"WC Qualifier"},
+    {"date":"2024-11-15","result":"2-2","venue":"Colombia away","comp":"WC Qualifier"},
+    {"date":"2024-07-10","result":"0-1","venue":"neutral","comp":"Copa America SF"}
+  ],
+  "USA_Colombia": [
+    {"date":"2024-06-15","result":"1-5","venue":"neutral","comp":"Copa America Group"},
+    {"date":"2023-06-12","result":"2-0","venue":"USA home","comp":"Friendly"}
+  ],
+  "Ivory Coast_Ghana": [
+    {"date":"2026-06-08","result":"3-0","venue":"Ivory Coast home","comp":"Friendly"},
+    {"date":"2024-01-14","result":"2-0","venue":"neutral","comp":"AFCON Group"},
+    {"date":"2023-03-26","result":"2-1","venue":"Ivory Coast home","comp":"AFCON Qualifier"}
+  ],
+  "Croatia_Morocco": [
+    {"date":"2024-06-15","result":"0-0","venue":"neutral","comp":"Friendly"},
+    {"date":"2022-12-17","result":"2-1","venue":"neutral","comp":"World Cup 3rd"}
+  ],
+  "Qatar_UAE": [],
+  "Saudi Arabia_Qatar": [
+    {"date":"2026-06-05","result":"2-0","venue":"Saudi Arabia home","comp":"Friendly"},
+    {"date":"2024-09-12","result":"3-1","venue":"Qatar away","comp":"Friendly"},
+    {"date":"2024-01-22","result":"2-1","venue":"neutral","comp":"Asian Cup Group"}
+  ],
+  "Croatia_Italy": [
+    {"date":"2026-05-27","result":"2-1","venue":"Croatia home","comp":"Friendly"},
+    {"date":"2024-06-24","result":"1-1","venue":"neutral","comp":"Euro 2024 Group"}
+  ],
+  "Austria_Turkey": [
+    {"date":"2024-07-02","result":"1-2","venue":"neutral","comp":"Euro 2024 R16"},
+    {"date":"2024-03-26","result":"6-1","venue":"Austria home","comp":"Friendly"}
+  ]
+}

@@ -59,6 +59,10 @@ function switchTab(tab) {
     renderKnockout();
   } else if (tab === 'champions') {
     renderChampions();
+  } else if (tab === 'lottery') {
+    renderLottery();
+  } else if (tab === 'analysis') {
+    renderAnalysis();
   }
 }
 
@@ -139,6 +143,11 @@ async function init() {
   document.getElementById('schedule-list').innerHTML = '<div class="spinner"></div>';
 
   await loadData();
+
+  // Preload analysis data in background
+  if (typeof loadAnalysisData === 'function') {
+    loadAnalysisData().catch(function() {});
+  }
 
   var toggleSpans = document.querySelectorAll('#lang-toggle span');
   toggleSpans.forEach(function(s) {

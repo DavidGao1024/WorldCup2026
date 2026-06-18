@@ -1,0 +1,5 @@
+[  828751ms] TypeError: Cannot read properties of null (reading '_matches')
+    at renderAnalysisCard (http://localhost:3000/js/analysis.js:466:57)
+    at renderAnalysis (http://localhost:3000/js/analysis.js:395:13)
+    at switchTab (http://localhost:3000/js/app.js:65:5)
+    at HTMLDivElement.onclick (http://localhost:3000/:63:93)

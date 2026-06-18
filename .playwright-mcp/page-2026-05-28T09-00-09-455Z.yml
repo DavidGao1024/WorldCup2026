@@ -1,0 +1,25 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - heading "2026 世界杯" [level=1] [ref=e6]
+        - generic [ref=e7]: 大卫 · 高
+      - generic [ref=e8]:
+        - combobox [ref=e9] [cursor=pointer]:
+          - option "🇨🇳 北京时间 (UTC+8)" [selected]
+          - option "🇺🇸 美东时间 (UTC-4)"
+          - option "🌐 GMT (UTC+0)"
+        - generic [ref=e10]: 中 EN
+    - navigation [ref=e11]:
+      - generic [ref=e12] [cursor=pointer]: 赛程
+      - generic [ref=e13] [cursor=pointer]: 积分榜
+      - generic [ref=e14] [cursor=pointer]: 历届冠军
+  - main [ref=e15]:
+    - generic [ref=e17]:
+      - combobox [ref=e18]
+      - combobox [ref=e19]
+  - contentinfo [ref=e22]:
+    - paragraph [ref=e23]:
+      - text: "Data:"
+      - link "openfootball/worldcup.json" [ref=e24] [cursor=pointer]:
+        - /url: https://github.com/openfootball/worldcup.json
