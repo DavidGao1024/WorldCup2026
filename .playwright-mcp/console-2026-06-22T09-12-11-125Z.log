@@ -1,0 +1,9 @@
+[      36ms] Unexpected identifier 'analysisKeyInsights'
+[      52ms] ReferenceError: TEAM_ZH is not defined
+    at http://localhost:3000/js/lottery.js:8:26
+    at http://localhost:3000/js/lottery.js:12:3
+[      56ms] ReferenceError: t is not defined
+    at http://localhost:3000/js/timezone.js:59:49
+    at Array.forEach (<anonymous>)
+    at populateTimezoneSelect (http://localhost:3000/js/timezone.js:58:26)
+    at HTMLDocument.init (http://localhost:3000/js/app.js:154:3)

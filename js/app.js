@@ -57,6 +57,8 @@ function switchTab(tab) {
     scrollToToday();
   } else if (tab === 'standings') {
     renderStandings();
+  } else if (tab === 'scorers') {
+    renderScorers();
   } else if (tab === 'knockout') {
     renderKnockout();
   } else if (tab === 'champions') {

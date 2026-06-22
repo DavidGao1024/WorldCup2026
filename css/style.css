@@ -157,17 +157,23 @@ body {
   background: #0a2816;
   position: relative;
   z-index: 1;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
+.tabs::-webkit-scrollbar { display: none; }
 .tab {
-  flex: 1;
+  flex: 1 1 0;
+  min-width: 80px;
+  white-space: nowrap;
   text-align: center;
-  padding: 10px 16px;
+  padding: 10px 10px;
   cursor: pointer;
   font-weight: 600;
   color: #5a9e72;
   border-radius: 6px;
   transition: all 0.25s;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 .tab:hover { color: #ffd700; background: rgba(255, 215, 0, 0.05); }
 .tab.active {
@@ -300,19 +306,21 @@ body {
 .standings-table th {
   background: #0d3320;
   color: #ffd700;
-  padding: 10px 8px;
+  padding: 10px 6px;
   text-align: center;
   font-weight: 600;
   border-bottom: 2px solid #ffd700;
   white-space: nowrap;
+  font-size: 0.8rem;
 }
-.standings-table th:first-child { text-align: left; padding-left: 16px; }
+.standings-table th:first-child { text-align: left; padding-left: 12px; }
 .standings-table td {
-  padding: 8px;
+  padding: 6px 5px;
   text-align: center;
-  border-bottom: 1px solid #1a3a1a;
+  border-bottom: 1px solid #1a1a3a;
+  font-size: 0.85rem;
 }
-.standings-table td:first-child { text-align: left; padding-left: 16px; font-weight: 600; }
+.standings-table td:first-child { text-align: left; padding-left: 12px; font-weight: 600; white-space: nowrap; }
 .standings-table tr:hover td { background: rgba(255, 215, 0, 0.05); }
 .standings-table tr.qualified td { background: rgba(255, 215, 0, 0.1); }
 .standings-table tr.qualified td:first-child { color: #ffd700; }
@@ -1310,3 +1318,22 @@ body {
 .match-bench-list { display:flex; flex-wrap:wrap; gap:3px 10px; }
 .match-bench-item { font-size:0.68rem; color:#94a3b8; white-space:nowrap; }
 .match-bench-num { color:#ffd700; font-size:0.6rem; margin-right:2px; }
+
+/* ---- Scorers Table ---- */
+.scorers-header { text-align: center; margin-bottom: 20px; }
+.scorers-header h2 { color: #ffd700; font-size: 1.3rem; }
+.scorers-subtitle { color: #94a3b8; font-size: 0.8rem; margin-top: 4px; }
+.scorers-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+.scorers-table th {
+  background: #0d3320; color: #ffd700; padding: 10px 6px;
+  text-align: center; font-weight: 600; border-bottom: 2px solid #ffd700;
+  font-size: 0.8rem; white-space: nowrap;
+}
+.scorers-table th:first-child { text-align: left; padding-left: 12px; }
+.scorers-table th:last-child { width: 50px; }
+.scorers-table td { padding: 8px 6px; text-align: center; border-bottom: 1px solid #1a3a3a; }
+.scorers-table .sc-player { text-align: left; padding-left: 12px; font-weight: 600; }
+.scorers-table .sc-player .flag-img { display: inline; margin-right: 8px; vertical-align: middle; width: 28px; height: 19px; }
+.scorers-table .sc-player span { vertical-align: middle; }
+.scorers-table .sc-goals { font-weight: 700; color: #ffd700; font-size: 1rem; }
+.scorers-table tr:hover td { background: rgba(255,215,0,0.08); }

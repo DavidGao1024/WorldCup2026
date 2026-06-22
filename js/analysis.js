@@ -66,6 +66,9 @@ function computeMatchScore(team, opponent, ground, matchDate) {
   var o = rank[opponent] || { rank: 60, elo: 1100, squadValue: '€0.2亿', avgAge: 27, conf: 'UEFA' };
   var tf = form[team] || { formScore: 40, recent: [] };
   var of = form[opponent] || { formScore: 40, recent: [] };
+  // 注入世界杯比赛结果（team-form.json 只含赛前数据）
+  tf = enrichFormWithWCResults(tf, team);
+  of = enrichFormWithWCResults(of, opponent);
   var stadium = stadiums[ground] || { alt: 50, country: '' };
 
   var scores = {};
@@ -146,8 +149,88 @@ function computeMatchScore(team, opponent, ground, matchDate) {
   };
 }
 
+// 筛选世界杯正赛（2026-06-11起），无数据则回退到全部比赛
+function filterWC(matches) {
+  var arr = matches || [];
+  var wc = arr.filter(function(r) { return r.date >= '2026-06-11'; });
+  return wc.length > 0 ? wc : arr;
+}
+
+// 从 analysisData.rankings 获取球队排名，无数据时从积分榜推算，保底50
+function getTeamRank(teamName) {
+  var rankings = analysisData.rankings || {};
+  var entry = rankings[teamName];
+  if (entry && entry.rank) return entry.rank;
+
+  // 从小组积分榜推算相对排名
+  if (typeof worldCupData !== 'undefined' && worldCupData.matches) {
+    var groupName = '';
+    worldCupData.matches.forEach(function(m) {
+      if (m.team1 === teamName || m.team2 === teamName) {
+        if (m.group && m.group.indexOf('Group ') === 0) groupName = m.group;
+      }
+    });
+    if (groupName && typeof computeStandings === 'function') {
+      var table = computeStandings(groupName);
+      for (var i = 0; i < table.length; i++) {
+        if (table[i].name === teamName) {
+          // 组内排名 × 4 ≈ 世界排名估算
+          return Math.min(80, (i + 1) * 4 + 10);
+        }
+      }
+    }
+  }
+
+  return 50;
+}
+
+function filterWC(matches) {
+  var arr = matches || [];
+  var wc = arr.filter(function(r) { return r.date >= '2026-06-11'; });
+  return wc.length > 0 ? wc : arr;
+}
+
+// 从 worldCupData 动态补充世界杯比赛结果到 form 数据
+function enrichFormWithWCResults(formData, teamName) {
+  if (!worldCupData || !worldCupData.matches) return formData;
+  var enriched = JSON.parse(JSON.stringify(formData || { formScore: 40, recent: [] }));
+  if (!enriched.recent) enriched.recent = [];
+
+  // 收集该队已完赛的世界杯比赛
+  var wcResults = [];
+  worldCupData.matches.forEach(function(m) {
+    if (m.score1 == null || m.score2 == null) return;
+    if (isPlaceholder(m.team1) || isPlaceholder(m.team2)) return;
+    if (m.team1 !== teamName && m.team2 !== teamName) return;
+    var isHome = m.team1 === teamName;
+    var gf = isHome ? m.score1 : m.score2;
+    var ga = isHome ? m.score2 : m.score1;
+    var opp = isHome ? m.team2 : m.team1;
+    wcResults.push({
+      date: m.date,
+      opponent: opp,
+      oppRank: getTeamRank(opp),
+      result: gf + '-' + ga,
+      venue: isHome ? 'home' : 'away',
+      comp: 'World Cup'
+    });
+  });
+
+  // 按日期逆序排，插入到 recent 最前面
+  wcResults.sort(function(a, b) { return b.date.localeCompare(a.date); });
+  for (var i = wcResults.length - 1; i >= 0; i--) {
+    // 去重：同日期+同对手不重复加
+    var dup = enriched.recent.some(function(r) {
+      return r.date === wcResults[i].date && r.opponent === wcResults[i].opponent;
+    });
+    if (!dup) enriched.recent.unshift(wcResults[i]);
+  }
+
+  return enriched;
+}
+
 function computeAvgGoals(formData) {
-  var recents = formData.recent || [];
+  var recents = filterWC(formData.recent);
   if (recents.length === 0) return 1.3;
   var total = 0, count = 0;
   for (var i = 0; i < recents.length; i++) {
@@ -160,7 +243,7 @@ function computeAvgGoals(formData) {
 }
 
 function computeAvgConc(formData) {
-  var recents = formData.recent || [];
+  var recents = filterWC(formData.recent);
   if (recents.length === 0) return 1.3;
   var total = 0, count = 0;
   for (var i = 0; i < recents.length; i++) {
@@ -173,7 +256,7 @@ function computeAvgConc(formData) {
 }
 
 function computeFormMini(formData) {
-  var recents = formData.recent || [];
+  var recents = filterWC(formData.recent);
   if (recents.length === 0) return '';
   var html = '<span class="form-mini">';
   var count = Math.min(5, recents.length);
@@ -338,7 +421,7 @@ function computeSituationScore(team, opponent, matchDate) {
 function generateInsights(result) {
   var insights = [];
   var tf = result.teamForm, of = result.oppForm;
-  var tRecents = tf.recent || [], oRecents = of.recent || [];
+  var tRecents = filterWC(tf.recent), oRecents = filterWC(of.recent);
   var tName = typeof trTeam === 'function' ? trTeam(result.team) : result.team;
   var oName = typeof trTeam === 'function' ? trTeam(result.opponent) : result.opponent;
 
