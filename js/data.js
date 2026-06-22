@@ -33,6 +33,14 @@ async function fetchEspnAndMerge() {
   var scoreMap = await fetchEspnScores();
   if (!scoreMap) return;
 
+  // 从 ESPN 原始数据中提取红黄牌，计算停赛
+  if (espnRawEvents && espnRawEvents.length) {
+    var cards = processEspnCards();
+    if (cards && worldCupData && worldCupData.matches) {
+      computeWorldCupSuspensions(cards, worldCupData.matches);
+    }
+  }
+
   if (mergeScoresIntoData(scoreMap)) {
     saveToCache();
     if (typeof refreshCurrentTab === 'function') refreshCurrentTab();

@@ -210,7 +210,13 @@ function renderLottery() {
     return;
   }
 
-  var matches = lotteryData._matches;
+  var allMatches = lotteryData._matches;
+  // 过滤已开赛的比赛
+  var now = new Date();
+  var matches = allMatches.filter(function(m) {
+    var kickoff = new Date(m.matchDate + 'T' + m.matchTime);
+    return kickoff > now;
+  });
   var html = '';
 
   html += '<div class="lottery-info">';

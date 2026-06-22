@@ -9,7 +9,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project overview
 
-Pure frontend static site for 2026 FIFA World Cup (USA/Canada/Mexico). Three tabs: Schedule (赛程), Standings (积分榜), Knockout (淘汰赛). Hosted on GitHub Pages. Zero build tools, zero frameworks — vanilla HTML/CSS/JS.
+Pure frontend static site for 2026 FIFA World Cup (USA/Canada/Mexico). Four tabs: Schedule (赛程), Standings (积分榜), Analysis (深度分析), Lottery (体彩世界). Hosted on GitHub Pages. Zero build tools, zero frameworks — vanilla HTML/CSS/JS.
 
 ## Development
 
@@ -27,14 +27,15 @@ Scripts load in this sequence in `index.html` because later files depend on earl
 
 1. **i18n.js** — `t(key)`, `currentLang`, `toggleLang()`, `trTeam()`, `trVenue()`, `TEAM_ZH`, `VENUE_ZH`
 2. **timezone.js** — `currentTZ`, `convertTime()`, `getUTCOffsetStr()`, `setTimezone()`
-3. **espn.js** — `fetchEspnScores()`, `fetchEspnStandings()`, `mapEspnName()`, `ESPN_TEAM_MAP` — 从 ESPN 非官方 API 拉取实时比分和积分榜
-4. **data.js** — `loadData()`, `getMatches()`, `getGroupMatches()`, `getKnockoutMatches()`, `getGroups()`, `getTeams()`, `getTeamsByGroup()`, `computeStandings()`, `isPlaceholder()`, `fetchEspnAndMerge()`, `mergeScoresIntoData()`
-5. **schedule.js** — `renderSchedule()`, `populateFilters()`, `populateTeamFilter()`
+3. **espn.js** — `fetchEspnScores()`, `fetchEspnStandings()`, `mapEspnName()`, `ESPN_TEAM_MAP` — 从 ESPN 非官方 API 拉取实时比分和积分榜。同时承担：红黄牌提取(`processEspnCards()`)、停赛计算(`computeWorldCupSuspensions()`)、比赛详情获取(`fetchMatchSummary()`)。
+4. **data.js** — `loadData()`, `getMatches()`, `getGroupMatches()`, `getKnockoutMatches()`, `getGroups()`, `getTeams()`, `getTeamsByGroup()`, `computeStandings()`, `isPlaceholder()`, `fetchEspnAndMerge()`, `mergeScoresIntoData()` — ESPN 拉取后自动调用红黄牌处理和停赛计算
+5. **schedule.js** — `renderSchedule()`, `populateFilters()`, `populateTeamFilter()` — 比赛卡片点击弹窗(`showMatchModal()`)、球场可视化阵容、比赛事件时间线、技术统计
 6. **standings.js** — `renderStandings()`, `onStandingsGroupChange()`
 7. **knockout.js** — `renderKnockout()`
-8. **champions.js** — `renderChampions()`
-9. **lottery.js** — `renderLottery()` — 体彩赔率展示、模拟投注、过关计算
-10. **app.js** — `init()`, `switchTab()`, `onFilterChange()`, `onTeamFilterChange()`, `getFlagImg()`, `getFlag()`, `roundKey()`, `updateUIText()`, `refreshCurrentTab()`, `FLAG_MAP`
+8. **analysis.js** — `renderAnalysis()`, `loadAnalysisData()`, `computeMatchScore()` — 12维分析模型，加载伤病/停赛合并数据
+9. **champions.js** — `renderChampions()`
+10. **lottery.js** — `renderLottery()` — 体彩赔率展示、模拟投注、过关计算
+11. **app.js** — `init()`, `switchTab()`, `onFilterChange()`, `onTeamFilterChange()`, `getFlagImg()`, `getFlag()`, `roundKey()`, `updateUIText()`, `refreshCurrentTab()`, `scrollToToday()`, `FLAG_MAP`
 
 All variables are global (`var`). No modules or bundler.
 
@@ -49,10 +50,18 @@ All variables are global (`var`). No modules or bundler.
 
 ### ESPN API
 
-- **Scoreboard**: `https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260611-20260719&limit=200`
+- **Scoreboard** (比分+红黄牌): `https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260611-20260719&limit=200`
   - 免 Key，无需认证
   - 返回 `events[].competitions[0].competitors[]` → `score`, `homeAway`, `team.displayName`
+  - `events[].competitions[0].details[]` → 进球（含助攻）、红黄牌（含球员）
   - 只合并 `state === 'post'` 或 `'in'` 的比赛比分
+  - 缓存在 `espnRawEvents`，供红黄牌提取(`processEspnCards()`)和比赛事件匹配(`findEspnEventId()`)复用
+- **Summary** (阵容+技术统计): `https://site.web.api.espn.com/apis/site/v2/sports/soccer/fifa.world/summary?event={eventId}`
+  - 返回 `rosters[].roster[]` → 首发(`starter:true`)、替补、号码、姓名、位置
+  - 返回 `rosters[].formation` → 阵型字符串如 "4-1-4-1"
+  - 返回 `keyEvents[]` → 进球(含助攻者)、红黄牌、换人
+  - 返回 `boxscore.teams[].statistics[]` → 28项技术统计
+  - 已完赛返回完整数据，未开始阵容为空
 - **Standings**: `https://site.api.espn.com/apis/v2/sports/soccer/fifa.world/standings`
   - 备用，当前积分榜由 `computeStandings()` 从比分本地计算
 - **队名映射**（ESPN → worldcup.json）见 `espn.js` 中的 `ESPN_TEAM_MAP`（48 支球队中仅 5 个差异，已全量覆盖）：
@@ -89,6 +98,63 @@ All variables are global (`var`). No modules or bundler.
 - **Filter linking**: Group filter controls team filter options via `getTeamsByGroup()`. Switching to "all" resets team to "all"
 - **Flag images**: Stored as PNG in `img/flags/` named by English team name (e.g., `South Africa.png`). `getFlagImg()` returns an `<img>` tag for real teams, empty string for placeholders
 - **Placeholder team names**: `isPlaceholder()` detects `W*`, `L*`, and `\d[A-Z]` patterns. `trTeam()` translates them in Chinese mode ("2A" → "A组第2名", "W74" → "胜者74")
+
+## 比赛详情弹窗（赛程页签）
+
+### 触发
+点击赛程页签的比赛卡片 → `showMatchModal(matchNum)` → 查找 ESPN event ID → 调用 `fetchMatchSummary()`
+
+### 已完赛比赛
+- 比分头部：国旗、队名、比分、时间、地点
+- **首发阵容**：双方各一个足球场（400px高），球员按阵型分层排列
+  - 解析阵型字符串(如 "4-2-3-1")自动分层：GK → 后卫 → 中场各排 → 前锋
+  - 同排球员按左中右排序均匀分布
+  - 显示号码、姓名缩写、位置标签
+- **替补名单**：球场下方紧凑横排列表
+- **比赛事件**：进球(含助攻)、🟨🟥红黄牌、🔄换人
+- **技术统计**(10项)：控球率、射门/射正、传球/成功率、犯规、角球、抢断、拦截、解围
+- 关闭方式：✕按钮 / 点击遮罩 / ESC键
+
+### 未开始比赛
+显示对阵信息 + "阵容尚未公布"提示
+
+### 关键函数 (schedule.js)
+- `showMatchModal(matchNum)` — 入口，先关已有弹窗
+- `renderMatchModalContent(summary, match)` — 完整阵容+事件+统计
+- `renderMatchBasicInfo(match, summary)` — 无阵容时的降级展示
+- `renderLineupCol(lineup, match)` — 足球场可视化
+- `categorizePlayers()` / `getFieldXY()` / `getFormationYRows()` — 阵型分层定位
+- `closeMatchModal()` — 移除弹窗，解锁滚动
+
+## 伤病停赛数据
+
+### 概述
+**停赛(免费实时)**：从 ESPN Scoreboard API 的 `details[]` 中提取红黄牌，按 FIFA 规则自动计算。**伤病(手动维护)**：`data/injuries.json` 存储各队伤病人数，停赛由 ESPN 数据自动叠加。
+
+### 数据流
+```
+ESPN scoreboard (每次加载页面)
+    ↓ fetchEspnScores() → espnRawEvents 缓存
+    ↓ processEspnCards() → worldCupCards
+    ↓ computeWorldCupSuspensions(cards, matches)
+    ↓ worldCupSuspensions → {TeamName: {suspensions: N, note: "球员(原因)"}}
+    
+data/injuries.json (手动维护)
+    ↓ 加载 + mergeInjuryAndSuspensionData()
+    ↓ analysisData.injuries → 合并后的伤病+停赛
+```
+
+### FIFA 停赛规则
+- 红牌 → 下场比赛自动停赛
+- 累计2张黄牌 → 下场比赛停赛（需是最近一场比赛拿到的第2张）
+- 黄牌在1/4决赛后清零
+
+### 关键函数 (espn.js)
+- `processEspnCards()` — 从缓存的 ESPN 事件中提取所有红黄牌
+- `computeWorldCupSuspensions(cards, matches)` — 匹配赛程，计算各队停赛
+- `mergeInjuryAndSuspensionData()` — 合并伤病+停赛 (analysis.js)
+- `scripts/fetch-injuries.js` — 生成48队伤病模板（无需 API Key）
+- `.github/workflows/fetch-injuries.yml` — 每天运行一次
 
 ## 体彩赔率（独立功能，WIP）
 

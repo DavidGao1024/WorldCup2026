@@ -42,6 +42,7 @@ var currentTab = 'schedule';
 
 function switchTab(tab) {
   currentTab = tab;
+  window.scrollTo({ top: 0, behavior: 'instant' });
   var allTabs = document.querySelectorAll('.tab');
   var allContent = document.querySelectorAll('.tab-content');
   for (var i = 0; i < allTabs.length; i++) allTabs[i].classList.remove('active');
@@ -53,6 +54,7 @@ function switchTab(tab) {
     var g = document.getElementById('filter-group');
     var tf = document.getElementById('filter-team');
     renderSchedule(g ? g.value : 'all', tf ? tf.value : 'all');
+    scrollToToday();
   } else if (tab === 'standings') {
     renderStandings();
   } else if (tab === 'knockout') {
@@ -86,6 +88,15 @@ function onTimezoneChange() {
 
 function refreshCurrentTab() {
   switchTab(currentTab);
+}
+
+function scrollToToday() {
+  setTimeout(function() {
+    var todayHeader = document.querySelector('.date-header.today');
+    if (todayHeader) {
+      todayHeader.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, 100);
 }
 
 function initParticles() {

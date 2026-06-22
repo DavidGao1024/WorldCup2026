@@ -1,0 +1,7 @@
+[      53ms] Illegal return statement
+[      57ms] ReferenceError: populateFilters is not defined
+    at HTMLDocument.init (http://localhost:3000/js/app.js:169:3)
+[     312ms] ReferenceError: renderSchedule is not defined
+    at switchTab (http://localhost:3000/js/app.js:56:5)
+    at refreshCurrentTab (http://localhost:3000/js/app.js:90:3)
+    at fetchEspnAndMerge (http://localhost:3000/js/data.js:46:50)

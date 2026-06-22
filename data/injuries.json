@@ -1,0 +1,245 @@
+{
+  "updateTime": "2026-06-22T02:49:02.640Z",
+  "source": "manual",
+  "note": "伤病数据手动维护。停赛数据由 ESPN API 实时计算，无需在此填写。",
+  "Algeria": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Argentina": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Australia": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Austria": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Belgium": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Bosnia & Herzegovina": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Brazil": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Canada": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Cape Verde": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Colombia": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Croatia": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Curaçao": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Czech Republic": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "DR Congo": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Ecuador": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Egypt": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "England": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "France": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Germany": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Ghana": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Haiti": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Iran": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Iraq": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Ivory Coast": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Japan": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Jordan": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Mexico": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Morocco": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Netherlands": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "New Zealand": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Norway": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Panama": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Paraguay": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Portugal": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Qatar": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Saudi Arabia": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Scotland": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Senegal": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "South Africa": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "South Korea": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Spain": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Sweden": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Switzerland": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Tunisia": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Turkey": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "USA": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Uruguay": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  },
+  "Uzbekistan": {
+    "injuries": 0,
+    "suspensions": 0,
+    "note": ""
+  }
+}
