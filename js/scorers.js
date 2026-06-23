@@ -15,7 +15,6 @@ function renderScorers() {
   goals.sort(function(a, b) { return b.goals - a.goals || a.player.localeCompare(b.player); });
 
   var html = '<div class="scorers-header">';
-  html += '<h2>' + t('scorersTitle') + '</h2>';
   html += '<p class="scorers-subtitle">' + t('scorersSubtitle').replace('{count}', goals.length) + '</p>';
   html += '</div>';
 

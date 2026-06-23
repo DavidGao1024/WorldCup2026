@@ -1,0 +1,1155 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - heading "2026 世界杯" [level=1] [ref=e6]
+        - generic [ref=e7]: 大卫的赛事手册
+      - generic [ref=e9]:
+        - generic [ref=e10] [cursor=pointer]: 中
+        - generic [ref=e11] [cursor=pointer]: EN
+    - navigation [ref=e12]:
+      - generic [ref=e13] [cursor=pointer]: 赛程
+      - generic [ref=e14] [cursor=pointer]: 积分榜
+      - generic [ref=e15] [cursor=pointer]: 射手榜
+      - generic [ref=e16] [cursor=pointer]: 深度分析
+      - generic [ref=e17] [cursor=pointer]: 体彩世界
+  - main [ref=e18]:
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - combobox [ref=e21]:
+          - option "全部小组" [selected]
+          - option "Group A"
+          - option "Group B"
+          - option "Group C"
+          - option "Group D"
+          - option "Group E"
+          - option "Group F"
+          - option "Group G"
+          - option "Group H"
+          - option "Group I"
+          - option "Group J"
+          - option "Group K"
+          - option "Group L"
+        - combobox [ref=e22]:
+          - option "全部球队" [selected]
+          - option "阿尔及利亚"
+          - option "阿根廷"
+          - option "澳大利亚"
+          - option "奥地利"
+          - option "比利时"
+          - option "波黑"
+          - option "巴西"
+          - option "加拿大"
+          - option "佛得角"
+          - option "哥伦比亚"
+          - option "克罗地亚"
+          - option "库拉索"
+          - option "捷克"
+          - option "刚果(金)"
+          - option "厄瓜多尔"
+          - option "埃及"
+          - option "英格兰"
+          - option "法国"
+          - option "德国"
+          - option "加纳"
+          - option "海地"
+          - option "伊朗"
+          - option "伊拉克"
+          - option "科特迪瓦"
+          - option "日本"
+          - option "约旦"
+          - option "墨西哥"
+          - option "摩洛哥"
+          - option "荷兰"
+          - option "新西兰"
+          - option "挪威"
+          - option "巴拿马"
+          - option "巴拉圭"
+          - option "葡萄牙"
+          - option "卡塔尔"
+          - option "沙特"
+          - option "苏格兰"
+          - option "塞内加尔"
+          - option "南非"
+          - option "韩国"
+          - option "西班牙"
+          - option "瑞典"
+          - option "瑞士"
+          - option "突尼斯"
+          - option "土耳其"
+          - option "美国"
+          - option "乌拉圭"
+          - option "乌兹别克斯坦"
+        - combobox [ref=e23]:
+          - option "北京时间 (UTC+8)" [selected]
+          - option "美东时间 (UTC-4)"
+          - option "格林威治 (UTC+0)"
+      - generic [ref=e24]:
+        - generic [ref=e1202]:
+          - generic [ref=e1203]: 6月12日 周五
+          - generic [ref=e1204]:
+            - generic [ref=e1205] [cursor=pointer]:
+              - generic [ref=e1206]: 03:00 (UTC+8) · 墨西哥城
+              - generic [ref=e1207]:
+                - generic [ref=e1209]: 墨西哥
+                - generic [ref=e1210]:
+                  - text: 2 - 0
+                  - generic [ref=e1211]: LIVE
+                - generic [ref=e1213]: 南非
+              - generic [ref=e1214]: Group A
+            - generic [ref=e1215] [cursor=pointer]:
+              - generic [ref=e1216]: 10:00 (UTC+8) · 瓜达拉哈拉
+              - generic [ref=e1217]:
+                - generic [ref=e1219]: 韩国
+                - generic [ref=e1220]:
+                  - text: 2 - 1
+                  - generic [ref=e1221]: LIVE
+                - generic [ref=e1223]: 捷克
+              - generic [ref=e1224]: Group A
+        - generic [ref=e1225]:
+          - generic [ref=e1226]: 6月13日 周六
+          - generic [ref=e1227]:
+            - generic [ref=e1228] [cursor=pointer]:
+              - generic [ref=e1229]: 03:00 (UTC+8) · 多伦多
+              - generic [ref=e1230]:
+                - generic [ref=e1232]: 加拿大
+                - generic [ref=e1233]:
+                  - text: 1 - 1
+                  - generic [ref=e1234]: LIVE
+                - generic [ref=e1236]: 波黑
+              - generic [ref=e1237]: Group B
+            - generic [ref=e1238] [cursor=pointer]:
+              - generic [ref=e1239]: 09:00 (UTC+8) · 洛杉矶
+              - generic [ref=e1240]:
+                - generic [ref=e1242]: 美国
+                - generic [ref=e1243]:
+                  - text: 4 - 1
+                  - generic [ref=e1244]: LIVE
+                - generic [ref=e1246]: 巴拉圭
+              - generic [ref=e1247]: Group D
+        - generic [ref=e1248]:
+          - generic [ref=e1249]: 6月14日 周日
+          - generic [ref=e1250]:
+            - generic [ref=e1251] [cursor=pointer]:
+              - generic [ref=e1252]: 03:00 (UTC+8) · 旧金山湾区
+              - generic [ref=e1253]:
+                - generic [ref=e1255]: 卡塔尔
+                - generic [ref=e1256]:
+                  - text: 1 - 1
+                  - generic [ref=e1257]: LIVE
+                - generic [ref=e1259]: 瑞士
+              - generic [ref=e1260]: Group B
+            - generic [ref=e1261] [cursor=pointer]:
+              - generic [ref=e1262]: 06:00 (UTC+8) · 纽约/新泽西
+              - generic [ref=e1263]:
+                - generic [ref=e1265]: 巴西
+                - generic [ref=e1266]:
+                  - text: 1 - 1
+                  - generic [ref=e1267]: LIVE
+                - generic [ref=e1269]: 摩洛哥
+              - generic [ref=e1270]: Group C
+            - generic [ref=e1271] [cursor=pointer]:
+              - generic [ref=e1272]: 09:00 (UTC+8) · 波士顿
+              - generic [ref=e1273]:
+                - generic [ref=e1275]: 海地
+                - generic [ref=e1276]:
+                  - text: 0 - 1
+                  - generic [ref=e1277]: LIVE
+                - generic [ref=e1279]: 苏格兰
+              - generic [ref=e1280]: Group C
+            - generic [ref=e1281] [cursor=pointer]:
+              - generic [ref=e1282]: 12:00 (UTC+8) · 温哥华
+              - generic [ref=e1283]:
+                - generic [ref=e1285]: 澳大利亚
+                - generic [ref=e1286]:
+                  - text: 2 - 0
+                  - generic [ref=e1287]: LIVE
+                - generic [ref=e1289]: 土耳其
+              - generic [ref=e1290]: Group D
+        - generic [ref=e1291]:
+          - generic [ref=e1292]: 6月15日 周一
+          - generic [ref=e1293]:
+            - generic [ref=e1294] [cursor=pointer]:
+              - generic [ref=e1295]: 01:00 (UTC+8) · 休斯顿
+              - generic [ref=e1296]:
+                - generic [ref=e1298]: 德国
+                - generic [ref=e1299]:
+                  - text: 7 - 1
+                  - generic [ref=e1300]: LIVE
+                - generic [ref=e1302]: 库拉索
+              - generic [ref=e1303]: Group E
+            - generic [ref=e1304] [cursor=pointer]:
+              - generic [ref=e1305]: 07:00 (UTC+8) · 费城
+              - generic [ref=e1306]:
+                - generic [ref=e1308]: 科特迪瓦
+                - generic [ref=e1309]:
+                  - text: 1 - 0
+                  - generic [ref=e1310]: LIVE
+                - generic [ref=e1312]: 厄瓜多尔
+              - generic [ref=e1313]: Group E
+            - generic [ref=e1314] [cursor=pointer]:
+              - generic [ref=e1315]: 04:00 (UTC+8) · 达拉斯
+              - generic [ref=e1316]:
+                - generic [ref=e1318]: 荷兰
+                - generic [ref=e1319]:
+                  - text: 2 - 2
+                  - generic [ref=e1320]: LIVE
+                - generic [ref=e1322]: 日本
+              - generic [ref=e1323]: Group F
+            - generic [ref=e1324] [cursor=pointer]:
+              - generic [ref=e1325]: 10:00 (UTC+8) · 蒙特雷
+              - generic [ref=e1326]:
+                - generic [ref=e1328]: 瑞典
+                - generic [ref=e1329]:
+                  - text: 5 - 1
+                  - generic [ref=e1330]: LIVE
+                - generic [ref=e1332]: 突尼斯
+              - generic [ref=e1333]: Group F
+        - generic [ref=e1334]:
+          - generic [ref=e1335]: 6月16日 周二
+          - generic [ref=e1336]:
+            - generic [ref=e1337] [cursor=pointer]:
+              - generic [ref=e1338]: 03:00 (UTC+8) · 西雅图
+              - generic [ref=e1339]:
+                - generic [ref=e1341]: 比利时
+                - generic [ref=e1342]:
+                  - text: 1 - 1
+                  - generic [ref=e1343]: LIVE
+                - generic [ref=e1345]: 埃及
+              - generic [ref=e1346]: Group G
+            - generic [ref=e1347] [cursor=pointer]:
+              - generic [ref=e1348]: 09:00 (UTC+8) · 洛杉矶
+              - generic [ref=e1349]:
+                - generic [ref=e1351]: 伊朗
+                - generic [ref=e1352]:
+                  - text: 2 - 2
+                  - generic [ref=e1353]: LIVE
+                - generic [ref=e1355]: 新西兰
+              - generic [ref=e1356]: Group G
+            - generic [ref=e1357] [cursor=pointer]:
+              - generic [ref=e1358]: 00:00 (UTC+8) · 亚特兰大
+              - generic [ref=e1359]:
+                - generic [ref=e1361]: 西班牙
+                - generic [ref=e1362]:
+                  - text: 0 - 0
+                  - generic [ref=e1363]: LIVE
+                - generic [ref=e1365]: 佛得角
+              - generic [ref=e1366]: Group H
+            - generic [ref=e1367] [cursor=pointer]:
+              - generic [ref=e1368]: 06:00 (UTC+8) · 迈阿密
+              - generic [ref=e1369]:
+                - generic [ref=e1371]: 沙特
+                - generic [ref=e1372]:
+                  - text: 1 - 1
+                  - generic [ref=e1373]: LIVE
+                - generic [ref=e1375]: 乌拉圭
+              - generic [ref=e1376]: Group H
+        - generic [ref=e1377]:
+          - generic [ref=e1378]: 6月17日 周三
+          - generic [ref=e1379]:
+            - generic [ref=e1380] [cursor=pointer]:
+              - generic [ref=e1381]: 03:00 (UTC+8) · 纽约/新泽西
+              - generic [ref=e1382]:
+                - generic [ref=e1384]: 法国
+                - generic [ref=e1385]:
+                  - text: 3 - 1
+                  - generic [ref=e1386]: LIVE
+                - generic [ref=e1388]: 塞内加尔
+              - generic [ref=e1389]: Group I
+            - generic [ref=e1390] [cursor=pointer]:
+              - generic [ref=e1391]: 06:00 (UTC+8) · 波士顿
+              - generic [ref=e1392]:
+                - generic [ref=e1394]: 伊拉克
+                - generic [ref=e1395]:
+                  - text: 1 - 4
+                  - generic [ref=e1396]: LIVE
+                - generic [ref=e1398]: 挪威
+              - generic [ref=e1399]: Group I
+            - generic [ref=e1400] [cursor=pointer]:
+              - generic [ref=e1401]: 09:00 (UTC+8) · 堪萨斯城
+              - generic [ref=e1402]:
+                - generic [ref=e1404]: 阿根廷
+                - generic [ref=e1405]:
+                  - text: 3 - 0
+                  - generic [ref=e1406]: LIVE
+                - generic [ref=e1408]: 阿尔及利亚
+              - generic [ref=e1409]: Group J
+            - generic [ref=e1410] [cursor=pointer]:
+              - generic [ref=e1411]: 12:00 (UTC+8) · 旧金山湾区
+              - generic [ref=e1412]:
+                - generic [ref=e1414]: 奥地利
+                - generic [ref=e1415]:
+                  - text: 3 - 1
+                  - generic [ref=e1416]: LIVE
+                - generic [ref=e1418]: 约旦
+              - generic [ref=e1419]: Group J
+        - generic [ref=e1420]:
+          - generic [ref=e1421]: 6月18日 周四
+          - generic [ref=e1422]:
+            - generic [ref=e1423] [cursor=pointer]:
+              - generic [ref=e1424]: 01:00 (UTC+8) · 休斯顿
+              - generic [ref=e1425]:
+                - generic [ref=e1427]: 葡萄牙
+                - generic [ref=e1428]:
+                  - text: 1 - 1
+                  - generic [ref=e1429]: LIVE
+                - generic [ref=e1431]: 刚果(金)
+              - generic [ref=e1432]: Group K
+            - generic [ref=e1433] [cursor=pointer]:
+              - generic [ref=e1434]: 10:00 (UTC+8) · 墨西哥城
+              - generic [ref=e1435]:
+                - generic [ref=e1437]: 乌兹别克斯坦
+                - generic [ref=e1438]:
+                  - text: 1 - 3
+                  - generic [ref=e1439]: LIVE
+                - generic [ref=e1441]: 哥伦比亚
+              - generic [ref=e1442]: Group K
+            - generic [ref=e1443] [cursor=pointer]:
+              - generic [ref=e1444]: 04:00 (UTC+8) · 达拉斯
+              - generic [ref=e1445]:
+                - generic [ref=e1447]: 英格兰
+                - generic [ref=e1448]:
+                  - text: 4 - 2
+                  - generic [ref=e1449]: LIVE
+                - generic [ref=e1451]: 克罗地亚
+              - generic [ref=e1452]: Group L
+            - generic [ref=e1453] [cursor=pointer]:
+              - generic [ref=e1454]: 07:00 (UTC+8) · 多伦多
+              - generic [ref=e1455]:
+                - generic [ref=e1457]: 加纳
+                - generic [ref=e1458]:
+                  - text: 1 - 0
+                  - generic [ref=e1459]: LIVE
+                - generic [ref=e1461]: 巴拿马
+              - generic [ref=e1462]: Group L
+        - generic [ref=e1463]:
+          - generic [ref=e1464]: 6月19日 周五
+          - generic [ref=e1465]:
+            - generic [ref=e1466] [cursor=pointer]:
+              - generic [ref=e1467]: 00:00 (UTC+8) · 亚特兰大
+              - generic [ref=e1468]:
+                - generic [ref=e1470]: 捷克
+                - generic [ref=e1471]:
+                  - text: 1 - 1
+                  - generic [ref=e1472]: LIVE
+                - generic [ref=e1474]: 南非
+              - generic [ref=e1475]: Group A
+            - generic [ref=e1476] [cursor=pointer]:
+              - generic [ref=e1477]: 09:00 (UTC+8) · 瓜达拉哈拉
+              - generic [ref=e1478]:
+                - generic [ref=e1480]: 墨西哥
+                - generic [ref=e1481]:
+                  - text: 1 - 0
+                  - generic [ref=e1482]: LIVE
+                - generic [ref=e1484]: 韩国
+              - generic [ref=e1485]: Group A
+            - generic [ref=e1486] [cursor=pointer]:
+              - generic [ref=e1487]: 03:00 (UTC+8) · 洛杉矶
+              - generic [ref=e1488]:
+                - generic [ref=e1490]: 瑞士
+                - generic [ref=e1491]:
+                  - text: 4 - 1
+                  - generic [ref=e1492]: LIVE
+                - generic [ref=e1494]: 波黑
+              - generic [ref=e1495]: Group B
+            - generic [ref=e1496] [cursor=pointer]:
+              - generic [ref=e1497]: 06:00 (UTC+8) · 温哥华
+              - generic [ref=e1498]:
+                - generic [ref=e1500]: 加拿大
+                - generic [ref=e1501]:
+                  - text: 6 - 0
+                  - generic [ref=e1502]: LIVE
+                - generic [ref=e1504]: 卡塔尔
+              - generic [ref=e1505]: Group B
+        - generic [ref=e1506]:
+          - generic [ref=e1507]: 6月20日 周六
+          - generic [ref=e1508]:
+            - generic [ref=e1509] [cursor=pointer]:
+              - generic [ref=e1510]: 06:00 (UTC+8) · 波士顿
+              - generic [ref=e1511]:
+                - generic [ref=e1513]: 苏格兰
+                - generic [ref=e1514]:
+                  - text: 0 - 1
+                  - generic [ref=e1515]: LIVE
+                - generic [ref=e1517]: 摩洛哥
+              - generic [ref=e1518]: Group C
+            - generic [ref=e1519] [cursor=pointer]:
+              - generic [ref=e1520]: 08:30 (UTC+8) · 费城
+              - generic [ref=e1521]:
+                - generic [ref=e1523]: 巴西
+                - generic [ref=e1524]:
+                  - text: 3 - 0
+                  - generic [ref=e1525]: LIVE
+                - generic [ref=e1527]: 海地
+              - generic [ref=e1528]: Group C
+            - generic [ref=e1529] [cursor=pointer]:
+              - generic [ref=e1530]: 03:00 (UTC+8) · 西雅图
+              - generic [ref=e1531]:
+                - generic [ref=e1533]: 美国
+                - generic [ref=e1534]:
+                  - text: 2 - 0
+                  - generic [ref=e1535]: LIVE
+                - generic [ref=e1537]: 澳大利亚
+              - generic [ref=e1538]: Group D
+            - generic [ref=e1539] [cursor=pointer]:
+              - generic [ref=e1540]: 11:00 (UTC+8) · 旧金山湾区
+              - generic [ref=e1541]:
+                - generic [ref=e1543]: 土耳其
+                - generic [ref=e1544]:
+                  - text: 0 - 1
+                  - generic [ref=e1545]: LIVE
+                - generic [ref=e1547]: 巴拉圭
+              - generic [ref=e1548]: Group D
+        - generic [ref=e1549]:
+          - generic [ref=e1550]: 6月21日 周日
+          - generic [ref=e1551]:
+            - generic [ref=e1552] [cursor=pointer]:
+              - generic [ref=e1553]: 04:00 (UTC+8) · 多伦多
+              - generic [ref=e1554]:
+                - generic [ref=e1556]: 德国
+                - generic [ref=e1557]:
+                  - text: 2 - 1
+                  - generic [ref=e1558]: LIVE
+                - generic [ref=e1560]: 科特迪瓦
+              - generic [ref=e1561]: Group E
+            - generic [ref=e1562] [cursor=pointer]:
+              - generic [ref=e1563]: 08:00 (UTC+8) · 堪萨斯城
+              - generic [ref=e1564]:
+                - generic [ref=e1566]: 厄瓜多尔
+                - generic [ref=e1567]:
+                  - text: 0 - 0
+                  - generic [ref=e1568]: LIVE
+                - generic [ref=e1570]: 库拉索
+              - generic [ref=e1571]: Group E
+            - generic [ref=e1572] [cursor=pointer]:
+              - generic [ref=e1573]: 01:00 (UTC+8) · 休斯顿
+              - generic [ref=e1574]:
+                - generic [ref=e1576]: 荷兰
+                - generic [ref=e1577]:
+                  - text: 5 - 1
+                  - generic [ref=e1578]: LIVE
+                - generic [ref=e1580]: 瑞典
+              - generic [ref=e1581]: Group F
+            - generic [ref=e1582] [cursor=pointer]:
+              - generic [ref=e1583]: 12:00 (UTC+8) · 蒙特雷
+              - generic [ref=e1584]:
+                - generic [ref=e1586]: 突尼斯
+                - generic [ref=e1587]:
+                  - text: 0 - 4
+                  - generic [ref=e1588]: LIVE
+                - generic [ref=e1590]: 日本
+              - generic [ref=e1591]: Group F
+        - generic [ref=e1592]:
+          - generic [ref=e1593]: 6月22日 周一
+          - generic [ref=e1594]:
+            - generic [ref=e1595] [cursor=pointer]:
+              - generic [ref=e1596]: 03:00 (UTC+8) · 洛杉矶
+              - generic [ref=e1597]:
+                - generic [ref=e1599]: 比利时
+                - generic [ref=e1600]:
+                  - text: 0 - 0
+                  - generic [ref=e1601]: LIVE
+                - generic [ref=e1603]: 伊朗
+              - generic [ref=e1604]: Group G
+            - generic [ref=e1605] [cursor=pointer]:
+              - generic [ref=e1606]: 09:00 (UTC+8) · 温哥华
+              - generic [ref=e1607]:
+                - generic [ref=e1609]: 新西兰
+                - generic [ref=e1610]:
+                  - text: 1 - 3
+                  - generic [ref=e1611]: LIVE
+                - generic [ref=e1613]: 埃及
+              - generic [ref=e1614]: Group G
+            - generic [ref=e1615] [cursor=pointer]:
+              - generic [ref=e1616]: 00:00 (UTC+8) · 亚特兰大
+              - generic [ref=e1617]:
+                - generic [ref=e1619]: 西班牙
+                - generic [ref=e1620]:
+                  - text: 4 - 0
+                  - generic [ref=e1621]: LIVE
+                - generic [ref=e1623]: 沙特
+              - generic [ref=e1624]: Group H
+            - generic [ref=e1625] [cursor=pointer]:
+              - generic [ref=e1626]: 06:00 (UTC+8) · 迈阿密
+              - generic [ref=e1627]:
+                - generic [ref=e1629]: 乌拉圭
+                - generic [ref=e1630]:
+                  - text: 2 - 2
+                  - generic [ref=e1631]: LIVE
+                - generic [ref=e1633]: 佛得角
+              - generic [ref=e1634]: Group H
+        - generic [ref=e1635]:
+          - generic [ref=e1636]: ★ 今天 · 6月23日 周二
+          - generic [ref=e1637]:
+            - generic [ref=e1638] [cursor=pointer]:
+              - generic [ref=e1639]: 05:00 (UTC+8) · 费城
+              - generic [ref=e1640]:
+                - generic [ref=e1642]: 法国
+                - generic [ref=e1643]:
+                  - text: 3 - 0
+                  - generic [ref=e1644]: LIVE
+                - generic [ref=e1646]: 伊拉克
+              - generic [ref=e1647]: Group I
+            - generic [ref=e1648] [cursor=pointer]:
+              - generic [ref=e1649]: 08:00 (UTC+8) · 纽约/新泽西
+              - generic [ref=e1650]:
+                - generic [ref=e1652]: 挪威
+                - generic [ref=e1653]:
+                  - text: 3 - 2
+                  - generic [ref=e1654]: LIVE
+                - generic [ref=e1656]: 塞内加尔
+              - generic [ref=e1657]: Group I
+            - generic [ref=e1658] [cursor=pointer]:
+              - generic [ref=e1659]: 01:00 (UTC+8) · 达拉斯
+              - generic [ref=e1660]:
+                - generic [ref=e1662]: 阿根廷
+                - generic [ref=e1663]:
+                  - text: 2 - 0
+                  - generic [ref=e1664]: LIVE
+                - generic [ref=e1666]: 奥地利
+              - generic [ref=e1667]: Group J
+            - generic [ref=e1668] [cursor=pointer]:
+              - generic [ref=e1669]: 11:00 (UTC+8) · 旧金山湾区
+              - generic [ref=e1670]:
+                - generic [ref=e1672]: 约旦
+                - generic [ref=e1673]:
+                  - text: vs
+                  - generic [ref=e1674]: LIVE
+                - generic [ref=e1676]: 阿尔及利亚
+              - generic [ref=e1677]: Group J
+        - generic [ref=e1678]:
+          - generic [ref=e1679]: 6月24日 周三
+          - generic [ref=e1680]:
+            - generic [ref=e1681] [cursor=pointer]:
+              - generic [ref=e1682]: 01:00 (UTC+8) · 休斯顿
+              - generic [ref=e1683]:
+                - generic [ref=e1685]: 葡萄牙
+                - generic [ref=e1686]:
+                  - text: vs
+                  - generic [ref=e1687]: LIVE
+                - generic [ref=e1689]: 乌兹别克斯坦
+              - generic [ref=e1690]: Group K
+            - generic [ref=e1691] [cursor=pointer]:
+              - generic [ref=e1692]: 10:00 (UTC+8) · 瓜达拉哈拉
+              - generic [ref=e1693]:
+                - generic [ref=e1695]: 哥伦比亚
+                - generic [ref=e1696]:
+                  - text: vs
+                  - generic [ref=e1697]: LIVE
+                - generic [ref=e1699]: 刚果(金)
+              - generic [ref=e1700]: Group K
+            - generic [ref=e1701] [cursor=pointer]:
+              - generic [ref=e1702]: 04:00 (UTC+8) · 波士顿
+              - generic [ref=e1703]:
+                - generic [ref=e1705]: 英格兰
+                - generic [ref=e1706]:
+                  - text: vs
+                  - generic [ref=e1707]: LIVE
+                - generic [ref=e1709]: 加纳
+              - generic [ref=e1710]: Group L
+            - generic [ref=e1711] [cursor=pointer]:
+              - generic [ref=e1712]: 07:00 (UTC+8) · 多伦多
+              - generic [ref=e1713]:
+                - generic [ref=e1715]: 巴拿马
+                - generic [ref=e1716]:
+                  - text: vs
+                  - generic [ref=e1717]: LIVE
+                - generic [ref=e1719]: 克罗地亚
+              - generic [ref=e1720]: Group L
+        - generic [ref=e1721]:
+          - generic [ref=e1722]: 6月25日 周四
+          - generic [ref=e1723]:
+            - generic [ref=e1724] [cursor=pointer]:
+              - generic [ref=e1725]: 09:00 (UTC+8) · 墨西哥城
+              - generic [ref=e1726]:
+                - generic [ref=e1728]: 捷克
+                - generic [ref=e1729]:
+                  - text: vs
+                  - generic [ref=e1730]: LIVE
+                - generic [ref=e1732]: 墨西哥
+              - generic [ref=e1733]: Group A
+            - generic [ref=e1734] [cursor=pointer]:
+              - generic [ref=e1735]: 09:00 (UTC+8) · 蒙特雷
+              - generic [ref=e1736]:
+                - generic [ref=e1738]: 南非
+                - generic [ref=e1739]:
+                  - text: vs
+                  - generic [ref=e1740]: LIVE
+                - generic [ref=e1742]: 韩国
+              - generic [ref=e1743]: Group A
+            - generic [ref=e1744] [cursor=pointer]:
+              - generic [ref=e1745]: 03:00 (UTC+8) · 温哥华
+              - generic [ref=e1746]:
+                - generic [ref=e1748]: 瑞士
+                - generic [ref=e1749]:
+                  - text: vs
+                  - generic [ref=e1750]: LIVE
+                - generic [ref=e1752]: 加拿大
+              - generic [ref=e1753]: Group B
+            - generic [ref=e1754] [cursor=pointer]:
+              - generic [ref=e1755]: 03:00 (UTC+8) · 西雅图
+              - generic [ref=e1756]:
+                - generic [ref=e1758]: 波黑
+                - generic [ref=e1759]:
+                  - text: vs
+                  - generic [ref=e1760]: LIVE
+                - generic [ref=e1762]: 卡塔尔
+              - generic [ref=e1763]: Group B
+            - generic [ref=e1764] [cursor=pointer]:
+              - generic [ref=e1765]: 06:00 (UTC+8) · 迈阿密
+              - generic [ref=e1766]:
+                - generic [ref=e1768]: 苏格兰
+                - generic [ref=e1769]:
+                  - text: vs
+                  - generic [ref=e1770]: LIVE
+                - generic [ref=e1772]: 巴西
+              - generic [ref=e1773]: Group C
+            - generic [ref=e1774] [cursor=pointer]:
+              - generic [ref=e1775]: 06:00 (UTC+8) · 亚特兰大
+              - generic [ref=e1776]:
+                - generic [ref=e1778]: 摩洛哥
+                - generic [ref=e1779]:
+                  - text: vs
+                  - generic [ref=e1780]: LIVE
+                - generic [ref=e1782]: 海地
+              - generic [ref=e1783]: Group C
+        - generic [ref=e1784]:
+          - generic [ref=e1785]: 6月26日 周五
+          - generic [ref=e1786]:
+            - generic [ref=e1787] [cursor=pointer]:
+              - generic [ref=e1788]: 10:00 (UTC+8) · 洛杉矶
+              - generic [ref=e1789]:
+                - generic [ref=e1791]: 土耳其
+                - generic [ref=e1792]:
+                  - text: vs
+                  - generic [ref=e1793]: LIVE
+                - generic [ref=e1795]: 美国
+              - generic [ref=e1796]: Group D
+            - generic [ref=e1797] [cursor=pointer]:
+              - generic [ref=e1798]: 10:00 (UTC+8) · 旧金山湾区
+              - generic [ref=e1799]:
+                - generic [ref=e1801]: 巴拉圭
+                - generic [ref=e1802]:
+                  - text: vs
+                  - generic [ref=e1803]: LIVE
+                - generic [ref=e1805]: 澳大利亚
+              - generic [ref=e1806]: Group D
+            - generic [ref=e1807] [cursor=pointer]:
+              - generic [ref=e1808]: 04:00 (UTC+8) · 费城
+              - generic [ref=e1809]:
+                - generic [ref=e1811]: 库拉索
+                - generic [ref=e1812]:
+                  - text: vs
+                  - generic [ref=e1813]: LIVE
+                - generic [ref=e1815]: 科特迪瓦
+              - generic [ref=e1816]: Group E
+            - generic [ref=e1817] [cursor=pointer]:
+              - generic [ref=e1818]: 04:00 (UTC+8) · 纽约/新泽西
+              - generic [ref=e1819]:
+                - generic [ref=e1821]: 厄瓜多尔
+                - generic [ref=e1822]:
+                  - text: vs
+                  - generic [ref=e1823]: LIVE
+                - generic [ref=e1825]: 德国
+              - generic [ref=e1826]: Group E
+            - generic [ref=e1827] [cursor=pointer]:
+              - generic [ref=e1828]: 07:00 (UTC+8) · 达拉斯
+              - generic [ref=e1829]:
+                - generic [ref=e1831]: 日本
+                - generic [ref=e1832]:
+                  - text: vs
+                  - generic [ref=e1833]: LIVE
+                - generic [ref=e1835]: 瑞典
+              - generic [ref=e1836]: Group F
+            - generic [ref=e1837] [cursor=pointer]:
+              - generic [ref=e1838]: 07:00 (UTC+8) · 堪萨斯城
+              - generic [ref=e1839]:
+                - generic [ref=e1841]: 突尼斯
+                - generic [ref=e1842]:
+                  - text: vs
+                  - generic [ref=e1843]: LIVE
+                - generic [ref=e1845]: 荷兰
+              - generic [ref=e1846]: Group F
+        - generic [ref=e1847]:
+          - generic [ref=e1848]: 6月27日 周六
+          - generic [ref=e1849]:
+            - generic [ref=e1850] [cursor=pointer]:
+              - generic [ref=e1851]: 11:00 (UTC+8) · 西雅图
+              - generic [ref=e1852]:
+                - generic [ref=e1854]: 埃及
+                - generic [ref=e1855]:
+                  - text: vs
+                  - generic [ref=e1856]: LIVE
+                - generic [ref=e1858]: 伊朗
+              - generic [ref=e1859]: Group G
+            - generic [ref=e1860] [cursor=pointer]:
+              - generic [ref=e1861]: 11:00 (UTC+8) · 温哥华
+              - generic [ref=e1862]:
+                - generic [ref=e1864]: 新西兰
+                - generic [ref=e1865]:
+                  - text: vs
+                  - generic [ref=e1866]: LIVE
+                - generic [ref=e1868]: 比利时
+              - generic [ref=e1869]: Group G
+            - generic [ref=e1870] [cursor=pointer]:
+              - generic [ref=e1871]: 08:00 (UTC+8) · 休斯顿
+              - generic [ref=e1872]:
+                - generic [ref=e1874]: 佛得角
+                - generic [ref=e1875]:
+                  - text: vs
+                  - generic [ref=e1876]: LIVE
+                - generic [ref=e1878]: 沙特
+              - generic [ref=e1879]: Group H
+            - generic [ref=e1880] [cursor=pointer]:
+              - generic [ref=e1881]: 08:00 (UTC+8) · 瓜达拉哈拉
+              - generic [ref=e1882]:
+                - generic [ref=e1884]: 乌拉圭
+                - generic [ref=e1885]:
+                  - text: vs
+                  - generic [ref=e1886]: LIVE
+                - generic [ref=e1888]: 西班牙
+              - generic [ref=e1889]: Group H
+            - generic [ref=e1890] [cursor=pointer]:
+              - generic [ref=e1891]: 03:00 (UTC+8) · 波士顿
+              - generic [ref=e1892]:
+                - generic [ref=e1894]: 挪威
+                - generic [ref=e1895]:
+                  - text: vs
+                  - generic [ref=e1896]: LIVE
+                - generic [ref=e1898]: 法国
+              - generic [ref=e1899]: Group I
+            - generic [ref=e1900] [cursor=pointer]:
+              - generic [ref=e1901]: 03:00 (UTC+8) · 多伦多
+              - generic [ref=e1902]:
+                - generic [ref=e1904]: 塞内加尔
+                - generic [ref=e1905]:
+                  - text: vs
+                  - generic [ref=e1906]: LIVE
+                - generic [ref=e1908]: 伊拉克
+              - generic [ref=e1909]: Group I
+        - generic [ref=e1910]:
+          - generic [ref=e1911]: 6月28日 周日
+          - generic [ref=e1912]:
+            - generic [ref=e1913] [cursor=pointer]:
+              - generic [ref=e1914]: 10:00 (UTC+8) · 堪萨斯城
+              - generic [ref=e1915]:
+                - generic [ref=e1917]: 阿尔及利亚
+                - generic [ref=e1918]:
+                  - text: vs
+                  - generic [ref=e1919]: LIVE
+                - generic [ref=e1921]: 奥地利
+              - generic [ref=e1922]: Group J
+            - generic [ref=e1923] [cursor=pointer]:
+              - generic [ref=e1924]: 10:00 (UTC+8) · 达拉斯
+              - generic [ref=e1925]:
+                - generic [ref=e1927]: 约旦
+                - generic [ref=e1928]:
+                  - text: vs
+                  - generic [ref=e1929]: LIVE
+                - generic [ref=e1931]: 阿根廷
+              - generic [ref=e1932]: Group J
+            - generic [ref=e1933] [cursor=pointer]:
+              - generic [ref=e1934]: 07:30 (UTC+8) · 迈阿密
+              - generic [ref=e1935]:
+                - generic [ref=e1937]: 哥伦比亚
+                - generic [ref=e1938]:
+                  - text: vs
+                  - generic [ref=e1939]: LIVE
+                - generic [ref=e1941]: 葡萄牙
+              - generic [ref=e1942]: Group K
+            - generic [ref=e1943] [cursor=pointer]:
+              - generic [ref=e1944]: 07:30 (UTC+8) · 亚特兰大
+              - generic [ref=e1945]:
+                - generic [ref=e1947]: 刚果(金)
+                - generic [ref=e1948]:
+                  - text: vs
+                  - generic [ref=e1949]: LIVE
+                - generic [ref=e1951]: 乌兹别克斯坦
+              - generic [ref=e1952]: Group K
+            - generic [ref=e1953] [cursor=pointer]:
+              - generic [ref=e1954]: 05:00 (UTC+8) · 纽约/新泽西
+              - generic [ref=e1955]:
+                - generic [ref=e1957]: 巴拿马
+                - generic [ref=e1958]:
+                  - text: vs
+                  - generic [ref=e1959]: LIVE
+                - generic [ref=e1961]: 英格兰
+              - generic [ref=e1962]: Group L
+            - generic [ref=e1963] [cursor=pointer]:
+              - generic [ref=e1964]: 05:00 (UTC+8) · 费城
+              - generic [ref=e1965]:
+                - generic [ref=e1967]: 克罗地亚
+                - generic [ref=e1968]:
+                  - text: vs
+                  - generic [ref=e1969]: LIVE
+                - generic [ref=e1971]: 加纳
+              - generic [ref=e1972]: Group L
+        - generic [ref=e1973]:
+          - generic [ref=e1974]: 6月29日 周一
+          - generic [ref=e1976] [cursor=pointer]:
+            - generic [ref=e1977]: 32强赛
+            - generic [ref=e1978]: 03:00 (UTC+8) · 洛杉矶
+            - generic [ref=e1979]:
+              - generic [ref=e1981]: A组第2名
+              - generic [ref=e1982]:
+                - text: vs
+                - generic [ref=e1983]: LIVE
+              - generic [ref=e1985]: B组第2名
+            - generic [ref=e1986]: 洛杉矶
+        - generic [ref=e1987]:
+          - generic [ref=e1988]: 6月30日 周二
+          - generic [ref=e1989]:
+            - generic [ref=e1990] [cursor=pointer]:
+              - generic [ref=e1991]: 32强赛
+              - generic [ref=e1992]: 04:30 (UTC+8) · 波士顿
+              - generic [ref=e1993]:
+                - generic [ref=e1995]: E组第1名
+                - generic [ref=e1996]:
+                  - text: vs
+                  - generic [ref=e1997]: LIVE
+                - generic [ref=e1999]: A组第3名/B/C/D/F
+              - generic [ref=e2000]: 波士顿
+            - generic [ref=e2001] [cursor=pointer]:
+              - generic [ref=e2002]: 32强赛
+              - generic [ref=e2003]: 09:00 (UTC+8) · 蒙特雷
+              - generic [ref=e2004]:
+                - generic [ref=e2006]: F组第1名
+                - generic [ref=e2007]:
+                  - text: vs
+                  - generic [ref=e2008]: LIVE
+                - generic [ref=e2010]: C组第2名
+              - generic [ref=e2011]: 蒙特雷
+            - generic [ref=e2012] [cursor=pointer]:
+              - generic [ref=e2013]: 32强赛
+              - generic [ref=e2014]: 01:00 (UTC+8) · 休斯顿
+              - generic [ref=e2015]:
+                - generic [ref=e2017]: C组第1名
+                - generic [ref=e2018]:
+                  - text: vs
+                  - generic [ref=e2019]: LIVE
+                - generic [ref=e2021]: F组第2名
+              - generic [ref=e2022]: 休斯顿
+        - generic [ref=e2023]:
+          - generic [ref=e2024]: 7月1日 周三
+          - generic [ref=e2025]:
+            - generic [ref=e2026] [cursor=pointer]:
+              - generic [ref=e2027]: 32强赛
+              - generic [ref=e2028]: 05:00 (UTC+8) · 纽约/新泽西
+              - generic [ref=e2029]:
+                - generic [ref=e2031]: I组第1名
+                - generic [ref=e2032]:
+                  - text: vs
+                  - generic [ref=e2033]: LIVE
+                - generic [ref=e2035]: C组第3名/D/F/G/H
+              - generic [ref=e2036]: 纽约/新泽西
+            - generic [ref=e2037] [cursor=pointer]:
+              - generic [ref=e2038]: 32强赛
+              - generic [ref=e2039]: 01:00 (UTC+8) · 达拉斯
+              - generic [ref=e2040]:
+                - generic [ref=e2042]: E组第2名
+                - generic [ref=e2043]:
+                  - text: vs
+                  - generic [ref=e2044]: LIVE
+                - generic [ref=e2046]: I组第2名
+              - generic [ref=e2047]: 达拉斯
+            - generic [ref=e2048] [cursor=pointer]:
+              - generic [ref=e2049]: 32强赛
+              - generic [ref=e2050]: 09:00 (UTC+8) · 墨西哥城
+              - generic [ref=e2051]:
+                - generic [ref=e2053]: A组第1名
+                - generic [ref=e2054]:
+                  - text: vs
+                  - generic [ref=e2055]: LIVE
+                - generic [ref=e2057]: C组第3名/E/F/H/I
+              - generic [ref=e2058]: 墨西哥城
+        - generic [ref=e2059]:
+          - generic [ref=e2060]: 7月2日 周四
+          - generic [ref=e2061]:
+            - generic [ref=e2062] [cursor=pointer]:
+              - generic [ref=e2063]: 32强赛
+              - generic [ref=e2064]: 00:00 (UTC+8) · 亚特兰大
+              - generic [ref=e2065]:
+                - generic [ref=e2067]: L组第1名
+                - generic [ref=e2068]:
+                  - text: vs
+                  - generic [ref=e2069]: LIVE
+                - generic [ref=e2071]: E组第3名/H/I/J/K
+              - generic [ref=e2072]: 亚特兰大
+            - generic [ref=e2073] [cursor=pointer]:
+              - generic [ref=e2074]: 32强赛
+              - generic [ref=e2075]: 08:00 (UTC+8) · 旧金山湾区
+              - generic [ref=e2076]:
+                - generic [ref=e2078]: D组第1名
+                - generic [ref=e2079]:
+                  - text: vs
+                  - generic [ref=e2080]: LIVE
+                - generic [ref=e2082]: B组第3名/E/F/I/J
+              - generic [ref=e2083]: 旧金山湾区
+            - generic [ref=e2084] [cursor=pointer]:
+              - generic [ref=e2085]: 32强赛
+              - generic [ref=e2086]: 04:00 (UTC+8) · 西雅图
+              - generic [ref=e2087]:
+                - generic [ref=e2089]: G组第1名
+                - generic [ref=e2090]:
+                  - text: vs
+                  - generic [ref=e2091]: LIVE
+                - generic [ref=e2093]: A组第3名/E/H/I/J
+              - generic [ref=e2094]: 西雅图
+        - generic [ref=e2095]:
+          - generic [ref=e2096]: 7月3日 周五
+          - generic [ref=e2097]:
+            - generic [ref=e2098] [cursor=pointer]:
+              - generic [ref=e2099]: 32强赛
+              - generic [ref=e2100]: 07:00 (UTC+8) · 多伦多
+              - generic [ref=e2101]:
+                - generic [ref=e2103]: K组第2名
+                - generic [ref=e2104]:
+                  - text: vs
+                  - generic [ref=e2105]: LIVE
+                - generic [ref=e2107]: L组第2名
+              - generic [ref=e2108]: 多伦多
+            - generic [ref=e2109] [cursor=pointer]:
+              - generic [ref=e2110]: 32强赛
+              - generic [ref=e2111]: 03:00 (UTC+8) · 洛杉矶
+              - generic [ref=e2112]:
+                - generic [ref=e2114]: H组第1名
+                - generic [ref=e2115]:
+                  - text: vs
+                  - generic [ref=e2116]: LIVE
+                - generic [ref=e2118]: J组第2名
+              - generic [ref=e2119]: 洛杉矶
+            - generic [ref=e2120] [cursor=pointer]:
+              - generic [ref=e2121]: 32强赛
+              - generic [ref=e2122]: 11:00 (UTC+8) · 温哥华
+              - generic [ref=e2123]:
+                - generic [ref=e2125]: B组第1名
+                - generic [ref=e2126]:
+                  - text: vs
+                  - generic [ref=e2127]: LIVE
+                - generic [ref=e2129]: E组第3名/F/G/I/J
+              - generic [ref=e2130]: 温哥华
+        - generic [ref=e2131]:
+          - generic [ref=e2132]: 7月4日 周六
+          - generic [ref=e2133]:
+            - generic [ref=e2134] [cursor=pointer]:
+              - generic [ref=e2135]: 32强赛
+              - generic [ref=e2136]: 06:00 (UTC+8) · 迈阿密
+              - generic [ref=e2137]:
+                - generic [ref=e2139]: J组第1名
+                - generic [ref=e2140]:
+                  - text: vs
+                  - generic [ref=e2141]: LIVE
+                - generic [ref=e2143]: H组第2名
+              - generic [ref=e2144]: 迈阿密
+            - generic [ref=e2145] [cursor=pointer]:
+              - generic [ref=e2146]: 32强赛
+              - generic [ref=e2147]: 09:30 (UTC+8) · 堪萨斯城
+              - generic [ref=e2148]:
+                - generic [ref=e2150]: K组第1名
+                - generic [ref=e2151]:
+                  - text: vs
+                  - generic [ref=e2152]: LIVE
+                - generic [ref=e2154]: D组第3名/E/I/J/L
+              - generic [ref=e2155]: 堪萨斯城
+            - generic [ref=e2156] [cursor=pointer]:
+              - generic [ref=e2157]: 32强赛
+              - generic [ref=e2158]: 02:00 (UTC+8) · 达拉斯
+              - generic [ref=e2159]:
+                - generic [ref=e2161]: D组第2名
+                - generic [ref=e2162]:
+                  - text: vs
+                  - generic [ref=e2163]: LIVE
+                - generic [ref=e2165]: G组第2名
+              - generic [ref=e2166]: 达拉斯
+        - generic [ref=e2167]:
+          - generic [ref=e2168]: 7月5日 周日
+          - generic [ref=e2169]:
+            - generic [ref=e2170] [cursor=pointer]:
+              - generic [ref=e2171]: 16强赛
+              - generic [ref=e2172]: 05:00 (UTC+8) · 费城
+              - generic [ref=e2173]:
+                - generic [ref=e2175]: 胜者74
+                - generic [ref=e2176]:
+                  - text: vs
+                  - generic [ref=e2177]: LIVE
+                - generic [ref=e2179]: 胜者77
+              - generic [ref=e2180]: 费城
+            - generic [ref=e2181] [cursor=pointer]:
+              - generic [ref=e2182]: 16强赛
+              - generic [ref=e2183]: 01:00 (UTC+8) · 休斯顿
+              - generic [ref=e2184]:
+                - generic [ref=e2186]: 胜者73
+                - generic [ref=e2187]:
+                  - text: vs
+                  - generic [ref=e2188]: LIVE
+                - generic [ref=e2190]: 胜者75
+              - generic [ref=e2191]: 休斯顿
+        - generic [ref=e2192]:
+          - generic [ref=e2193]: 7月6日 周一
+          - generic [ref=e2194]:
+            - generic [ref=e2195] [cursor=pointer]:
+              - generic [ref=e2196]: 16强赛
+              - generic [ref=e2197]: 04:00 (UTC+8) · 纽约/新泽西
+              - generic [ref=e2198]:
+                - generic [ref=e2200]: 胜者76
+                - generic [ref=e2201]:
+                  - text: vs
+                  - generic [ref=e2202]: LIVE
+                - generic [ref=e2204]: 胜者78
+              - generic [ref=e2205]: 纽约/新泽西
+            - generic [ref=e2206] [cursor=pointer]:
+              - generic [ref=e2207]: 16强赛
+              - generic [ref=e2208]: 08:00 (UTC+8) · 墨西哥城
+              - generic [ref=e2209]:
+                - generic [ref=e2211]: 胜者79
+                - generic [ref=e2212]:
+                  - text: vs
+                  - generic [ref=e2213]: LIVE
+                - generic [ref=e2215]: 胜者80
+              - generic [ref=e2216]: 墨西哥城
+        - generic [ref=e2217]:
+          - generic [ref=e2218]: 7月7日 周二
+          - generic [ref=e2219]:
+            - generic [ref=e2220] [cursor=pointer]:
+              - generic [ref=e2221]: 16强赛
+              - generic [ref=e2222]: 03:00 (UTC+8) · 达拉斯
+              - generic [ref=e2223]:
+                - generic [ref=e2225]: 胜者83
+                - generic [ref=e2226]:
+                  - text: vs
+                  - generic [ref=e2227]: LIVE
+                - generic [ref=e2229]: 胜者84
+              - generic [ref=e2230]: 达拉斯
+            - generic [ref=e2231] [cursor=pointer]:
+              - generic [ref=e2232]: 16强赛
+              - generic [ref=e2233]: 08:00 (UTC+8) · 西雅图
+              - generic [ref=e2234]:
+                - generic [ref=e2236]: 胜者81
+                - generic [ref=e2237]:
+                  - text: vs
+                  - generic [ref=e2238]: LIVE
+                - generic [ref=e2240]: 胜者82
+              - generic [ref=e2241]: 西雅图
+        - generic [ref=e2242]:
+          - generic [ref=e2243]: 7月8日 周三
+          - generic [ref=e2244]:
+            - generic [ref=e2245] [cursor=pointer]:
+              - generic [ref=e2246]: 16强赛
+              - generic [ref=e2247]: 00:00 (UTC+8) · 亚特兰大
+              - generic [ref=e2248]:
+                - generic [ref=e2250]: 胜者86
+                - generic [ref=e2251]:
+                  - text: vs
+                  - generic [ref=e2252]: LIVE
+                - generic [ref=e2254]: 胜者88
+              - generic [ref=e2255]: 亚特兰大
+            - generic [ref=e2256] [cursor=pointer]:
+              - generic [ref=e2257]: 16强赛
+              - generic [ref=e2258]: 04:00 (UTC+8) · 温哥华
+              - generic [ref=e2259]:
+                - generic [ref=e2261]: 胜者85
+                - generic [ref=e2262]:
+                  - text: vs
+                  - generic [ref=e2263]: LIVE
+                - generic [ref=e2265]: 胜者87
+              - generic [ref=e2266]: 温哥华
+        - generic [ref=e2267]:
+          - generic [ref=e2268]: 7月10日 周五
+          - generic [ref=e2270] [cursor=pointer]:
+            - generic [ref=e2271]: 四分之一决赛
+            - generic [ref=e2272]: 04:00 (UTC+8) · 波士顿
+            - generic [ref=e2273]:
+              - generic [ref=e2275]: 胜者89
+              - generic [ref=e2276]:
+                - text: vs
+                - generic [ref=e2277]: LIVE
+              - generic [ref=e2279]: 胜者90
+            - generic [ref=e2280]: 波士顿
+        - generic [ref=e2281]:
+          - generic [ref=e2282]: 7月11日 周六
+          - generic [ref=e2284] [cursor=pointer]:
+            - generic [ref=e2285]: 四分之一决赛
+            - generic [ref=e2286]: 03:00 (UTC+8) · 洛杉矶
+            - generic [ref=e2287]:
+              - generic [ref=e2289]: 胜者93
+              - generic [ref=e2290]:
+                - text: vs
+                - generic [ref=e2291]: LIVE
+              - generic [ref=e2293]: 胜者94
+            - generic [ref=e2294]: 洛杉矶
+        - generic [ref=e2295]:
+          - generic [ref=e2296]: 7月12日 周日
+          - generic [ref=e2297]:
+            - generic [ref=e2298] [cursor=pointer]:
+              - generic [ref=e2299]: 四分之一决赛
+              - generic [ref=e2300]: 05:00 (UTC+8) · 迈阿密
+              - generic [ref=e2301]:
+                - generic [ref=e2303]: 胜者91
+                - generic [ref=e2304]:
+                  - text: vs
+                  - generic [ref=e2305]: LIVE
+                - generic [ref=e2307]: 胜者92
+              - generic [ref=e2308]: 迈阿密
+            - generic [ref=e2309] [cursor=pointer]:
+              - generic [ref=e2310]: 四分之一决赛
+              - generic [ref=e2311]: 09:00 (UTC+8) · 堪萨斯城
+              - generic [ref=e2312]:
+                - generic [ref=e2314]: 胜者95
+                - generic [ref=e2315]:
+                  - text: vs
+                  - generic [ref=e2316]: LIVE
+                - generic [ref=e2318]: 胜者96
+              - generic [ref=e2319]: 堪萨斯城
+        - generic [ref=e2320]:
+          - generic [ref=e2321]: 7月15日 周三
+          - generic [ref=e2323] [cursor=pointer]:
+            - generic [ref=e2324]: 半决赛
+            - generic [ref=e2325]: 03:00 (UTC+8) · 达拉斯
+            - generic [ref=e2326]:
+              - generic [ref=e2328]: 胜者97
+              - generic [ref=e2329]:
+                - text: vs
+                - generic [ref=e2330]: LIVE
+              - generic [ref=e2332]: 胜者98
+            - generic [ref=e2333]: 达拉斯
+        - generic [ref=e2334]:
+          - generic [ref=e2335]: 7月16日 周四
+          - generic [ref=e2337] [cursor=pointer]:
+            - generic [ref=e2338]: 半决赛
+            - generic [ref=e2339]: 03:00 (UTC+8) · 亚特兰大
+            - generic [ref=e2340]:
+              - generic [ref=e2342]: 胜者99
+              - generic [ref=e2343]:
+                - text: vs
+                - generic [ref=e2344]: LIVE
+              - generic [ref=e2346]: 胜者100
+            - generic [ref=e2347]: 亚特兰大
+        - generic [ref=e2348]:
+          - generic [ref=e2349]: 7月19日 周日
+          - generic [ref=e2351] [cursor=pointer]:
+            - generic [ref=e2352]: 三四名决赛
+            - generic [ref=e2353]: 05:00 (UTC+8) · 迈阿密
+            - generic [ref=e2354]:
+              - generic [ref=e2356]: 败者101
+              - generic [ref=e2357]:
+                - text: vs
+                - generic [ref=e2358]: LIVE
+              - generic [ref=e2360]: 败者102
+            - generic [ref=e2361]: 迈阿密
+        - generic [ref=e2362]:
+          - generic [ref=e2363]: 7月20日 周一
+          - generic [ref=e2365] [cursor=pointer]:
+            - generic [ref=e2366]: 决赛
+            - generic [ref=e2367]: 03:00 (UTC+8) · 纽约/新泽西
+            - generic [ref=e2368]:
+              - generic [ref=e2370]: 胜者101
+              - generic [ref=e2371]:
+                - text: vs
+                - generic [ref=e2372]: LIVE
+              - generic [ref=e2374]: 胜者102
+            - generic [ref=e2375]: 纽约/新泽西
+  - contentinfo [ref=e1199]:
+    - paragraph [ref=e1200]:
+      - text: "比分 & 积分榜: ESPN | 赛程:"
+      - link "openfootball/worldcup.json" [ref=e1201] [cursor=pointer]:
+        - /url: https://github.com/openfootball/worldcup.json

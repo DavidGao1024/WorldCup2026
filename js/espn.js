@@ -50,8 +50,8 @@ async function fetchEspnScores() {
       var t1 = mapEspnName(c.competitors[0].team.displayName);
       var t2 = mapEspnName(c.competitors[1].team.displayName);
       // 双向 key，方便匹配
-      map[date + '|' + t1 + '|' + t2] = { score1: parseInt(s1), score2: parseInt(s2) };
-      map[date + '|' + t2 + '|' + t1] = { score1: parseInt(s2), score2: parseInt(s1) };
+      map[date + '|' + t1 + '|' + t2] = { score1: parseInt(s1), score2: parseInt(s2), state: state };
+      map[date + '|' + t2 + '|' + t1] = { score1: parseInt(s2), score2: parseInt(s1), state: state };
     });
     return map;
   } catch (e) {

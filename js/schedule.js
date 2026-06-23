@@ -52,10 +52,13 @@ function renderSchedule(filterGroup, filterTeam) {
       var isGroup = m.group && m.group.indexOf('Group ') === 0;
       var stageLabel = isGroup ? m.group : t(roundKey(m.round));
       var hasScore = m.score1 != null && m.score2 != null;
+      var isLive = m.status === 'in';
       var scoreDisplay = hasScore ? m.score1 + ' - ' + m.score2 : t('vs');
+      var liveBadge = isLive ? '<span class="live-badge">LIVE</span>' : '';
       var venueName = trVenue(m.ground);
 
       html += '<div class="match-card" data-match-num="' + m.num + '" style="cursor:pointer">' +
+        liveBadge +
         (!isGroup ? '<span class="match-round">' + stageLabel + '</span>' : '') +
         '<div class="match-time">' + time + ' (' + getUTCOffsetStr() + ') · ' + venueName + '</div>' +
         '<div class="match-teams">' +

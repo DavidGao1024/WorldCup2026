@@ -64,6 +64,10 @@ function mergeScoresIntoData(scoreMap) {
         m.score2 = entry.score2;
         changed = true;
       }
+      if (m.status !== entry.state) {
+        m.status = entry.state;
+        changed = true;
+      }
     }
   });
   return changed;
