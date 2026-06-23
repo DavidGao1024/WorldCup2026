@@ -454,6 +454,17 @@ function getFieldXY(player, categories, formation) {
     }
     if (Array.isArray(rowY)) rowY = rowY[rowY.length - 1]; // fallback
   }
+  // FWD 溢出分流：当阵型含4段且前锋数超过最后一段时，溢出的去 AM 排
+  if (cat === 'FWD' && rows.AM) {
+    var parts = (formation || '4-4-2').split('-').map(Number).filter(function(n) { return n > 0; });
+    var fwdCount = parts[parts.length - 1];
+    if (categories.FWD.length > fwdCount) {
+      var sortedFwds = categories.FWD.slice();
+      sortedFwds.sort(function(a, b) { return fwdDepthRank(b.positionAbbr) - fwdDepthRank(a.positionAbbr); });
+      var fwdIdx = sortedFwds.indexOf(player);
+      rowY = fwdIdx < fwdCount ? rows.FWD : rows.AM;
+    }
+  }
   var y = (typeof rowY === 'number') ? rowY : 48;
 
   // 同一排（同 Y）的球员按左→右排序
@@ -504,6 +515,8 @@ function getFormationYRows(formation, categories) {
 
   var result = { GK: yPositions[0], DEF: yPositions[1], FWD: yPositions[yPositions.length - 1] };
   result.MID = midParts.length === 1 ? yPositions[2] : yPositions.slice(2, 2 + midParts.length);
+  // 阵型含4段以上时，预留攻击前锋排，供 FWD 溢出球员使用
+  if (parts.length >= 4) result.AM = 34;
   return result;
 }
 
@@ -516,7 +529,20 @@ function getMidParts(formation) {
 
 // 获取同一排（同 Y）的球员
 function getPeersInRow(player, cat, categories, formation) {
-  if (cat === 'GK' || cat === 'DEF' || cat === 'FWD') return categories[cat];
+  if (cat === 'GK' || cat === 'DEF') return categories[cat];
+  if (cat === 'FWD') {
+    // 检查是否有 AM 排导致前锋分流
+    var parts = (formation || '4-4-2').split('-').map(Number).filter(function(n) { return n > 0; });
+    if (parts.length >= 4 && categories.FWD.length > parts[parts.length - 1]) {
+      var sortedFwds = categories.FWD.slice();
+      sortedFwds.sort(function(a, b) { return fwdDepthRank(b.positionAbbr) - fwdDepthRank(a.positionAbbr); });
+      var fwdCount = parts[parts.length - 1];
+      var fwdIdx = sortedFwds.indexOf(player);
+      if (fwdIdx < fwdCount) return sortedFwds.slice(0, fwdCount);
+      return sortedFwds.slice(fwdCount);
+    }
+    return categories[cat];
+  }
 
   // MID: 按深度分组
   var midParts = getMidParts(formation);
@@ -548,6 +574,15 @@ function midDepthRank(abbr) {
   if (/^(DM|CDM|LDM|RDM)/.test(a)) return 0;
   if (/^(AM|CAM|LAM|RAM)/.test(a)) return 2;
   return 1; // CM, LM, RM etc.
+}
+
+// 前锋深度排序：越深排越靠前（Y越小），CF/ST最深，边锋最浅
+function fwdDepthRank(abbr) {
+  var a = (abbr || '').toUpperCase();
+  if (a === 'CF' || a === 'ST') return 3;
+  if (/^(CF-|ST-)/.test(a)) return 2;
+  if (a === 'F' || a === 'FW') return 1;
+  return 0; // LW, RW, LF, RF
 }
 
 // 位置排序值：左=0, 中=2, 右=4
