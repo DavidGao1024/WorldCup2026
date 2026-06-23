@@ -136,7 +136,10 @@ const I18N = {
     analysisRetry: '检查网络连接后',
     analysisClickRetry: '点击重试',
     analysisNoSchedule: '赛程数据不可用，请先切换到赛程页签加载数据',
-    analysisNoMatches: '当前无可分析的小组赛比赛'
+    analysisNoMatches: '当前无可分析的小组赛比赛',
+    predTitle: '赛前预测',
+    predScore: '预测比分',
+    predSource: '※ 综合Elo评分、近期状态、市场赔率计算',
   },
   en: {
     title: 'World Cup 2026',
@@ -274,7 +277,10 @@ const I18N = {
     analysisRetry: 'Check your network and',
     analysisClickRetry: 'tap to retry',
     analysisNoSchedule: 'Schedule data unavailable, please load the schedule tab first',
-    analysisNoMatches: 'No group stage matches available for analysis'
+    analysisNoMatches: 'No group stage matches available for analysis',
+    predTitle: 'Pre-Match Prediction',
+    predScore: 'Predicted Scores',
+    predSource: '* Based on Elo ratings, recent form & market odds',
   }
 };
 

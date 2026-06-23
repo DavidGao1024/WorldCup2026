@@ -1070,6 +1070,31 @@ body {
 .odds-ref-val { color: #aaa; }
 .odds-ref-verdict { color: #86efac; font-size: 0.75rem; margin-left: auto; }
 
+/* Prediction section */
+.analysis-prediction {
+  padding: 14px 20px;
+  border-top: 1px solid rgba(255,215,0,0.15);
+  background: rgba(255,215,0,0.03);
+}
+.pred-title { font-size: 0.8rem; font-weight: 700; color: #ffd700; margin-bottom: 10px; }
+.pred-bar-wrap { margin-bottom: 8px; }
+.pred-bar { display: flex; height: 24px; border-radius: 4px; overflow: hidden; }
+.pred-fill { display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 700; color: #fff; white-space: nowrap; overflow: hidden; transition: width 0.5s; }
+.pred-fill-t { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+.pred-fill-d { background: linear-gradient(135deg, #6b7280, #4b5563); }
+.pred-fill-o { background: linear-gradient(135deg, #ef4444, #dc2626); }
+.pred-legend { display: flex; gap: 16px; font-size: 0.72rem; color: #94a3b8; margin-bottom: 8px; flex-wrap: wrap; }
+.pred-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; vertical-align: middle; }
+.pred-dot-t { background: #3b82f6; }
+.pred-dot-d { background: #6b7280; }
+.pred-dot-o { background: #ef4444; }
+.pred-verdict { font-size: 0.75rem; color: #86efac; line-height: 1.5; }
+.pred-scores { margin-top: 8px; display: flex; align-items: center; gap: 8px; font-size: 0.72rem; }
+.pred-score-label { color: #64748b; }
+.pred-score-val { color: #ffd700; font-weight: 700; font-size: 0.85rem; }
+.pred-score-pct { color: #94a3b8; }
+.pred-source { font-size: 0.65rem; color: #64748b; margin-top: 4px; }
+
 /* Recommendations */
 .analysis-recommendations { margin-top: 8px; padding-bottom: 80px; }
 .analysis-rec-header {

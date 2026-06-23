@@ -5,17 +5,15 @@ function loadAnalysisData() {
   return Promise.all([
     fetch('data/fifa-rankings.json').then(function(r) { return r.json(); }),
     fetch('data/team-form.json').then(function(r) { return r.json(); }),
-    fetch('data/h2h.json').then(function(r) { return r.json(); }),
     fetch('data/stadiums.json').then(function(r) { return r.json(); }),
     fetch('data/injuries.json').then(function(r) { return r.json(); }).catch(function() { return {}; })
   ]).then(function(results) {
     analysisData.rankings = results[0];
     analysisData.forms = results[1];
-    analysisData.h2h = results[2];
-    analysisData.stadiums = results[3];
+    analysisData.stadiums = results[2];
     // 合并静态伤病数据 + ESPN 实时停赛数据
     analysisData.injuries = mergeInjuryAndSuspensionData(
-      results[4],
+      results[3],
       (typeof worldCupSuspensions !== 'undefined' && worldCupSuspensions) ? worldCupSuspensions : {}
     );
     return analysisData;
@@ -58,7 +56,6 @@ function mergeInjuryAndSuspensionData(injuryData, suspensionData) {
 function computeMatchScore(team, opponent, ground, matchDate) {
   var rank = analysisData.rankings || {};
   var form = analysisData.forms || {};
-  var h2h = analysisData.h2h || {};
   var stadiums = analysisData.stadiums || {};
   var injuries = analysisData.injuries || {};
 
@@ -84,13 +81,7 @@ function computeMatchScore(team, opponent, ground, matchDate) {
   scores.form = Math.round(formScore - oppFormScore + 15);
   scores.form = Math.max(0, Math.min(30, scores.form));
 
-  // 3. H2H (10 pts)
-  var h2hKey1 = team + '_' + opponent;
-  var h2hKey2 = opponent + '_' + team;
-  var h2hData = h2h[h2hKey1] || h2h[h2hKey2] || [];
-  scores.h2h = computeH2hScore(h2hData, team, opponent);
-
-  // 4. Squad value (10 pts)
+  // 3. Squad value (10 pts)
   var tv = parseSquadValue(t.squadValue);
   var ov = parseSquadValue(o.squadValue);
   scores.squad = Math.round(Math.min(10, Math.max(0, (tv - ov) / 0.8 + 5)));
@@ -108,29 +99,19 @@ function computeMatchScore(team, opponent, ground, matchDate) {
   // 7. Home/host advantage (15 pts)
   scores.host = computeHostScore(team, opponent, stadium);
 
-  // 8. Travel fatigue (10 pts)
-  scores.travel = computeTravelScore(team, opponent, stadium, ground);
-
-  // 9. Altitude (5 pts)
-  scores.altitude = computeAltitudeScore(team, opponent, stadium);
-
-  // 10. Group standing situation (10 pts)
+  // 8. Group standing situation (10 pts)
   scores.situation = computeSituationScore(team, opponent, matchDate);
 
-  // 11. Average age (5 pts)
-  var ageDiff = (t.avgAge - o.avgAge);
-  scores.age = Math.round(Math.max(0, Math.min(5, 2.5 + ageDiff * 0.5)));
-
-  // 12. Injuries & suspensions (5 pts)
+  // 9. Injuries & suspensions (5 pts)
   var tInj = injuries[team] || { injuries: 0, suspensions: 0 };
   var oInj = injuries[opponent] || { injuries: 0, suspensions: 0 };
   var tPenalty = tInj.injuries * 1.5 + tInj.suspensions * 3;
   var oPenalty = oInj.injuries * 1.5 + oInj.suspensions * 3;
   scores.injury = Math.round(Math.max(0, Math.min(5, 2.5 + (oPenalty - tPenalty) * 0.8)));
 
-  var total = scores.ranking + scores.form + scores.h2h + scores.squad +
-              scores.attack + scores.defense + scores.host + scores.travel +
-              scores.altitude + scores.situation + scores.age + scores.injury;
+  var total = scores.ranking + scores.form + scores.squad +
+              scores.attack + scores.defense + scores.host +
+              scores.situation + scores.injury;
   total = Math.round(total);
   total = Math.max(5, Math.min(95, total));
   var maxTotal = 100;
@@ -146,6 +127,155 @@ function computeMatchScore(team, opponent, ground, matchDate) {
     oppRank: o,
     teamForm: tf,
     oppForm: of
+  };
+}
+
+// 泊松分布比分预测 — 基于分析得分推导预期进球
+function predictScores(result) {
+  // 从分析得分反推两队实力比
+  var tScore = result.teamTotal;
+  var oScore = result.oppTotal;
+
+  // 世界杯场均进球约2.6，按得分比分配
+  var totalGoals = 2.6;
+  var tRatio = tScore / (tScore + oScore);
+
+  // 进攻得分高 → 进球多于平均值；防守得分高 → 失球少于平均值
+  var tAtt = result.scores.attack / 10;   // 0~1 进攻评分归一化
+  var tDef = result.scores.defense / 10;  // 0~1 防守评分归一化
+
+  var tExp = totalGoals * tRatio * (0.7 + tAtt * 0.6);
+  var oExp = totalGoals * (1 - tRatio) * (0.7 + (1 - tDef) * 0.6);
+
+  // 排名差修正
+  var rankDiff = (result.oppRank.rank || 60) - (result.teamRank.rank || 60);
+  tExp += rankDiff * 0.008;
+  oExp -= rankDiff * 0.008;
+
+  tExp = Math.max(0.2, Math.min(5, tExp));
+  oExp = Math.max(0.2, Math.min(5, oExp));
+
+  function poisson(k, lam) {
+    if (k < 0 || lam <= 0) return 0;
+    var v = Math.exp(-lam);
+    for (var i = 1; i <= k; i++) v *= lam / i;
+    return v;
+  }
+
+  var scores = [];
+  for (var i = 0; i <= 6; i++) {
+    for (var j = 0; j <= 6; j++) {
+      if (i === j && i > 4) continue;
+      scores.push({ home: i, away: j, prob: poisson(i, tExp) * poisson(j, oExp) });
+    }
+  }
+  scores.sort(function(a, b) { return b.prob - a.prob; });
+
+  return {
+    top1: scores[0] ? (scores[0].home + '-' + scores[0].away) : '1-0',
+    top1Pct: scores[0] ? Math.round(scores[0].prob * 100) : 0,
+    top2: scores[1] ? (scores[1].home + '-' + scores[1].away) : '2-0',
+    top2Pct: scores[1] ? Math.round(scores[1].prob * 100) : 0
+  };
+}
+
+// ---- 赛前预测引擎（Elo + 状态 + 市场赔率） ----
+
+function computePrediction(result, m) {
+  var rankings = analysisData.rankings || {};
+  var forms = analysisData.forms || {};
+  var injuries = analysisData.injuries || {};
+
+  var t = rankings[result.team] || { elo: 1100, rank: 60 };
+  var o = rankings[result.opponent] || { elo: 1100, rank: 60 };
+  var tf = forms[result.team] || { formScore: 40 };
+  var of = forms[result.opponent] || { formScore: 40 };
+  var tInj = injuries[result.team] || { injuries: 0, suspensions: 0 };
+  var oInj = injuries[result.opponent] || { injuries: 0, suspensions: 0 };
+
+  // 第一步：Elo基础胜率（权重35%）
+  var eloDiff = t.elo - o.elo;
+  var eloWinProb = 1 / (1 + Math.pow(10, -eloDiff / 400));
+
+  // 第二步：状态修正（权重25%）
+  var formDiff = tf.formScore - of.formScore;
+  var formWinProb = 0.5 + formDiff / 200;
+  formWinProb = Math.max(0.1, Math.min(0.9, formWinProb));
+
+  // 第三步：环境修正（权重15%）
+  var tPenalty = (tInj.injuries || 0) * 1.5 + (tInj.suspensions || 0) * 3;
+  var oPenalty = (oInj.injuries || 0) * 1.5 + (oInj.suspensions || 0) * 3;
+  var envAdj = (oPenalty - tPenalty) * 0.02;
+  envAdj += (o.rank - t.rank) * 0.003;
+  var venue = (m && m.ground) ? m.ground.toLowerCase() : '';
+  var hostTeams = ['united states', 'usa', 'mexico', 'canada'];
+  for (var hi = 0; hi < hostTeams.length; hi++) {
+    if (result.team.toLowerCase().indexOf(hostTeams[hi]) >= 0 && (venue.indexOf('united states') >= 0 || venue.indexOf('mexico') >= 0 || venue.indexOf('canada') >= 0)) {
+      envAdj += 0.08; break;
+    }
+  }
+  var envWinProb = 0.5 + envAdj;
+  envWinProb = Math.max(0.1, Math.min(0.9, envWinProb));
+
+  // 三步融合
+  var rawWinProb = eloWinProb * 0.35 + formWinProb * 0.25 + envWinProb * 0.15;
+
+  // 第四步：市场赔率校准（权重25%）
+  var marketWinProb = null;
+  if (typeof lotteryData !== 'undefined' && lotteryData && lotteryData._matches) {
+    var lm = lotteryData._matches;
+    for (var mk = 0; mk < lm.length; mk++) {
+      var had = lm[mk].pools.HAD;
+      if (!had) continue;
+      var lh = TEAM_ZH_REVERSE[lm[mk].homeTeam] || lm[mk].homeTeamEn;
+      var la = TEAM_ZH_REVERSE[lm[mk].awayTeam] || lm[mk].awayTeamEn;
+      if ((lh === result.team && la === result.opponent) || (lh === result.opponent && la === result.team)) {
+        var isHome = lh === result.team;
+        var hImp = 1 / had.h, dImp = 1 / had.d, aImp = 1 / had.a;
+        var totalImp = hImp + dImp + aImp;
+        marketWinProb = {
+          tProb: (isHome ? hImp : aImp) / totalImp,
+          dProb: dImp / totalImp,
+          oProb: (isHome ? aImp : hImp) / totalImp
+        };
+        break;
+      }
+    }
+  }
+
+  if (marketWinProb) {
+    rawWinProb = rawWinProb * 0.75 + marketWinProb.tProb * 0.25;
+  } else {
+    rawWinProb = rawWinProb / 0.75;
+  }
+
+  // 平局概率
+  var gap = Math.abs(result.teamTotal - result.oppTotal);
+  var drawBase = 0.28;
+  var drawFactor = Math.max(0.05, drawBase - gap * 0.006);
+  if (marketWinProb) drawFactor = drawFactor * 0.5 + marketWinProb.dProb * 0.5;
+
+  var rem = 1 - drawFactor;
+  var tFinal = rawWinProb * rem;
+  var oFinal = (1 - rawWinProb) * rem;
+
+  var verdict = '';
+  if (gap >= 25) verdict = '实力差距明显，' + result.team + '取胜概率很高';
+  else if (gap >= 12) verdict = result.team + '占优，但' + result.opponent + '有能力制造麻烦';
+  else verdict = '势均力敌，任何结果都有可能';
+
+  var scores = predictScores(result);
+
+  return {
+    teamProb: Math.round(tFinal * 100),
+    drawProb: Math.round(drawFactor * 100),
+    oppProb: Math.round(oFinal * 100),
+    verdict: verdict,
+    hasMarket: !!marketWinProb,
+    score1: scores.top1,
+    score1Pct: scores.top1Pct,
+    score2: scores.top2,
+    score2Pct: scores.top2Pct
   };
 }
 
@@ -302,23 +432,6 @@ function computeFormScore(formData, isTeam) {
   return totalWeight > 0 ? Math.round(weighted / totalWeight) : score;
 }
 
-function computeH2hScore(h2hData, team, opponent) {
-  if (h2hData.length === 0) return 5; // no history = neutral
-  var wins = 0, total = h2hData.length;
-  var weightedWins = 0;
-  for (var i = 0; i < h2hData.length; i++) {
-    var r = h2hData[i];
-    var parts = r.result.split('-');
-    var g1 = parseInt(parts[0]), g2 = parseInt(parts[1]);
-    var isHome = r.venue.indexOf(team) !== -1;
-    var w = 1 + (h2hData.length - i) * 0.2; // recency
-    if (g1 > g2) { wins++; weightedWins += w; }
-    if (g1 < g2) { weightedWins -= w * 0.7; }
-  }
-  var ratio = weightedWins / Math.max(1, total);
-  return Math.round(Math.max(0, Math.min(10, 5 + ratio * 6)));
-}
-
 function computeHostScore(team, opponent, stadium) {
   var hostCountries = ['美国', '加拿大', '墨西哥'];
   if (!stadium) return 7;
@@ -332,46 +445,6 @@ function computeHostScore(team, opponent, stadium) {
   if (stadium.country === '加拿大' && tRank.conf === 'CONCACAF') return 12;
   if (stadium.country === '美国' && tRank.conf === 'CONCACAF') return 12;
   return 7;
-}
-
-function computeTravelScore(team, opponent, stadium, ground) {
-  // Simplified: if stadium is known, assume CONCACAF teams travel less
-  if (!stadium) return 5;
-  var tRank = analysisData.rankings[team] || {};
-  var oRank = analysisData.rankings[opponent] || {};
-
-  var tTravel = travelDistance(tRank.conf, stadium.country);
-  var oTravel = travelDistance(oRank.conf, stadium.country);
-
-  var diff = oTravel - tTravel;
-  return Math.round(Math.max(0, Math.min(10, 5 + diff)));
-}
-
-function travelDistance(conf, hostCountry) {
-  if (hostCountry === '墨西哥' || hostCountry === '美国' || hostCountry === '加拿大') {
-    if (conf === 'CONCACAF') return 0;
-    if (conf === 'CONMEBOL') return 2;
-    if (conf === 'UEFA') return 4;
-    if (conf === 'CAF') return 5;
-    if (conf === 'AFC') return 6;
-    if (conf === 'OFC') return 8;
-  }
-  return 3;
-}
-
-function computeAltitudeScore(team, opponent, stadium) {
-  if (!stadium || stadium.alt < 1000) return 3;
-  var tRank = analysisData.rankings[team] || {};
-  var oRank = analysisData.rankings[opponent] || {};
-
-  // CONMEBOL teams (especially Bolivia, Ecuador, Peru, Colombia) handle altitude better
-  var highAltConfs = ['CONMEBOL'];
-  var tAdapted = highAltConfs.indexOf(tRank.conf) !== -1;
-  var oAdapted = highAltConfs.indexOf(oRank.conf) !== -1;
-
-  if (tAdapted && !oAdapted && stadium.alt > 1500) return 5;
-  if (!tAdapted && !oAdapted && stadium.alt > 1500) return 2;
-  return 3;
 }
 
 function computeSituationScore(team, opponent, matchDate) {
@@ -493,21 +566,6 @@ function generateInsights(result) {
     insights.push({ icon: '💪', text: tName + '近一年对阵TOP15球队' + strongOpps.length + '场，取得' + sw + '胜，抗强能力' + (sw >= strongOpps.length * 0.5 ? '出色' : '一般') });
   }
 
-  // H2H analysis
-  var h2hKey1 = result.team + '_' + result.opponent;
-  var h2hKey2 = result.opponent + '_' + result.team;
-  var h2hData = (analysisData.h2h[h2hKey1] || analysisData.h2h[h2hKey2] || []);
-  if (h2hData.length >= 3) {
-    var hw = 0;
-    for (var h = 0; h < h2hData.length; h++) {
-      var parts = h2hData[h].result.split('-');
-      if (parseInt(parts[0]) > parseInt(parts[1])) hw++;
-    }
-    insights.push({ icon: '📜', text: '历史交锋' + h2hData.length + '次，' + tName + '战绩' + hw + '胜' + (h2hData.length - hw) + '负' + (h2hData.length - hw) + '平' });
-  } else if (h2hData.length === 0) {
-    insights.push({ icon: '🆕', text: '两队暂无历史交锋记录，属于遭遇战' });
-  }
-
   // Squad value gap
   var tv = parseSquadValue(result.teamRank.squadValue);
   var ov = parseSquadValue(result.oppRank.squadValue);
@@ -517,31 +575,9 @@ function generateInsights(result) {
     insights.push({ icon: '💎', text: oName + '身价€' + ov.toFixed(1) + '亿远超' + tName + '(€' + tv.toFixed(1) + '亿)，但身价不决定一切' });
   }
 
-  // Altitude warning
-  if (result.scores.altitude >= 5) {
-    insights.push({ icon: '⛰️', text: '本场在海拔' + (analysisData.stadiums[result.ground] ? analysisData.stadiums[result.ground].alt + 'm' : '高海拔') + '进行，' + tName + '更适应高原作战' });
-  } else if (result.scores.altitude <= 2) {
-    insights.push({ icon: '⛰️', text: '高海拔球场对' + oName + '不利，' + tName + '有一定高原优势' });
-  }
-
-  // Travel fatigue
-  if (result.scores.travel >= 7) {
-    insights.push({ icon: '✈️', text: tName + '旅途距离远小于对手，体能恢复占优' });
-  } else if (result.scores.travel <= 3) {
-    insights.push({ icon: '🛫', text: oName + '长途跋涉累计距离大，体能可能受影响' });
-  }
-
   // Host advantage
   if (result.scores.host >= 12) {
     insights.push({ icon: '🏟️', text: tName + '享受主场东道主优势，球迷支持度极高' });
-  }
-
-  // Age factor
-  var ageDiff = result.teamRank.avgAge - result.oppRank.avgAge;
-  if (ageDiff > 3) {
-    insights.push({ icon: '🧓', text: tName + '平均年龄' + result.teamRank.avgAge + '岁偏大，密集赛程需轮换' });
-  } else if (ageDiff < -3) {
-    insights.push({ icon: '🧒', text: tName + '平均年龄仅' + result.teamRank.avgAge + '岁，年轻有活力但经验不足' });
   }
 
   // Injury / suspension
@@ -699,15 +735,11 @@ function renderAnalysisCard(result, insights, m, idx) {
   html += '<div class="analysis-dims">';
   html += renderDimRow(t('analysisRanking'), tl.rank, ol.rank, result.scores.ranking, 20, tl.rank < ol.rank);
   html += renderDimRow(t('analysisForm'), result.teamForm.formScore, result.oppForm.formScore, result.scores.form, 25, result.teamForm.formScore > result.oppForm.formScore);
-  html += renderDimRow(t('analysisH2H'), '-', '-', result.scores.h2h, 10, result.scores.h2h > 5);
   html += renderDimRow(t('analysisSquad'), tl.squadValue, ol.squadValue, result.scores.squad, 10, parseSquadValue(tl.squadValue) > parseSquadValue(ol.squadValue));
   html += renderDimRow(t('analysisAttack'), (typeof computeAvgGoals==='function'?computeAvgGoals(result.teamForm).toFixed(1):'-') + '球/场', (typeof computeAvgGoals==='function'?computeAvgGoals(result.oppForm).toFixed(1):'-') + '球/场', result.scores.attack, 10, result.scores.attack > 5);
   html += renderDimRow(t('analysisDefense'), (typeof computeAvgConc==='function'?computeAvgConc(result.teamForm).toFixed(1):'-') + '失/场', (typeof computeAvgConc==='function'?computeAvgConc(result.oppForm).toFixed(1):'-') + '失/场', result.scores.defense, 10, result.scores.defense > 5);
   html += renderDimRow(t('analysisHost'), '-', '-', result.scores.host, 15, result.scores.host > 7);
-  html += renderDimRow(t('analysisTravel'), '-', '-', result.scores.travel, 10, result.scores.travel > 5);
-  html += renderDimRow(t('analysisAltitude'), '-', '-', result.scores.altitude, 5, result.scores.altitude > 3);
   html += renderDimRow(t('analysisSituation'), '-', '-', result.scores.situation, 10, result.scores.situation > 5);
-  html += renderDimRow(t('analysisAge'), tl.avgAge + '岁', ol.avgAge + '岁', result.scores.age, 5, tl.avgAge < ol.avgAge);
   var tInjDisplay = '-', oInjDisplay = '-';
   if (typeof analysisData !== 'undefined' && analysisData.injuries) {
     var injT = analysisData.injuries[result.team] || {};
@@ -749,6 +781,31 @@ function renderAnalysisCard(result, insights, m, idx) {
       }
     }
   }
+
+  // 赛前预测概率
+  var pred = computePrediction(result, m);
+  html += '<div class="analysis-prediction">';
+  html += '<div class="pred-title">' + t('predTitle') + '</div>';
+  html += '<div class="pred-bar-wrap"><div class="pred-bar">';
+  html += '<div class="pred-fill pred-fill-t" style="width:' + pred.teamProb + '%">' + (pred.teamProb >= 15 ? result.team + ' ' + pred.teamProb + '%' : '') + '</div>';
+  html += '<div class="pred-fill pred-fill-d" style="width:' + pred.drawProb + '%">' + (pred.drawProb >= 12 ? t('lotteryDraw') + ' ' + pred.drawProb + '%' : '') + '</div>';
+  html += '<div class="pred-fill pred-fill-o" style="width:' + pred.oppProb + '%">' + (pred.oppProb >= 15 ? result.opponent + ' ' + pred.oppProb + '%' : '') + '</div>';
+  html += '</div></div>';
+  html += '<div class="pred-legend">';
+  html += '<span class="pred-dot pred-dot-t"></span>' + result.team + ' ' + pred.teamProb + '%';
+  html += '<span class="pred-dot pred-dot-d"></span>' + t('lotteryDraw') + ' ' + pred.drawProb + '%';
+  html += '<span class="pred-dot pred-dot-o"></span>' + result.opponent + ' ' + pred.oppProb + '%';
+  html += '</div>';
+  html += '<div class="pred-verdict">' + pred.verdict + '</div>';
+  html += '<div class="pred-scores">';
+  html += '<span class="pred-score-label">' + t('predScore') + '</span>';
+  html += '<span class="pred-score-val">' + pred.score1 + '</span><span class="pred-score-pct">' + pred.score1Pct + '%</span>';
+  html += '<span class="pred-score-val">' + pred.score2 + '</span><span class="pred-score-pct">' + pred.score2Pct + '%</span>';
+  html += '</div>';
+  if (pred.hasMarket) {
+    html += '<div class="pred-source">' + t('predSource') + '</div>';
+  }
+  html += '</div>';
 
   html += '</div>';
   return html;
