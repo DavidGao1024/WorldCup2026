@@ -132,28 +132,32 @@ function computeMatchScore(team, opponent, ground, matchDate) {
 
 // 泊松分布比分预测 — 基于分析得分推导预期进球
 function predictScores(result) {
-  // 从分析得分反推两队实力比
   var tScore = result.teamTotal;
   var oScore = result.oppTotal;
+  var gap = result.gap;
 
-  // 世界杯场均进球约2.6，按得分比分配
-  var totalGoals = 2.6;
-  var tRatio = tScore / (tScore + oScore);
+  // 世界杯场均进球约2.5，固定基数（差距已体现在比率中）
+  var totalGoals = 2.5;
 
-  // 进攻得分高 → 进球多于平均值；防守得分高 → 失球少于平均值
-  var tAtt = result.scores.attack / 10;   // 0~1 进攻评分归一化
-  var tDef = result.scores.defense / 10;  // 0~1 防守评分归一化
+  // 压缩极端比率：足球方差大，任何队至少保留25%进球份额
+  var rawRatio = tScore / (tScore + oScore);
+  var tRatio = 0.25 + (rawRatio - 0.25) * 0.6;
+  tRatio = Math.max(0.25, Math.min(0.75, tRatio));
+
+  var tAtt = result.scores.attack / 10;
+  var tDef = result.scores.defense / 10;
 
   var tExp = totalGoals * tRatio * (0.7 + tAtt * 0.6);
   var oExp = totalGoals * (1 - tRatio) * (0.7 + (1 - tDef) * 0.6);
 
-  // 排名差修正
+  // 排名差修正（缩小系数）
   var rankDiff = (result.oppRank.rank || 60) - (result.teamRank.rank || 60);
-  tExp += rankDiff * 0.008;
-  oExp -= rankDiff * 0.008;
+  tExp += rankDiff * 0.005;
+  oExp -= rankDiff * 0.005;
 
-  tExp = Math.max(0.2, Math.min(5, tExp));
-  oExp = Math.max(0.2, Math.min(5, oExp));
+  // 更严格的预期进球上限（单队不超过3.0）
+  tExp = Math.max(0.3, Math.min(3.0, tExp));
+  oExp = Math.max(0.3, Math.min(3.0, oExp));
 
   function poisson(k, lam) {
     if (k < 0 || lam <= 0) return 0;
@@ -162,13 +166,25 @@ function predictScores(result) {
     return v;
   }
 
+  // 平局修正：差距越小平局概率越高（差距>60不做修正）
+  var absGap = Math.abs(gap);
+  var drawBoost = 1 + Math.max(0, (1 - absGap / 60)) * 2.5;
+
   var scores = [];
   for (var i = 0; i <= 6; i++) {
     for (var j = 0; j <= 6; j++) {
       if (i === j && i > 4) continue;
-      scores.push({ home: i, away: j, prob: poisson(i, tExp) * poisson(j, oExp) });
+      var prob = poisson(i, tExp) * poisson(j, oExp);
+      if (i === j) prob *= drawBoost;
+      scores.push({ home: i, away: j, prob: prob });
     }
   }
+
+  // 归一化
+  var totalProb = 0;
+  for (var si = 0; si < scores.length; si++) totalProb += scores[si].prob;
+  for (var si = 0; si < scores.length; si++) scores[si].prob /= totalProb;
+
   scores.sort(function(a, b) { return b.prob - a.prob; });
 
   return {
@@ -366,7 +382,16 @@ function computeAvgGoals(formData) {
   for (var i = 0; i < recents.length; i++) {
     if (recents[i].result === '未赛') continue;
     var parts = recents[i].result.split('-');
-    total += parseInt(parts[0]) || 0;
+    var goals = parseInt(parts[0]) || 0;
+    // 对手强度归一化：强队防线更难破，进球含金量更高
+    var oppRank = recents[i].oppRank || 40;
+    var factor = 1.0;
+    if (oppRank <= 15) factor = 1.5;
+    else if (oppRank <= 30) factor = 1.2;
+    else if (oppRank <= 50) factor = 1.0;
+    else if (oppRank <= 80) factor = 0.7;
+    else factor = 0.5;
+    total += goals * factor;
     count++;
   }
   return count > 0 ? total / count : 1.3;
@@ -379,7 +404,16 @@ function computeAvgConc(formData) {
   for (var i = 0; i < recents.length; i++) {
     if (recents[i].result === '未赛') continue;
     var parts = recents[i].result.split('-');
-    total += parseInt(parts[1]) || 0;
+    var conc = parseInt(parts[1]) || 0;
+    // 对手强度归一化：被强队进球正常，被弱队进球严重
+    var oppRank = recents[i].oppRank || 40;
+    var factor = 1.0;
+    if (oppRank <= 15) factor = 0.7;
+    else if (oppRank <= 30) factor = 0.85;
+    else if (oppRank <= 50) factor = 1.0;
+    else if (oppRank <= 80) factor = 1.2;
+    else factor = 1.5;
+    total += conc * factor;
     count++;
   }
   return count > 0 ? total / count : 1.3;
@@ -599,6 +633,127 @@ function generateInsights(result) {
 
 // ---- Render ----
 
+function getFinalRoundGroups(upcomingMatches) {
+  // Group matches by group
+  var groups = {};
+  for (var i = 0; i < upcomingMatches.length; i++) {
+    var m = upcomingMatches[i];
+    if (!m.group || m.group.indexOf('Group') !== 0) continue;
+    var gn = m.group;
+    if (!groups[gn]) groups[gn] = [];
+    groups[gn].push(m);
+  }
+
+  // Check which groups are in final round (all teams have played 2 matches)
+  var finalGroups = {};
+  for (var gn in groups) {
+    // Get all matches for this group from worldCupData
+    var allMs = [];
+    for (var j = 0; j < worldCupData.matches.length; j++) {
+      if (worldCupData.matches[j].group === gn) allMs.push(worldCupData.matches[j]);
+    }
+    allMs.sort(function(a, b) { return a.date.localeCompare(b.date); });
+
+    // Check if these upcoming matches are the last ones (no more matches after)
+    var upcomingDates = {};
+    for (var k = 0; k < groups[gn].length; k++) {
+      upcomingDates[groups[gn][k].date] = true;
+    }
+    var lastDate = allMs[allMs.length - 1].date;
+    var isFinal = Object.keys(upcomingDates).every(function(d) { return d === lastDate; });
+
+    if (!isFinal) continue;
+
+    // Compute current standings
+    var teams = {};
+    allMs.forEach(function(tm) { teams[tm.team1] = true; teams[tm.team2] = true; });
+    var recs = {};
+    for (var tn in teams) recs[tn] = { team: tn, played: 0, won: 0, drawn: 0, lost: 0, gf: 0, ga: 0, gd: 0, pts: 0 };
+    allMs.forEach(function(tm) {
+      if (tm.score1 == null || tm.score2 == null) return;
+      var t1 = recs[tm.team1], t2 = recs[tm.team2];
+      if (!t1 || !t2) return;
+      t1.played++; t2.played++; t1.gf += tm.score1; t1.ga += tm.score2; t1.gd = t1.gf - t1.ga;
+      t2.gf += tm.score2; t2.ga += tm.score1; t2.gd = t2.gf - t2.ga;
+      if (tm.score1 > tm.score2) { t1.won++; t2.lost++; t1.pts += 3; }
+      else if (tm.score1 < tm.score2) { t2.won++; t1.lost++; t2.pts += 3; }
+      else { t1.drawn++; t2.drawn++; t1.pts += 1; t2.pts += 1; }
+    });
+    var arr = [];
+    for (var tn in recs) arr.push(recs[tn]);
+    arr.sort(function(a, b) { return b.pts - a.pts || b.gd - a.gd || b.gf - a.gf; });
+
+    // Tag teams
+    var maxPtsPossible = arr[1] ? (arr[1].pts + 3) : 0;
+    for (var ti = 0; ti < arr.length; ti++) {
+      // Already qualified as group winner (can't be caught)
+      if (ti === 0 && arr[ti].pts >= maxPtsPossible && arr[ti].played === 2) {
+        arr[ti].qualified = true;
+        arr[ti].willRotate = true;
+      }
+      // Eliminated (can't reach 2nd place even with a win)
+      if (arr[ti].played === 2 && arr.length >= 2 && arr[ti].pts + 3 < arr[1].pts) {
+        arr[ti].eliminated = true;
+      }
+    }
+
+    // Build context for each upcoming match
+    var finalMatches = groups[gn].map(function(fm) {
+      var ctx = {};
+      var t1 = arr.find(function(x) { return x.team === fm.team1; });
+      var t2 = arr.find(function(x) { return x.team === fm.team2; });
+
+      if (t1 && t1.qualified) ctx.team1Rotate = true;
+      if (t2 && t2.qualified) ctx.team2Rotate = true;
+      if (t1 && t1.eliminated) ctx.team1Eliminated = true;
+      if (t2 && t2.eliminated) ctx.team2Eliminated = true;
+
+      // Check if draw suits both (both qualify with a draw)
+      if (t1 && t2 && !t1.qualified && !t2.qualified && !t1.eliminated && !t2.eliminated) {
+        // Simulate: if draw, do both qualify?
+        var drawT1Pts = t1.pts + 1, drawT2Pts = t2.pts + 1;
+        var othersMax = arr.filter(function(x) { return x.team !== t1.team && x.team !== t2.team; })
+                           .map(function(x) { return x.pts + 3; });
+        var worstOther = othersMax.length > 0 ? Math.max.apply(null, othersMax) : 0;
+        if (drawT1Pts > worstOther && drawT2Pts > worstOther) {
+          ctx.drawIncentive = true;
+        }
+      }
+
+      // Desperate teams (must win to qualify)
+      if (t1 && !t1.qualified && !t1.eliminated) {
+        // Check if draw is enough
+        var drawPts = t1.pts + 1;
+        var isDrawEnough = false;
+        if (t2) {
+          var otherMax = arr.filter(function(x) { return x.team !== t1.team && x.team !== t2.team; })
+                            .map(function(x) { return x.pts + 3; });
+          isDrawEnough = drawPts >= Math.max.apply(null, otherMax.concat([t2.pts + 1]));
+        }
+        if (!isDrawEnough) ctx.team1Desperate = true;
+      }
+      if (t2 && !t2.qualified && !t2.eliminated) {
+        var drawPts2 = t2.pts + 1;
+        var isDrawEnough2 = false;
+        if (t1) {
+          var otherMax2 = arr.filter(function(x) { return x.team !== t1.team && x.team !== t2.team; })
+                             .map(function(x) { return x.pts + 3; });
+          isDrawEnough2 = drawPts2 >= Math.max.apply(null, otherMax2.concat([t1.pts + 1]));
+        }
+        if (!isDrawEnough2) ctx.team2Desperate = true;
+      }
+
+      return { team1: fm.team1, team2: fm.team2, context: ctx };
+    });
+
+    if (finalMatches.length > 0) {
+      finalGroups[gn] = { teams: arr, matches: finalMatches };
+    }
+  }
+
+  return finalGroups;
+}
+
 function renderAnalysis() {
   var container = document.getElementById('analysis-content');
   if (!container) return;
@@ -670,6 +825,42 @@ function renderAnalysis() {
   html += '<span>' + t('analysisMatchCount').replace('{count}', target.length) + '</span>';
   html += '<span class="analysis-model-badge">' + t('analysisModel') + '</span>';
   html += '</div>';
+
+  // 小组末轮形势分析
+  var finalRoundGroups = getFinalRoundGroups(target);
+  if (Object.keys(finalRoundGroups).length > 0) {
+    html += '<div class="analysis-final-round-banner">';
+    html += '<h3>🏆 ' + t('finalRoundTitle') + '</h3>';
+    html += '<div class="final-round-groups">';
+    for (var gn in finalRoundGroups) {
+      var frg = finalRoundGroups[gn];
+      html += '<div class="frg-card">';
+      html += '<div class="frg-group-name">' + gn + '</div>';
+      for (var fi = 0; fi < frg.teams.length; fi++) {
+        var ft = frg.teams[fi];
+        var tag = '';
+        if (ft.qualified) tag = ' <span class="frg-tag frg-tag-qualified">🔒出线</span>';
+        else if (ft.eliminated) tag = ' <span class="frg-tag frg-tag-out">❌淘汰</span>';
+        else tag = ' <span class="frg-tag frg-tag-fight">⚔️生死战</span>';
+        html += '<div class="frg-row"><span class="frg-pos">' + (fi+1) + '.</span> ' + trTeam(ft.team) + ' <span class="frg-pts">' + ft.pts + '分 GD' + (ft.gd>=0?'+':'') + ft.gd + '</span>' + tag + '</div>';
+      }
+      html += '<div class="frg-matches">';
+      for (var fmi = 0; fmi < frg.matches.length; fmi++) {
+        var fm = frg.matches[fmi];
+        html += '<div class="frg-match-item">' + trTeam(fm.team1) + ' vs ' + trTeam(fm.team2);
+        if (fm.context) {
+          var ctxTags = [];
+          if (fm.context.drawIncentive) ctxTags.push('⚠️默契风险');
+          if (fm.context.team1Rotate || fm.context.team2Rotate) ctxTags.push('🔄轮换');
+          if (fm.context.team1Desperate || fm.context.team2Desperate) ctxTags.push('⚔️生死战');
+          if (ctxTags.length > 0) html += ' <span class="frg-ctx">' + ctxTags.join(' ') + '</span>';
+        }
+        html += '</div>';
+      }
+      html += '</div></div>';
+    }
+    html += '</div></div>';
+  }
 
   for (var j = 0; j < target.length; j++) {
     var m = target[j];

@@ -83,7 +83,11 @@
       "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/teams/203/roster\")",
       "Bash(curl -s \"https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.world/events/760415/competitions/760415/competitors/203/roster\")",
       "Bash(curl -s -H \"User-Agent: Mozilla/5.0\" \"https://site.web.api.espn.com/apis/site/v2/sports/soccer/fifa.world/summary?event=760415\")",
-      "mcp__playwright__browser_press_key"
+      "mcp__playwright__browser_press_key",
+      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260624-20260625&limit=50\")",
+      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260623-20260626&limit=100\")",
+      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260624-20260627&limit=80\")",
+      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260624-20260624&limit=20\")"
     ]
   }
 }

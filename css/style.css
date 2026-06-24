@@ -962,6 +962,37 @@ body {
 .analysis-header h2 { font-size: 1.4rem; color: #ffd700; margin-bottom: 4px; }
 .analysis-subtitle { font-size: 0.8rem; color: #86efac; opacity: 0.7; }
 
+/* 小组末轮形势 */
+.analysis-final-round-banner {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border: 1px solid #ffd70033;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 12px 0;
+}
+.analysis-final-round-banner h3 {
+  font-size: 1.1rem; color: #ffd700; margin: 0 0 12px;
+}
+.final-round-groups { display: flex; gap: 12px; flex-wrap: wrap; }
+.frg-card {
+  flex: 1 1 280px;
+  background: #0d1117;
+  border-radius: 8px;
+  padding: 12px;
+  border: 1px solid #30363d;
+}
+.frg-group-name { font-weight: bold; color: #ffd700; font-size: 0.95rem; margin-bottom: 8px; border-bottom: 1px solid #30363d; padding-bottom: 6px; }
+.frg-row { font-size: 0.82rem; padding: 2px 0; color: #c9d1d9; }
+.frg-pos { color: #8b949e; margin-right: 4px; }
+.frg-pts { color: #58a6ff; margin-left: 6px; font-size: 0.78rem; }
+.frg-tag { font-size: 0.72rem; margin-left: 4px; padding: 1px 5px; border-radius: 3px; }
+.frg-tag-qualified { background: #23863622; color: #3fb950; }
+.frg-tag-out { background: #da363322; color: #f85149; }
+.frg-tag-fight { background: #d2992222; color: #d29922; }
+.frg-matches { margin-top: 8px; border-top: 1px solid #30363d; padding-top: 8px; }
+.frg-match-item { font-size: 0.78rem; color: #8b949e; padding: 2px 0; }
+.frg-ctx { color: #f0883e; font-size: 0.72rem; }
+
 .analysis-empty {
   text-align: center; padding: 60px 20px; color: #aaa;
   font-size: 0.95rem; line-height: 2;
