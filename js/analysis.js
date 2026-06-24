@@ -832,7 +832,9 @@ function renderAnalysis() {
     html += '<div class="analysis-final-round-banner">';
     html += '<h3>🏆 ' + t('finalRoundTitle') + '</h3>';
     html += '<div class="final-round-groups">';
-    for (var gn in finalRoundGroups) {
+    var sortedGroups = Object.keys(finalRoundGroups).sort();
+    for (var gi = 0; gi < sortedGroups.length; gi++) {
+      var gn = sortedGroups[gi];
       var frg = finalRoundGroups[gn];
       html += '<div class="frg-card">';
       html += '<div class="frg-group-name">' + gn + '</div>';
