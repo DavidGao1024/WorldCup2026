@@ -88,7 +88,9 @@
       "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260623-20260626&limit=100\")",
       "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260624-20260627&limit=80\")",
       "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260624-20260624&limit=20\")",
-      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260625-20260626&limit=20\")"
+      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260625-20260626&limit=20\")",
+      "mcp__playwright__browser_run_code_unsafe",
+      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260624-20260626&limit=20\")"
     ]
   }
 }

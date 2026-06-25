@@ -140,8 +140,8 @@ function predictScores(result) {
 
   // 压缩比率：以0.5为锚点，确保方向与8维度总分一致
   var rawRatio = tScore / (tScore + oScore);
-  var tRatio = 0.5 + (rawRatio - 0.5) * 0.5;
-  tRatio = Math.max(0.25, Math.min(0.75, tRatio));
+  var tRatio = 0.5 + (rawRatio - 0.5) * 0.7;
+  tRatio = Math.max(0.2, Math.min(0.8, tRatio));
 
   var tBase = totalGoals * tRatio;
   var oBase = totalGoals * (1 - tRatio);
@@ -186,8 +186,8 @@ function predictScores(result) {
 
   // 平局修正：基于xG差距（而非8维度gap），差距越小平局概率越高
   var xgGap = Math.abs(tExp - oExp);
-  var drawBoost = 1.0 + Math.max(0, 1 - xgGap / 2.5) * 2.5;
-  drawBoost = Math.max(1.0, Math.min(3.5, drawBoost));
+  var drawBoost = 1.0 + Math.max(0, 1 - xgGap / 2.5) * 1.5;
+  drawBoost = Math.max(1.0, Math.min(2.5, drawBoost));
 
   var scores = [];
   var winTotal = 0, drawTotal = 0, lossTotal = 0;
@@ -271,10 +271,14 @@ function computePrediction(result, m) {
   }
 
   var gap = Math.abs(result.teamTotal - result.oppTotal);
+  var stronger = result.teamTotal >= result.oppTotal ? result.team : result.opponent;
+  var weaker = result.teamTotal >= result.oppTotal ? result.opponent : result.team;
+  var strongerName = (typeof currentLang !== 'undefined' && currentLang === 'zh' && typeof TEAM_ZH !== 'undefined' && TEAM_ZH[stronger]) ? TEAM_ZH[stronger] : stronger;
+  var weakerName = (typeof currentLang !== 'undefined' && currentLang === 'zh' && typeof TEAM_ZH !== 'undefined' && TEAM_ZH[weaker]) ? TEAM_ZH[weaker] : weaker;
   var verdict = '';
-  if (gap >= 60) verdict = '实力悬殊，' + result.team + '取胜概率极高';
-  else if (gap >= 25) verdict = '实力差距明显，' + result.team + '取胜概率很高';
-  else if (gap >= 12) verdict = result.team + '占优，但' + result.opponent + '有能力制造麻烦';
+  if (gap >= 60) verdict = '实力悬殊，' + strongerName + '取胜概率极高';
+  else if (gap >= 25) verdict = '实力差距明显，' + strongerName + '取胜概率很高';
+  else if (gap >= 12) verdict = strongerName + '占优，但' + weakerName + '有能力制造麻烦';
   else verdict = '势均力敌，任何结果都有可能';
 
   return {
@@ -605,9 +609,19 @@ function generateInsights(result) {
     insights.push({ icon: '💎', text: oName + '身价€' + ov.toFixed(1) + '亿远超' + tName + '(€' + tv.toFixed(1) + '亿)，但身价不决定一切' });
   }
 
-  // Host advantage
-  if (result.scores.host >= 12) {
-    insights.push({ icon: '🏟️', text: tName + '享受主场东道主优势，球迷支持度极高' });
+  // Host advantage — only for actual host nations
+  var hostNations = ['USA', 'United States', 'Mexico', 'Canada'];
+  var isHostNation = false;
+  for (var hi = 0; hi < hostNations.length; hi++) {
+    if (result.team === hostNations[hi] || result.opponent === hostNations[hi]) { isHostNation = true; break; }
+  }
+  if (isHostNation && result.scores.host >= 12) {
+    var hostTeam = result.team;
+    for (var hj = 0; hj < hostNations.length; hj++) {
+      if (result.opponent === hostNations[hj]) { hostTeam = result.opponent; break; }
+    }
+    var hostName = typeof trTeam === 'function' ? trTeam(hostTeam) : hostTeam;
+    insights.push({ icon: '🏟️', text: hostName + '主场作战，东道主球迷支持度极高' });
   }
 
   // Injury / suspension
@@ -822,42 +836,26 @@ function renderAnalysis() {
   html += '<span class="analysis-model-badge">' + t('analysisModel') + '</span>';
   html += '</div>';
 
-  // 小组末轮形势分析
+  // 小组末轮形势分析 → 融入比赛卡片
   var finalRoundGroups = getFinalRoundGroups(target);
-  if (Object.keys(finalRoundGroups).length > 0) {
-    html += '<div class="analysis-final-round-banner">';
-    html += '<h3>🏆 ' + t('finalRoundTitle') + '</h3>';
-    html += '<div class="final-round-groups">';
-    var sortedGroups = Object.keys(finalRoundGroups).sort();
-    for (var gi = 0; gi < sortedGroups.length; gi++) {
-      var gn = sortedGroups[gi];
-      var frg = finalRoundGroups[gn];
-      html += '<div class="frg-card">';
-      html += '<div class="frg-group-name">' + gn + '</div>';
-      for (var fi = 0; fi < frg.teams.length; fi++) {
-        var ft = frg.teams[fi];
-        var tag = '';
-        if (ft.qualified) tag = ' <span class="frg-tag frg-tag-qualified">🔒出线</span>';
-        else if (ft.eliminated) tag = ' <span class="frg-tag frg-tag-out">❌淘汰</span>';
-        else tag = ' <span class="frg-tag frg-tag-fight">⚔️生死战</span>';
-        html += '<div class="frg-row"><span class="frg-pos">' + (fi+1) + '.</span> ' + trTeam(ft.team) + ' <span class="frg-pts">' + ft.pts + '分 GD' + (ft.gd>=0?'+':'') + ft.gd + '</span>' + tag + '</div>';
+  var matchContextMap = {};
+  for (var frgKey in finalRoundGroups) {
+    var frg = finalRoundGroups[frgKey];
+    for (var fmi = 0; fmi < frg.matches.length; fmi++) {
+      var fm = frg.matches[fmi];
+      var ctxTags = [];
+      if (fm.context) {
+        if (fm.context.drawIncentive) ctxTags.push('⚠️默契风险');
+        if (fm.context.team1Rotate) ctxTags.push(trTeam(fm.team1) + '轮换');
+        if (fm.context.team2Rotate) ctxTags.push(trTeam(fm.team2) + '轮换');
+        if (fm.context.team1Desperate) ctxTags.push(trTeam(fm.team1) + '生死战');
+        if (fm.context.team2Desperate) ctxTags.push(trTeam(fm.team2) + '生死战');
       }
-      html += '<div class="frg-matches">';
-      for (var fmi = 0; fmi < frg.matches.length; fmi++) {
-        var fm = frg.matches[fmi];
-        html += '<div class="frg-match-item">' + trTeam(fm.team1) + ' vs ' + trTeam(fm.team2);
-        if (fm.context) {
-          var ctxTags = [];
-          if (fm.context.drawIncentive) ctxTags.push('⚠️默契风险');
-          if (fm.context.team1Rotate || fm.context.team2Rotate) ctxTags.push('🔄轮换');
-          if (fm.context.team1Desperate || fm.context.team2Desperate) ctxTags.push('⚔️生死战');
-          if (ctxTags.length > 0) html += ' <span class="frg-ctx">' + ctxTags.join(' ') + '</span>';
-        }
-        html += '</div>';
+      if (ctxTags.length > 0) {
+        var key = fm.team1 + '|' + fm.team2;
+        matchContextMap[key] = ctxTags;
       }
-      html += '</div></div>';
     }
-    html += '</div></div>';
   }
 
   for (var j = 0; j < target.length; j++) {
@@ -867,7 +865,8 @@ function renderAnalysis() {
     result.matchInfo = m;
     var insights = generateInsights(result);
 
-    html += renderAnalysisCard(result, insights, m, j);
+    var ctxTags = matchContextMap[m.team1 + '|' + m.team2] || matchContextMap[m.team2 + '|' + m.team1] || null;
+    html += renderAnalysisCard(result, insights, m, j, ctxTags);
   }
 
   // Recommendations at the bottom
@@ -876,7 +875,7 @@ function renderAnalysis() {
   container.innerHTML = html;
 }
 
-function renderAnalysisCard(result, insights, m, idx) {
+function renderAnalysisCard(result, insights, m, idx, ctxTags) {
   var tScore = result.teamTotal;
   var oScore = result.oppTotal;
   var gap = result.gap;
@@ -891,20 +890,29 @@ function renderAnalysisCard(result, insights, m, idx) {
   var oName = (typeof currentLang !== 'undefined' && currentLang === 'zh' && typeof TEAM_ZH !== 'undefined' && TEAM_ZH[result.opponent]) ? TEAM_ZH[result.opponent] : result.opponent;
   var tFormMini = typeof computeFormMini === 'function' ? computeFormMini(result.teamForm) : '';
   var oFormMini = typeof computeFormMini === 'function' ? computeFormMini(result.oppForm) : '';
+  var venueName = (typeof trVenue === 'function') ? trVenue(m.ground) : (m.ground || '');
+  var roundName = (m.group) ? m.group : (typeof roundKey === 'function' ? t(roundKey(m.round)) : m.round);
 
   var html = '<div class="analysis-card">';
 
   // Header
   html += '<div class="analysis-card-header">';
-  html += '<div class="analysis-match-id">' + m.round + ' · ' + m.date + ' ' + (m.time ? m.time.substring(0, 5) : '') + '</div>';
+  html += '<div class="analysis-match-id">' + roundName + ' · ' + m.date + ' ' + (m.time ? m.time.substring(0, 5) : '') + '</div>';
   html += '<div class="analysis-teams">';
   html += '<div class="analysis-team home-team">' + homeFlag + '<span>' + tName + '</span></div>';
   html += '<span class="analysis-vs">VS</span>';
   html += '<div class="analysis-team away-team">' + awayFlag + '<span>' + oName + '</span></div>';
   html += '</div>';
   html += '<div class="analysis-form-row"><div class="analysis-form-side">' + tFormMini + '</div><div class="analysis-form-side">' + oFormMini + '</div></div>';
-  if (m.group) html += '<div class="analysis-group-tag">' + m.group + ' · ' + m.ground + '</div>';
-  else html += '<div class="analysis-group-tag">' + t(roundKey(m.round)) + ' · ' + m.ground + '</div>';
+  if (m.group) html += '<div class="analysis-group-tag">' + m.group + ' · ' + venueName + '</div>';
+  else html += '<div class="analysis-group-tag">' + t(roundKey(m.round)) + ' · ' + venueName + '</div>';
+  if (ctxTags && ctxTags.length > 0) {
+    html += '<div class="analysis-ctx-tags">';
+    for (var cti = 0; cti < ctxTags.length; cti++) {
+      html += '<span class="analysis-ctx-tag">' + ctxTags[cti] + '</span>';
+    }
+    html += '</div>';
+  }
   html += '</div>';
 
   // Overall score bar
@@ -976,14 +984,14 @@ function renderAnalysisCard(result, insights, m, idx) {
   html += '<div class="analysis-prediction">';
   html += '<div class="pred-title">' + t('predTitle') + '</div>';
   html += '<div class="pred-bar-wrap"><div class="pred-bar">';
-  html += '<div class="pred-fill pred-fill-t" style="width:' + pred.teamProb + '%">' + (pred.teamProb >= 15 ? result.team + ' ' + pred.teamProb + '%' : '') + '</div>';
+  html += '<div class="pred-fill pred-fill-t" style="width:' + pred.teamProb + '%">' + (pred.teamProb >= 15 ? tName + ' ' + pred.teamProb + '%' : '') + '</div>';
   html += '<div class="pred-fill pred-fill-d" style="width:' + pred.drawProb + '%">' + (pred.drawProb >= 12 ? t('lotteryDraw') + ' ' + pred.drawProb + '%' : '') + '</div>';
-  html += '<div class="pred-fill pred-fill-o" style="width:' + pred.oppProb + '%">' + (pred.oppProb >= 15 ? result.opponent + ' ' + pred.oppProb + '%' : '') + '</div>';
+  html += '<div class="pred-fill pred-fill-o" style="width:' + pred.oppProb + '%">' + (pred.oppProb >= 15 ? oName + ' ' + pred.oppProb + '%' : '') + '</div>';
   html += '</div></div>';
   html += '<div class="pred-legend">';
-  html += '<span class="pred-dot pred-dot-t"></span>' + result.team + ' ' + pred.teamProb + '%';
+  html += '<span class="pred-dot pred-dot-t"></span>' + tName + ' ' + pred.teamProb + '%';
   html += '<span class="pred-dot pred-dot-d"></span>' + t('lotteryDraw') + ' ' + pred.drawProb + '%';
-  html += '<span class="pred-dot pred-dot-o"></span>' + result.opponent + ' ' + pred.oppProb + '%';
+  html += '<span class="pred-dot pred-dot-o"></span>' + oName + ' ' + pred.oppProb + '%';
   html += '</div>';
   html += '<div class="pred-verdict">' + pred.verdict + '</div>';
   html += '<div class="pred-scores">';

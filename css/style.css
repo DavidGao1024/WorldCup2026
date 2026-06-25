@@ -1030,6 +1030,12 @@ body {
 .analysis-team .flag-img { width: 28px; height: 20px; border-radius: 2px; }
 .analysis-vs { font-size: 0.8rem; color: #ffd700; font-weight: 700; }
 .analysis-group-tag { font-size: 0.75rem; color: #86efac; margin-top: 6px; }
+.analysis-ctx-tags { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+.analysis-ctx-tag {
+  font-size: 0.68rem; padding: 2px 8px; border-radius: 4px;
+  background: rgba(239,68,68,0.15); color: #fca5a5;
+  border: 1px solid rgba(239,68,68,0.25);
+}
 
 /* Form mini bar */
 .analysis-form-row { display: flex; justify-content: space-between; margin-top: 8px; gap: 20px; }
@@ -1300,6 +1306,43 @@ body {
 .match-lineup-empty {
   grid-template-columns: 1fr;
   text-align: center; padding: 40px; color: #64748b;
+}
+
+/* Pre-match prediction in modal */
+.match-prediction-section {
+  margin: 0 20px 16px; padding: 16px;
+  background: rgba(59,130,246,0.06); border: 1px solid rgba(59,130,246,0.15);
+  border-radius: 10px;
+}
+.match-prediction-title {
+  font-size: 0.85rem; font-weight: 700; color: #93c5fd;
+  margin-bottom: 12px; text-align: center;
+}
+.match-pred-scores {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  margin-bottom: 10px; flex-wrap: wrap;
+}
+.match-pred-label {
+  font-size: 0.75rem; color: #94a3b8; margin-right: 4px;
+}
+.match-pred-score-val {
+  font-size: 1rem; font-weight: 700; color: #ffd700; font-family: monospace;
+  background: rgba(255,215,0,0.1); padding: 2px 8px; border-radius: 4px;
+}
+.match-pred-score-pct {
+  font-size: 0.75rem; color: #64748b; margin-right: 4px;
+}
+.match-pred-wdl {
+  margin-bottom: 10px;
+}
+.match-pred-wdl .pred-bar-wrap { margin-bottom: 4px; }
+.match-pred-wdl .pred-bar { height: 20px; border-radius: 4px; overflow: hidden; display: flex; }
+.match-pred-wdl .pred-fill { font-size: 0.6rem; }
+.match-pred-wdl .pred-legend {
+  display: flex; justify-content: center; gap: 12px; font-size: 0.7rem; color: #94a3b8;
+}
+.match-pred-gap {
+  text-align: center; font-size: 0.75rem; color: #64748b;
 }
 
 /* Events Timeline */

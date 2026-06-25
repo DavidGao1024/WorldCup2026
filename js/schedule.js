@@ -138,6 +138,7 @@ function showMatchModal(matchNum) {
   var body = modal.querySelector('.match-modal-body');
 
   var eventId = typeof findEspnEventId === 'function' ? findEspnEventId(match) : null;
+  var hasScore = match.score1 != null && match.score2 != null;
 
   if (!eventId) {
     // 无 ESPN 数据 → 显示基本比赛信息
@@ -154,7 +155,18 @@ function showMatchModal(matchNum) {
         body.innerHTML = renderMatchModalContent(summary, match);
       } else {
         // 有 summary 但无阵容（未开始比赛或阵容未公布）
-        body.innerHTML = renderMatchBasicInfo(match, summary);
+        // 计算预测数据用于赛前分析
+        var pred = null;
+        if (!hasScore && typeof computeMatchScore === 'function' && typeof predictScores === 'function') {
+          try {
+            var result = computeMatchScore(match.team1, match.team2, match.ground, match.date);
+            pred = predictScores(result);
+            pred.teamTotal = result.teamTotal;
+            pred.oppTotal = result.oppTotal;
+            pred.gap = result.gap;
+          } catch(e) { pred = null; }
+        }
+        body.innerHTML = renderMatchBasicInfo(match, summary, pred);
       }
     }).catch(function() {
       body.innerHTML = renderMatchBasicInfo(match);
@@ -184,7 +196,7 @@ function closeMatchModal() {
   document.body.style.overflow = '';
 }
 
-function renderMatchBasicInfo(match, summary) {
+function renderMatchBasicInfo(match, summary, pred) {
   var hasScore = match.score1 != null && match.score2 != null;
   var scoreDisplay = hasScore ? match.score1 + ' - ' + match.score2 : 'vs';
   var time = match._displayTime || (match.date + ' ' + (match.time || ''));
@@ -259,6 +271,48 @@ function renderMatchBasicInfo(match, summary) {
       html += '<span class="match-stat-label">' + (statLabels[sn] || sn) + '</span>';
       html += '</div>';
     }
+    html += '</div>';
+  }
+
+  // ---- 赛前分析（未开赛比赛） ----
+  if (!hasScore && pred && pred.top1) {
+    var tName = typeof trTeam === 'function' ? trTeam(match.team1) : match.team1;
+    var oName = typeof trTeam === 'function' ? trTeam(match.team2) : match.team2;
+    var gapAbs = Math.abs(pred.gap || 0);
+    var gapLabel = gapAbs >= 70 ? '悬殊' : (gapAbs >= 50 ? '明显差距' : (gapAbs >= 25 ? '有一定差距' : '势均力敌'));
+
+    html += '<div class="match-prediction-section">';
+    html += '<div class="match-prediction-title">' + (typeof t === 'function' ? t('preMatchAnalysis') : '赛前分析') + '</div>';
+
+    // 比分预测
+    html += '<div class="match-pred-scores">';
+    html += '<span class="match-pred-label">' + (typeof t === 'function' ? t('predScore') : '预测比分') + '</span>';
+    html += '<span class="match-pred-score-val">' + pred.top1 + '</span>';
+    html += '<span class="match-pred-score-pct">' + pred.top1Pct + '%</span>';
+    html += '<span class="match-pred-score-val">' + pred.top2 + '</span>';
+    html += '<span class="match-pred-score-pct">' + pred.top2Pct + '%</span>';
+    html += '</div>';
+
+    // 胜平负进度条
+    if (pred.winProb != null) {
+      var wp = pred.winProb, dp = pred.drawProb, lp = pred.lossProb;
+      html += '<div class="match-pred-wdl">';
+      html += '<div class="pred-bar-wrap"><div class="pred-bar">';
+      html += '<div class="pred-fill pred-fill-t" style="width:' + wp + '%">' + (wp >= 15 ? tName + ' ' + wp + '%' : '') + '</div>';
+      html += '<div class="pred-fill pred-fill-d" style="width:' + dp + '%">' + (dp >= 12 ? (typeof t === 'function' ? t('lotteryDraw') : '平') + ' ' + dp + '%' : '') + '</div>';
+      html += '<div class="pred-fill pred-fill-o" style="width:' + lp + '%">' + (lp >= 15 ? oName + ' ' + lp + '%' : '') + '</div>';
+      html += '</div></div>';
+      html += '<div class="pred-legend">';
+      html += '<span class="pred-dot pred-dot-t"></span>' + tName + ' ' + wp + '%';
+      html += '<span class="pred-dot pred-dot-d"></span>' + (typeof t === 'function' ? t('lotteryDraw') : '平') + ' ' + dp + '%';
+      html += '<span class="pred-dot pred-dot-o"></span>' + oName + ' ' + lp + '%';
+      html += '</div>';
+      html += '</div>';
+    }
+
+    // 实力差距
+    html += '<div class="match-pred-gap">' + (typeof t === 'function' ? t('analysisGap') : '综合差距') + ': ' + (pred.gap > 0 ? '+' + pred.gap : pred.gap) + ' ' + (typeof t === 'function' ? t('analysisPoints') : '分') + ' (' + gapLabel + ')</div>';
+
     html += '</div>';
   }
 
