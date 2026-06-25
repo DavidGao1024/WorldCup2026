@@ -177,7 +177,7 @@ function computeStandings(groupName) {
   matches.forEach(function(m) {
     if (!teams[m.team1]) teams[m.team1] = newRecord();
     if (!teams[m.team2]) teams[m.team2] = newRecord();
-    if (m.score1 != null && m.score2 != null) {
+    if (m.score1 != null && m.score2 != null && m.status === 'post') {
       var t1 = teams[m.team1], t2 = teams[m.team2];
       t1.played++; t2.played++;
       t1.gf += m.score1; t1.ga += m.score2;

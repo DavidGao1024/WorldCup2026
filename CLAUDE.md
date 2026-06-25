@@ -28,11 +28,11 @@ Scripts load in this sequence in `index.html` because later files depend on earl
 1. **i18n.js** — `t(key)`, `currentLang`, `toggleLang()`, `trTeam()`, `trVenue()`, `TEAM_ZH`, `VENUE_ZH`
 2. **timezone.js** — `currentTZ`, `convertTime()`, `getUTCOffsetStr()`, `setTimezone()`
 3. **espn.js** — `fetchEspnScores()`, `fetchEspnStandings()`, `mapEspnName()`, `ESPN_TEAM_MAP` — 从 ESPN 非官方 API 拉取实时比分和积分榜。同时承担：红黄牌提取(`processEspnCards()`)、停赛计算(`computeWorldCupSuspensions()`)、比赛详情获取(`fetchMatchSummary()`)。
-4. **data.js** — `loadData()`, `getMatches()`, `getGroupMatches()`, `getKnockoutMatches()`, `getGroups()`, `getTeams()`, `getTeamsByGroup()`, `computeStandings()`, `isPlaceholder()`, `fetchEspnAndMerge()`, `mergeScoresIntoData()` — ESPN 拉取后自动调用红黄牌处理和停赛计算
+4. **data.js** — `loadData()`, `getMatches()`, `getGroupMatches()`, `getKnockoutMatches()`, `getGroups()`, `getTeams()`, `getTeamsByGroup()`, `computeStandings()`, `isPlaceholder()`, `fetchEspnAndMerge()`, `mergeScoresIntoData()` — ESPN 拉取后自动调用红黄牌处理和停赛计算。`computeStandings()` 只计入 `status === 'post'` 的比赛，进行中的比赛不参与积分计算
 5. **schedule.js** — `renderSchedule()`, `populateFilters()`, `populateTeamFilter()` — 比赛卡片点击弹窗(`showMatchModal()`)、球场可视化阵容、比赛事件时间线、技术统计
 6. **standings.js** — `renderStandings()`, `onStandingsGroupChange()`
 7. **knockout.js** — `renderKnockout()`
-8. **analysis.js** — `renderAnalysis()`, `loadAnalysisData()`, `computeMatchScore()` — 12维分析模型，加载伤病/停赛合并数据
+8. **analysis.js** — `renderAnalysis()`, `loadAnalysisData()`, `computeMatchScore()`, `predictScores()`, `computePrediction()` — 8维度分析+泊松比分预测。`predictScores()` 返回比分+胜平负，`computePrediction()` 统一用泊松模型输出（比分和进度条同源，自洽）
 9. **champions.js** — `renderChampions()`
 10. **lottery.js** — `renderLottery()` — 体彩赔率展示、模拟投注、过关计算
 11. **app.js** — `init()`, `switchTab()`, `onFilterChange()`, `onTeamFilterChange()`, `getFlagImg()`, `getFlag()`, `roundKey()`, `updateUIText()`, `refreshCurrentTab()`, `scrollToToday()`, `FLAG_MAP`
@@ -45,7 +45,7 @@ All variables are global (`var`). No modules or bundler.
 2. 后台并行：`fetchEspnAndMerge()` 从 ESPN API 拉取实时比分，合并到 `worldCupData.matches`；`fetchFreshData()` 从 jsDelivr CDN 拉取最新赛程
 3. ESPN 拉取成功 → 比分写入 match 的 `score1`/`score2` → 更新缓存 + 刷新 UI
 4. ESPN 失败 → 静默 fallback，使用缓存或 CDN 中的旧数据
-5. `computeStandings()` 根据已有 `score1`/`score2` 计算小组积分（null 的比赛不参与计算）
+5. `computeStandings()` 根据已有 `score1`/`score2` 计算小组积分，只计入 `status === 'post'` 的比赛（null 和进行中的比赛不参与计算）
 6. Tab 切换时调用对应的 render 函数
 
 ### ESPN API
@@ -54,7 +54,8 @@ All variables are global (`var`). No modules or bundler.
   - 免 Key，无需认证
   - 返回 `events[].competitions[0].competitors[]` → `score`, `homeAway`, `team.displayName`
   - `events[].competitions[0].details[]` → 进球（含助攻）、红黄牌（含球员）
-  - 只合并 `state === 'post'` 或 `'in'` 的比赛比分
+  - 只合并 `state === 'post'` 或 `'in'` 的比赛比分（赛程卡片显示实时比分）
+  - 积分榜 `computeStandings()` 只计入 `status === 'post'` 的比赛，进行中比赛不参与积分计算
   - 缓存在 `espnRawEvents`，供红黄牌提取(`processEspnCards()`)和比赛事件匹配(`findEspnEventId()`)复用
 - **Summary** (阵容+技术统计): `https://site.web.api.espn.com/apis/site/v2/sports/soccer/fifa.world/summary?event={eventId}`
   - 返回 `rosters[].roster[]` → 首发(`starter:true`)、替补、号码、姓名、位置
@@ -97,7 +98,31 @@ All variables are global (`var`). No modules or bundler.
 - **Time display**: `convertTime()` parses `UTC±N` offsets and shifts to `currentTZ`. The group stage uses local venue times; timezone conversion may be slightly off since date context isn't used
 - **Filter linking**: Group filter controls team filter options via `getTeamsByGroup()`. Switching to "all" resets team to "all"
 - **Flag images**: Stored as PNG in `img/flags/` named by English team name (e.g., `South Africa.png`). `getFlagImg()` returns an `<img>` tag for real teams, empty string for placeholders
+- **赛程排序**: `renderSchedule()` 同一天内比赛按 `_displayTime`（时区转换后的 HH:MM）升序排列
 - **Placeholder team names**: `isPlaceholder()` detects `W*`, `L*`, and `\d[A-Z]` patterns. `trTeam()` translates them in Chinese mode ("2A" → "A组第2名", "W74" → "胜者74")
+
+## 预测模型
+
+### 架构
+`computeMatchScore()` → 8维度评分 → `predictScores()` → 泊松比分+胜平负 → `computePrediction()` 统一输出
+
+### 8维度（100分制）
+FIFA排名(25) + 近期状态(30) + 球队身价(10) + 进攻火力(10) + 防守稳固(10) + 主场优势(15) + 小组形势(10) + 伤病停赛(5)
+
+### 泊松模型关键参数
+- **比率压缩**: `tRatio = 0.5 + (rawRatio - 0.5) * 0.5`，以0.5为锚点，确保xG方向与8维度总分一致
+- **攻防微调**: ±20%（以5分为中性点），不能翻转xG方向
+- **方向安全保障**: 最终xG方向必须与8维度总分方向一致，不一致则强制纠正
+- **drawBoost**: 基于xG差距（而非8维度gap），`1 + max(0, 1 - xgGap/2.5) * 2.5`
+- **一致性校准**: top-3比分类型与胜平负主导方向不一致时，自动微调xG/drawBoost重算
+
+### 小组末轮修正（predict-final.js）
+- 轮换: xG ×0.70 | 生死战: xG ×1.15 | 保守: xG ×0.85 | 默契球: drawBonus +0.08
+- `getFinalRoundGroups()` 自动判断锁定第1/淘汰/生死战/默契球
+
+### 预测脚本
+- `scripts/predict.js` — 通用赛前预测，从ESPN获取未来比赛列表
+- `scripts/predict-final.js` — 小组末轮专用，硬编码context修正
 
 ## 比赛详情弹窗（赛程页签）
 

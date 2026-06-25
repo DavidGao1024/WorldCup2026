@@ -33,6 +33,7 @@ function renderSchedule(filterGroup, filterTeam) {
 
   dates.forEach(function(date) {
     var dayMatches = byDate[date];
+    dayMatches.sort(function(a, b) { return a._displayTime.localeCompare(b._displayTime); });
     var d = new Date(date + 'T00:00:00');
     var wd = currentLang === 'zh' ? weekdays[d.getDay()] : weekdaysEn[d.getDay()];
     var displayDate;

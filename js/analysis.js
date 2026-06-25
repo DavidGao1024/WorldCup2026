@@ -134,28 +134,46 @@ function computeMatchScore(team, opponent, ground, matchDate) {
 function predictScores(result) {
   var tScore = result.teamTotal;
   var oScore = result.oppTotal;
-  var gap = result.gap;
 
-  // 世界杯场均进球约2.5，固定基数（差距已体现在比率中）
+  // 世界杯场均进球约2.5，固定基数
   var totalGoals = 2.5;
 
-  // 压缩极端比率：足球方差大，任何队至少保留25%进球份额
+  // 压缩比率：以0.5为锚点，确保方向与8维度总分一致
   var rawRatio = tScore / (tScore + oScore);
-  var tRatio = 0.25 + (rawRatio - 0.25) * 0.6;
+  var tRatio = 0.5 + (rawRatio - 0.5) * 0.5;
   tRatio = Math.max(0.25, Math.min(0.75, tRatio));
 
-  var tAtt = result.scores.attack / 10;
-  var tDef = result.scores.defense / 10;
+  var tBase = totalGoals * tRatio;
+  var oBase = totalGoals * (1 - tRatio);
 
-  var tExp = totalGoals * tRatio * (0.7 + tAtt * 0.6);
-  var oExp = totalGoals * (1 - tRatio) * (0.7 + (1 - tDef) * 0.6);
+  // attack/defense 微调（以5分为中性点，±20%）
+  var tAttFactor = 1.0 + (result.scores.attack - 5) / 5 * 0.20;
+  var tDefFactor = 1.0 + (result.scores.defense - 5) / 5 * 0.20;
+  tAttFactor = Math.max(0.80, Math.min(1.20, tAttFactor));
+  tDefFactor = Math.max(0.80, Math.min(1.20, tDefFactor));
 
-  // 排名差修正（缩小系数）
+  var tExp = tBase * tAttFactor;
+  var oExp = oBase * (2 - tDefFactor);
+
+  // 排名修正（限幅 ±0.15 xG）
   var rankDiff = (result.oppRank.rank || 60) - (result.teamRank.rank || 60);
-  tExp += rankDiff * 0.005;
-  oExp -= rankDiff * 0.005;
+  var rankCorrection = Math.max(-0.15, Math.min(0.15, rankDiff * 0.005));
+  tExp += rankCorrection;
+  oExp -= rankCorrection;
 
-  // 更严格的预期进球上限（单队不超过3.0）
+  // 方向安全保障：xG方向必须与8维度总分一致
+  if (tScore > oScore && tExp <= oExp) {
+    var avg = (tExp + oExp) / 2;
+    var minSpread = Math.abs(avg * 0.05);
+    tExp = avg + minSpread;
+    oExp = avg - minSpread;
+  } else if (tScore < oScore && tExp >= oExp) {
+    var avg = (tExp + oExp) / 2;
+    var minSpread = Math.abs(avg * 0.05);
+    tExp = avg - minSpread;
+    oExp = avg + minSpread;
+  }
+
   tExp = Math.max(0.3, Math.min(3.0, tExp));
   oExp = Math.max(0.3, Math.min(3.0, oExp));
 
@@ -166,36 +184,62 @@ function predictScores(result) {
     return v;
   }
 
-  // 平局修正：差距越小平局概率越高（差距>60不做修正）
-  var absGap = Math.abs(gap);
-  var drawBoost = 1 + Math.max(0, (1 - absGap / 60)) * 2.5;
+  // 平局修正：基于xG差距（而非8维度gap），差距越小平局概率越高
+  var xgGap = Math.abs(tExp - oExp);
+  var drawBoost = 1.0 + Math.max(0, 1 - xgGap / 2.5) * 2.5;
+  drawBoost = Math.max(1.0, Math.min(3.5, drawBoost));
 
   var scores = [];
+  var winTotal = 0, drawTotal = 0, lossTotal = 0;
   for (var i = 0; i <= 6; i++) {
     for (var j = 0; j <= 6; j++) {
       if (i === j && i > 4) continue;
       var prob = poisson(i, tExp) * poisson(j, oExp);
       if (i === j) prob *= drawBoost;
       scores.push({ home: i, away: j, prob: prob });
+      if (i > j) winTotal += prob;
+      else if (i < j) lossTotal += prob;
+      else drawTotal += prob;
     }
   }
 
   // 归一化
-  var totalProb = 0;
-  for (var si = 0; si < scores.length; si++) totalProb += scores[si].prob;
-  for (var si = 0; si < scores.length; si++) scores[si].prob /= totalProb;
+  var totalProb = winTotal + drawTotal + lossTotal;
+  winTotal /= totalProb;
+  drawTotal /= totalProb;
+  lossTotal /= totalProb;
+
+  var scoreTotal = 0;
+  for (var si = 0; si < scores.length; si++) scoreTotal += scores[si].prob;
+  for (var si = 0; si < scores.length; si++) scores[si].prob /= scoreTotal;
 
   scores.sort(function(a, b) { return b.prob - a.prob; });
+
+  var wp = Math.round(winTotal * 100);
+  var dp = Math.round(drawTotal * 100);
+  var lp = Math.round(lossTotal * 100);
+  // 修正舍入误差（确保总和=100）
+  var sum = wp + dp + lp;
+  if (sum !== 100) {
+    var diff = 100 - sum;
+    var maxVal = Math.max(wp, dp, lp);
+    if (maxVal === wp) wp += diff;
+    else if (maxVal === dp) dp += diff;
+    else lp += diff;
+  }
 
   return {
     top1: scores[0] ? (scores[0].home + '-' + scores[0].away) : '1-0',
     top1Pct: scores[0] ? Math.round(scores[0].prob * 100) : 0,
     top2: scores[1] ? (scores[1].home + '-' + scores[1].away) : '2-0',
-    top2Pct: scores[1] ? Math.round(scores[1].prob * 100) : 0
+    top2Pct: scores[1] ? Math.round(scores[1].prob * 100) : 0,
+    winProb: wp,
+    drawProb: dp,
+    lossProb: lp
   };
 }
 
-// ---- 赛前预测引擎（Elo + 状态 + 市场赔率） ----
+// ---- 赛前预测引擎（泊松比分 + 胜平负） ----
 
 function computePrediction(result, m) {
   var rankings = analysisData.rankings || {};
@@ -204,40 +248,12 @@ function computePrediction(result, m) {
 
   var t = rankings[result.team] || { elo: 1100, rank: 60 };
   var o = rankings[result.opponent] || { elo: 1100, rank: 60 };
-  var tf = forms[result.team] || { formScore: 40 };
-  var of = forms[result.opponent] || { formScore: 40 };
-  var tInj = injuries[result.team] || { injuries: 0, suspensions: 0 };
-  var oInj = injuries[result.opponent] || { injuries: 0, suspensions: 0 };
 
-  // 第一步：Elo基础胜率（权重35%）
-  var eloDiff = t.elo - o.elo;
-  var eloWinProb = 1 / (1 + Math.pow(10, -eloDiff / 400));
+  // 泊松模型：比分 + 胜平负（已修复自洽）
+  var scores = predictScores(result);
 
-  // 第二步：状态修正（权重25%）
-  var formDiff = tf.formScore - of.formScore;
-  var formWinProb = 0.5 + formDiff / 200;
-  formWinProb = Math.max(0.1, Math.min(0.9, formWinProb));
-
-  // 第三步：环境修正（权重15%）
-  var tPenalty = (tInj.injuries || 0) * 1.5 + (tInj.suspensions || 0) * 3;
-  var oPenalty = (oInj.injuries || 0) * 1.5 + (oInj.suspensions || 0) * 3;
-  var envAdj = (oPenalty - tPenalty) * 0.02;
-  envAdj += (o.rank - t.rank) * 0.003;
-  var venue = (m && m.ground) ? m.ground.toLowerCase() : '';
-  var hostTeams = ['united states', 'usa', 'mexico', 'canada'];
-  for (var hi = 0; hi < hostTeams.length; hi++) {
-    if (result.team.toLowerCase().indexOf(hostTeams[hi]) >= 0 && (venue.indexOf('united states') >= 0 || venue.indexOf('mexico') >= 0 || venue.indexOf('canada') >= 0)) {
-      envAdj += 0.08; break;
-    }
-  }
-  var envWinProb = 0.5 + envAdj;
-  envWinProb = Math.max(0.1, Math.min(0.9, envWinProb));
-
-  // 三步融合
-  var rawWinProb = eloWinProb * 0.35 + formWinProb * 0.25 + envWinProb * 0.15;
-
-  // 第四步：市场赔率校准（权重25%）
-  var marketWinProb = null;
+  // 体彩赔率作为参考
+  var marketDrawProb = null;
   if (typeof lotteryData !== 'undefined' && lotteryData && lotteryData._matches) {
     var lm = lotteryData._matches;
     for (var mk = 0; mk < lm.length; mk++) {
@@ -246,48 +262,28 @@ function computePrediction(result, m) {
       var lh = TEAM_ZH_REVERSE[lm[mk].homeTeam] || lm[mk].homeTeamEn;
       var la = TEAM_ZH_REVERSE[lm[mk].awayTeam] || lm[mk].awayTeamEn;
       if ((lh === result.team && la === result.opponent) || (lh === result.opponent && la === result.team)) {
-        var isHome = lh === result.team;
         var hImp = 1 / had.h, dImp = 1 / had.d, aImp = 1 / had.a;
         var totalImp = hImp + dImp + aImp;
-        marketWinProb = {
-          tProb: (isHome ? hImp : aImp) / totalImp,
-          dProb: dImp / totalImp,
-          oProb: (isHome ? aImp : hImp) / totalImp
-        };
+        marketDrawProb = Math.round(dImp / totalImp * 100);
         break;
       }
     }
   }
 
-  if (marketWinProb) {
-    rawWinProb = rawWinProb * 0.75 + marketWinProb.tProb * 0.25;
-  } else {
-    rawWinProb = rawWinProb / 0.75;
-  }
-
-  // 平局概率
   var gap = Math.abs(result.teamTotal - result.oppTotal);
-  var drawBase = 0.28;
-  var drawFactor = Math.max(0.05, drawBase - gap * 0.006);
-  if (marketWinProb) drawFactor = drawFactor * 0.5 + marketWinProb.dProb * 0.5;
-
-  var rem = 1 - drawFactor;
-  var tFinal = rawWinProb * rem;
-  var oFinal = (1 - rawWinProb) * rem;
-
   var verdict = '';
-  if (gap >= 25) verdict = '实力差距明显，' + result.team + '取胜概率很高';
+  if (gap >= 60) verdict = '实力悬殊，' + result.team + '取胜概率极高';
+  else if (gap >= 25) verdict = '实力差距明显，' + result.team + '取胜概率很高';
   else if (gap >= 12) verdict = result.team + '占优，但' + result.opponent + '有能力制造麻烦';
   else verdict = '势均力敌，任何结果都有可能';
 
-  var scores = predictScores(result);
-
   return {
-    teamProb: Math.round(tFinal * 100),
-    drawProb: Math.round(drawFactor * 100),
-    oppProb: Math.round(oFinal * 100),
+    teamProb: scores.winProb,
+    drawProb: scores.drawProb,
+    oppProb: scores.lossProb,
     verdict: verdict,
-    hasMarket: !!marketWinProb,
+    hasMarket: marketDrawProb !== null,
+    marketDraw: marketDrawProb,
     score1: scores.top1,
     score1Pct: scores.top1Pct,
     score2: scores.top2,

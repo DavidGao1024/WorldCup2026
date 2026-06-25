@@ -22,22 +22,21 @@ function predictScoresFull(result, context) {
   var ctx = context || {};
   var tScore = result.teamTotal;
   var oScore = result.oppTotal;
-  var gap = result.gap;
   var totalGoals = 2.5;
 
   // Context adjustments to expected goals
   var tAdj = 1.0, oAdj = 1.0;
-  var drawBonus = 0; // Extra draw probability boost
+  var drawBonus = 0;
 
   // Team rotation penalty (-30% effectiveness)
   if (ctx.team1Rotate) tAdj *= 0.70;
   if (ctx.team2Rotate) oAdj *= 0.70;
 
-  // Must-win desperation (+15% attack, -10% defense)
+  // Must-win desperation (+15% attack)
   if (ctx.team1Desperate) { tAdj *= 1.15; }
   if (ctx.team2Desperate) { oAdj *= 1.15; }
 
-  // Playing conservatively (only need draw) (-15% attack, +10% defense)
+  // Playing conservatively (only need draw) (-15%)
   if (ctx.team1Conservative) { tAdj *= 0.85; }
   if (ctx.team2Conservative) { oAdj *= 0.85; }
 
@@ -46,21 +45,43 @@ function predictScoresFull(result, context) {
 
   // Total goals adjustment
   if (ctx.totalGoals) totalGoals = ctx.totalGoals;
-  if (ctx.team1Desperate && ctx.team2Desperate) totalGoals += 0.4; // Both desperate = more open
+  if (ctx.team1Desperate && ctx.team2Desperate) totalGoals += 0.4;
 
+  // 压缩比率：以0.5为锚点，确保方向与8维度总分一致
   var rawRatio = tScore / (tScore + oScore);
-  var tRatio = 0.25 + (rawRatio - 0.25) * 0.6;
+  var tRatio = 0.5 + (rawRatio - 0.5) * 0.5;
   tRatio = Math.max(0.25, Math.min(0.75, tRatio));
 
-  var tAtt = result.scores.attack / 10;
-  var tDef = result.scores.defense / 10;
+  var tBase = totalGoals * tRatio;
+  var oBase = totalGoals * (1 - tRatio);
 
-  var tExp = totalGoals * tRatio * (0.7 + tAtt * 0.6) * tAdj;
-  var oExp = totalGoals * (1 - tRatio) * (0.7 + (1 - tDef) * 0.6) * oAdj;
+  // attack/defense 微调（以5分为中性点，±20%）
+  var tAttFactor = 1.0 + (result.scores.attack - 5) / 5 * 0.20;
+  var tDefFactor = 1.0 + (result.scores.defense - 5) / 5 * 0.20;
+  tAttFactor = Math.max(0.80, Math.min(1.20, tAttFactor));
+  tDefFactor = Math.max(0.80, Math.min(1.20, tDefFactor));
 
+  var tExp = tBase * tAttFactor * tAdj;
+  var oExp = oBase * (2 - tDefFactor) * oAdj;
+
+  // 排名修正（限幅 ±0.15 xG）
   var rankDiff = (result.oppRank.rank || 60) - (result.teamRank.rank || 60);
-  tExp += rankDiff * 0.005;
-  oExp -= rankDiff * 0.005;
+  var rankCorrection = Math.max(-0.15, Math.min(0.15, rankDiff * 0.005));
+  tExp += rankCorrection;
+  oExp -= rankCorrection;
+
+  // 方向安全保障：xG方向必须与8维度总分一致
+  if (tScore > oScore && tExp <= oExp) {
+    var avg = (tExp + oExp) / 2;
+    var minSpread = Math.abs(avg * 0.05);
+    tExp = avg + minSpread;
+    oExp = avg - minSpread;
+  } else if (tScore < oScore && tExp >= oExp) {
+    var avg = (tExp + oExp) / 2;
+    var minSpread = Math.abs(avg * 0.05);
+    tExp = avg - minSpread;
+    oExp = avg + minSpread;
+  }
 
   tExp = Math.max(0.2, Math.min(3.5, tExp));
   oExp = Math.max(0.2, Math.min(3.5, oExp));
@@ -72,54 +93,91 @@ function predictScoresFull(result, context) {
     return v;
   }
 
-  var absGap = Math.abs(gap);
-  var drawBoost = 1 + Math.max(0, (1 - absGap / 60)) * 2.5;
-  drawBoost += drawBonus * 10; // Convert draw incentive to boost factor
+  // 平局修正：基于xG差距
+  var xgGap = Math.abs(tExp - oExp);
+  var drawBoost = 1.0 + Math.max(0, 1 - xgGap / 2.5) * 2.5;
+  drawBoost += drawBonus * 10;
+  drawBoost = Math.max(1.0, Math.min(4.5, drawBoost));
 
-  var scores = [];
-  var winTotal = 0, drawTotal = 0, lossTotal = 0;
-
-  for (var i = 0; i <= 6; i++) {
-    for (var j = 0; j <= 6; j++) {
-      if (i === j && i > 4) continue;
-      var prob = poisson(i, tExp) * poisson(j, oExp);
-      if (i === j) prob *= drawBoost;
-      scores.push({ home: i, away: j, prob: prob });
-
-      if (i > j) winTotal += prob;
-      else if (i < j) lossTotal += prob;
-      else drawTotal += prob;
+  function runPoisson(tE, oE, dB) {
+    var sc = [];
+    var wT = 0, dT = 0, lT = 0;
+    for (var i = 0; i <= 6; i++) {
+      for (var j = 0; j <= 6; j++) {
+        if (i === j && i > 4) continue;
+        var prob = poisson(i, tE) * poisson(j, oE);
+        if (i === j) prob *= dB;
+        sc.push({ home: i, away: j, prob: prob });
+        if (i > j) wT += prob;
+        else if (i < j) lT += prob;
+        else dT += prob;
+      }
     }
+    var tp = wT + dT + lT;
+    wT /= tp; dT /= tp; lT /= tp;
+    var st = 0;
+    for (var si = 0; si < sc.length; si++) st += sc[si].prob;
+    for (var si = 0; si < sc.length; si++) sc[si].prob /= st;
+    sc.sort(function(a, b) { return b.prob - a.prob; });
+    return { scores: sc, winTotal: wT, drawTotal: dT, lossTotal: lT };
   }
 
-  var totalProb = winTotal + drawTotal + lossTotal;
-  winTotal /= totalProb;
-  drawTotal /= totalProb;
-  lossTotal /= totalProb;
+  var poissonResult = runPoisson(tExp, oExp, drawBoost);
 
-  var scoreTotal = 0;
-  for (var si = 0; si < scores.length; si++) scoreTotal += scores[si].prob;
-  for (var si = 0; si < scores.length; si++) scores[si].prob /= scoreTotal;
+  // 一致性自动校准：top-3比分类型应与胜平负主导方向一致
+  var dominantOutcome = '';
+  if (poissonResult.winTotal >= poissonResult.drawTotal && poissonResult.winTotal >= poissonResult.lossTotal) {
+    dominantOutcome = 'win';
+  } else if (poissonResult.drawTotal >= poissonResult.winTotal && poissonResult.drawTotal >= poissonResult.lossTotal) {
+    dominantOutcome = 'draw';
+  } else {
+    dominantOutcome = 'loss';
+  }
 
-  scores.sort(function(a, b) { return b.prob - a.prob; });
+  var topWinCount = 0, topDrawCount = 0, topLossCount = 0;
+  for (var si = 0; si < Math.min(3, poissonResult.scores.length); si++) {
+    var s = poissonResult.scores[si];
+    if (s.home > s.away) topWinCount++;
+    else if (s.home < s.away) topLossCount++;
+    else topDrawCount++;
+  }
 
+  var recalibrated = false;
+  if ((dominantOutcome === 'win' && topWinCount === 0) ||
+      (dominantOutcome === 'loss' && topLossCount === 0) ||
+      (dominantOutcome === 'draw' && topDrawCount === 0)) {
+    if (dominantOutcome === 'win') {
+      tExp = Math.min(3.5, tExp * 1.08);
+      oExp = Math.max(0.2, oExp * 0.92);
+    } else if (dominantOutcome === 'loss') {
+      tExp = Math.max(0.2, tExp * 0.92);
+      oExp = Math.min(3.5, oExp * 1.08);
+    } else {
+      drawBoost = Math.min(4.5, drawBoost * 1.3);
+    }
+    poissonResult = runPoisson(tExp, oExp, drawBoost);
+    recalibrated = true;
+  }
+
+  var res = poissonResult;
   var favorite = tScore >= oScore ? 'team1' : 'team2';
-  var underdogWins = favorite === 'team1' ? lossTotal : winTotal;
-  var upsetProb = underdogWins + drawTotal;
+  var underdogWins = favorite === 'team1' ? res.lossTotal : res.winTotal;
+  var upsetProb = underdogWins + res.drawTotal;
 
   return {
-    top1: scores[0] ? (scores[0].home + '-' + scores[0].away) : '1-0',
-    top1Pct: scores[0] ? Math.round(scores[0].prob * 100) : 0,
-    top2: scores[1] ? (scores[1].home + '-' + scores[1].away) : '2-0',
-    top2Pct: scores[1] ? Math.round(scores[1].prob * 100) : 0,
-    top3: scores[2] ? (scores[2].home + '-' + scores[2].away) : '3-0',
-    top3Pct: scores[2] ? Math.round(scores[2].prob * 100) : 0,
-    winProb: winTotal,
-    drawProb: drawTotal,
-    lossProb: lossTotal,
+    top1: res.scores[0] ? (res.scores[0].home + '-' + res.scores[0].away) : '1-0',
+    top1Pct: res.scores[0] ? Math.round(res.scores[0].prob * 100) : 0,
+    top2: res.scores[1] ? (res.scores[1].home + '-' + res.scores[1].away) : '2-0',
+    top2Pct: res.scores[1] ? Math.round(res.scores[1].prob * 100) : 0,
+    top3: res.scores[2] ? (res.scores[2].home + '-' + res.scores[2].away) : '3-0',
+    top3Pct: res.scores[2] ? Math.round(res.scores[2].prob * 100) : 0,
+    winProb: res.winTotal,
+    drawProb: res.drawTotal,
+    lossProb: res.lossTotal,
     upsetProb: upsetProb,
     tExp: tExp.toFixed(2),
-    oExp: oExp.toFixed(2)
+    oExp: oExp.toFixed(2),
+    recalibrated: recalibrated
   };
 }
 
