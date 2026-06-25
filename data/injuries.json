@@ -1,6 +1,6 @@
 {
-  "updateTime": "2026-06-25T06:58:20.560Z",
-  "source": "manual",
+  "updateTime": "2026-06-25T08:32:24.993Z",
+  "source": "manual (news)",
   "note": "伤病数据手动维护。停赛数据由 ESPN API 实时计算，无需在此填写。",
   "Algeria": {
     "injuries": 0,
@@ -8,14 +8,14 @@
     "note": ""
   },
   "Argentina": {
-    "injuries": 0,
+    "injuries": 1,
     "suspensions": 0,
-    "note": ""
+    "note": "Messi(腘绳肌)状态不明; Romero(膝盖)+Molina(大腿)有伤"
   },
   "Australia": {
     "injuries": 0,
     "suspensions": 0,
-    "note": ""
+    "note": "Miller(跟腱)赛前伤缺"
   },
   "Austria": {
     "injuries": 0,
@@ -23,9 +23,9 @@
     "note": ""
   },
   "Belgium": {
-    "injuries": 0,
+    "injuries": 1,
     "suspensions": 0,
-    "note": ""
+    "note": "Doku(呼吸道感染)缺阵伊朗"
   },
   "Bosnia & Herzegovina": {
     "injuries": 0,
@@ -33,14 +33,14 @@
     "note": ""
   },
   "Brazil": {
-    "injuries": 0,
+    "injuries": 2,
     "suspensions": 0,
-    "note": ""
+    "note": "Rodrigo(ACL)+Militao+Estevao赛前报销; 拉菲尼亚(大腿)缺席末轮; Neymar恢复"
   },
   "Canada": {
-    "injuries": 0,
+    "injuries": 1,
     "suspensions": 0,
-    "note": ""
+    "note": "Flores(ACL)赛前伤缺; Davies(ACL+腘绳肌)恢复中; 已淘汰"
   },
   "Cape Verde": {
     "injuries": 0,
@@ -55,7 +55,7 @@
   "Croatia": {
     "injuries": 0,
     "suspensions": 0,
-    "note": ""
+    "note": "Modric(颧骨骨折)戴面具出战"
   },
   "Curaçao": {
     "injuries": 0,
@@ -83,24 +83,24 @@
     "note": ""
   },
   "England": {
-    "injuries": 0,
+    "injuries": 1,
     "suspensions": 0,
-    "note": ""
+    "note": "利夫拉门托(小腿)退出; 里斯·詹姆斯恢复中"
   },
   "France": {
-    "injuries": 0,
+    "injuries": 1,
     "suspensions": 0,
-    "note": ""
+    "note": "Ekitike(跟腱)赛前伤缺; Saliba(背)存疑"
   },
   "Germany": {
-    "injuries": 0,
+    "injuries": 2,
     "suspensions": 0,
-    "note": ""
+    "note": "Schlotterbeck(脚踝)赛季报销; Gnabry+Karl+Ter Stegen赛前伤缺"
   },
   "Ghana": {
-    "injuries": 0,
+    "injuries": 1,
     "suspensions": 0,
-    "note": ""
+    "note": "Kudus(股四头肌+腘绳肌)反复"
   },
   "Haiti": {
     "injuries": 0,
@@ -123,9 +123,9 @@
     "note": ""
   },
   "Japan": {
-    "injuries": 0,
+    "injuries": 1,
     "suspensions": 0,
-    "note": ""
+    "note": "远藤航(脚伤)退出国家队; 三笘薰+南野拓实赛前伤缺"
   },
   "Jordan": {
     "injuries": 0,
@@ -143,9 +143,9 @@
     "note": ""
   },
   "Netherlands": {
-    "injuries": 0,
+    "injuries": 1,
     "suspensions": 0,
-    "note": ""
+    "note": "Xavi Simons+Schouten(ACL)+De Ligt(背)赛前伤缺; Timber(腹股沟)"
   },
   "New Zealand": {
     "injuries": 0,
@@ -185,12 +185,12 @@
   "Scotland": {
     "injuries": 0,
     "suspensions": 0,
-    "note": ""
+    "note": "Gilmour(膝伤)赛前缺阵"
   },
   "Senegal": {
-    "injuries": 0,
+    "injuries": 1,
     "suspensions": 0,
-    "note": ""
+    "note": "Mendy(左膝)缺阵伊拉克"
   },
   "South Africa": {
     "injuries": 0,
@@ -203,9 +203,9 @@
     "note": ""
   },
   "Spain": {
-    "injuries": 0,
+    "injuries": 1,
     "suspensions": 0,
-    "note": ""
+    "note": "Fermin Lopez(跖骨)伤缺; Merino(足部)存疑; Yamal带伤"
   },
   "Sweden": {
     "injuries": 0,
@@ -230,12 +230,12 @@
   "USA": {
     "injuries": 0,
     "suspensions": 0,
-    "note": ""
+    "note": "Agyemang(跟腱)+Cardoso(脚踝)赛前伤缺"
   },
   "Uruguay": {
-    "injuries": 0,
+    "injuries": 1,
     "suspensions": 0,
-    "note": ""
+    "note": "Jimenez(脚踝)重度扭伤"
   },
   "Uzbekistan": {
     "injuries": 0,

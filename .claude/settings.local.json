@@ -90,7 +90,11 @@
       "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260624-20260624&limit=20\")",
       "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260625-20260626&limit=20\")",
       "mcp__playwright__browser_run_code_unsafe",
-      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260624-20260626&limit=20\")"
+      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260624-20260626&limit=20\")",
+      "Bash(curl -s \"https://site.web.api.espn.com/apis/site/v2/sports/soccer/fifa.world/summary?event=40001\")",
+      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260625-20260626&limit=10\")",
+      "Bash(curl -s \"https://site.web.api.espn.com/apis/site/v2/sports/soccer/fifa.world/summary?event=760475\")",
+      "WebFetch(domain:www.transfermarkt.com)"
     ]
   }
 }
