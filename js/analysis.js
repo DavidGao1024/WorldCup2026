@@ -296,12 +296,6 @@ function computePrediction(result, m) {
 }
 
 // 筛选世界杯正赛（2026-06-11起），无数据则回退到全部比赛
-function filterWC(matches) {
-  var arr = matches || [];
-  var wc = arr.filter(function(r) { return r.date >= '2026-06-11'; });
-  return wc.length > 0 ? wc : arr;
-}
-
 // 从 analysisData.rankings 获取球队排名，无数据时从积分榜推算，保底50
 function getTeamRank(teamName) {
   var rankings = analysisData.rankings || {};
@@ -499,8 +493,7 @@ function computeSituationScore(team, opponent, matchDate) {
   if (!tGroup || tGroup !== oGroup) return 5; // not a group match or different groups
 
   // Get standings
-  var standings = typeof computeStandings === 'function' ? computeStandings() : {};
-  var groupStandings = standings[tGroup] || [];
+  var groupStandings = typeof computeStandings === 'function' ? computeStandings(tGroup) : [];
 
   var tPos = -1, oPos = -1, tPts = -1, oPts = -1, tPlayed = 0, oPlayed = 0;
   for (var j = 0; j < groupStandings.length; j++) {

@@ -363,6 +363,11 @@ function trPlayer(name) {
   if (currentLang !== 'zh') return name;
   if (!name) return name;
   if (PLAYER_ZH[name]) return PLAYER_ZH[name];
+  // 大小写不敏感 fallback（Hwang In-Beom vs Hwang In-beom）
+  var lower = name.toLowerCase();
+  for (var k in PLAYER_ZH) {
+    if (k.toLowerCase() === lower) return PLAYER_ZH[k];
+  }
   // 去重音后重试 (Vinícius → Vinicius)
   var norm = name.replace(/[áàâãäå]/g,'a').replace(/[ÁÀÂÃÄÅ]/g,'A')
     .replace(/[éèêë]/g,'e').replace(/[ÉÈÊË]/g,'E')

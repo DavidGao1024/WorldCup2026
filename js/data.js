@@ -106,7 +106,7 @@ function saveToCache() {
   try {
     localStorage.setItem(CACHE_KEY, JSON.stringify(worldCupData));
     localStorage.setItem(CACHE_TIME_KEY, String(Date.now()));
-  } catch (e) {}
+  } catch (e) { console.warn('data: localStorage save failed'); }
 }
 
 async function fetchFreshData() {
@@ -124,7 +124,7 @@ async function fetchFreshData() {
       fetchEspnAndMerge();
     }
   } catch (e) {
-    // 静默失败
+    console.warn('data: CDN fetch failed, using local data');
   }
 }
 

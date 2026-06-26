@@ -837,12 +837,6 @@ body {
   font-weight: 600;
 }
 .bet-modal-payout { margin-top: 6px; }
-.bet-modal-payout span:first-child { color: #86efac; font-size: 0.9rem; }
-.bet-modal-payout .payout-amount {
-  color: #ffd700;
-  font-weight: 700;
-  font-size: 1.3rem;
-}
 .payout-range {
   color: #ffd700;
   font-weight: 500;

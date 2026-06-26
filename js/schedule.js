@@ -196,6 +196,65 @@ function closeMatchModal() {
   document.body.style.overflow = '';
 }
 
+function renderMatchEventsHTML(summary, match) {
+  if (!summary || !summary.events || !summary.events.length) return '';
+  var html = '<div class="match-events-section">';
+  html += '<div class="match-events-title">' + t('matchEventsTitle') + '</div>';
+  for (var i = 0; i < summary.events.length; i++) {
+    var ev = summary.events[i];
+    var evtTeam = typeof mapEspnName === 'function' ? mapEspnName(ev.team) : ev.team;
+    var isHome = evtTeam === match.team1 || evtTeam === trTeam(match.team1);
+    var alignClass = isHome ? 'match-event-home' : 'match-event-away';
+    var icon = '';
+    if (ev.type.indexOf('goal') >= 0 && ev.type.indexOf('own') === -1) icon = '⚽';
+    else if (ev.type.indexOf('own-goal') >= 0) icon = '🔴';
+    else if (ev.type === 'yellow-card') icon = '🟨';
+    else if (ev.type === 'red-card') icon = '🟥';
+    else if (ev.type === 'substitution') icon = '⇄';
+    var scorer = ev.participants && ev.participants[0] ? trPlayer(ev.participants[0].name) : '';
+    var p2 = ev.participants && ev.participants[1] ? trPlayer(ev.participants[1].name) : '';
+    var isSub = ev.type === 'substitution';
+    html += '<div class="match-event-row ' + alignClass + '">';
+    html += '<span class="match-event-time">' + ev.time + '</span>';
+    html += '<span class="match-event-icon">' + icon + '</span>';
+    html += '<span class="match-event-player">' + (isSub ? p2 + ' <span class="sub-off">↓</span> ' + scorer + ' <span class="sub-on">↑</span>' : scorer + (p2 ? ' <span class="match-event-assist">(' + t('matchAssist') + ': ' + p2 + ')</span>' : '')) + '</span>';
+    html += '</div>';
+  }
+  html += '</div>';
+  return html;
+}
+
+function renderMatchStatsHTML(summary) {
+  if (!summary || !summary.stats || summary.stats.length !== 2) return '';
+  var html = '<div class="match-stats-section">';
+  html += '<div class="match-stats-title">' + t('matchStats') + '</div>';
+  var statNames = ['possessionPct', 'totalShots', 'shotsOnTarget', 'totalPasses', 'passPct', 'foulsCommitted', 'wonCorners', 'effectiveTackles', 'interceptions', 'effectiveClearance'];
+  var statLabels = { possessionPct: '控球率(%)', totalShots: '射门', shotsOnTarget: '射正', totalPasses: '传球', passPct: '传球成功率(%)', foulsCommitted: '犯规', wonCorners: '角球', effectiveTackles: '抢断', interceptions: '拦截', effectiveClearance: '解围' };
+  for (var s = 0; s < statNames.length; s++) {
+    var sn = statNames[s];
+    var sv0 = '', sv1 = '';
+    for (var st = 0; st < (summary.stats[0].stats || []).length; st++) {
+      if ((summary.stats[0].stats[st].name || '') === sn) sv0 = summary.stats[0].stats[st].value;
+      if ((summary.stats[1].stats[st].name || '') === sn) sv1 = summary.stats[1].stats[st].value;
+    }
+    if (!sv0 && !sv1) continue;
+    var v0 = parseFloat(sv0) || 0, v1 = parseFloat(sv1) || 0;
+    var isPct = sn === 'possessionPct' || sn === 'passPct';
+    var d0 = isPct ? (sn === 'passPct' ? Math.round(v0 * 100) : Math.round(v0)) : v0;
+    var d1 = isPct ? (sn === 'passPct' ? Math.round(v1 * 100) : Math.round(v1)) : v1;
+    var total = v0 + v1 || 1;
+    var pct0 = Math.round(v0 / total * 100), pct1 = Math.round(v1 / total * 100);
+    html += '<div class="match-stat-row">';
+    html += '<span class="match-stat-val">' + (isPct ? d0 + '%' : d0) + '</span>';
+    html += '<span class="match-stat-bar-wrap"><span class="match-stat-bar-home" style="width:' + pct0 + '%"></span><span class="match-stat-bar-away" style="width:' + pct1 + '%"></span></span>';
+    html += '<span class="match-stat-val">' + (isPct ? d1 + '%' : d1) + '</span>';
+    html += '<span class="match-stat-label">' + (statLabels[sn] || sn) + '</span>';
+    html += '</div>';
+  }
+  html += '</div>';
+  return html;
+}
+
 function renderMatchBasicInfo(match, summary, pred) {
   var hasScore = match.score1 != null && match.score2 != null;
   var scoreDisplay = hasScore ? match.score1 + ' - ' + match.score2 : 'vs';
@@ -214,65 +273,12 @@ function renderMatchBasicInfo(match, summary, pred) {
   html += '<div class="match-modal-meta"><span>' + time + '</span><span>·</span><span>' + trVenue(match.ground) + '</span><span>·</span><span>' + stageLabel + '</span></div>';
   html += '</div>';
 
-  // Events from summary (if available)
-  if (summary && summary.events && summary.events.length > 0) {
-    html += '<div class="match-events-section">';
-    html += '<div class="match-events-title">' + t('matchEventsTitle') + '</div>';
-    for (var i = 0; i < summary.events.length; i++) {
-      var ev = summary.events[i];
-      var evtTeam = typeof mapEspnName === 'function' ? mapEspnName(ev.team) : ev.team;
-      var isHome = evtTeam === match.team1 || evtTeam === trTeam(match.team1);
-      var alignClass = isHome ? 'match-event-home' : 'match-event-away';
-      var icon = '';
-      if (ev.type.indexOf('goal') >= 0 && ev.type.indexOf('own') === -1) icon = '⚽';
-      else if (ev.type.indexOf('own-goal') >= 0) icon = '🔴';
-      else if (ev.type === 'yellow-card') icon = '🟨';
-      else if (ev.type === 'red-card') icon = '🟥';
-      else if (ev.type === 'substitution') icon = '⇄';
-      var scorer = ev.participants && ev.participants[0] ? trPlayer(ev.participants[0].name) : '';
-      var p2 = ev.participants && ev.participants[1] ? trPlayer(ev.participants[1].name) : '';
-      var isSub = ev.type === 'substitution';
-      html += '<div class="match-event-row ' + alignClass + '">';
-      html += '<span class="match-event-time">' + ev.time + '</span>';
-      html += '<span class="match-event-icon">' + icon + '</span>';
-      html += '<span class="match-event-player">' + (isSub ? p2 + ' <span class="sub-off">↓</span> ' + scorer + ' <span class="sub-on">↑</span>' : scorer + (p2 ? ' <span class="match-event-assist">(' + t('matchAssist') + ': ' + p2 + ')</span>' : '')) + '</span>';
-      html += '</div>';
-    }
-    html += '</div>';
-  }
+  // Events
+  html += renderMatchEventsHTML(summary, match);
 
   // Stats（仅已完赛比赛显示）
   var hasScore2 = match.score1 != null && match.score2 != null;
-  if (hasScore2 && summary && summary.stats && summary.stats.length === 2) {
-    html += '<div class="match-stats-section">';
-    html += '<div class="match-stats-title">' + t('matchStats') + '</div>';
-    var statNames = ['possessionPct', 'totalShots', 'shotsOnTarget', 'totalPasses', 'passPct', 'foulsCommitted', 'wonCorners', 'effectiveTackles', 'interceptions', 'effectiveClearance'];
-    var statLabels = { possessionPct: '控球率(%)', totalShots: '射门', shotsOnTarget: '射正', totalPasses: '传球', passPct: '传球成功率(%)', foulsCommitted: '犯规', wonCorners: '角球', effectiveTackles: '抢断', interceptions: '拦截', effectiveClearance: '解围' };
-    for (var s = 0; s < statNames.length; s++) {
-      var sn = statNames[s];
-      var sv0 = '', sv1 = '';
-      for (var st = 0; st < (summary.stats[0].stats || []).length; st++) {
-        if ((summary.stats[0].stats[st].name || '') === sn) sv0 = summary.stats[0].stats[st].value;
-        if ((summary.stats[1].stats[st].name || '') === sn) sv1 = summary.stats[1].stats[st].value;
-      }
-      if (!sv0 && !sv1) continue;
-      var v0 = parseFloat(sv0) || 0, v1 = parseFloat(sv1) || 0;
-      var isPct = sn === 'possessionPct' || sn === 'passPct';
-      var d0 = isPct ? (sn === 'passPct' ? Math.round(v0 * 100) : Math.round(v0)) : v0;
-      var d1 = isPct ? (sn === 'passPct' ? Math.round(v1 * 100) : Math.round(v1)) : v1;
-      var total = v0 + v1 || 1;
-      var pct0 = Math.round(v0 / total * 100), pct1 = Math.round(v1 / total * 100);
-      var fmt0 = isPct ? d0 + '%' : d0;
-      var fmt1 = isPct ? d1 + '%' : d1;
-      html += '<div class="match-stat-row">';
-      html += '<span class="match-stat-val">' + fmt0 + '</span>';
-      html += '<span class="match-stat-bar-wrap"><span class="match-stat-bar-home" style="width:' + pct0 + '%"></span><span class="match-stat-bar-away" style="width:' + pct1 + '%"></span></span>';
-      html += '<span class="match-stat-val">' + fmt1 + '</span>';
-      html += '<span class="match-stat-label">' + (statLabels[sn] || sn) + '</span>';
-      html += '</div>';
-    }
-    html += '</div>';
-  }
+  if (hasScore2) html += renderMatchStatsHTML(summary);
 
   // ---- 赛前分析（未开赛比赛） ----
   if (!hasScore && pred && pred.top1) {
@@ -351,63 +357,10 @@ function renderMatchModalContent(summary, match) {
   html += '</div>';
 
   // Match Events
-  if (summary.events && summary.events.length > 0) {
-    html += '<div class="match-events-section">';
-    html += '<div class="match-events-title">' + t('matchEventsTitle') + '</div>';
-    for (var ei = 0; ei < summary.events.length; ei++) {
-      var ev = summary.events[ei];
-      var evtTeam = typeof mapEspnName === 'function' ? mapEspnName(ev.team) : ev.team;
-      var isHome = evtTeam === match.team1 || evtTeam === trTeam(match.team1);
-      var alignClass = isHome ? 'match-event-home' : 'match-event-away';
-      var icon = '';
-      if (ev.type.indexOf('goal') >= 0 && ev.type.indexOf('own') === -1) icon = '⚽';
-      else if (ev.type.indexOf('own-goal') >= 0) icon = '🔴';
-      else if (ev.type === 'yellow-card') icon = '🟨';
-      else if (ev.type === 'red-card') icon = '🟥';
-      else if (ev.type === 'substitution') icon = '⇄';
-      var scorer = ev.participants && ev.participants[0] ? trPlayer(ev.participants[0].name) : '';
-      var p2 = ev.participants && ev.participants[1] ? trPlayer(ev.participants[1].name) : '';
-      var isSub = ev.type === 'substitution';
-      html += '<div class="match-event-row ' + alignClass + '">';
-      html += '<span class="match-event-time">' + ev.time + '</span>';
-      html += '<span class="match-event-icon">' + icon + '</span>';
-      html += '<span class="match-event-player">' + (isSub ? p2 + ' <span class="sub-off">↓</span> ' + scorer + ' <span class="sub-on">↑</span>' : scorer + (p2 ? ' <span class="match-event-assist">(' + t('matchAssist') + ': ' + p2 + ')</span>' : '')) + '</span>';
-      html += '</div>';
-    }
-    html += '</div>';
-  }
+  html += renderMatchEventsHTML(summary, match);
 
   // Stats
-  if (summary.stats && summary.stats.length === 2) {
-    html += '<div class="match-stats-section">';
-    html += '<div class="match-stats-title">' + t('matchStats') + '</div>';
-    var statNames = ['possessionPct', 'totalShots', 'shotsOnTarget', 'totalPasses', 'passPct', 'foulsCommitted', 'wonCorners', 'effectiveTackles', 'interceptions', 'effectiveClearance'];
-    var statLabels = { possessionPct: '控球率(%)', totalShots: '射门', shotsOnTarget: '射正', totalPasses: '传球', passPct: '传球成功率(%)', foulsCommitted: '犯规', wonCorners: '角球', effectiveTackles: '抢断', interceptions: '拦截', effectiveClearance: '解围' };
-    for (var s = 0; s < statNames.length; s++) {
-      var sn = statNames[s];
-      var sv0 = '', sv1 = '';
-      for (var st = 0; st < (summary.stats[0].stats || []).length; st++) {
-        if (summary.stats[0].stats[st].name === sn) sv0 = summary.stats[0].stats[st].value;
-        if (summary.stats[1].stats[st].name === sn) sv1 = summary.stats[1].stats[st].value;
-      }
-      if (!sv0 && !sv1) continue;
-      var v0 = parseFloat(sv0) || 0, v1 = parseFloat(sv1) || 0;
-      var isPct = sn === 'possessionPct' || sn === 'passPct';
-      var d0 = isPct ? (sn === 'passPct' ? Math.round(v0 * 100) : Math.round(v0)) : v0;
-      var d1 = isPct ? (sn === 'passPct' ? Math.round(v1 * 100) : Math.round(v1)) : v1;
-      var total = v0 + v1 || 1;
-      var pct0 = Math.round(v0 / total * 100), pct1 = Math.round(v1 / total * 100);
-      var fmt0 = isPct ? d0 + '%' : d0;
-      var fmt1 = isPct ? d1 + '%' : d1;
-      html += '<div class="match-stat-row">';
-      html += '<span class="match-stat-val">' + fmt0 + '</span>';
-      html += '<span class="match-stat-bar-wrap"><span class="match-stat-bar-home" style="width:' + pct0 + '%"></span><span class="match-stat-bar-away" style="width:' + pct1 + '%"></span></span>';
-      html += '<span class="match-stat-val">' + fmt1 + '</span>';
-      html += '<span class="match-stat-label">' + (statLabels[sn] || sn) + '</span>';
-      html += '</div>';
-    }
-    html += '</div>';
-  }
+  html += renderMatchStatsHTML(summary);
 
   return html;
 }

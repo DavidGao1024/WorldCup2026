@@ -63,7 +63,7 @@ async function fetchEspnScores() {
 // 从 ESPN 拉取积分榜
 async function fetchEspnStandings() {
   try {
-    var resp = await fetch(ESPN_STANDINGS_URL);
+    var resp = await fetch(ESPN_STANDINGS);
     if (!resp.ok) return null;
     var data = await resp.json();
     var result = {};
