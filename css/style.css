@@ -1361,6 +1361,8 @@ body {
 .match-event-icon { width: 20px; text-align: center; font-size: 0.8rem; flex-shrink: 0; }
 .match-event-player { color: #e2e8f0; flex: 1; }
 .match-event-assist { color: #94a3b8; font-size: 0.7rem; }
+.sub-on { color: #4ade80; font-weight: 700; }
+.sub-off { color: #f87171; font-weight: 700; }
 .match-event-home { text-align: left; }
 .match-event-away { text-align: right; flex-direction: row-reverse; }
 

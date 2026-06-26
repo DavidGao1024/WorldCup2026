@@ -25,7 +25,7 @@ function renderScorers() {
   for (var i = 0; i < goals.length; i++) {
     var g = goals[i];
     html += '<tr>';
-    html += '<td class="sc-player">' + getFlagImg(g.team) + '<span>' + g.player + '</span></td>';
+    html += '<td class="sc-player">' + getFlagImg(g.team) + '<span>' + trPlayer(g.player) + '</span></td>';
     html += '<td class="sc-goals">' + g.goals + '</td>';
     html += '</tr>';
   }

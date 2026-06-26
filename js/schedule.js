@@ -228,14 +228,14 @@ function renderMatchBasicInfo(match, summary, pred) {
       else if (ev.type.indexOf('own-goal') >= 0) icon = '🔴';
       else if (ev.type === 'yellow-card') icon = '🟨';
       else if (ev.type === 'red-card') icon = '🟥';
-      else if (ev.type === 'substitution') icon = '🔄';
-      var scorer = ev.participants && ev.participants[0] ? ev.participants[0].name : '';
-      var p2 = ev.participants && ev.participants[1] ? ev.participants[1].name : '';
+      else if (ev.type === 'substitution') icon = '⇄';
+      var scorer = ev.participants && ev.participants[0] ? trPlayer(ev.participants[0].name) : '';
+      var p2 = ev.participants && ev.participants[1] ? trPlayer(ev.participants[1].name) : '';
       var isSub = ev.type === 'substitution';
       html += '<div class="match-event-row ' + alignClass + '">';
       html += '<span class="match-event-time">' + ev.time + '</span>';
       html += '<span class="match-event-icon">' + icon + '</span>';
-      html += '<span class="match-event-player">' + scorer + (isSub ? ' ↔ ' + p2 : (p2 ? ' <span class="match-event-assist">(' + t('matchAssist') + ': ' + p2 + ')</span>' : '')) + '</span>';
+      html += '<span class="match-event-player">' + (isSub ? p2 + ' <span class="sub-off">↓</span> ' + scorer + ' <span class="sub-on">↑</span>' : scorer + (p2 ? ' <span class="match-event-assist">(' + t('matchAssist') + ': ' + p2 + ')</span>' : '')) + '</span>';
       html += '</div>';
     }
     html += '</div>';
@@ -356,21 +356,22 @@ function renderMatchModalContent(summary, match) {
     html += '<div class="match-events-title">' + t('matchEventsTitle') + '</div>';
     for (var ei = 0; ei < summary.events.length; ei++) {
       var ev = summary.events[ei];
-      var isHome = ev.team === match.team1;
+      var evtTeam = typeof mapEspnName === 'function' ? mapEspnName(ev.team) : ev.team;
+      var isHome = evtTeam === match.team1 || evtTeam === trTeam(match.team1);
       var alignClass = isHome ? 'match-event-home' : 'match-event-away';
       var icon = '';
       if (ev.type.indexOf('goal') >= 0 && ev.type.indexOf('own') === -1) icon = '⚽';
       else if (ev.type.indexOf('own-goal') >= 0) icon = '🔴';
       else if (ev.type === 'yellow-card') icon = '🟨';
       else if (ev.type === 'red-card') icon = '🟥';
-      else if (ev.type === 'substitution') icon = '🔄';
-      var scorer = ev.participants && ev.participants[0] ? ev.participants[0].name : '';
-      var p2 = ev.participants && ev.participants[1] ? ev.participants[1].name : '';
+      else if (ev.type === 'substitution') icon = '⇄';
+      var scorer = ev.participants && ev.participants[0] ? trPlayer(ev.participants[0].name) : '';
+      var p2 = ev.participants && ev.participants[1] ? trPlayer(ev.participants[1].name) : '';
       var isSub = ev.type === 'substitution';
       html += '<div class="match-event-row ' + alignClass + '">';
       html += '<span class="match-event-time">' + ev.time + '</span>';
       html += '<span class="match-event-icon">' + icon + '</span>';
-      html += '<span class="match-event-player">' + scorer + (isSub ? ' ↔ ' + p2 : (p2 ? ' <span class="match-event-assist">(' + t('matchAssist') + ': ' + p2 + ')</span>' : '')) + '</span>';
+      html += '<span class="match-event-player">' + (isSub ? p2 + ' <span class="sub-off">↓</span> ' + scorer + ' <span class="sub-on">↑</span>' : scorer + (p2 ? ' <span class="match-event-assist">(' + t('matchAssist') + ': ' + p2 + ')</span>' : '')) + '</span>';
       html += '</div>';
     }
     html += '</div>';
@@ -435,7 +436,7 @@ function renderLineupCol(lineup, match) {
     var pos = getFieldXY(p, categories, lineup.formation);
     html += '<div class="match-player-dot" style="left:' + pos.x + '%;top:' + pos.y + '%">';
     html += '<span class="dot-jersey">' + p.jersey + '</span>';
-    html += '<span class="dot-name">' + p.shortName + '</span>';
+    html += '<span class="dot-name">' + trPlayer(p.shortName) + '</span>';
     html += '<span class="dot-pos-tag">' + (p.positionAbbr || '') + '</span>';
     html += '</div>';
   });
@@ -447,7 +448,7 @@ function renderLineupCol(lineup, match) {
     html += '<div class="match-bench-title">' + t('matchBench') + ' (' + lineup.bench.length + ')</div>';
     html += '<div class="match-bench-list">';
     (lineup.bench || []).forEach(function(p) {
-      html += '<span class="match-bench-item"><span class="match-bench-num">#' + p.jersey + '</span>' + p.shortName + '</span>';
+      html += '<span class="match-bench-item"><span class="match-bench-num">#' + p.jersey + '</span>' + trPlayer(p.shortName) + '</span>';
     });
     html += '</div>';
   }

@@ -356,3 +356,24 @@ function trVenue(name) {
   if (currentLang !== 'zh') return name;
   return VENUE_ZH[name] || name;
 }
+
+var PLAYER_ZH = {};
+
+function trPlayer(name) {
+  if (currentLang !== 'zh') return name;
+  if (!name) return name;
+  if (PLAYER_ZH[name]) return PLAYER_ZH[name];
+  // 去重音后重试 (Vinícius → Vinicius)
+  var norm = name.replace(/[áàâãäå]/g,'a').replace(/[ÁÀÂÃÄÅ]/g,'A')
+    .replace(/[éèêë]/g,'e').replace(/[ÉÈÊË]/g,'E')
+    .replace(/[íìîï]/g,'i').replace(/[ÍÌÎÏ]/g,'I')
+    .replace(/[óòôõöø]/g,'o').replace(/[ÓÒÔÕÖØ]/g,'O')
+    .replace(/[úùûü]/g,'u').replace(/[ÚÙÛÜ]/g,'U')
+    .replace(/[ýÿ]/g,'y').replace(/[ÝŸ]/g,'Y')
+    .replace(/ç/g,'c').replace(/Ç/g,'C')
+    .replace(/ñ/g,'n').replace(/Ñ/g,'N')
+    .replace(/š/g,'s').replace(/Š/g,'S')
+    .replace(/ž/g,'z').replace(/Ž/g,'Z');
+  if (norm !== name && PLAYER_ZH[norm]) return PLAYER_ZH[norm];
+  return name;
+}

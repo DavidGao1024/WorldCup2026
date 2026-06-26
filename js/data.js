@@ -11,9 +11,10 @@ async function loadData() {
     worldCupData = JSON.parse(cached);
   }
 
-  // 后台拉取最新数据（CDN + ESPN 并行）
+  // 后台拉取最新数据（CDN + ESPN + 球员中英文映射 并行）
   fetchFreshData();
   fetchEspnAndMerge();
+  fetchPlayersZh();
 
   if (worldCupData) return worldCupData;
 
@@ -26,6 +27,18 @@ async function loadData() {
   } catch (e) {
     console.error('Failed to load data');
     return null;
+  }
+}
+
+async function fetchPlayersZh() {
+  try {
+    var resp = await fetch('data/players-zh.json');
+    var data = await resp.json();
+    if (data && data.players) {
+      PLAYER_ZH = data.players;
+    }
+  } catch (e) {
+    // 静默失败 — 球员名显示英文原名
   }
 }
 

@@ -244,7 +244,7 @@ function computeWorldCupSuspensions(cards, matches) {
     var note = '';
     if (suspendedPlayers.length > 0) {
       note = suspendedPlayers.map(function(sp) {
-        return sp.name + '(' + sp.reason + ')';
+        return trPlayer(sp.name) + '(' + sp.reason + ')';
       }).join('; ');
     }
 
