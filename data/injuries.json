@@ -1,6 +1,6 @@
 {
-  "updateTime": "2026-06-25T08:32:24.993Z",
-  "source": "manual (news)",
+  "updateTime": "2026-06-26T07:05:21.854Z",
+  "source": "manual",
   "note": "伤病数据手动维护。停赛数据由 ESPN API 实时计算，无需在此填写。",
   "Algeria": {
     "injuries": 0,
