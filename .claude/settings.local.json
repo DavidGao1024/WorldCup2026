@@ -94,7 +94,9 @@
       "Bash(curl -s \"https://site.web.api.espn.com/apis/site/v2/sports/soccer/fifa.world/summary?event=40001\")",
       "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260625-20260626&limit=10\")",
       "Bash(curl -s \"https://site.web.api.espn.com/apis/site/v2/sports/soccer/fifa.world/summary?event=760475\")",
-      "WebFetch(domain:www.transfermarkt.com)"
+      "WebFetch(domain:www.transfermarkt.com)",
+      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260625-20260627&limit=50\")",
+      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260611-20260627&limit=200\")"
     ]
   }
 }
