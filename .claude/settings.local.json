@@ -106,7 +106,9 @@
       "Bash(curl -sL -A \"Mozilla/5.0\" \"https://2026fifa.tw/squad-argentina/\")",
       "Bash(curl -sL -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36\" \"https://k.sina.cn/article_1716376363_664dd32b02001t8ek.html\")",
       "Bash(curl -sL -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36\" \"https://www.aljazeera.com/sports/2026/6/2/fifa-world-cup-2026-full-squads-48-teams-players\")",
-      "Bash(curl -sL -A \"Mozilla/5.0\" \"https://2026fifa.tw/squad-portugal/\")"
+      "Bash(curl -sL -A \"Mozilla/5.0\" \"https://2026fifa.tw/squad-portugal/\")",
+      "WebFetch(domain:mp.weixin.qq.com)",
+      "mcp__playwright__browser_tabs"
     ]
   }
 }

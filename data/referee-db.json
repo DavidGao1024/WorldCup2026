@@ -1,0 +1,122 @@
+{
+  "João Pinheiro": {
+    "country": "Portugal",
+    "cardsPerGame": 4.2,
+    "penaltyRate": 0.15,
+    "homeWinPct": 42,
+    "style": "适中",
+    "strictness": 5
+  },
+  "Daniele Orsato": {
+    "country": "Italy",
+    "cardsPerGame": 3.8,
+    "penaltyRate": 0.12,
+    "homeWinPct": 45,
+    "style": "宽松",
+    "strictness": 3
+  },
+  "Szymon Marciniak": {
+    "country": "Poland",
+    "cardsPerGame": 3.5,
+    "penaltyRate": 0.18,
+    "homeWinPct": 48,
+    "style": "宽松",
+    "strictness": 3
+  },
+  "Michael Oliver": {
+    "country": "England",
+    "cardsPerGame": 3.2,
+    "penaltyRate": 0.1,
+    "homeWinPct": 44,
+    "style": "英超宽松",
+    "strictness": 2
+  },
+  "Danny Makkelie": {
+    "country": "Netherlands",
+    "cardsPerGame": 4.5,
+    "penaltyRate": 0.2,
+    "homeWinPct": 40,
+    "style": "严格",
+    "strictness": 7
+  },
+  "Tess Olofsson": {
+    "country": "Sweden",
+    "cardsPerGame": 3,
+    "penaltyRate": 0.08,
+    "homeWinPct": 50,
+    "style": "宽松",
+    "strictness": 2
+  },
+  "Facundo Tello": {
+    "country": "Argentina",
+    "cardsPerGame": 5.5,
+    "penaltyRate": 0.25,
+    "homeWinPct": 38,
+    "style": "非常严格",
+    "strictness": 9
+  },
+  "Wilton Sampaio": {
+    "country": "Brazil",
+    "cardsPerGame": 4.8,
+    "penaltyRate": 0.22,
+    "homeWinPct": 43,
+    "style": "严格",
+    "strictness": 7
+  },
+  "Slavko Vinčić": {
+    "country": "Slovenia",
+    "cardsPerGame": 4,
+    "penaltyRate": 0.15,
+    "homeWinPct": 45,
+    "style": "适中",
+    "strictness": 5
+  },
+  "Clément Turpin": {
+    "country": "France",
+    "cardsPerGame": 3.6,
+    "penaltyRate": 0.14,
+    "homeWinPct": 46,
+    "style": "适中偏宽",
+    "strictness": 4
+  },
+  "Jesús Valenzuela": {
+    "country": "Venezuela",
+    "cardsPerGame": 5,
+    "penaltyRate": 0.2,
+    "homeWinPct": 40,
+    "style": "严格",
+    "strictness": 7
+  },
+  "César Ramos": {
+    "country": "Mexico",
+    "cardsPerGame": 4.5,
+    "penaltyRate": 0.18,
+    "homeWinPct": 42,
+    "style": "适中偏严",
+    "strictness": 6
+  },
+  "Mustapha Ghorbal": {
+    "country": "Algeria",
+    "cardsPerGame": 3.8,
+    "penaltyRate": 0.12,
+    "homeWinPct": 44,
+    "style": "适中",
+    "strictness": 5
+  },
+  "Maurizio Mariani": {
+    "country": "Italy",
+    "cardsPerGame": 4,
+    "penaltyRate": 0.16,
+    "homeWinPct": 44,
+    "style": "适中",
+    "strictness": 5
+  },
+  "Jalal Jayed": {
+    "country": "Morocco",
+    "cardsPerGame": 3.8,
+    "penaltyRate": 0.12,
+    "homeWinPct": 46,
+    "style": "适中",
+    "strictness": 4
+  }
+}

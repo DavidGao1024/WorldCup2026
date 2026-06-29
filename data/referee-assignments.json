@@ -1,0 +1,114 @@
+[
+  {
+    "date": "2026-06-28",
+    "t1": "South Africa",
+    "t2": "Canada",
+    "ref": "João Pinheiro",
+    "status": "FULL_TIME"
+  },
+  {
+    "date": "2026-06-29",
+    "t1": "Brazil",
+    "t2": "Japan",
+    "ref": "Maurizio Mariani",
+    "status": "SCHEDULED"
+  },
+  {
+    "date": "2026-06-29",
+    "t1": "Germany",
+    "t2": "Paraguay",
+    "ref": "Jalal Jayed",
+    "status": "SCHEDULED"
+  },
+  {
+    "date": "2026-06-30",
+    "t1": "Netherlands",
+    "t2": "Morocco",
+    "ref": "Wilton Sampaio",
+    "status": "SCHEDULED"
+  },
+  {
+    "date": "2026-06-30",
+    "t1": "Ivory Coast",
+    "t2": "Norway",
+    "ref": "Jesús Valenzuela",
+    "status": "SCHEDULED"
+  },
+  {
+    "date": "2026-06-30",
+    "t1": "France",
+    "t2": "Sweden",
+    "ref": "Danny Makkelie",
+    "status": "SCHEDULED"
+  },
+  {
+    "date": "2026-07-01",
+    "t1": "Mexico",
+    "t2": "Ecuador",
+    "ref": "未公布",
+    "status": "SCHEDULED"
+  },
+  {
+    "date": "2026-07-01",
+    "t1": "England",
+    "t2": "DR Congo",
+    "ref": "未公布",
+    "status": "SCHEDULED"
+  },
+  {
+    "date": "2026-07-01",
+    "t1": "Belgium",
+    "t2": "Senegal",
+    "ref": "未公布",
+    "status": "SCHEDULED"
+  },
+  {
+    "date": "2026-07-02",
+    "t1": "United States",
+    "t2": "Bosnia & Herzegovina",
+    "ref": "未公布",
+    "status": "SCHEDULED"
+  },
+  {
+    "date": "2026-07-02",
+    "t1": "Spain",
+    "t2": "Austria",
+    "ref": "未公布",
+    "status": "SCHEDULED"
+  },
+  {
+    "date": "2026-07-02",
+    "t1": "Portugal",
+    "t2": "Croatia",
+    "ref": "未公布",
+    "status": "SCHEDULED"
+  },
+  {
+    "date": "2026-07-03",
+    "t1": "Switzerland",
+    "t2": "Algeria",
+    "ref": "未公布",
+    "status": "SCHEDULED"
+  },
+  {
+    "date": "2026-07-03",
+    "t1": "Australia",
+    "t2": "Egypt",
+    "ref": "未公布",
+    "status": "SCHEDULED"
+  },
+  {
+    "date": "2026-07-03",
+    "t1": "Argentina",
+    "t2": "Cape Verde",
+    "ref": "未公布",
+    "status": "SCHEDULED"
+  },
+  {
+    "date": "2026-07-04",
+    "t1": "Colombia",
+    "t2": "Ghana",
+    "ref": "未公布",
+    "status": "SCHEDULED"
+  }
+]

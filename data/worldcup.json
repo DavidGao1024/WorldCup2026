@@ -828,144 +828,163 @@
       "num": 73,
       "date": "2026-06-28",
       "time": "12:00 UTC-7",
-      "team1": "2A",
-      "team2": "2B",
-      "ground": "Los Angeles (Inglewood)"
+      "team1": "South Africa",
+      "team2": "Canada",
+      "ground": "Los Angeles (Inglewood)",
+      "espnEventId": "760486",
+      "score1": 0,
+      "score2": 1,
+      "status": "post"
     },
     {
       "round": "Round of 32",
       "num": 74,
       "date": "2026-06-29",
       "time": "16:30 UTC-4",
-      "team1": "1E",
-      "team2": "3A/B/C/D/F",
-      "ground": "Boston (Foxborough)"
+      "team1": "Germany",
+      "team2": "Paraguay",
+      "ground": "Boston (Foxborough)",
+      "espnEventId": "760489"
     },
     {
       "round": "Round of 32",
       "num": 75,
-      "date": "2026-06-29",
+      "date": "2026-06-30",
       "time": "19:00 UTC-6",
-      "team1": "1F",
-      "team2": "2C",
-      "ground": "Monterrey (Guadalupe)"
+      "team1": "Netherlands",
+      "team2": "Morocco",
+      "ground": "Monterrey (Guadalupe)",
+      "espnEventId": "760488"
     },
     {
       "round": "Round of 32",
       "num": 76,
       "date": "2026-06-29",
       "time": "12:00 UTC-5",
-      "team1": "1C",
-      "team2": "2F",
-      "ground": "Houston"
+      "team1": "Brazil",
+      "team2": "Japan",
+      "ground": "Houston",
+      "espnEventId": "760487"
     },
     {
       "round": "Round of 32",
       "num": 77,
       "date": "2026-06-30",
       "time": "17:00 UTC-4",
-      "team1": "1I",
-      "team2": "3C/D/F/G/H",
-      "ground": "New York/New Jersey (East Rutherford)"
+      "team1": "France",
+      "team2": "Sweden",
+      "ground": "New York/New Jersey (East Rutherford)",
+      "espnEventId": "760492"
     },
     {
       "round": "Round of 32",
       "num": 78,
       "date": "2026-06-30",
       "time": "12:00 UTC-5",
-      "team1": "2E",
-      "team2": "2I",
-      "ground": "Dallas (Arlington)"
+      "team1": "Ivory Coast",
+      "team2": "Norway",
+      "ground": "Dallas (Arlington)",
+      "espnEventId": "760490"
     },
     {
       "round": "Round of 32",
       "num": 79,
-      "date": "2026-06-30",
+      "date": "2026-07-01",
       "time": "19:00 UTC-6",
-      "team1": "1A",
-      "team2": "3C/E/F/H/I",
-      "ground": "Mexico City"
+      "team1": "Mexico",
+      "team2": "Ecuador",
+      "ground": "Mexico City",
+      "espnEventId": "760491"
     },
     {
       "round": "Round of 32",
       "num": 80,
       "date": "2026-07-01",
       "time": "12:00 UTC-4",
-      "team1": "1L",
-      "team2": "3E/H/I/J/K",
-      "ground": "Atlanta"
+      "team1": "England",
+      "team2": "DR Congo",
+      "ground": "Atlanta",
+      "espnEventId": "760495"
     },
     {
       "round": "Round of 32",
       "num": 81,
-      "date": "2026-07-01",
+      "date": "2026-07-02",
       "time": "17:00 UTC-7",
-      "team1": "1D",
-      "team2": "3B/E/F/I/J",
-      "ground": "San Francisco Bay Area (Santa Clara)"
+      "team1": "United States",
+      "team2": "Bosnia & Herzegovina",
+      "ground": "San Francisco Bay Area (Santa Clara)",
+      "espnEventId": "760494"
     },
     {
       "round": "Round of 32",
       "num": 82,
       "date": "2026-07-01",
       "time": "13:00 UTC-7",
-      "team1": "1G",
-      "team2": "3A/E/H/I/J",
-      "ground": "Seattle"
+      "team1": "Belgium",
+      "team2": "Senegal",
+      "ground": "Seattle",
+      "espnEventId": "760493"
     },
     {
       "round": "Round of 32",
       "num": 83,
       "date": "2026-07-02",
       "time": "19:00 UTC-4",
-      "team1": "2K",
-      "team2": "2L",
-      "ground": "Toronto"
+      "team1": "Portugal",
+      "team2": "Croatia",
+      "ground": "Toronto",
+      "espnEventId": "760496"
     },
     {
       "round": "Round of 32",
       "num": 84,
       "date": "2026-07-02",
       "time": "12:00 UTC-7",
-      "team1": "1H",
-      "team2": "2J",
-      "ground": "Los Angeles (Inglewood)"
+      "team1": "Spain",
+      "team2": "Austria",
+      "ground": "Los Angeles (Inglewood)",
+      "espnEventId": "760497"
     },
     {
       "round": "Round of 32",
       "num": 85,
-      "date": "2026-07-02",
+      "date": "2026-07-03",
       "time": "20:00 UTC-7",
-      "team1": "1B",
-      "team2": "3E/F/G/I/J",
-      "ground": "Vancouver"
+      "team1": "Switzerland",
+      "team2": "Algeria",
+      "ground": "Vancouver",
+      "espnEventId": "760498"
     },
     {
       "round": "Round of 32",
       "num": 86,
       "date": "2026-07-03",
       "time": "18:00 UTC-4",
-      "team1": "1J",
-      "team2": "2H",
-      "ground": "Miami (Miami Gardens)"
+      "team1": "Argentina",
+      "team2": "Cape Verde",
+      "ground": "Miami (Miami Gardens)",
+      "espnEventId": "760500"
     },
     {
       "round": "Round of 32",
       "num": 87,
-      "date": "2026-07-03",
+      "date": "2026-07-04",
       "time": "20:30 UTC-5",
-      "team1": "1K",
-      "team2": "3D/E/I/J/L",
-      "ground": "Kansas City"
+      "team1": "Colombia",
+      "team2": "Ghana",
+      "ground": "Kansas City",
+      "espnEventId": "760501"
     },
     {
       "round": "Round of 32",
       "num": 88,
       "date": "2026-07-03",
       "time": "13:00 UTC-5",
-      "team1": "2D",
-      "team2": "2G",
-      "ground": "Dallas (Arlington)"
+      "team1": "Australia",
+      "team2": "Egypt",
+      "ground": "Dallas (Arlington)",
+      "espnEventId": "760499"
     },
     {
       "round": "Round of 16",

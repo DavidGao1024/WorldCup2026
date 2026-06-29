@@ -1,0 +1,216 @@
+{
+  "Brazil": {
+    "restDays": 5,
+    "injuries": [
+      "Neymar",
+      "Rodrigo",
+      "Militao"
+    ],
+    "cardRisk": 0,
+    "fatigueLevel": 2
+  },
+  "Japan": {
+    "restDays": 4,
+    "injuries": [
+      "Mitoma",
+      "Endo"
+    ],
+    "cardRisk": 0,
+    "fatigueLevel": 2
+  },
+  "Germany": {
+    "restDays": 4,
+    "injuries": [
+      "Schlotterbeck",
+      "Gnabry",
+      "Ter Stegen"
+    ],
+    "cardRisk": 0,
+    "fatigueLevel": 3
+  },
+  "Paraguay": {
+    "restDays": 4,
+    "injuries": [],
+    "cardRisk": 0,
+    "fatigueLevel": 3
+  },
+  "Netherlands": {
+    "restDays": 5,
+    "injuries": [
+      "Xavi Simons",
+      "Timber"
+    ],
+    "cardRisk": 1,
+    "fatigueLevel": 2
+  },
+  "Morocco": {
+    "restDays": 6,
+    "injuries": [],
+    "cardRisk": 0,
+    "fatigueLevel": 1
+  },
+  "France": {
+    "restDays": 4,
+    "injuries": [
+      "Saliba",
+      "Ekitike"
+    ],
+    "cardRisk": 0,
+    "fatigueLevel": 2
+  },
+  "Sweden": {
+    "restDays": 5,
+    "injuries": [],
+    "cardRisk": 0,
+    "fatigueLevel": 2
+  },
+  "Ivory Coast": {
+    "restDays": 5,
+    "injuries": [],
+    "cardRisk": 0,
+    "fatigueLevel": 1
+  },
+  "Norway": {
+    "restDays": 4,
+    "injuries": [],
+    "cardRisk": 0,
+    "fatigueLevel": 2
+  },
+  "Mexico": {
+    "restDays": 6,
+    "injuries": [
+      "1人"
+    ],
+    "cardRisk": 0,
+    "fatigueLevel": 1
+  },
+  "Ecuador": {
+    "restDays": 6,
+    "injuries": [],
+    "cardRisk": 0,
+    "fatigueLevel": 1
+  },
+  "England": {
+    "restDays": 4,
+    "injuries": [
+      "1人"
+    ],
+    "cardRisk": 0,
+    "fatigueLevel": 2
+  },
+  "DR Congo": {
+    "restDays": 4,
+    "injuries": [],
+    "cardRisk": 0,
+    "fatigueLevel": 2
+  },
+  "Belgium": {
+    "restDays": 5,
+    "injuries": [
+      "Doku",
+      "Ngoi(红牌)"
+    ],
+    "cardRisk": 2,
+    "fatigueLevel": 2
+  },
+  "Senegal": {
+    "restDays": 5,
+    "injuries": [],
+    "cardRisk": 0,
+    "fatigueLevel": 1
+  },
+  "United States": {
+    "restDays": 8,
+    "injuries": [],
+    "cardRisk": 0,
+    "fatigueLevel": 0
+  },
+  "Bosnia & Herzegovina": {
+    "restDays": 8,
+    "injuries": [],
+    "cardRisk": 0,
+    "fatigueLevel": 0
+  },
+  "Spain": {
+    "restDays": 6,
+    "injuries": [
+      "1人"
+    ],
+    "cardRisk": 0,
+    "fatigueLevel": 1
+  },
+  "Austria": {
+    "restDays": 5,
+    "injuries": [],
+    "cardRisk": 0,
+    "fatigueLevel": 2
+  },
+  "Portugal": {
+    "restDays": 5,
+    "injuries": [],
+    "cardRisk": 0,
+    "fatigueLevel": 1
+  },
+  "Croatia": {
+    "restDays": 5,
+    "injuries": [],
+    "cardRisk": 0,
+    "fatigueLevel": 1
+  },
+  "Switzerland": {
+    "restDays": 9,
+    "injuries": [],
+    "cardRisk": 0,
+    "fatigueLevel": 0
+  },
+  "Algeria": {
+    "restDays": 6,
+    "injuries": [],
+    "cardRisk": 0,
+    "fatigueLevel": 2
+  },
+  "Australia": {
+    "restDays": 8,
+    "injuries": [],
+    "cardRisk": 0,
+    "fatigueLevel": 1
+  },
+  "Egypt": {
+    "restDays": 7,
+    "injuries": [
+      "1人"
+    ],
+    "cardRisk": 0,
+    "fatigueLevel": 1
+  },
+  "Argentina": {
+    "restDays": 6,
+    "injuries": [
+      "1人"
+    ],
+    "cardRisk": 0,
+    "fatigueLevel": 1
+  },
+  "Cape Verde": {
+    "restDays": 7,
+    "injuries": [
+      "1人"
+    ],
+    "cardRisk": 0,
+    "fatigueLevel": 1
+  },
+  "Colombia": {
+    "restDays": 7,
+    "injuries": [],
+    "cardRisk": 0,
+    "fatigueLevel": 1
+  },
+  "Ghana": {
+    "restDays": 7,
+    "injuries": [
+      "1人"
+    ],
+    "cardRisk": 0,
+    "fatigueLevel": 1
+  }
+}

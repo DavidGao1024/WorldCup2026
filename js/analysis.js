@@ -6,16 +6,21 @@ function loadAnalysisData() {
     fetch('data/fifa-rankings.json').then(function(r) { return r.json(); }),
     fetch('data/team-form.json').then(function(r) { return r.json(); }),
     fetch('data/stadiums.json').then(function(r) { return r.json(); }),
-    fetch('data/injuries.json').then(function(r) { return r.json(); }).catch(function() { return {}; })
+    fetch('data/injuries.json').then(function(r) { return r.json(); }).catch(function() { return {}; }),
+    fetch('data/referee-db.json').then(function(r) { return r.json(); }).catch(function() { return {}; }),
+    fetch('data/referee-assignments.json').then(function(r) { return r.json(); }).catch(function() { return []; }),
+    fetch('data/rotation-analysis.json').then(function(r) { return r.json(); }).catch(function() { return {}; })
   ]).then(function(results) {
     analysisData.rankings = results[0];
     analysisData.forms = results[1];
     analysisData.stadiums = results[2];
-    // 合并静态伤病数据 + ESPN 实时停赛数据
     analysisData.injuries = mergeInjuryAndSuspensionData(
       results[3],
       (typeof worldCupSuspensions !== 'undefined' && worldCupSuspensions) ? worldCupSuspensions : {}
     );
+    analysisData.refereeDB = results[4];
+    analysisData.refereeAssign = results[5];
+    analysisData.rotation = results[6];
     return analysisData;
   });
 }
@@ -109,9 +114,44 @@ function computeMatchScore(team, opponent, ground, matchDate) {
   var oPenalty = oInj.injuries * 1.5 + oInj.suspensions * 3;
   scores.injury = Math.round(Math.max(0, Math.min(5, 2.5 + (oPenalty - tPenalty) * 0.8)));
 
+  // 10. 裁判影响 (2 pts) — v6新增，相对影响
+  var refAssign = (analysisData.refereeAssign || []).find(function(a) {
+    return (a.t1 === team && a.t2 === opponent) || (a.t1 === opponent && a.t2 === team);
+  });
+  var ref = refAssign && refAssign.ref !== '未公布' ? (analysisData.refereeDB || {})[refAssign.ref] : null;
+  if (ref) {
+    var refImpact = 0;
+    // 失球少=更防守，进球多=更进攻
+    var defDiff = oConc - tConc; // >0 主队更防守
+    var atkDiff = tGoals - oGoals; // >0 主队更进攻
+    if (ref.strictness >= 7) {
+      if (defDiff > 0.5) refImpact += 0.6;
+      else if (defDiff < -0.5) refImpact -= 0.6;
+    }
+    if (ref.strictness <= 3) {
+      if (atkDiff > 0.5) refImpact += 0.3;
+      else if (atkDiff < -0.5) refImpact -= 0.3;
+    }
+    if (ref.penaltyRate >= 0.2) {
+      if (atkDiff > 0.5) refImpact += 0.3;
+      else if (atkDiff < -0.5) refImpact -= 0.3;
+    }
+    scores.referee = Math.round(Math.max(0, Math.min(2, 1 + refImpact)));
+  } else {
+    scores.referee = 1;
+  }
+
+  // 11. 旅途/休息 (1 pt) — v6新增
+  var rotData = analysisData.rotation || {};
+  var rot1 = rotData[team] || { restDays: 5, fatigueLevel: 2 };
+  var rot2 = rotData[opponent] || { restDays: 5, fatigueLevel: 2 };
+  var altPenalty = stadium.alt > 500 ? 1 : 0;
+  var travelBonus = (rot1.restDays - rot2.restDays) >= 3 ? 0.5 : 0;
+  scores.travel = Math.round(Math.max(0, Math.min(1, 0.5 + travelBonus - altPenalty * 0.5)));
+
   var total = scores.ranking + scores.form + scores.squad +
               scores.attack + scores.defense + scores.host +
-              scores.situation + scores.injury;
+              scores.situation + scores.injury + scores.referee + scores.travel;
   total = Math.round(total);
   total = Math.max(5, Math.min(95, total));
   var maxTotal = 100;
@@ -784,33 +824,28 @@ function renderAnalysis() {
   var matches = [];
   if (typeof worldCupData !== 'undefined' && worldCupData.matches) {
     matches = worldCupData.matches.filter(function(m) {
-      return m.group && m.group.indexOf('Group') === 0 && !isPlaceholder(m.team1) && !isPlaceholder(m.team2);
+      // 只显示未开始的比赛，排除占位符和已完赛的
+      var hasScore = m.score1 != null && m.score2 != null;
+      return !hasScore && !isPlaceholder(m.team1) && !isPlaceholder(m.team2);
     });
   }
 
-  // Only show matches from next available dates (today onwards or upcoming)
+  // Only show matches from today onwards
   var today = new Date();
   var todayStr = today.toISOString().substring(0, 10);
 
   var upcoming = [];
-  var past = [];
   for (var i = 0; i < matches.length; i++) {
     if (matches[i].date >= todayStr) {
       upcoming.push(matches[i]);
-    } else {
-      past.push(matches[i]);
     }
   }
 
   // Sort upcoming by date
   upcoming.sort(function(a, b) { return a.date.localeCompare(b.date) || a.time.localeCompare(b.time); });
-  past.sort(function(a, b) { return b.date.localeCompare(a.date); });
 
   // Take next 16 upcoming matches
   var target = upcoming.slice(0, 16);
-  if (target.length < 6) {
-    target = target.concat(past.slice(0, 16 - target.length));
-  }
 
   var html = '';
 
@@ -826,7 +861,7 @@ function renderAnalysis() {
 
   html += '<div class="analysis-info-bar">';
   html += '<span>' + t('analysisMatchCount').replace('{count}', target.length) + '</span>';
-  html += '<span class="analysis-model-badge">' + t('analysisModel') + '</span>';
+  html += '<span class="analysis-model-badge">10维分析 v6</span>';
   html += '</div>';
 
   // 小组末轮形势分析 → 融入比赛卡片
@@ -940,6 +975,22 @@ function renderAnalysisCard(result, insights, m, idx, ctxTags) {
     oInjDisplay = oIssues > 0 ? '伤停' + oIssues + '人' : '全员健康';
   }
   html += renderDimRow(t('analysisInjury'), tInjDisplay, oInjDisplay, result.scores.injury, 5, result.scores.injury > 2.5);
+  // v6: 裁判和旅途维度
+  if (result.scores.referee !== undefined) {
+    var refAssign = (analysisData.refereeAssign || []).find(function(a) {
+      return (a.t1 === result.team && a.t2 === result.opponent) || (a.t1 === result.opponent && a.t2 === result.team);
+    });
+    var refName = refAssign ? refAssign.ref : '未公布';
+    var refDetail = refName !== '未公布' ? refName : '待定';
+    html += renderDimRow('👨‍⚖️ 裁判', refDetail, '', result.scores.referee, 2, result.scores.referee > 1);
+  }
+  if (result.scores.travel !== undefined) {
+    var rotData = analysisData.rotation || {};
+    var rt1 = rotData[result.team] || {};
+    var rt2 = rotData[result.opponent] || {};
+    var travelLabel = '休' + (rt1.restDays||'?') + '天 vs ' + (rt2.restDays||'?') + '天';
+    html += renderDimRow('✈️ 旅途', travelLabel, '', result.scores.travel, 1, result.scores.travel > 0.5);
+  }
   html += '</div>';
 
   // Insights
