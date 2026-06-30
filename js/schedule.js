@@ -54,7 +54,17 @@ function renderSchedule(filterGroup, filterTeam) {
       var stageLabel = isGroup ? m.group : t(roundKey(m.round));
       var hasScore = m.score1 != null && m.score2 != null;
       var isLive = m.status === 'in';
-      var scoreDisplay = hasScore ? m.score1 + ' - ' + m.score2 : t('vs');
+      var scoreTag = '';
+      if (hasScore && m.hadPen) {
+        scoreTag = ' <span class="score-tag-pen">' + t('pen') + ' ' + (m.score1p != null ? m.score1p + '-' + m.score2p : '') + '</span>';
+      } else if (hasScore && m.hadET) {
+        scoreTag = ' <span class="score-tag-et">' + t('aet') + '</span>';
+      }
+      // 直播中的淘汰赛加时标签
+      if (isLive && !isGroup && m.hadET && !m.hadPen) {
+        scoreTag = ' <span class="score-tag-et live-et">' + t('aet') + ' · LIVE</span>';
+      }
+      var scoreDisplay = hasScore ? '<span class="score-num">' + m.score1 + ' - ' + m.score2 + '</span>' + scoreTag : t('vs');
       var liveBadge = isLive ? '<span class="live-badge">LIVE</span>' : '';
       var venueName = trVenue(m.ground);
 
@@ -67,7 +77,7 @@ function renderSchedule(filterGroup, filterTeam) {
           '<div class="score">' + scoreDisplay + '</div>' +
           '<div class="team">' + getFlagImg(m.team2) + '<span class="name">' + trTeam(m.team2) + '</span></div>' +
         '</div>' +
-        '<div class="match-ground">' + (isGroup ? stageLabel : venueName) + '</div>' +
+        (isGroup ? '<div class="match-ground">' + stageLabel + '</div>' : '') +
       '</div>';
     });
 
@@ -196,6 +206,25 @@ function closeMatchModal() {
   document.body.style.overflow = '';
 }
 
+// 构建淘汰赛比分演进 HTML（加时/点球）
+function buildScoreBreakdown(match) {
+  if (!match.hadET && !match.hadPen) return '';
+  var html = '<div class="score-breakdown">';
+  html += '<div class="breakdown-title">' + t('scoreBreakdown') + '</div>';
+  html += '<div class="breakdown-row"><span class="breakdown-label">90\' ' + t('regularTime') + '</span><span class="breakdown-score">' + match.score1 + ' - ' + match.score2 + '</span></div>';
+  if (match.hadET) {
+    html += '<div class="breakdown-row breakdown-et"><span class="breakdown-label">120\' ' + t('aet') + '</span><span class="breakdown-score">' + match.score1 + ' - ' + match.score2 + '</span></div>';
+  }
+  if (match.hadPen) {
+    html += '<div class="breakdown-row breakdown-pen"><span class="breakdown-label">' + t('pen') + '</span><span class="breakdown-score">' + (match.score1p != null ? match.score1p + ' - ' + match.score2p : '') + '</span></div>';
+  }
+  if (match.winner) {
+    html += '<div class="breakdown-winner">' + trTeam(match.winner) + ' ' + t('advanced') + '</div>';
+  }
+  html += '</div>';
+  return html;
+}
+
 function renderMatchEventsHTML(summary, match) {
   if (!summary || !summary.events || !summary.events.length) return '';
   var html = '<div class="match-events-section">';
@@ -258,6 +287,7 @@ function renderMatchStatsHTML(summary) {
 function renderMatchBasicInfo(match, summary, pred) {
   var hasScore = match.score1 != null && match.score2 != null;
   var scoreDisplay = hasScore ? match.score1 + ' - ' + match.score2 : 'vs';
+  var scoreBreakdownHtml = hasScore ? buildScoreBreakdown(match) : '';
   var time = match._displayTime || (match.date + ' ' + (match.time || ''));
   var isGroup = match.group && match.group.indexOf('Group ') === 0;
   var stageLabel = isGroup ? (match.group || '') : (typeof t === 'function' ? t(typeof roundKey === 'function' ? roundKey(match.round) : match.round) : match.round);
@@ -271,6 +301,7 @@ function renderMatchBasicInfo(match, summary, pred) {
   html += '<div class="match-modal-team">' + getFlagImg(match.team2) + '<span class="match-modal-team-name">' + trTeam(match.team2) + '</span></div>';
   html += '</div>';
   html += '<div class="match-modal-meta"><span>' + time + '</span><span>·</span><span>' + trVenue(match.ground) + '</span><span>·</span><span>' + stageLabel + '</span></div>';
+  if (scoreBreakdownHtml) html += scoreBreakdownHtml;
   html += '</div>';
 
   // Events
@@ -333,6 +364,7 @@ function renderMatchBasicInfo(match, summary, pred) {
 function renderMatchModalContent(summary, match) {
   var hasScore = match.score1 != null && match.score2 != null;
   var scoreDisplay = hasScore ? match.score1 + ' - ' + match.score2 : 'vs';
+  var scoreBreakdownHtml = hasScore ? buildScoreBreakdown(match) : '';
   var time = match._displayTime || (match.date + ' ' + (match.time || ''));
   var isGroup = match.group && match.group.indexOf('Group ') === 0;
   var stageLabel = isGroup ? (match.group || '') : (typeof t === 'function' ? t(typeof roundKey === 'function' ? roundKey(match.round) : match.round) : match.round);
@@ -347,6 +379,7 @@ function renderMatchModalContent(summary, match) {
   html += '<div class="match-modal-team">' + getFlagImg(match.team2) + '<span class="match-modal-team-name">' + trTeam(match.team2) + '</span></div>';
   html += '</div>';
   html += '<div class="match-modal-meta"><span>' + time + '</span><span>·</span><span>' + trVenue(match.ground) + '</span><span>·</span><span>' + stageLabel + '</span></div>';
+  if (scoreBreakdownHtml) html += scoreBreakdownHtml;
   html += '</div>';
 
   // Lineups

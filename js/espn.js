@@ -46,12 +46,30 @@ async function fetchEspnScores() {
       var s1 = c.competitors[0].score;
       var s2 = c.competitors[1].score;
       if (s1 == null || s2 == null || isNaN(s1) || isNaN(s2)) return;
+
+      var statusName = (c.status.type || {}).name || '';
+      var period = c.status.period || 0;
+      var hadPen = statusName === 'STATUS_FINAL_PEN';
+      var hadET = hadPen || period >= 3;
+      var sp1 = c.competitors[0].shootoutScore;
+      var sp2 = c.competitors[1].shootoutScore;
+      var winner = null;
+      if (c.competitors[0].winner) winner = mapEspnName(c.competitors[0].team.displayName);
+      else if (c.competitors[1].winner) winner = mapEspnName(c.competitors[1].team.displayName);
+
       var date = espnDateKey(e.date);
       var t1 = mapEspnName(c.competitors[0].team.displayName);
       var t2 = mapEspnName(c.competitors[1].team.displayName);
+
+      function _entry(sa, sb, spa, spb) {
+        var e = { score1: parseInt(sa), score2: parseInt(sb), state: state, hadET: hadET, hadPen: hadPen, winner: winner };
+        if (spa != null && spb != null) { e.score1p = parseInt(spa); e.score2p = parseInt(spb); }
+        return e;
+      }
+
       // 双向 key，方便匹配
-      map[date + '|' + t1 + '|' + t2] = { score1: parseInt(s1), score2: parseInt(s2), state: state };
-      map[date + '|' + t2 + '|' + t1] = { score1: parseInt(s2), score2: parseInt(s1), state: state };
+      map[date + '|' + t1 + '|' + t2] = _entry(s1, s2, sp1, sp2);
+      map[date + '|' + t2 + '|' + t1] = _entry(s2, s1, sp2, sp1);
     });
     return map;
   } catch (e) {

@@ -273,6 +273,23 @@ body {
   text-align: center;
   margin-top: 5px;
 }
+.match-card .score-num { color: #ffd700; }
+.match-card .score-tag-pen {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #f87171;
+  margin-top: 1px;
+  line-height: 1.2;
+}
+.match-card .score-tag-et {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #fbbf24;
+  margin-top: 1px;
+  line-height: 1.2;
+}
 .live-badge {
   position: absolute;
   top: 6px;
@@ -366,8 +383,10 @@ body {
   font-size: 0.8rem;
 }
 .bracket-match .bm-teams { margin-bottom: 4px; }
-.bracket-match .bm-team { padding: 3px 0; display: flex; justify-content: space-between; }
+.bracket-match .bm-team { padding: 3px 0; display: flex; justify-content: space-between; align-items: center; }
 .bracket-match .bm-team.winner { color: #ffd700; font-weight: 600; }
+.bracket-match .bm-pen { font-size: 0.65rem; color: #f87171; }
+.bracket-match .bm-et { font-size: 0.65rem; color: #fbbf24; }
 .bracket-match .bm-info { font-size: 0.7rem; color: #86efac; }
 
 /* === No Data === */
@@ -1262,6 +1281,51 @@ body {
 .match-modal-score-sep { font-size: 1.4rem; color: #666; }
 .match-modal-meta { font-size: 0.8rem; color: #94a3b8; margin-top: 10px; }
 .match-modal-meta span { margin: 0 8px; }
+
+/* Score breakdown (ET/penalties) - multi-row */
+.score-breakdown {
+  text-align: center;
+  font-size: 0.78rem;
+  margin-top: 12px;
+  padding: 10px 20px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 6px;
+  display: inline-block;
+}
+.score-breakdown .breakdown-title {
+  color: #64748b;
+  font-size: 0.7rem;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.score-breakdown .breakdown-row {
+  padding: 2px 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+.score-breakdown .breakdown-label {
+  color: #94a3b8;
+  text-align: left;
+}
+.score-breakdown .breakdown-score {
+  color: #ffd700;
+  font-weight: 700;
+  text-align: right;
+  min-width: 36px;
+}
+.score-breakdown .breakdown-et .breakdown-label,
+.score-breakdown .breakdown-et .breakdown-score { color: #fbbf24; }
+.score-breakdown .breakdown-pen .breakdown-label,
+.score-breakdown .breakdown-pen .breakdown-score { color: #f87171; }
+.score-breakdown .breakdown-winner {
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  color: #4ade80;
+  font-weight: 600;
+}
 
 /* Lineups */
 .match-modal-lineups {

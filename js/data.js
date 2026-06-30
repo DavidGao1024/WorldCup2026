@@ -81,6 +81,16 @@ function mergeScoresIntoData(scoreMap) {
         m.status = entry.state;
         changed = true;
       }
+      // 加时/点球字段（仅淘汰赛有值）
+      if (entry.hadET && m.hadET !== true) { m.hadET = true; changed = true; }
+      if (entry.hadPen && m.hadPen !== true) { m.hadPen = true; changed = true; }
+      if (entry.winner && m.winner !== entry.winner) { m.winner = entry.winner; changed = true; }
+      if (entry.score1p != null && m.score1p !== entry.score1p) {
+        m.score1p = entry.score1p; m.score2p = entry.score2p; changed = true;
+      }
+      // 同步清理：确保小组赛不带淘汰赛标记
+      var isGroup = m.group && m.group.indexOf('Group ') === 0;
+      if (isGroup && m.hadET) { m.hadET = false; m.hadPen = false; m.winner = null; m.score1p = m.score2p = null; changed = true; }
     }
   });
   return changed;
