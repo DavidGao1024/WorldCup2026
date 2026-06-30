@@ -273,6 +273,8 @@ function predictScores(result) {
     top1Pct: scores[0] ? Math.round(scores[0].prob * 100) : 0,
     top2: scores[1] ? (scores[1].home + '-' + scores[1].away) : '2-0',
     top2Pct: scores[1] ? Math.round(scores[1].prob * 100) : 0,
+    top3: scores[2] ? (scores[2].home + '-' + scores[2].away) : '0-0',
+    top3Pct: scores[2] ? Math.round(scores[2].prob * 100) : 0,
     winProb: wp,
     drawProb: dp,
     lossProb: lp
@@ -331,7 +333,9 @@ function computePrediction(result, m) {
     score1: scores.top1,
     score1Pct: scores.top1Pct,
     score2: scores.top2,
-    score2Pct: scores.top2Pct
+    score2Pct: scores.top2Pct,
+    score3: scores.top3,
+    score3Pct: scores.top3Pct
   };
 }
 
@@ -1042,6 +1046,7 @@ function renderAnalysisCard(result, insights, m, idx, ctxTags) {
   html += '<span class="pred-score-label">' + t('predScore') + '</span>';
   html += '<span class="pred-score-val">' + pred.score1 + '</span><span class="pred-score-pct">' + pred.score1Pct + '%</span>';
   html += '<span class="pred-score-val">' + pred.score2 + '</span><span class="pred-score-pct">' + pred.score2Pct + '%</span>';
+  html += '<span class="pred-score-val">' + pred.score3 + '</span><span class="pred-score-pct">' + pred.score3Pct + '%</span>';
   html += '</div>';
   if (pred.hasMarket) {
     html += '<div class="pred-source">' + t('predSource') + '</div>';
