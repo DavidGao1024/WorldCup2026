@@ -363,31 +363,85 @@ body {
 .qualified-mark { color: #ffd700; font-size: 0.75rem; margin-left: 4px; }
 
 /* === Knockout Bracket === */
-.bracket-container { overflow-x: auto; padding: 20px 0; }
-.bracket { display: flex; gap: 24px; min-width: 900px; }
-.bracket-round { flex: 1; min-width: 140px; }
-.bracket-round h3 {
-  font-size: 0.85rem;
-  color: #ffd700;
-  text-align: center;
-  margin-bottom: 12px;
-  padding-bottom: 6px;
+#knockout-content { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.bracket-v {
+  display: flex; align-items: stretch; justify-content: flex-start;
+  gap: 0; min-width: 1250px; position: relative;
+  padding: 20px 0 30px;
+}
+.br-half { display: flex; gap: 18px; }
+.br-left { justify-content: flex-end; }
+.br-right { justify-content: flex-start; }
+.br-center {
+  display: flex; justify-content: center;
+  padding: 0 28px; flex-shrink: 0;
+}
+.br-vcol { width: 160px; flex-shrink: 0; }
+.br-vslots { position: relative; }
+.br-round-title {
+  font-size: 0.8rem; color: #ffd700; text-align: center;
+  margin-bottom: 12px; padding-bottom: 6px;
   border-bottom: 1px solid #2d8a4e;
 }
-.bracket-match {
-  background: #1a3a1a;
-  border: 1px solid #2d8a4e;
-  border-radius: 6px;
-  padding: 10px;
-  margin-bottom: 8px;
-  font-size: 0.8rem;
+.br-slot {
+  position: absolute; left: 0; right: 0;
+  display: flex; align-items: center; justify-content: center;
+  padding: 3px 5px;
 }
-.bracket-match .bm-teams { margin-bottom: 4px; }
-.bracket-match .bm-team { padding: 3px 0; display: flex; justify-content: space-between; align-items: center; }
-.bracket-match .bm-team.winner { color: #ffd700; font-weight: 600; }
-.bracket-match .bm-pen { font-size: 0.65rem; color: #f87171; }
-.bracket-match .bm-et { font-size: 0.65rem; color: #fbbf24; }
-.bracket-match .bm-info { font-size: 0.7rem; color: #86efac; }
+.br-match {
+  background: linear-gradient(135deg, #1a3a1a, #153015);
+  border: 1px solid #2d8a4e;
+  border-radius: 8px; padding: 7px 12px; width: 100%;
+  font-size: 0.82rem; position: relative; z-index: 1;
+  cursor: pointer; transition: border-color 0.2s;
+}
+.br-match:hover { border-color: #ffd700; }
+.br-match.br-ph { opacity: 0.45; cursor: default; }
+.br-team {
+  display: flex; align-items: center; gap: 6px; padding: 3px 0;
+}
+.br-team img.flag-img { width: 22px; height: 14px; flex-shrink: 0; border-radius: 2px; }
+.br-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.br-score { font-weight: 700; color: #ffd700; flex-shrink: 0; font-size: 0.82rem; min-width: 14px; text-align: right; }
+.br-winner .br-name { color: #ffd700; }
+.br-pen { font-size: 0.62rem; color: #f87171; font-weight: 600; }
+.br-et { font-size: 0.62rem; color: #fbbf24; }
+.br-lines { pointer-events: none; z-index: 0; }
+
+/* 决赛 & 三四名加大 */
+.br-final-slot .br-match,
+.br-third-slot .br-match {
+  font-size: 0.9rem; padding: 9px 14px;
+}
+.br-final-slot .br-match {
+  border-color: #ffd700; border-width: 1.5px;
+  box-shadow: 0 0 8px rgba(255,215,0,0.15);
+}
+.br-final-slot .br-score { font-size: 0.9rem; }
+.br-third-slot .br-score { font-size: 0.9rem; }
+
+@media (max-width: 768px) {
+  .bracket-v { min-width: 950px; }
+  .br-half { gap: 10px; }
+  .br-center { padding: 0 14px; }
+  .br-vcol { width: 120px; }
+  .br-match { font-size: 0.68rem; padding: 5px 8px; }
+  .br-score { font-size: 0.72rem; }
+  .br-team img.flag-img { width: 16px; height: 11px; }
+}
+
+/* === Group Stage Toggle === */
+.group-toggle-wrap { margin-bottom: 24px; }
+.group-toggle {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 16px; background: #1a3a1a; border: 1px solid #2d8a4e;
+  border-radius: 8px; cursor: pointer; font-size: 0.85rem;
+  color: #86efac; transition: border-color 0.2s;
+}
+.group-toggle:hover { border-color: #ffd700; }
+.group-toggle .toggle-arrow { transition: transform 0.2s; font-size: 0.7rem; }
+.group-toggle.collapsed .toggle-arrow { transform: rotate(-90deg); }
+.group-matches.hidden { display: none; }
 
 /* === No Data === */
 .no-data { text-align: center; padding: 40px; color: #64748b; font-size: 1rem; }

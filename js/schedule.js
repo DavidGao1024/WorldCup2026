@@ -15,8 +15,38 @@ function renderSchedule(filterGroup, filterTeam) {
     filtered = filtered.filter(function(m) { return m.team1 === filterTeam || m.team2 === filterTeam; });
   }
 
+  // 分离小组赛和淘汰赛
+  var groupMatches = filtered.filter(function(m) { return m.group && m.group.indexOf('Group ') === 0; });
+  var koMatches = filtered.filter(function(m) { return !m.group || m.group.indexOf('Group ') !== 0; });
+
+  var html = '';
+  // 小组赛（折叠，在上面）
+  if (groupMatches.length) {
+    html += '<div class="group-toggle-wrap">';
+    html += '<div class="group-toggle collapsed" onclick="this.classList.toggle(\'collapsed\');this.nextElementSibling.classList.toggle(\'hidden\')">';
+    html += '<span>' + t('groupStage') + ' (' + groupMatches.length + ' ' + t('matchCount') + ')</span>';
+    html += '<span class="toggle-arrow">▼</span></div>';
+    html += '<div class="group-matches hidden">';
+    html += buildDateGroups(groupMatches);
+    html += '</div></div>';
+  }
+  // 淘汰赛（始终展开，在下面）
+  html += buildDateGroups(koMatches);
+
+  container.innerHTML = html || '<div class="no-data">' + t('noData') + '</div>';
+
+  // 点击比赛卡片弹出详情
+  container.querySelectorAll('.match-card').forEach(function(card) {
+    card.addEventListener('click', function() {
+      var num = parseInt(card.getAttribute('data-match-num'));
+      if (num) showMatchModal(num);
+    });
+  });
+}
+
+function buildDateGroups(matches) {
   var byDate = {};
-  filtered.forEach(function(m) {
+  matches.forEach(function(m) {
     var c = convertTime(m.time, m.date);
     m._displayTime = c.time;
     m._displayDate = c.date;
@@ -26,7 +56,6 @@ function renderSchedule(filterGroup, filterTeam) {
 
   var today = new Date().toISOString().slice(0, 10);
   var html = '';
-
   var dates = Object.keys(byDate).sort();
   var weekdays = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
   var weekdaysEn = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -49,50 +78,45 @@ function renderSchedule(filterGroup, filterTeam) {
     html += displayDate + '</div><div class="matches-grid">';
 
     dayMatches.forEach(function(m) {
-      var time = m._displayTime;
-      var isGroup = m.group && m.group.indexOf('Group ') === 0;
-      var stageLabel = isGroup ? m.group : t(roundKey(m.round));
-      var hasScore = m.score1 != null && m.score2 != null;
-      var isLive = m.status === 'in';
-      var scoreTag = '';
-      if (hasScore && m.hadPen) {
-        scoreTag = ' <span class="score-tag-pen">' + t('pen') + ' ' + (m.score1p != null ? m.score1p + '-' + m.score2p : '') + '</span>';
-      } else if (hasScore && m.hadET) {
-        scoreTag = ' <span class="score-tag-et">' + t('aet') + '</span>';
-      }
-      // 直播中的淘汰赛加时标签
-      if (isLive && !isGroup && m.hadET && !m.hadPen) {
-        scoreTag = ' <span class="score-tag-et live-et">' + t('aet') + ' · LIVE</span>';
-      }
-      var scoreDisplay = hasScore ? '<span class="score-num">' + m.score1 + ' - ' + m.score2 + '</span>' + scoreTag : t('vs');
-      var liveBadge = isLive ? '<span class="live-badge">LIVE</span>' : '';
-      var venueName = trVenue(m.ground);
-
-      html += '<div class="match-card" data-match-num="' + m.num + '" style="cursor:pointer">' +
-        liveBadge +
-        (!isGroup ? '<span class="match-round">' + stageLabel + '</span>' : '') +
-        '<div class="match-time">' + time + ' (' + getUTCOffsetStr() + ') · ' + venueName + '</div>' +
-        '<div class="match-teams">' +
-          '<div class="team">' + getFlagImg(m.team1) + '<span class="name">' + trTeam(m.team1) + '</span></div>' +
-          '<div class="score">' + scoreDisplay + '</div>' +
-          '<div class="team">' + getFlagImg(m.team2) + '<span class="name">' + trTeam(m.team2) + '</span></div>' +
-        '</div>' +
-        (isGroup ? '<div class="match-ground">' + stageLabel + '</div>' : '') +
-      '</div>';
+      html += buildMatchCard(m);
     });
 
     html += '</div></div>';
   });
+  return html;
+}
 
-  container.innerHTML = html || '<div class="no-data">' + t('noData') + '</div>';
+function buildMatchCard(m) {
+  var time = m._displayTime;
+  var isGroup = m.group && m.group.indexOf('Group ') === 0;
+  var stageLabel = isGroup ? m.group : t(roundKey(m.round));
+  var hasScore = m.score1 != null && m.score2 != null;
+  var isLive = m.status === 'in';
+  var scoreTag = '';
+  if (hasScore && m.hadPen) {
+    scoreTag = ' <span class="score-tag-pen">' + t('pen') + ' ' + (m.score1p != null ? m.score1p + '-' + m.score2p : '') + '</span>';
+  } else if (hasScore && m.hadET) {
+    scoreTag = ' <span class="score-tag-et">' + t('aet') + '</span>';
+  }
+  // 直播中的淘汰赛加时标签
+  if (isLive && !isGroup && m.hadET && !m.hadPen) {
+    scoreTag = ' <span class="score-tag-et live-et">' + t('aet') + ' · LIVE</span>';
+  }
+  var scoreDisplay = hasScore ? '<span class="score-num">' + m.score1 + ' - ' + m.score2 + '</span>' + scoreTag : t('vs');
+  var liveBadge = isLive ? '<span class="live-badge">LIVE</span>' : '';
+  var venueName = trVenue(m.ground);
 
-  // 点击比赛卡片弹出详情
-  container.querySelectorAll('.match-card').forEach(function(card) {
-    card.addEventListener('click', function() {
-      var num = parseInt(card.getAttribute('data-match-num'));
-      if (num) showMatchModal(num);
-    });
-  });
+  return '<div class="match-card" data-match-num="' + m.num + '" style="cursor:pointer">' +
+    liveBadge +
+    (!isGroup ? '<span class="match-round">' + stageLabel + '</span>' : '') +
+    '<div class="match-time">' + time + ' (' + getUTCOffsetStr() + ') · ' + venueName + '</div>' +
+    '<div class="match-teams">' +
+      '<div class="team">' + getFlagImg(m.team1) + '<span class="name">' + trTeam(m.team1) + '</span></div>' +
+      '<div class="score">' + scoreDisplay + '</div>' +
+      '<div class="team">' + getFlagImg(m.team2) + '<span class="name">' + trTeam(m.team2) + '</span></div>' +
+    '</div>' +
+    (isGroup ? '<div class="match-ground">' + stageLabel + '</div>' : '') +
+  '</div>';
 }
 
 function populateFilters() {

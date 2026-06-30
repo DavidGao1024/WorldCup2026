@@ -127,7 +127,18 @@ async function fetchFreshData() {
     var oldMatches = worldCupData ? JSON.stringify(worldCupData.matches) : '';
     var newMatches = newData.matches ? JSON.stringify(newData.matches) : '';
     if (oldMatches !== newMatches) {
-      // CDN 有更新 → 合并 ESPN 比分后替换
+      // CDN 有更新 → 保留已有真实队名（CDN 的淘汰赛队名可能是占位符）
+      if (worldCupData && worldCupData.matches && newData.matches) {
+        var oldByNum = {};
+        worldCupData.matches.forEach(function(m) { if (m.num) oldByNum[m.num] = m; });
+        newData.matches.forEach(function(m) {
+          var old = oldByNum[m.num];
+          if (!old) return;
+          // CDN 是占位符但本地有真实队名 → 保留本地
+          if (isPlaceholder(m.team1) && !isPlaceholder(old.team1)) m.team1 = old.team1;
+          if (isPlaceholder(m.team2) && !isPlaceholder(old.team2)) m.team2 = old.team2;
+        });
+      }
       worldCupData = newData;
       saveToCache();
       // 重新拉 ESPN 比分覆盖 CDN 中可能为空的比分
