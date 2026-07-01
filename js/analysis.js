@@ -9,6 +9,7 @@ function loadAnalysisData() {
     fetch('data/injuries.json').then(function(r) { return r.json(); }).catch(function() { return {}; }),
     fetch('data/referee-db.json').then(function(r) { return r.json(); }).catch(function() { return {}; }),
     fetch('data/referee-assignments.json').then(function(r) { return r.json(); }).catch(function() { return []; }),
+    fetch('data/stadiums-climate.json').then(function(r) { return r.json(); }).catch(function() { return {}; }),
     fetch('data/rotation-analysis.json').then(function(r) { return r.json(); }).catch(function() { return {}; })
   ]).then(function(results) {
     analysisData.rankings = results[0];
@@ -20,7 +21,8 @@ function loadAnalysisData() {
     );
     analysisData.refereeDB = results[4];
     analysisData.refereeAssign = results[5];
-    analysisData.rotation = results[6];
+    analysisData.stadiumClimate = results[6];
+    analysisData.rotation = results[7];
     return analysisData;
   });
 }
@@ -58,7 +60,7 @@ function mergeInjuryAndSuspensionData(injuryData, suspensionData) {
 
 // ---- Scoring engine ----
 
-function computeMatchScore(team, opponent, ground, matchDate) {
+function computeMatchScore(team, opponent, ground, matchDate, kickoffTime) {
   var rank = analysisData.rankings || {};
   var form = analysisData.forms || {};
   var stadiums = analysisData.stadiums || {};
@@ -72,6 +74,10 @@ function computeMatchScore(team, opponent, ground, matchDate) {
   tf = enrichFormWithWCResults(tf, team);
   of = enrichFormWithWCResults(of, opponent);
   var stadium = stadiums[ground] || { alt: 50, country: '' };
+  var stadiumClimate = (analysisData.stadiumClimate || {})[ground] || {
+    tempJune: { low: 15, high: 25, avg: 20 }, tempJuly: { low: 15, high: 25, avg: 20 },
+    humidity: 'moderate', indoor: false, heatCategory: 'moderate'
+  };
 
   var scores = {};
 
@@ -104,10 +110,7 @@ function computeMatchScore(team, opponent, ground, matchDate) {
   // 7. Home/host advantage (15 pts)
   scores.host = computeHostScore(team, opponent, stadium);
 
-  // 8. Group standing situation (10 pts)
-  scores.situation = computeSituationScore(team, opponent, matchDate);
-
-  // 9. Injuries & suspensions (5 pts)
+  // 8. Injuries & suspensions (5 pts)
   var tInj = injuries[team] || { injuries: 0, suspensions: 0 };
   var oInj = injuries[opponent] || { injuries: 0, suspensions: 0 };
   var tPenalty = tInj.injuries * 1.5 + tInj.suspensions * 3;
@@ -149,9 +152,12 @@ function computeMatchScore(team, opponent, ground, matchDate) {
   var travelBonus = (rot1.restDays - rot2.restDays) >= 3 ? 0.5 : 0;
   scores.travel = Math.round(Math.max(0, Math.min(1, 0.5 + travelBonus - altPenalty * 0.5)));
 
+  // 11. 环境适应 (5 pts) — v7新增: 海拔+天气+开球时间+气候适应
+  scores.environment = computeEnvironmentScore(team, opponent, stadium, stadiumClimate, kickoffTime);
+
   var total = scores.ranking + scores.form + scores.squad +
               scores.attack + scores.defense + scores.host +
-              scores.situation + scores.injury + scores.referee + scores.travel;
+              scores.injury + scores.referee + scores.travel + scores.environment;
   total = Math.round(total);
   total = Math.max(5, Math.min(95, total));
   var maxTotal = 100;
@@ -560,6 +566,115 @@ function computeSituationScore(team, opponent, matchDate) {
   return 5;
 }
 
+// ---- v7 环境适应维度 (5 pts) ----
+
+function parseKickoffLocalHour(kickoffTime) {
+  if (!kickoffTime || typeof kickoffTime !== 'string') return -1;
+  var parts = kickoffTime.split(' ');
+  if (parts.length < 2) return -1;
+  var hour = parseInt(parts[0].split(':')[0], 10);
+  return isNaN(hour) ? -1 : hour;
+}
+
+function estimateKickoffTemp(stadiumClimate, localHour, matchMonth) {
+  var temps = (matchMonth >= 7) ? stadiumClimate.tempJuly : stadiumClimate.tempJune;
+  if (localHour < 0 || localHour > 23) return temps.avg;
+  var avg = (temps.low + temps.high) / 2;
+  var amp = (temps.high - temps.low) / 2;
+  var theta = (localHour - 9.5) * Math.PI / 12;
+  return avg + amp * Math.sin(theta);
+}
+
+function tempComfortScore(temp, isIndoor) {
+  if (isIndoor) return 1.5;
+  if (temp >= 18 && temp <= 24) return 1.5;
+  if (temp >= 15 && temp <= 28) return 1.2;
+  if (temp >= 10 && temp <= 32) return 0.8;
+  return 0.3;
+}
+
+function humidityComfortScore(humidity, isIndoor) {
+  if (isIndoor) return 1.0;
+  switch (humidity) {
+    case 'dry': return 1.0;
+    case 'moderate': return 0.8;
+    case 'high': return 0.5;
+    case 'very-high': return 0.2;
+    default: return 0.8;
+  }
+}
+
+function altitudePenalty(altMeters, teamConf) {
+  if (altMeters <= 300) return 0;
+  var raw;
+  if (altMeters <= 500)      raw = 0.3;
+  else if (altMeters <= 1000) raw = 0.6;
+  else if (altMeters <= 1500) raw = 1.0;
+  else if (altMeters <= 2000) raw = 1.4;
+  else                        raw = 1.8;
+  var immunity = 0;
+  if (teamConf === 'CONMEBOL') immunity = 0.5;
+  else if (teamConf === 'CONCACAF') immunity = 0.4;
+  else if (teamConf === 'CAF') immunity = 0.15;
+  return raw * (1 - immunity);
+}
+
+function getTeamClimateZone(conf) {
+  switch (conf) {
+    case 'CAF': return 'hot';
+    case 'CONCACAF': return 'warm';
+    case 'CONMEBOL': return 'warm';
+    case 'AFC': return 'mixed';
+    case 'UEFA': return 'temperate';
+    case 'OFC': return 'temperate';
+    default: return 'temperate';
+  }
+}
+
+function climateAdaptationScore(teamConf, stadiumHeatCategory, isIndoor) {
+  if (isIndoor) return 0.8;
+  var heatMap = { 'cool': 0, 'moderate': 1, 'warm': 2, 'hot': 3, 'extreme': 4 };
+  var heatLevel = heatMap[stadiumHeatCategory] !== undefined ? heatMap[stadiumHeatCategory] : 1;
+  var teamHeatMap = { 'temperate': 0, 'mixed': 1, 'warm': 2, 'hot': 3 };
+  var teamHeat = teamHeatMap[getTeamClimateZone(teamConf)] || 1;
+  var diff = teamHeat - heatLevel;
+  if (diff >= 2) return 1.0;
+  else if (diff >= 0) return 0.8;
+  else if (diff === -1) return 0.5;
+  else if (diff === -2) return 0.3;
+  else return 0.1;
+}
+
+function computeEnvironmentScore(team, opponent, stadium, stadiumClimate, kickoffTime) {
+  var tConf = (analysisData.rankings[team] || {}).conf || 'UEFA';
+  var oConf = (analysisData.rankings[opponent] || {}).conf || 'UEFA';
+
+  // 1. 海拔适应 (0-2.0): 相对海拔优势
+  var altMeters = stadium.alt || 50;
+  var tAltPen = altitudePenalty(altMeters, tConf);
+  var oAltPen = altitudePenalty(altMeters, oConf);
+  var altRelative = (oAltPen - tAltPen) * 0.8;
+  var altScore = 1.0 + altRelative;
+  altScore = Math.max(0, Math.min(2.0, altScore));
+
+  // 2. 气候舒适度 (0-1.5): 温度+湿度
+  var localHour = parseKickoffLocalHour(kickoffTime);
+  var matchMonth = 6;
+  var estTemp = estimateKickoffTemp(stadiumClimate, localHour, matchMonth);
+  var isIndoor = stadiumClimate.indoor || false;
+  var tempScore = tempComfortScore(estTemp, isIndoor);
+  var humScore = humidityComfortScore(stadiumClimate.humidity, isIndoor);
+  var comfortScore = tempScore * 0.7 + humScore * 0.3;
+  var climateComfort = comfortScore * (1.5 / 1.35);
+
+  // 3. 气候适应 (0-1.0): 球队vs球场气候匹配
+  var adaptScore = climateAdaptationScore(tConf, stadiumClimate.heatCategory, isIndoor);
+
+  // 4. 合并: 海拔2.0 + 气候1.5 + 适应1.0 + 基准0.5 = 5.0
+  var raw = altScore + climateComfort + adaptScore;
+  return Math.round(Math.max(0, Math.min(5, raw)));
+}
+
 // ---- Insight generation ----
 
 function generateInsights(result) {
@@ -865,7 +980,7 @@ function renderAnalysis() {
 
   html += '<div class="analysis-info-bar">';
   html += '<span>' + t('analysisMatchCount').replace('{count}', target.length) + '</span>';
-  html += '<span class="analysis-model-badge">10维分析 v6</span>';
+  html += '<span class="analysis-model-badge">10维分析 v7</span>';
   html += '</div>';
 
   // 小组末轮形势分析 → 融入比赛卡片
@@ -892,7 +1007,7 @@ function renderAnalysis() {
 
   for (var j = 0; j < target.length; j++) {
     var m = target[j];
-    var result = computeMatchScore(m.team1, m.team2, m.ground, m.date);
+    var result = computeMatchScore(m.team1, m.team2, m.ground, m.date, m.time);
     result.ground = m.ground;
     result.matchInfo = m;
     var insights = generateInsights(result);
@@ -968,7 +1083,6 @@ function renderAnalysisCard(result, insights, m, idx, ctxTags) {
   html += renderDimRow(t('analysisAttack'), (typeof computeAvgGoals==='function'?computeAvgGoals(result.teamForm).toFixed(1):'-') + '球/场', (typeof computeAvgGoals==='function'?computeAvgGoals(result.oppForm).toFixed(1):'-') + '球/场', result.scores.attack, 10, result.scores.attack > 5);
   html += renderDimRow(t('analysisDefense'), (typeof computeAvgConc==='function'?computeAvgConc(result.teamForm).toFixed(1):'-') + '失/场', (typeof computeAvgConc==='function'?computeAvgConc(result.oppForm).toFixed(1):'-') + '失/场', result.scores.defense, 10, result.scores.defense > 5);
   html += renderDimRow(t('analysisHost'), '-', '-', result.scores.host, 15, result.scores.host > 7);
-  html += renderDimRow(t('analysisSituation'), '-', '-', result.scores.situation, 10, result.scores.situation > 5);
   var tInjDisplay = '-', oInjDisplay = '-';
   if (typeof analysisData !== 'undefined' && analysisData.injuries) {
     var injT = analysisData.injuries[result.team] || {};
@@ -979,7 +1093,7 @@ function renderAnalysisCard(result, insights, m, idx, ctxTags) {
     oInjDisplay = oIssues > 0 ? '伤停' + oIssues + '人' : '全员健康';
   }
   html += renderDimRow(t('analysisInjury'), tInjDisplay, oInjDisplay, result.scores.injury, 5, result.scores.injury > 2.5);
-  // v6: 裁判和旅途维度
+  // v7: 裁判、旅途、环境维度
   if (result.scores.referee !== undefined) {
     var refAssign = (analysisData.refereeAssign || []).find(function(a) {
       return (a.t1 === result.team && a.t2 === result.opponent) || (a.t1 === result.opponent && a.t2 === result.team);
@@ -994,6 +1108,18 @@ function renderAnalysisCard(result, insights, m, idx, ctxTags) {
     var rt2 = rotData[result.opponent] || {};
     var travelLabel = '休' + (rt1.restDays||'?') + '天 vs ' + (rt2.restDays||'?') + '天';
     html += renderDimRow('✈️ 旅途', travelLabel, '', result.scores.travel, 1, result.scores.travel > 0.5);
+  }
+  if (result.scores.environment !== undefined) {
+    var stadiumClimate = (analysisData.stadiumClimate || {})[m.ground] || {};
+    var envDetail = '';
+    if (stadiumClimate.indoor) envDetail += '室内 · ';
+    var heatLabels = { 'cool': '凉爽', 'moderate': '适中', 'warm': '偏暖', 'hot': '炎热', 'extreme': '极端' };
+    envDetail += (heatLabels[stadiumClimate.heatCategory] || '适中');
+    if (m.time) {
+      var localHr = parseKickoffLocalHour(m.time);
+      if (localHr >= 0) envDetail += ' · ' + localHr + ':00开球';
+    }
+    html += renderDimRow('🌍 环境适应', envDetail, '', result.scores.environment, 5, result.scores.environment > 2.5);
   }
   html += '</div>';
 
@@ -1086,7 +1212,7 @@ function renderAnalysisRecommendations(target) {
   var scored = [];
   for (var i = 0; i < target.length; i++) {
     var m = target[i];
-    var result = computeMatchScore(m.team1, m.team2, m.ground, m.date);
+    var result = computeMatchScore(m.team1, m.team2, m.ground, m.date, m.time);
     result.matchInfo = m;
     scored.push(result);
   }

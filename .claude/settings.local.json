@@ -120,7 +120,10 @@
       "Bash(curl -sL -o /tmp/bracket-ref.jpeg \"https://pics7.baidu.com/feed/63d9f2d3572c11df71ddcbd944be8ac1f603c263.jpeg@f_auto?token=be829cc676a4032b980cbdecdefd18bf\")",
       "Bash(cygpath -w /tmp/bracket-ref.jpeg)",
       "Bash(wslpath -w /tmp/bracket-ref.jpeg)",
-      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260629-20260719&limit=50\")"
+      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260629-20260719&limit=50\")",
+      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260611-20260719&limit=200\" -o /tmp/espn-scores.json)",
+      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260611-20260719&limit=200\" -o \"E:/GitHub/WorldCup2026/tmp-espn.json\")",
+      "Bash(python3 *)"
     ]
   }
 }

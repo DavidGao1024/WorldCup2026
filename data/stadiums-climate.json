@@ -1,0 +1,138 @@
+{
+  "Mexico City": {
+    "climateZone": "subtropical-highland",
+    "tempJune": { "low": 18, "high": 26, "avg": 22 },
+    "tempJuly": { "low": 18, "high": 25, "avg": 21.5 },
+    "humidity": "moderate",
+    "indoor": false,
+    "heatCategory": "moderate"
+  },
+  "Guadalajara (Zapopan)": {
+    "climateZone": "subtropical-highland",
+    "tempJune": { "low": 17, "high": 30, "avg": 23.5 },
+    "tempJuly": { "low": 17, "high": 28, "avg": 22.5 },
+    "humidity": "moderate",
+    "indoor": false,
+    "heatCategory": "warm"
+  },
+  "Monterrey (Guadalupe)": {
+    "climateZone": "semi-arid",
+    "tempJune": { "low": 22, "high": 35, "avg": 28.5 },
+    "tempJuly": { "low": 22, "high": 35, "avg": 28.5 },
+    "humidity": "moderate",
+    "indoor": false,
+    "heatCategory": "hot"
+  },
+  "Toronto": {
+    "climateZone": "humid-continental",
+    "tempJune": { "low": 15, "high": 25, "avg": 20 },
+    "tempJuly": { "low": 18, "high": 27, "avg": 22.5 },
+    "humidity": "moderate",
+    "indoor": false,
+    "heatCategory": "moderate"
+  },
+  "Vancouver": {
+    "climateZone": "oceanic",
+    "tempJune": { "low": 13, "high": 21, "avg": 17 },
+    "tempJuly": { "low": 15, "high": 23, "avg": 19 },
+    "humidity": "moderate",
+    "indoor": false,
+    "heatCategory": "cool"
+  },
+  "Seattle": {
+    "climateZone": "oceanic",
+    "tempJune": { "low": 13, "high": 23, "avg": 18 },
+    "tempJuly": { "low": 15, "high": 25, "avg": 20 },
+    "humidity": "moderate",
+    "indoor": false,
+    "heatCategory": "cool"
+  },
+  "San Francisco Bay Area (Santa Clara)": {
+    "climateZone": "mediterranean",
+    "tempJune": { "low": 13, "high": 24, "avg": 18.5 },
+    "tempJuly": { "low": 14, "high": 24, "avg": 19 },
+    "humidity": "moderate",
+    "indoor": false,
+    "heatCategory": "cool"
+  },
+  "Los Angeles (Inglewood)": {
+    "climateZone": "mediterranean",
+    "tempJune": { "low": 17, "high": 26, "avg": 21.5 },
+    "tempJuly": { "low": 18, "high": 28, "avg": 23 },
+    "humidity": "dry",
+    "indoor": false,
+    "heatCategory": "moderate"
+  },
+  "New York/New Jersey (East Rutherford)": {
+    "climateZone": "humid-subtropical",
+    "tempJune": { "low": 19, "high": 29, "avg": 24 },
+    "tempJuly": { "low": 22, "high": 30, "avg": 26 },
+    "humidity": "high",
+    "indoor": false,
+    "heatCategory": "warm"
+  },
+  "Boston (Foxborough)": {
+    "climateZone": "humid-continental",
+    "tempJune": { "low": 16, "high": 26, "avg": 21 },
+    "tempJuly": { "low": 19, "high": 29, "avg": 24 },
+    "humidity": "moderate",
+    "indoor": false,
+    "heatCategory": "moderate"
+  },
+  "Philadelphia": {
+    "climateZone": "humid-subtropical",
+    "tempJune": { "low": 19, "high": 29, "avg": 24 },
+    "tempJuly": { "low": 22, "high": 31, "avg": 26.5 },
+    "humidity": "high",
+    "indoor": false,
+    "heatCategory": "warm"
+  },
+  "Atlanta": {
+    "climateZone": "humid-subtropical",
+    "tempJune": { "low": 21, "high": 31, "avg": 26 },
+    "tempJuly": { "low": 22, "high": 32, "avg": 27 },
+    "humidity": "high",
+    "indoor": true,
+    "heatCategory": "hot"
+  },
+  "Miami": {
+    "climateZone": "tropical-monsoon",
+    "tempJune": { "low": 24, "high": 32, "avg": 28 },
+    "tempJuly": { "low": 25, "high": 33, "avg": 29 },
+    "humidity": "very-high",
+    "indoor": false,
+    "heatCategory": "extreme"
+  },
+  "Miami (Miami Gardens)": {
+    "climateZone": "tropical-monsoon",
+    "tempJune": { "low": 24, "high": 32, "avg": 28 },
+    "tempJuly": { "low": 25, "high": 33, "avg": 29 },
+    "humidity": "very-high",
+    "indoor": false,
+    "heatCategory": "extreme"
+  },
+  "Houston": {
+    "climateZone": "humid-subtropical",
+    "tempJune": { "low": 23, "high": 33, "avg": 28 },
+    "tempJuly": { "low": 24, "high": 34, "avg": 29 },
+    "humidity": "very-high",
+    "indoor": true,
+    "heatCategory": "extreme"
+  },
+  "Dallas (Arlington)": {
+    "climateZone": "humid-subtropical",
+    "tempJune": { "low": 23, "high": 34, "avg": 28.5 },
+    "tempJuly": { "low": 25, "high": 36, "avg": 30.5 },
+    "humidity": "high",
+    "indoor": true,
+    "heatCategory": "extreme"
+  },
+  "Kansas City": {
+    "climateZone": "humid-continental",
+    "tempJune": { "low": 19, "high": 30, "avg": 24.5 },
+    "tempJuly": { "low": 22, "high": 32, "avg": 27 },
+    "humidity": "high",
+    "indoor": false,
+    "heatCategory": "warm"
+  }
+}
