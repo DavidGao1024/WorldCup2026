@@ -193,7 +193,7 @@ function showMatchModal(matchNum) {
         var pred = null;
         if (!hasScore && typeof computeMatchScore === 'function' && typeof predictScores === 'function') {
           try {
-            var result = computeMatchScore(match.team1, match.team2, match.ground, match.date);
+            var result = computeMatchScore(match.team1, match.team2, match.ground, match.date, match.time);
             pred = predictScores(result);
             pred.teamTotal = result.teamTotal;
             pred.oppTotal = result.oppTotal;
@@ -352,6 +352,8 @@ function renderMatchBasicInfo(match, summary, pred) {
     html += '<span class="match-pred-score-pct">' + pred.top1Pct + '%</span>';
     html += '<span class="match-pred-score-val">' + pred.top2 + '</span>';
     html += '<span class="match-pred-score-pct">' + pred.top2Pct + '%</span>';
+    html += '<span class="match-pred-score-val">' + pred.top3 + '</span>';
+    html += '<span class="match-pred-score-pct">' + pred.top3Pct + '%</span>';
     html += '</div>';
 
     // 胜平负进度条
