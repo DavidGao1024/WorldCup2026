@@ -1,579 +1,5466 @@
 {
-  "Argentina": {"formScore":91,"recent":[
-    {"date":"2026-06-09","opponent":"Uruguay","oppRank":11,"result":"3-1","venue":"home","comp":"Friendly"},
-    {"date":"2026-06-02","opponent":"Chile","oppRank":34,"result":"2-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2026-03-28","opponent":"Brazil","oppRank":3,"result":"1-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2026-03-23","opponent":"Venezuela","oppRank":58,"result":"3-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-19","opponent":"Paraguay","oppRank":32,"result":"2-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-14","opponent":"Ecuador","oppRank":22,"result":"1-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-17","opponent":"Colombia","oppRank":14,"result":"2-2","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-12","opponent":"Peru","oppRank":28,"result":"4-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-09-08","opponent":"Bolivia","oppRank":79,"result":"3-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-09-04","opponent":"Uruguay","oppRank":11,"result":"0-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-06-16","opponent":"Ecuador","oppRank":22,"result":"2-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-06-10","opponent":"Chile","oppRank":34,"result":"3-1","venue":"home","comp":"WC Qualifier"}
-  ]},
-  "France": {"formScore":88,"recent":[
-    {"date":"2026-06-08","opponent":"Germany","oppRank":7,"result":"2-2","venue":"home","comp":"Friendly"},
-    {"date":"2026-06-01","opponent":"Italy","oppRank":9,"result":"3-1","venue":"away","comp":"Nations League"},
-    {"date":"2026-03-27","opponent":"Belgium","oppRank":10,"result":"2-0","venue":"home","comp":"Nations League"},
-    {"date":"2026-03-22","opponent":"Sweden","oppRank":24,"result":"4-1","venue":"away","comp":"Friendly"},
-    {"date":"2025-11-18","opponent":"Netherlands","oppRank":8,"result":"1-0","venue":"home","comp":"Nations League"},
-    {"date":"2025-11-13","opponent":"Austria","oppRank":21,"result":"3-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-14","opponent":"Poland","oppRank":29,"result":"2-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-10","opponent":"Serbia","oppRank":25,"result":"2-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-09-09","opponent":"Ukraine","oppRank":55,"result":"3-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-09-05","opponent":"Austria","oppRank":21,"result":"1-1","venue":"home","comp":"WC Qualifier"}
-  ]},
-  "Brazil": {"formScore":85,"recent":[
-    {"date":"2026-06-07","opponent":"Colombia","oppRank":14,"result":"2-1","venue":"away","comp":"Friendly"},
-    {"date":"2026-06-02","opponent":"Paraguay","oppRank":32,"result":"3-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2026-03-28","opponent":"Argentina","oppRank":1,"result":"1-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2026-03-23","opponent":"Uruguay","oppRank":11,"result":"2-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-18","opponent":"Chile","oppRank":34,"result":"3-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-13","opponent":"Ecuador","oppRank":22,"result":"2-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-15","opponent":"Peru","oppRank":28,"result":"2-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-09","opponent":"Colombia","oppRank":14,"result":"1-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-09-10","opponent":"Bolivia","oppRank":79,"result":"5-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-09-04","opponent":"Venezuela","oppRank":58,"result":"2-0","venue":"away","comp":"WC Qualifier"}
-  ]},
-  "England": {"formScore":83,"recent":[
-    {"date":"2026-06-06","opponent":"Spain","oppRank":5,"result":"1-2","venue":"away","comp":"Friendly"},
-    {"date":"2026-06-01","opponent":"Denmark","oppRank":20,"result":"3-0","venue":"home","comp":"Nations League"},
-    {"date":"2026-03-26","opponent":"Croatia","oppRank":12,"result":"2-1","venue":"away","comp":"Nations League"},
-    {"date":"2026-03-22","opponent":"Switzerland","oppRank":19,"result":"2-0","venue":"home","comp":"Friendly"},
-    {"date":"2025-11-17","opponent":"Scotland","oppRank":35,"result":"3-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-12","opponent":"Wales","oppRank":62,"result":"4-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-14","opponent":"Norway","oppRank":37,"result":"2-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-08","opponent":"Czech Republic","oppRank":36,"result":"3-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-09-07","opponent":"Scotland","oppRank":35,"result":"1-0","venue":"home","comp":"WC Qualifier"}
-  ]},
-  "Spain": {"formScore":86,"recent":[
-    {"date":"2026-06-06","opponent":"England","oppRank":4,"result":"2-1","venue":"home","comp":"Friendly"},
-    {"date":"2026-06-02","opponent":"Portugal","oppRank":6,"result":"1-1","venue":"away","comp":"Nations League"},
-    {"date":"2026-03-27","opponent":"Germany","oppRank":7,"result":"2-0","venue":"home","comp":"Nations League"},
-    {"date":"2026-03-21","opponent":"Netherlands","oppRank":8,"result":"3-1","venue":"away","comp":"Friendly"},
-    {"date":"2025-11-18","opponent":"Sweden","oppRank":24,"result":"2-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-13","opponent":"Poland","oppRank":29,"result":"3-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-15","opponent":"Serbia","oppRank":25,"result":"1-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-11","opponent":"Greece","oppRank":56,"result":"4-0","venue":"away","comp":"WC Qualifier"}
-  ]},
-  "Portugal": {"formScore":82,"recent":[
-    {"date":"2026-06-08","opponent":"Netherlands","oppRank":8,"result":"2-1","venue":"home","comp":"Friendly"},
-    {"date":"2026-06-01","opponent":"Spain","oppRank":5,"result":"1-1","venue":"home","comp":"Nations League"},
-    {"date":"2026-03-28","opponent":"Denmark","oppRank":20,"result":"2-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2026-03-23","opponent":"Greece","oppRank":56,"result":"4-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-17","opponent":"Slovakia","oppRank":48,"result":"3-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-13","opponent":"Iceland","oppRank":40,"result":"2-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-14","opponent":"Denmark","oppRank":20,"result":"1-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-09","opponent":"Greece","oppRank":56,"result":"3-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-09-07","opponent":"Slovakia","oppRank":48,"result":"2-0","venue":"home","comp":"WC Qualifier"}
-  ]},
-  "Germany": {"formScore":78,"recent":[
-    {"date":"2026-06-08","opponent":"France","oppRank":2,"result":"2-2","venue":"away","comp":"Friendly"},
-    {"date":"2026-06-02","opponent":"Belgium","oppRank":10,"result":"3-1","venue":"home","comp":"Nations League"},
-    {"date":"2026-03-27","opponent":"Spain","oppRank":5,"result":"0-2","venue":"away","comp":"Nations League"},
-    {"date":"2026-03-22","opponent":"Italy","oppRank":9,"result":"2-1","venue":"home","comp":"Friendly"},
-    {"date":"2025-11-16","opponent":"Norway","oppRank":37,"result":"4-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-11","opponent":"Czech Republic","oppRank":36,"result":"2-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-12","opponent":"Romania","oppRank":44,"result":"3-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-07","opponent":"Finland","oppRank":61,"result":"5-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-09-08","opponent":"Norway","oppRank":37,"result":"2-1","venue":"away","comp":"WC Qualifier"}
-  ]},
-  "Netherlands": {"formScore":79,"recent":[
-    {"date":"2026-06-08","opponent":"Portugal","oppRank":6,"result":"1-2","venue":"away","comp":"Friendly"},
-    {"date":"2026-06-02","opponent":"Italy","oppRank":9,"result":"2-0","venue":"home","comp":"Nations League"},
-    {"date":"2026-03-26","opponent":"Belgium","oppRank":10,"result":"1-0","venue":"home","comp":"Nations League"},
-    {"date":"2026-03-21","opponent":"Spain","oppRank":5,"result":"1-3","venue":"home","comp":"Friendly"},
-    {"date":"2025-11-18","opponent":"France","oppRank":2,"result":"0-1","venue":"away","comp":"Nations League"},
-    {"date":"2025-11-12","opponent":"Ukraine","oppRank":55,"result":"3-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-14","opponent":"Turkey","oppRank":33,"result":"2-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-09","opponent":"Armenia","oppRank":82,"result":"5-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-09-08","opponent":"Ukraine","oppRank":55,"result":"2-0","venue":"away","comp":"WC Qualifier"}
-  ]},
-  "Italy": {"formScore":80,"recent":[
-    {"date":"2026-06-01","opponent":"France","oppRank":2,"result":"1-3","venue":"home","comp":"Nations League"},
-    {"date":"2026-05-27","opponent":"Croatia","oppRank":12,"result":"2-1","venue":"home","comp":"Friendly"},
-    {"date":"2026-03-24","opponent":"Switzerland","oppRank":19,"result":"2-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2026-03-19","opponent":"Bulgaria","oppRank":72,"result":"4-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-17","opponent":"Scotland","oppRank":35,"result":"3-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-11","opponent":"Northern Ireland","oppRank":68,"result":"2-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-12","opponent":"Switzerland","oppRank":19,"result":"1-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-08","opponent":"Bulgaria","oppRank":72,"result":"3-0","venue":"home","comp":"WC Qualifier"}
-  ]},
-  "Belgium": {"formScore":72,"recent":[
-    {"date":"2026-06-02","opponent":"Germany","oppRank":7,"result":"1-3","venue":"away","comp":"Nations League"},
-    {"date":"2026-05-28","opponent":"Poland","oppRank":29,"result":"2-1","venue":"home","comp":"Friendly"},
-    {"date":"2026-03-26","opponent":"Netherlands","oppRank":8,"result":"0-1","venue":"away","comp":"Nations League"},
-    {"date":"2026-03-21","opponent":"Austria","oppRank":21,"result":"2-2","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-16","opponent":"Serbia","oppRank":25,"result":"3-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-12","opponent":"Wales","oppRank":62,"result":"1-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-14","opponent":"Austria","oppRank":21,"result":"0-2","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-09","opponent":"Montenegro","oppRank":73,"result":"3-0","venue":"home","comp":"WC Qualifier"}
-  ]},
-  "Uruguay": {"formScore":76,"recent":[
-    {"date":"2026-06-09","opponent":"Argentina","oppRank":1,"result":"1-3","venue":"away","comp":"Friendly"},
-    {"date":"2026-06-02","opponent":"Ecuador","oppRank":22,"result":"2-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2026-03-28","opponent":"Paraguay","oppRank":32,"result":"2-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2026-03-23","opponent":"Brazil","oppRank":3,"result":"0-2","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-18","opponent":"Chile","oppRank":34,"result":"3-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-13","opponent":"Peru","oppRank":28,"result":"1-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-16","opponent":"Colombia","oppRank":14,"result":"1-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-10","opponent":"Venezuela","oppRank":58,"result":"2-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-09-06","opponent":"Argentina","oppRank":1,"result":"0-0","venue":"home","comp":"WC Qualifier"}
-  ]},
-  "Croatia": {"formScore":74,"recent":[
-    {"date":"2026-06-04","opponent":"Switzerland","oppRank":19,"result":"2-1","venue":"home","comp":"Friendly"},
-    {"date":"2026-03-26","opponent":"England","oppRank":4,"result":"1-2","venue":"home","comp":"Nations League"},
-    {"date":"2026-03-21","opponent":"Czech Republic","oppRank":36,"result":"3-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-17","opponent":"Serbia","oppRank":25,"result":"2-2","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-12","opponent":"Slovenia","oppRank":53,"result":"2-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-15","opponent":"Czech Republic","oppRank":36,"result":"1-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-11","opponent":"Slovakia","oppRank":48,"result":"3-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-09-09","opponent":"Serbia","oppRank":25,"result":"1-0","venue":"home","comp":"WC Qualifier"}
-  ]},
-  "Morocco": {"formScore":77,"recent":[
-    {"date":"2026-06-10","opponent":"Senegal","oppRank":18,"result":"2-1","venue":"home","comp":"Friendly"},
-    {"date":"2026-06-05","opponent":"Egypt","oppRank":30,"result":"3-1","venue":"away","comp":"AFCON Qualifier"},
-    {"date":"2026-03-26","opponent":"Algeria","oppRank":31,"result":"2-0","venue":"home","comp":"AFCON Qualifier"},
-    {"date":"2026-03-21","opponent":"Tunisia","oppRank":45,"result":"2-0","venue":"away","comp":"AFCON Qualifier"},
-    {"date":"2025-11-18","opponent":"Mali","oppRank":52,"result":"1-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-13","opponent":"Ivory Coast","oppRank":23,"result":"1-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-13","opponent":"Zambia","oppRank":76,"result":"3-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-08","opponent":"Niger","oppRank":116,"result":"5-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-09-06","opponent":"Ivory Coast","oppRank":23,"result":"2-1","venue":"home","comp":"WC Qualifier"}
-  ]},
-  "Colombia": {"formScore":75,"recent":[
-    {"date":"2026-06-07","opponent":"Brazil","oppRank":3,"result":"1-2","venue":"home","comp":"Friendly"},
-    {"date":"2026-06-01","opponent":"Ecuador","oppRank":22,"result":"2-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2026-03-26","opponent":"Peru","oppRank":28,"result":"3-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2026-03-21","opponent":"Venezuela","oppRank":58,"result":"2-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-18","opponent":"Chile","oppRank":34,"result":"2-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-13","opponent":"Argentina","oppRank":1,"result":"0-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-16","opponent":"Uruguay","oppRank":11,"result":"1-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-10","opponent":"Paraguay","oppRank":32,"result":"3-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-09-09","opponent":"Bolivia","oppRank":79,"result":"4-0","venue":"home","comp":"WC Qualifier"}
-  ]},
-  "Japan": {"formScore":81,"recent":[
-    {"date":"2026-06-09","opponent":"South Korea","oppRank":26,"result":"2-1","venue":"home","comp":"Friendly"},
-    {"date":"2026-06-04","opponent":"Australia","oppRank":27,"result":"3-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2026-03-27","opponent":"Saudi Arabia","oppRank":43,"result":"2-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2026-03-22","opponent":"Iraq","oppRank":47,"result":"5-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-19","opponent":"China PR","oppRank":88,"result":"3-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-14","opponent":"Qatar","oppRank":46,"result":"2-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-15","opponent":"South Korea","oppRank":26,"result":"1-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-09","opponent":"Iran","oppRank":49,"result":"3-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-09-05","opponent":"Saudi Arabia","oppRank":43,"result":"2-0","venue":"away","comp":"WC Qualifier"}
-  ]},
-  "USA": {"formScore":71,"recent":[
-    {"date":"2026-06-11","opponent":"Turkey","oppRank":33,"result":"2-1","venue":"home","comp":"WC Group D"},
-    {"date":"2026-06-06","opponent":"Ghana","oppRank":42,"result":"3-1","venue":"home","comp":"Friendly"},
-    {"date":"2026-06-02","opponent":"Panama","oppRank":44,"result":"2-0","venue":"away","comp":"Friendly"},
-    {"date":"2026-03-26","opponent":"Jamaica","oppRank":64,"result":"3-0","venue":"home","comp":"Nations League"},
-    {"date":"2026-03-19","opponent":"El Salvador","oppRank":83,"result":"4-0","venue":"away","comp":"Nations League"},
-    {"date":"2025-11-14","opponent":"Mexico","oppRank":17,"result":"0-1","venue":"away","comp":"Friendly"},
-    {"date":"2025-10-11","opponent":"Costa Rica","oppRank":52,"result":"2-0","venue":"home","comp":"Friendly"},
-    {"date":"2025-09-08","opponent":"Canada","oppRank":37,"result":"1-1","venue":"away","comp":"Friendly"},
-    {"date":"2025-07-22","opponent":"Panama","oppRank":44,"result":"3-1","venue":"neutral","comp":"Gold Cup"}
-  ]},
-  "Mexico": {"formScore":73,"recent":[
-    {"date":"2026-06-11","opponent":"South Africa","oppRank":40,"result":"2-0","venue":"home","comp":"WC Group A"},
-    {"date":"2026-06-05","opponent":"Ecuador","oppRank":22,"result":"1-0","venue":"home","comp":"Friendly"},
-    {"date":"2026-05-29","opponent":"Chile","oppRank":34,"result":"2-1","venue":"home","comp":"Friendly"},
-    {"date":"2026-03-26","opponent":"Canada","oppRank":37,"result":"2-0","venue":"home","comp":"Nations League"},
-    {"date":"2026-03-22","opponent":"Honduras","oppRank":78,"result":"3-1","venue":"away","comp":"Nations League"},
-    {"date":"2025-11-14","opponent":"USA","oppRank":16,"result":"1-0","venue":"home","comp":"Friendly"},
-    {"date":"2025-10-12","opponent":"Panama","oppRank":44,"result":"2-0","venue":"home","comp":"Friendly"},
-    {"date":"2025-07-24","opponent":"USA","oppRank":16,"result":"0-2","venue":"neutral","comp":"Gold Cup Final"}
-  ]},
-  "Senegal": {"formScore":76,"recent":[
-    {"date":"2026-06-10","opponent":"Morocco","oppRank":13,"result":"1-2","venue":"away","comp":"Friendly"},
-    {"date":"2026-06-04","opponent":"Algeria","oppRank":31,"result":"2-1","venue":"home","comp":"AFCON Qualifier"},
-    {"date":"2026-03-24","opponent":"Mali","oppRank":52,"result":"2-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2026-03-20","opponent":"Ivory Coast","oppRank":23,"result":"1-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-17","opponent":"Burkina Faso","oppRank":58,"result":"3-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-11","opponent":"Gabon","oppRank":84,"result":"2-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-13","opponent":"Mali","oppRank":52,"result":"1-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-07","opponent":"Ivory Coast","oppRank":23,"result":"1-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-09-05","opponent":"Burkina Faso","oppRank":58,"result":"3-0","venue":"home","comp":"WC Qualifier"}
-  ]},
-  "Switzerland": {"formScore":70,"recent":[
-    {"date":"2026-06-18","opponent":"Bosnia & Herzegovina","oppRank":51,"result":"未赛","venue":"neutral","comp":"WC Group B"},
-    {"date":"2026-06-10","opponent":"Serbia","oppRank":25,"result":"2-1","venue":"home","comp":"Friendly"},
-    {"date":"2026-06-04","opponent":"Croatia","oppRank":12,"result":"1-2","venue":"away","comp":"Friendly"},
-    {"date":"2026-03-24","opponent":"Italy","oppRank":9,"result":"0-2","venue":"away","comp":"WC Qualifier"},
-    {"date":"2026-03-19","opponent":"Bulgaria","oppRank":72,"result":"3-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-17","opponent":"Northern Ireland","oppRank":68,"result":"2-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-11","opponent":"Scotland","oppRank":35,"result":"1-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-12","opponent":"Italy","oppRank":9,"result":"1-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-08","opponent":"Bulgaria","oppRank":72,"result":"2-0","venue":"away","comp":"WC Qualifier"}
-  ]},
-  "Denmark": {"formScore":67,"recent":[
-    {"date":"2026-06-01","opponent":"England","oppRank":4,"result":"0-3","venue":"away","comp":"Nations League"},
-    {"date":"2026-05-27","opponent":"Sweden","oppRank":24,"result":"2-1","venue":"home","comp":"Friendly"},
-    {"date":"2026-03-28","opponent":"Portugal","oppRank":6,"result":"0-2","venue":"away","comp":"WC Qualifier"},
-    {"date":"2026-03-22","opponent":"Iceland","oppRank":40,"result":"3-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-17","opponent":"Slovakia","oppRank":48,"result":"2-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-12","opponent":"Greece","oppRank":56,"result":"1-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-14","opponent":"Portugal","oppRank":6,"result":"0-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-09","opponent":"Iceland","oppRank":40,"result":"2-2","venue":"away","comp":"WC Qualifier"}
-  ]},
-  "Austria": {"formScore":68,"recent":[
-    {"date":"2026-06-05","opponent":"Poland","oppRank":29,"result":"2-1","venue":"home","comp":"Friendly"},
-    {"date":"2026-06-01","opponent":"Czech Republic","oppRank":36,"result":"3-1","venue":"away","comp":"Friendly"},
-    {"date":"2026-03-21","opponent":"Belgium","oppRank":10,"result":"2-2","venue":"away","comp":"WC Qualifier"},
-    {"date":"2026-03-17","opponent":"Wales","oppRank":62,"result":"2-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-13","opponent":"France","oppRank":2,"result":"0-3","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-09","opponent":"Montenegro","oppRank":73,"result":"3-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-14","opponent":"Belgium","oppRank":10,"result":"2-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-08","opponent":"Serbia","oppRank":25,"result":"1-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-09-05","opponent":"France","oppRank":2,"result":"1-1","venue":"away","comp":"WC Qualifier"}
-  ]},
-  "Ecuador": {"formScore":69,"recent":[
-    {"date":"2026-06-05","opponent":"Mexico","oppRank":17,"result":"0-1","venue":"away","comp":"Friendly"},
-    {"date":"2026-06-02","opponent":"Uruguay","oppRank":11,"result":"0-2","venue":"away","comp":"WC Qualifier"},
-    {"date":"2026-03-28","opponent":"Argentina","oppRank":1,"result":"1-2","venue":"away","comp":"WC Qualifier"},
-    {"date":"2026-03-24","opponent":"Venezuela","oppRank":58,"result":"3-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-18","opponent":"Peru","oppRank":28,"result":"2-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-13","opponent":"Brazil","oppRank":3,"result":"1-2","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-15","opponent":"Bolivia","oppRank":79,"result":"3-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-10","opponent":"Colombia","oppRank":14,"result":"1-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-09-09","opponent":"Paraguay","oppRank":32,"result":"0-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-06-16","opponent":"Argentina","oppRank":1,"result":"1-2","venue":"away","comp":"WC Qualifier"}
-  ]},
-  "Ivory Coast": {"formScore":70,"recent":[
-    {"date":"2026-06-08","opponent":"Ghana","oppRank":42,"result":"3-0","venue":"home","comp":"Friendly"},
-    {"date":"2026-06-03","opponent":"Cape Verde","oppRank":39,"result":"2-1","venue":"away","comp":"AFCON Qualifier"},
-    {"date":"2026-03-24","opponent":"Morocco","oppRank":13,"result":"1-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2026-03-20","opponent":"Senegal","oppRank":18,"result":"0-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-16","opponent":"Zambia","oppRank":76,"result":"2-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-11","opponent":"Niger","oppRank":116,"result":"4-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-13","opponent":"Morocco","oppRank":13,"result":"1-2","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-07","opponent":"Senegal","oppRank":18,"result":"1-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-09-06","opponent":"Burkina Faso","oppRank":58,"result":"3-1","venue":"home","comp":"WC Qualifier"}
-  ]},
-  "Sweden": {"formScore":63,"recent":[
-    {"date":"2026-06-07","opponent":"Turkey","oppRank":33,"result":"1-1","venue":"home","comp":"Friendly"},
-    {"date":"2026-06-03","opponent":"Norway","oppRank":37,"result":"2-1","venue":"away","comp":"Friendly"},
-    {"date":"2026-03-22","opponent":"France","oppRank":2,"result":"1-4","venue":"home","comp":"Friendly"},
-    {"date":"2025-11-18","opponent":"Spain","oppRank":5,"result":"0-2","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-13","opponent":"Greece","oppRank":56,"result":"2-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-15","opponent":"Poland","oppRank":29,"result":"1-2","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-10","opponent":"Serbia","oppRank":25,"result":"0-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-09-09","opponent":"Spain","oppRank":5,"result":"0-3","venue":"home","comp":"WC Qualifier"}
-  ]},
-  "Serbia": {"formScore":65,"recent":[
-    {"date":"2026-06-10","opponent":"Switzerland","oppRank":19,"result":"1-2","venue":"away","comp":"Friendly"},
-    {"date":"2026-06-03","opponent":"Poland","oppRank":29,"result":"2-0","venue":"home","comp":"Friendly"},
-    {"date":"2026-03-25","opponent":"Belgium","oppRank":10,"result":"0-3","venue":"away","comp":"WC Qualifier"},
-    {"date":"2026-03-20","opponent":"Wales","oppRank":62,"result":"2-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-17","opponent":"Croatia","oppRank":12,"result":"2-2","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-12","opponent":"Slovenia","oppRank":53,"result":"1-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-15","opponent":"Belgium","oppRank":10,"result":"0-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-09","opponent":"Croatia","oppRank":12,"result":"0-1","venue":"away","comp":"WC Qualifier"}
-  ]},
-  "South Korea": {"formScore":72,"recent":[
-    {"date":"2026-06-09","opponent":"Japan","oppRank":15,"result":"1-2","venue":"away","comp":"Friendly"},
-    {"date":"2026-06-04","opponent":"Iraq","oppRank":47,"result":"3-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2026-03-25","opponent":"Australia","oppRank":27,"result":"2-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2026-03-20","opponent":"China PR","oppRank":88,"result":"4-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-18","opponent":"Saudi Arabia","oppRank":43,"result":"2-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-13","opponent":"Qatar","oppRank":46,"result":"3-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-15","opponent":"Japan","oppRank":15,"result":"0-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-09","opponent":"Iran","oppRank":49,"result":"1-0","venue":"away","comp":"WC Qualifier"}
-  ]},
-  "Australia": {"formScore":64,"recent":[
-    {"date":"2026-06-04","opponent":"Japan","oppRank":15,"result":"1-3","venue":"home","comp":"WC Qualifier"},
-    {"date":"2026-05-29","opponent":"New Zealand","oppRank":53,"result":"2-0","venue":"home","comp":"Friendly"},
-    {"date":"2026-03-25","opponent":"South Korea","oppRank":26,"result":"1-2","venue":"away","comp":"WC Qualifier"},
-    {"date":"2026-03-21","opponent":"China PR","oppRank":88,"result":"2-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-17","opponent":"Iran","oppRank":49,"result":"1-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-12","opponent":"Saudi Arabia","oppRank":43,"result":"2-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-14","opponent":"Qatar","oppRank":46,"result":"3-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-08","opponent":"Iraq","oppRank":47,"result":"0-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-09-06","opponent":"Japan","oppRank":15,"result":"0-2","venue":"away","comp":"WC Qualifier"}
-  ]},
-  "Peru": {"formScore":58,"recent":[
-    {"date":"2026-06-01","opponent":"Paraguay","oppRank":32,"result":"1-1","venue":"home","comp":"Friendly"},
-    {"date":"2026-05-26","opponent":"Bolivia","oppRank":79,"result":"2-0","venue":"home","comp":"Friendly"},
-    {"date":"2026-03-26","opponent":"Colombia","oppRank":14,"result":"0-3","venue":"away","comp":"WC Qualifier"},
-    {"date":"2026-03-21","opponent":"Chile","oppRank":34,"result":"1-2","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-18","opponent":"Ecuador","oppRank":22,"result":"1-2","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-13","opponent":"Uruguay","oppRank":11,"result":"0-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-12","opponent":"Argentina","oppRank":1,"result":"0-4","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-08","opponent":"Venezuela","oppRank":58,"result":"2-1","venue":"home","comp":"WC Qualifier"}
-  ]},
-  "Poland": {"formScore":61,"recent":[
-    {"date":"2026-06-05","opponent":"Austria","oppRank":21,"result":"1-2","venue":"away","comp":"Friendly"},
-    {"date":"2026-06-01","opponent":"Serbia","oppRank":25,"result":"0-2","venue":"away","comp":"Friendly"},
-    {"date":"2026-03-24","opponent":"Spain","oppRank":5,"result":"0-2","venue":"home","comp":"WC Qualifier"},
-    {"date":"2026-03-20","opponent":"Greece","oppRank":56,"result":"2-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-17","opponent":"Sweden","oppRank":24,"result":"2-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-12","opponent":"Serbia","oppRank":25,"result":"1-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-14","opponent":"Spain","oppRank":5,"result":"1-3","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-09","opponent":"France","oppRank":2,"result":"1-2","venue":"home","comp":"WC Qualifier"}
-  ]},
-  "Egypt": {"formScore":66,"recent":[
-    {"date":"2026-06-05","opponent":"Morocco","oppRank":13,"result":"1-3","venue":"home","comp":"AFCON Qualifier"},
-    {"date":"2026-06-01","opponent":"Tunisia","oppRank":45,"result":"2-0","venue":"away","comp":"AFCON Qualifier"},
-    {"date":"2026-03-26","opponent":"Ghana","oppRank":42,"result":"2-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2026-03-21","opponent":"Mali","oppRank":52,"result":"1-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-18","opponent":"Ethiopia","oppRank":89,"result":"3-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-13","opponent":"Guinea","oppRank":71,"result":"2-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-14","opponent":"Ghana","oppRank":42,"result":"1-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-08","opponent":"Mali","oppRank":52,"result":"2-1","venue":"home","comp":"WC Qualifier"}
-  ]},
-  "Algeria": {"formScore":59,"recent":[
-    {"date":"2026-06-10","opponent":"Tunisia","oppRank":45,"result":"2-1","venue":"home","comp":"Friendly"},
-    {"date":"2026-06-04","opponent":"Senegal","oppRank":18,"result":"1-2","venue":"away","comp":"AFCON Qualifier"},
-    {"date":"2026-03-26","opponent":"Morocco","oppRank":13,"result":"0-2","venue":"away","comp":"AFCON Qualifier"},
-    {"date":"2026-03-23","opponent":"Cape Verde","oppRank":39,"result":"2-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-17","opponent":"Nigeria","oppRank":63,"result":"1-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-13","opponent":"South Africa","oppRank":40,"result":"1-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-13","opponent":"Cape Verde","oppRank":39,"result":"2-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-07","opponent":"Nigeria","oppRank":63,"result":"0-0","venue":"away","comp":"WC Qualifier"}
-  ]},
-  "Paraguay": {"formScore":62,"recent":[
-    {"date":"2026-06-10","opponent":"Peru","oppRank":28,"result":"1-1","venue":"away","comp":"Friendly"},
-    {"date":"2026-06-02","opponent":"Brazil","oppRank":3,"result":"1-3","venue":"away","comp":"WC Qualifier"},
-    {"date":"2026-03-28","opponent":"Uruguay","oppRank":11,"result":"1-2","venue":"home","comp":"WC Qualifier"},
-    {"date":"2026-03-24","opponent":"Chile","oppRank":34,"result":"2-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-19","opponent":"Argentina","oppRank":1,"result":"1-2","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-14","opponent":"Venezuela","oppRank":58,"result":"3-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-12","opponent":"Colombia","oppRank":14,"result":"1-3","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-07","opponent":"Bolivia","oppRank":79,"result":"2-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-09-09","opponent":"Ecuador","oppRank":22,"result":"0-0","venue":"home","comp":"WC Qualifier"}
-  ]},
-  "Turkey": {"formScore":64,"recent":[
-    {"date":"2026-06-07","opponent":"Sweden","oppRank":24,"result":"1-1","venue":"away","comp":"Friendly"},
-    {"date":"2026-06-11","opponent":"USA","oppRank":16,"result":"1-2","venue":"away","comp":"WC Group D"},
-    {"date":"2026-06-02","opponent":"Bosnia & Herzegovina","oppRank":51,"result":"2-0","venue":"home","comp":"Friendly"},
-    {"date":"2026-03-25","opponent":"Netherlands","oppRank":8,"result":"1-2","venue":"home","comp":"WC Qualifier"},
-    {"date":"2026-03-21","opponent":"Armenia","oppRank":82,"result":"3-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-18","opponent":"Ukraine","oppRank":55,"result":"2-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-13","opponent":"Netherlands","oppRank":8,"result":"0-3","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-14","opponent":"Ukraine","oppRank":55,"result":"1-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-09","opponent":"Armenia","oppRank":82,"result":"4-0","venue":"away","comp":"WC Qualifier"}
-  ]},
-  "Chile": {"formScore":55,"recent":[
-    {"date":"2026-06-02","opponent":"Argentina","oppRank":1,"result":"0-2","venue":"home","comp":"WC Qualifier"},
-    {"date":"2026-05-29","opponent":"Mexico","oppRank":17,"result":"1-2","venue":"away","comp":"Friendly"},
-    {"date":"2026-03-24","opponent":"Paraguay","oppRank":32,"result":"1-2","venue":"home","comp":"WC Qualifier"},
-    {"date":"2026-03-21","opponent":"Peru","oppRank":28,"result":"2-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-18","opponent":"Brazil","oppRank":3,"result":"0-3","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-14","opponent":"Colombia","oppRank":14,"result":"1-2","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-14","opponent":"Uruguay","oppRank":11,"result":"1-3","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-08","opponent":"Venezuela","oppRank":58,"result":"2-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-06-10","opponent":"Argentina","oppRank":1,"result":"1-3","venue":"away","comp":"WC Qualifier"}
-  ]},
-  "Scotland": {"formScore":65,"recent":[
-    {"date":"2026-06-08","opponent":"Czech Republic","oppRank":36,"result":"2-1","venue":"home","comp":"Friendly"},
-    {"date":"2026-06-02","opponent":"Norway","oppRank":37,"result":"2-2","venue":"away","comp":"Friendly"},
-    {"date":"2026-03-26","opponent":"Italy","oppRank":9,"result":"1-3","venue":"away","comp":"WC Qualifier"},
-    {"date":"2026-03-22","opponent":"Northern Ireland","oppRank":68,"result":"2-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-17","opponent":"England","oppRank":4,"result":"1-3","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-11","opponent":"Switzerland","oppRank":19,"result":"1-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-12","opponent":"Bulgaria","oppRank":72,"result":"3-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-07","opponent":"Italy","oppRank":9,"result":"0-2","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-09-07","opponent":"England","oppRank":4,"result":"0-1","venue":"away","comp":"WC Qualifier"}
-  ]},
-  "Czech Republic": {"formScore":60,"recent":[
-    {"date":"2026-06-08","opponent":"Scotland","oppRank":35,"result":"1-2","venue":"away","comp":"Friendly"},
-    {"date":"2026-06-01","opponent":"Austria","oppRank":21,"result":"1-3","venue":"home","comp":"Friendly"},
-    {"date":"2026-03-21","opponent":"Croatia","oppRank":12,"result":"1-3","venue":"away","comp":"WC Qualifier"},
-    {"date":"2026-03-18","opponent":"Slovakia","oppRank":48,"result":"2-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-17","opponent":"Slovenia","oppRank":53,"result":"2-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-11","opponent":"Germany","oppRank":7,"result":"0-2","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-15","opponent":"Croatia","oppRank":12,"result":"0-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-08","opponent":"England","oppRank":4,"result":"0-3","venue":"away","comp":"WC Qualifier"}
-  ]},
-  "Norway": {"formScore":68,"recent":[
-    {"date":"2026-06-03","opponent":"Sweden","oppRank":24,"result":"1-2","venue":"home","comp":"Friendly"},
-    {"date":"2026-05-28","opponent":"Scotland","oppRank":35,"result":"2-2","venue":"home","comp":"Friendly"},
-    {"date":"2026-03-28","opponent":"Germany","oppRank":7,"result":"0-4","venue":"away","comp":"WC Qualifier"},
-    {"date":"2026-03-24","opponent":"Finland","oppRank":61,"result":"3-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-16","opponent":"England","oppRank":4,"result":"1-2","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-11","opponent":"Romania","oppRank":44,"result":"2-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-14","opponent":"Germany","oppRank":7,"result":"1-2","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-08","opponent":"Czech Republic","oppRank":36,"result":"2-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-09-08","opponent":"England","oppRank":4,"result":"0-2","venue":"away","comp":"WC Qualifier"}
-  ]},
-  "Uzbekistan": {"formScore":56,"recent":[
-    {"date":"2026-06-07","opponent":"Iran","oppRank":49,"result":"1-0","venue":"home","comp":"Friendly"},
-    {"date":"2026-06-03","opponent":"Jordan","oppRank":48,"result":"2-1","venue":"away","comp":"Friendly"},
-    {"date":"2026-03-27","opponent":"Qatar","oppRank":46,"result":"2-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2026-03-22","opponent":"China PR","oppRank":88,"result":"1-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-18","opponent":"Australia","oppRank":27,"result":"0-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-11","opponent":"Iran","oppRank":49,"result":"1-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-12","opponent":"Iraq","oppRank":47,"result":"2-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-07","opponent":"Saudi Arabia","oppRank":43,"result":"0-0","venue":"away","comp":"WC Qualifier"}
-  ]},
-  "Cape Verde": {"formScore":53,"recent":[
-    {"date":"2026-06-03","opponent":"Ivory Coast","oppRank":23,"result":"1-2","venue":"home","comp":"AFCON Qualifier"},
-    {"date":"2026-05-28","opponent":"DR Congo","oppRank":41,"result":"2-1","venue":"home","comp":"Friendly"},
-    {"date":"2026-03-23","opponent":"Algeria","oppRank":31,"result":"0-2","venue":"away","comp":"WC Qualifier"},
-    {"date":"2026-03-19","opponent":"South Africa","oppRank":40,"result":"1-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-17","opponent":"Nigeria","oppRank":63,"result":"1-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-13","opponent":"Algeria","oppRank":31,"result":"1-2","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-15","opponent":"Nigeria","oppRank":63,"result":"2-2","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-09","opponent":"South Africa","oppRank":40,"result":"0-1","venue":"away","comp":"WC Qualifier"}
-  ]},
-  "South Africa": {"formScore":57,"recent":[
-    {"date":"2026-06-11","opponent":"Mexico","oppRank":17,"result":"0-2","venue":"away","comp":"WC Group A"},
-    {"date":"2026-06-04","opponent":"Ghana","oppRank":42,"result":"1-0","venue":"home","comp":"Friendly"},
-    {"date":"2026-05-29","opponent":"Tunisia","oppRank":45,"result":"2-2","venue":"home","comp":"Friendly"},
-    {"date":"2026-03-26","opponent":"Nigeria","oppRank":63,"result":"1-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2026-03-19","opponent":"Cape Verde","oppRank":39,"result":"0-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-17","opponent":"Algeria","oppRank":31,"result":"1-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-13","opponent":"Nigeria","oppRank":63,"result":"2-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-09","opponent":"Cape Verde","oppRank":39,"result":"1-0","venue":"home","comp":"WC Qualifier"}
-  ]},
-  "DR Congo": {"formScore":52,"recent":[
-    {"date":"2026-06-08","opponent":"Ghana","oppRank":42,"result":"1-2","venue":"away","comp":"Friendly"},
-    {"date":"2026-06-02","opponent":"Cape Verde","oppRank":39,"result":"1-2","venue":"away","comp":"Friendly"},
-    {"date":"2026-03-25","opponent":"Mali","oppRank":52,"result":"2-2","venue":"home","comp":"WC Qualifier"},
-    {"date":"2026-03-21","opponent":"Zambia","oppRank":76,"result":"2-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-18","opponent":"Tunisia","oppRank":45,"result":"0-2","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-13","opponent":"Mali","oppRank":52,"result":"0-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-15","opponent":"Ethiopia","oppRank":89,"result":"3-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-08","opponent":"Guinea","oppRank":71,"result":"1-1","venue":"away","comp":"WC Qualifier"}
-  ]},
-  "Ghana": {"formScore":54,"recent":[
-    {"date":"2026-06-08","opponent":"DR Congo","oppRank":41,"result":"2-1","venue":"home","comp":"Friendly"},
-    {"date":"2026-06-04","opponent":"South Africa","oppRank":40,"result":"0-1","venue":"away","comp":"Friendly"},
-    {"date":"2026-03-26","opponent":"Egypt","oppRank":30,"result":"1-2","venue":"away","comp":"WC Qualifier"},
-    {"date":"2026-03-21","opponent":"Ethiopia","oppRank":89,"result":"3-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-17","opponent":"Mali","oppRank":52,"result":"1-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-11","opponent":"Guinea","oppRank":71,"result":"2-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-13","opponent":"Egypt","oppRank":30,"result":"1-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-07","opponent":"Mali","oppRank":52,"result":"1-1","venue":"away","comp":"WC Qualifier"}
-  ]},
-  "Saudi Arabia": {"formScore":51,"recent":[
-    {"date":"2026-06-05","opponent":"Qatar","oppRank":46,"result":"2-0","venue":"home","comp":"Friendly"},
-    {"date":"2026-06-01","opponent":"Iraq","oppRank":47,"result":"1-1","venue":"away","comp":"Friendly"},
-    {"date":"2026-03-27","opponent":"Japan","oppRank":15,"result":"0-2","venue":"away","comp":"WC Qualifier"},
-    {"date":"2026-03-20","opponent":"China PR","oppRank":88,"result":"2-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-18","opponent":"South Korea","oppRank":26,"result":"0-2","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-12","opponent":"Australia","oppRank":27,"result":"1-2","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-12","opponent":"Iran","oppRank":49,"result":"0-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-07","opponent":"Uzbekistan","oppRank":38,"result":"0-0","venue":"home","comp":"WC Qualifier"}
-  ]},
-  "Panama": {"formScore":49,"recent":[
-    {"date":"2026-06-07","opponent":"Costa Rica","oppRank":52,"result":"2-1","venue":"home","comp":"Friendly"},
-    {"date":"2026-06-02","opponent":"USA","oppRank":16,"result":"0-2","venue":"home","comp":"Friendly"},
-    {"date":"2026-03-26","opponent":"Jamaica","oppRank":64,"result":"1-0","venue":"home","comp":"Nations League"},
-    {"date":"2026-03-19","opponent":"Honduras","oppRank":78,"result":"2-1","venue":"home","comp":"Nations League"},
-    {"date":"2025-11-14","opponent":"Mexico","oppRank":17,"result":"0-2","venue":"away","comp":"Friendly"},
-    {"date":"2025-10-12","opponent":"USA","oppRank":16,"result":"0-3","venue":"away","comp":"Friendly"},
-    {"date":"2025-07-22","opponent":"USA","oppRank":16,"result":"1-3","venue":"neutral","comp":"Gold Cup"}
-  ]},
-  "Tunisia": {"formScore":55,"recent":[
-    {"date":"2026-06-10","opponent":"Algeria","oppRank":31,"result":"1-2","venue":"away","comp":"Friendly"},
-    {"date":"2026-06-01","opponent":"Egypt","oppRank":30,"result":"0-2","venue":"home","comp":"AFCON Qualifier"},
-    {"date":"2026-03-21","opponent":"Morocco","oppRank":13,"result":"0-2","venue":"home","comp":"AFCON Qualifier"},
-    {"date":"2026-03-18","opponent":"DR Congo","oppRank":41,"result":"2-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-17","opponent":"Guinea","oppRank":71,"result":"1-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-13","opponent":"Ethiopia","oppRank":89,"result":"3-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-15","opponent":"DR Congo","oppRank":41,"result":"1-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-09","opponent":"Mali","oppRank":52,"result":"0-1","venue":"away","comp":"WC Qualifier"}
-  ]},
-  "Qatar": {"formScore":48,"recent":[
-    {"date":"2026-06-05","opponent":"Saudi Arabia","oppRank":43,"result":"0-2","venue":"away","comp":"Friendly"},
-    {"date":"2026-06-02","opponent":"Jordan","oppRank":48,"result":"2-0","venue":"home","comp":"Friendly"},
-    {"date":"2026-03-27","opponent":"Uzbekistan","oppRank":38,"result":"0-2","venue":"away","comp":"WC Qualifier"},
-    {"date":"2026-03-22","opponent":"Iraq","oppRank":47,"result":"1-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-19","opponent":"Iran","oppRank":49,"result":"0-3","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-14","opponent":"Japan","oppRank":15,"result":"0-2","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-14","opponent":"Australia","oppRank":27,"result":"1-3","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-08","opponent":"South Korea","oppRank":26,"result":"1-3","venue":"away","comp":"WC Qualifier"}
-  ]},
-  "Iraq": {"formScore":50,"recent":[
-    {"date":"2026-06-04","opponent":"South Korea","oppRank":26,"result":"0-3","venue":"away","comp":"WC Qualifier"},
-    {"date":"2026-06-01","opponent":"Saudi Arabia","oppRank":43,"result":"1-1","venue":"home","comp":"Friendly"},
-    {"date":"2026-03-27","opponent":"Japan","oppRank":15,"result":"0-5","venue":"home","comp":"WC Qualifier"},
-    {"date":"2026-03-22","opponent":"Qatar","oppRank":46,"result":"1-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-18","opponent":"China PR","oppRank":88,"result":"2-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-14","opponent":"Iran","oppRank":49,"result":"0-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-12","opponent":"Uzbekistan","oppRank":38,"result":"1-2","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-07","opponent":"Australia","oppRank":27,"result":"0-0","venue":"home","comp":"WC Qualifier"}
-  ]},
-  "Jordan": {"formScore":47,"recent":[
-    {"date":"2026-06-03","opponent":"Uzbekistan","oppRank":38,"result":"1-2","venue":"home","comp":"Friendly"},
-    {"date":"2026-06-01","opponent":"Qatar","oppRank":46,"result":"0-2","venue":"away","comp":"Friendly"},
-    {"date":"2026-03-24","opponent":"Iran","oppRank":49,"result":"0-2","venue":"home","comp":"WC Qualifier"},
-    {"date":"2026-03-20","opponent":"China PR","oppRank":88,"result":"1-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-18","opponent":"Australia","oppRank":27,"result":"0-2","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-13","opponent":"South Korea","oppRank":26,"result":"0-3","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-12","opponent":"Saudi Arabia","oppRank":43,"result":"1-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-07","opponent":"Iraq","oppRank":47,"result":"1-2","venue":"home","comp":"WC Qualifier"}
-  ]},
-  "Iran": {"formScore":62,"recent":[
-    {"date":"2026-06-07","opponent":"Uzbekistan","oppRank":38,"result":"0-1","venue":"away","comp":"Friendly"},
-    {"date":"2026-06-02","opponent":"Japan","oppRank":15,"result":"0-3","venue":"away","comp":"Friendly"},
-    {"date":"2026-03-24","opponent":"Jordan","oppRank":48,"result":"2-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2026-03-20","opponent":"South Korea","oppRank":26,"result":"1-2","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-19","opponent":"Qatar","oppRank":46,"result":"3-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-14","opponent":"Iraq","oppRank":47,"result":"1-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-12","opponent":"Saudi Arabia","oppRank":43,"result":"1-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-07","opponent":"Japan","oppRank":15,"result":"1-3","venue":"home","comp":"WC Qualifier"}
-  ]},
-  "Haiti": {"formScore":43,"recent":[
-    {"date":"2026-06-06","opponent":"El Salvador","oppRank":83,"result":"2-1","venue":"home","comp":"Friendly"},
-    {"date":"2026-05-30","opponent":"Guatemala","oppRank":95,"result":"1-0","venue":"away","comp":"Friendly"},
-    {"date":"2026-03-25","opponent":"Costa Rica","oppRank":52,"result":"0-1","venue":"home","comp":"Nations League"},
-    {"date":"2026-03-21","opponent":"Jamaica","oppRank":64,"result":"0-2","venue":"away","comp":"Nations League"},
-    {"date":"2025-11-16","opponent":"Trinidad & Tobago","oppRank":85,"result":"2-1","venue":"home","comp":"Friendly"},
-    {"date":"2025-10-11","opponent":"Honduras","oppRank":78,"result":"1-2","venue":"away","comp":"Nations League"},
-    {"date":"2025-09-05","opponent":"Curaçao","oppRank":54,"result":"1-1","venue":"home","comp":"Friendly"}
-  ]},
-  "Bosnia & Herzegovina": {"formScore":46,"recent":[
-    {"date":"2026-06-12","opponent":"Canada","oppRank":37,"result":"0-2","venue":"away","comp":"WC Group B"},
-    {"date":"2026-06-06","opponent":"Turkey","oppRank":33,"result":"0-2","venue":"away","comp":"Friendly"},
-    {"date":"2026-06-01","opponent":"Slovenia","oppRank":53,"result":"1-1","venue":"home","comp":"Friendly"},
-    {"date":"2026-03-26","opponent":"Iceland","oppRank":40,"result":"2-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2026-03-22","opponent":"Slovakia","oppRank":48,"result":"0-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-17","opponent":"Wales","oppRank":62,"result":"1-2","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-11","opponent":"Montenegro","oppRank":73,"result":"2-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-13","opponent":"Iceland","oppRank":40,"result":"0-2","venue":"away","comp":"WC Qualifier"}
-  ]},
-  "Mali": {"formScore":56,"recent":[
-    {"date":"2026-06-05","opponent":"Senegal","oppRank":18,"result":"0-2","venue":"home","comp":"WC Qualifier"},
-    {"date":"2026-05-30","opponent":"Guinea","oppRank":71,"result":"2-0","venue":"home","comp":"Friendly"},
-    {"date":"2026-03-24","opponent":"Egypt","oppRank":30,"result":"0-1","venue":"home","comp":"WC Qualifier"},
-    {"date":"2026-03-21","opponent":"DR Congo","oppRank":41,"result":"2-2","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-18","opponent":"Morocco","oppRank":13,"result":"0-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-13","opponent":"DR Congo","oppRank":41,"result":"1-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-13","opponent":"Egypt","oppRank":30,"result":"1-2","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-07","opponent":"Ghana","oppRank":42,"result":"1-1","venue":"home","comp":"WC Qualifier"}
-  ]},
-  "New Zealand": {"formScore":50,"recent":[
-    {"date":"2026-06-09","opponent":"Fiji","oppRank":135,"result":"3-0","venue":"home","comp":"Friendly"},
-    {"date":"2026-05-29","opponent":"Australia","oppRank":27,"result":"0-2","venue":"away","comp":"Friendly"},
-    {"date":"2026-03-26","opponent":"Tahiti","oppRank":162,"result":"5-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2026-03-22","opponent":"Solomon Islands","oppRank":131,"result":"2-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-18","opponent":"New Caledonia","oppRank":155,"result":"4-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-12","opponent":"Papua New Guinea","oppRank":140,"result":"3-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-15","opponent":"Fiji","oppRank":135,"result":"2-0","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-09","opponent":"Solomon Islands","oppRank":131,"result":"3-1","venue":"home","comp":"WC Qualifier"}
-  ]},
-  "Curaçao": {"formScore":45,"recent":[
-    {"date":"2026-06-05","opponent":"Jamaica","oppRank":64,"result":"1-2","venue":"home","comp":"Friendly"},
-    {"date":"2026-05-30","opponent":"Suriname","oppRank":125,"result":"2-0","venue":"home","comp":"Friendly"},
-    {"date":"2026-03-24","opponent":"Costa Rica","oppRank":52,"result":"0-2","venue":"away","comp":"Nations League"},
-    {"date":"2026-03-20","opponent":"El Salvador","oppRank":83,"result":"2-1","venue":"home","comp":"Nations League"},
-    {"date":"2025-11-15","opponent":"Trinidad & Tobago","oppRank":85,"result":"1-1","venue":"home","comp":"Friendly"},
-    {"date":"2025-10-12","opponent":"Honduras","oppRank":78,"result":"0-3","venue":"away","comp":"Nations League"},
-    {"date":"2025-09-05","opponent":"Haiti","oppRank":50,"result":"1-1","venue":"away","comp":"Friendly"}
-  ]},
-  "Ukraine": {"formScore":60,"recent":[
-    {"date":"2026-06-05","opponent":"Turkey","oppRank":33,"result":"1-2","venue":"home","comp":"Friendly"},
-    {"date":"2026-05-30","opponent":"Slovakia","oppRank":48,"result":"2-0","venue":"home","comp":"Friendly"},
-    {"date":"2026-03-24","opponent":"Netherlands","oppRank":8,"result":"0-3","venue":"away","comp":"WC Qualifier"},
-    {"date":"2026-03-19","opponent":"Armenia","oppRank":82,"result":"2-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-11-18","opponent":"Turkey","oppRank":33,"result":"1-2","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-11-13","opponent":"Netherlands","oppRank":8,"result":"0-2","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-10-14","opponent":"Turkey","oppRank":33,"result":"0-1","venue":"away","comp":"WC Qualifier"},
-    {"date":"2025-10-08","opponent":"Armenia","oppRank":82,"result":"3-0","venue":"home","comp":"WC Qualifier"},
-    {"date":"2025-09-09","opponent":"France","oppRank":2,"result":"0-3","venue":"away","comp":"WC Qualifier"}
-  ]}
+	"Argentina": {
+		"formScore": 84,
+		"recent": [
+			{
+				"date": "2026-06-28",
+				"opponent": "Jordan",
+				"gf": 3,
+				"ga": 1,
+				"result": "3-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 48
+			},
+			{
+				"date": "2026-06-22",
+				"opponent": "Austria",
+				"gf": 2,
+				"ga": 0,
+				"result": "2-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 21
+			},
+			{
+				"date": "2026-06-17",
+				"opponent": "Algeria",
+				"gf": 3,
+				"ga": 0,
+				"result": "3-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 31
+			},
+			{
+				"date": "2026-06-09",
+				"opponent": "Uruguay",
+				"oppRank": 11,
+				"result": "3-1",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-02",
+				"opponent": "Chile",
+				"oppRank": 34,
+				"result": "2-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-28",
+				"opponent": "Brazil",
+				"oppRank": 3,
+				"result": "1-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-23",
+				"opponent": "Venezuela",
+				"oppRank": 58,
+				"result": "3-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-19",
+				"opponent": "Paraguay",
+				"oppRank": 32,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-14",
+				"opponent": "Ecuador",
+				"oppRank": 22,
+				"result": "1-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-17",
+				"opponent": "Colombia",
+				"oppRank": 14,
+				"result": "2-2",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-12",
+				"opponent": "Peru",
+				"oppRank": 28,
+				"result": "4-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-09-08",
+				"opponent": "Bolivia",
+				"oppRank": 79,
+				"result": "3-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"France": {
+		"formScore": 95,
+		"recent": [
+			{
+				"date": "2026-06-30",
+				"opponent": "Sweden",
+				"gf": 3,
+				"ga": 0,
+				"result": "3-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 24
+			},
+			{
+				"date": "2026-06-26",
+				"opponent": "Norway",
+				"gf": 4,
+				"ga": 1,
+				"result": "4-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 37
+			},
+			{
+				"date": "2026-06-22",
+				"opponent": "Iraq",
+				"gf": 3,
+				"ga": 0,
+				"result": "3-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 47
+			},
+			{
+				"date": "2026-06-16",
+				"opponent": "Senegal",
+				"gf": 3,
+				"ga": 1,
+				"result": "3-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 18
+			},
+			{
+				"date": "2026-06-08",
+				"opponent": "Germany",
+				"oppRank": 7,
+				"result": "2-2",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-01",
+				"opponent": "Italy",
+				"oppRank": 9,
+				"result": "3-1",
+				"venue": "away",
+				"comp": "Nations League"
+			},
+			{
+				"date": "2026-03-27",
+				"opponent": "Belgium",
+				"oppRank": 10,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "Nations League"
+			},
+			{
+				"date": "2026-03-22",
+				"opponent": "Sweden",
+				"oppRank": 24,
+				"result": "4-1",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2025-11-18",
+				"opponent": "Netherlands",
+				"oppRank": 8,
+				"result": "1-0",
+				"venue": "home",
+				"comp": "Nations League"
+			},
+			{
+				"date": "2025-11-13",
+				"opponent": "Austria",
+				"oppRank": 21,
+				"result": "3-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-14",
+				"opponent": "Poland",
+				"oppRank": 29,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-10",
+				"opponent": "Serbia",
+				"oppRank": 25,
+				"result": "2-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Brazil": {
+		"formScore": 86,
+		"recent": [
+			{
+				"date": "2026-06-29",
+				"opponent": "Japan",
+				"gf": 2,
+				"ga": 1,
+				"result": "2-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 15
+			},
+			{
+				"date": "2026-06-24",
+				"opponent": "Scotland",
+				"gf": 3,
+				"ga": 0,
+				"result": "3-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 35
+			},
+			{
+				"date": "2026-06-20",
+				"opponent": "Haiti",
+				"gf": 3,
+				"ga": 0,
+				"result": "3-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 50
+			},
+			{
+				"date": "2026-06-13",
+				"opponent": "Morocco",
+				"gf": 1,
+				"ga": 1,
+				"result": "1-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 13
+			},
+			{
+				"date": "2026-06-07",
+				"opponent": "Colombia",
+				"oppRank": 14,
+				"result": "2-1",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-02",
+				"opponent": "Paraguay",
+				"oppRank": 32,
+				"result": "3-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-28",
+				"opponent": "Argentina",
+				"oppRank": 1,
+				"result": "1-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-23",
+				"opponent": "Uruguay",
+				"oppRank": 11,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-18",
+				"opponent": "Chile",
+				"oppRank": 34,
+				"result": "3-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-13",
+				"opponent": "Ecuador",
+				"oppRank": 22,
+				"result": "2-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-15",
+				"opponent": "Peru",
+				"oppRank": 28,
+				"result": "2-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-09",
+				"opponent": "Colombia",
+				"oppRank": 14,
+				"result": "1-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"England": {
+		"formScore": 84,
+		"recent": [
+			{
+				"date": "2026-07-01",
+				"opponent": "DR Congo",
+				"gf": 2,
+				"ga": 1,
+				"result": "2-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 41
+			},
+			{
+				"date": "2026-06-27",
+				"opponent": "Panama",
+				"gf": 2,
+				"ga": 0,
+				"result": "2-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 44
+			},
+			{
+				"date": "2026-06-23",
+				"opponent": "Ghana",
+				"gf": 0,
+				"ga": 0,
+				"result": "0-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 42
+			},
+			{
+				"date": "2026-06-17",
+				"opponent": "Croatia",
+				"gf": 4,
+				"ga": 2,
+				"result": "4-2",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 12
+			},
+			{
+				"date": "2026-06-06",
+				"opponent": "Spain",
+				"oppRank": 5,
+				"result": "1-2",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-01",
+				"opponent": "Denmark",
+				"oppRank": 20,
+				"result": "3-0",
+				"venue": "home",
+				"comp": "Nations League"
+			},
+			{
+				"date": "2026-03-26",
+				"opponent": "Croatia",
+				"oppRank": 12,
+				"result": "2-1",
+				"venue": "away",
+				"comp": "Nations League"
+			},
+			{
+				"date": "2026-03-22",
+				"opponent": "Switzerland",
+				"oppRank": 19,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2025-11-17",
+				"opponent": "Scotland",
+				"oppRank": 35,
+				"result": "3-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-12",
+				"opponent": "Wales",
+				"oppRank": 62,
+				"result": "4-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-14",
+				"opponent": "Norway",
+				"oppRank": 37,
+				"result": "2-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-08",
+				"opponent": "Czech Republic",
+				"oppRank": 36,
+				"result": "3-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Spain": {
+		"formScore": 79,
+		"recent": [
+			{
+				"date": "2026-06-27",
+				"opponent": "Uruguay",
+				"gf": 1,
+				"ga": 0,
+				"result": "1-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 11
+			},
+			{
+				"date": "2026-06-21",
+				"opponent": "Saudi Arabia",
+				"gf": 4,
+				"ga": 0,
+				"result": "4-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 43
+			},
+			{
+				"date": "2026-06-15",
+				"opponent": "Cape Verde",
+				"gf": 0,
+				"ga": 0,
+				"result": "0-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 39
+			},
+			{
+				"date": "2026-06-06",
+				"opponent": "England",
+				"oppRank": 4,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-02",
+				"opponent": "Portugal",
+				"oppRank": 6,
+				"result": "1-1",
+				"venue": "away",
+				"comp": "Nations League"
+			},
+			{
+				"date": "2026-03-27",
+				"opponent": "Germany",
+				"oppRank": 7,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "Nations League"
+			},
+			{
+				"date": "2026-03-21",
+				"opponent": "Netherlands",
+				"oppRank": 8,
+				"result": "3-1",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2025-11-18",
+				"opponent": "Sweden",
+				"oppRank": 24,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-13",
+				"opponent": "Poland",
+				"oppRank": 29,
+				"result": "3-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-15",
+				"opponent": "Serbia",
+				"oppRank": 25,
+				"result": "1-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-11",
+				"opponent": "Greece",
+				"oppRank": 56,
+				"result": "4-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Portugal": {
+		"formScore": 67,
+		"recent": [
+			{
+				"date": "2026-06-27",
+				"opponent": "Colombia",
+				"gf": 0,
+				"ga": 0,
+				"result": "0-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 14
+			},
+			{
+				"date": "2026-06-23",
+				"opponent": "Uzbekistan",
+				"gf": 5,
+				"ga": 0,
+				"result": "5-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 38
+			},
+			{
+				"date": "2026-06-17",
+				"opponent": "DR Congo",
+				"gf": 1,
+				"ga": 1,
+				"result": "1-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 41
+			},
+			{
+				"date": "2026-06-08",
+				"opponent": "Netherlands",
+				"oppRank": 8,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-01",
+				"opponent": "Spain",
+				"oppRank": 5,
+				"result": "1-1",
+				"venue": "home",
+				"comp": "Nations League"
+			},
+			{
+				"date": "2026-03-28",
+				"opponent": "Denmark",
+				"oppRank": 20,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-23",
+				"opponent": "Greece",
+				"oppRank": 56,
+				"result": "4-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-17",
+				"opponent": "Slovakia",
+				"oppRank": 48,
+				"result": "3-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-13",
+				"opponent": "Iceland",
+				"oppRank": 40,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-14",
+				"opponent": "Denmark",
+				"oppRank": 20,
+				"result": "1-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-09",
+				"opponent": "Greece",
+				"oppRank": 56,
+				"result": "3-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-09-07",
+				"opponent": "Slovakia",
+				"oppRank": 48,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Germany": {
+		"formScore": 73,
+		"recent": [
+			{
+				"date": "2026-06-29",
+				"opponent": "Paraguay",
+				"gf": 1,
+				"ga": 1,
+				"result": "1-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 32
+			},
+			{
+				"date": "2026-06-25",
+				"opponent": "Ecuador",
+				"gf": 1,
+				"ga": 2,
+				"result": "1-2",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 22
+			},
+			{
+				"date": "2026-06-20",
+				"opponent": "Ivory Coast",
+				"gf": 2,
+				"ga": 1,
+				"result": "2-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 23
+			},
+			{
+				"date": "2026-06-14",
+				"opponent": "Curaçao",
+				"gf": 7,
+				"ga": 1,
+				"result": "7-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 54
+			},
+			{
+				"date": "2026-06-08",
+				"opponent": "France",
+				"oppRank": 2,
+				"result": "2-2",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-02",
+				"opponent": "Belgium",
+				"oppRank": 10,
+				"result": "3-1",
+				"venue": "home",
+				"comp": "Nations League"
+			},
+			{
+				"date": "2026-03-27",
+				"opponent": "Spain",
+				"oppRank": 5,
+				"result": "0-2",
+				"venue": "away",
+				"comp": "Nations League"
+			},
+			{
+				"date": "2026-03-22",
+				"opponent": "Italy",
+				"oppRank": 9,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2025-11-16",
+				"opponent": "Norway",
+				"oppRank": 37,
+				"result": "4-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-11",
+				"opponent": "Czech Republic",
+				"oppRank": 36,
+				"result": "2-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-12",
+				"opponent": "Romania",
+				"oppRank": 44,
+				"result": "3-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-07",
+				"opponent": "Finland",
+				"oppRank": 61,
+				"result": "5-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Netherlands": {
+		"formScore": 79,
+		"recent": [
+			{
+				"date": "2026-06-30",
+				"opponent": "Morocco",
+				"gf": 1,
+				"ga": 1,
+				"result": "1-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 13
+			},
+			{
+				"date": "2026-06-25",
+				"opponent": "Tunisia",
+				"gf": 3,
+				"ga": 1,
+				"result": "3-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 45
+			},
+			{
+				"date": "2026-06-20",
+				"opponent": "Sweden",
+				"gf": 5,
+				"ga": 1,
+				"result": "5-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 24
+			},
+			{
+				"date": "2026-06-14",
+				"opponent": "Japan",
+				"gf": 2,
+				"ga": 2,
+				"result": "2-2",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 15
+			},
+			{
+				"date": "2026-06-08",
+				"opponent": "Portugal",
+				"oppRank": 6,
+				"result": "1-2",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-02",
+				"opponent": "Italy",
+				"oppRank": 9,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "Nations League"
+			},
+			{
+				"date": "2026-03-26",
+				"opponent": "Belgium",
+				"oppRank": 10,
+				"result": "1-0",
+				"venue": "home",
+				"comp": "Nations League"
+			},
+			{
+				"date": "2026-03-21",
+				"opponent": "Spain",
+				"oppRank": 5,
+				"result": "1-3",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2025-11-18",
+				"opponent": "France",
+				"oppRank": 2,
+				"result": "0-1",
+				"venue": "away",
+				"comp": "Nations League"
+			},
+			{
+				"date": "2025-11-12",
+				"opponent": "Ukraine",
+				"oppRank": 55,
+				"result": "3-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-14",
+				"opponent": "Turkey",
+				"oppRank": 33,
+				"result": "2-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-09",
+				"opponent": "Armenia",
+				"oppRank": 82,
+				"result": "5-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Italy": {
+		"formScore": 80,
+		"recent": [
+			{
+				"date": "2026-06-01",
+				"opponent": "France",
+				"oppRank": 2,
+				"result": "1-3",
+				"venue": "home",
+				"comp": "Nations League"
+			},
+			{
+				"date": "2026-05-27",
+				"opponent": "Croatia",
+				"oppRank": 12,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-24",
+				"opponent": "Switzerland",
+				"oppRank": 19,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-19",
+				"opponent": "Bulgaria",
+				"oppRank": 72,
+				"result": "4-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-17",
+				"opponent": "Scotland",
+				"oppRank": 35,
+				"result": "3-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-11",
+				"opponent": "Northern Ireland",
+				"oppRank": 68,
+				"result": "2-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-12",
+				"opponent": "Switzerland",
+				"oppRank": 19,
+				"result": "1-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-08",
+				"opponent": "Bulgaria",
+				"oppRank": 72,
+				"result": "3-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Belgium": {
+		"formScore": 76,
+		"recent": [
+			{
+				"date": "2026-07-01",
+				"opponent": "Senegal",
+				"gf": 3,
+				"ga": 2,
+				"result": "3-2",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 18
+			},
+			{
+				"date": "2026-06-27",
+				"opponent": "New Zealand",
+				"gf": 5,
+				"ga": 1,
+				"result": "5-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 53
+			},
+			{
+				"date": "2026-06-21",
+				"opponent": "Iran",
+				"gf": 0,
+				"ga": 0,
+				"result": "0-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 49
+			},
+			{
+				"date": "2026-06-15",
+				"opponent": "Egypt",
+				"gf": 1,
+				"ga": 1,
+				"result": "1-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 30
+			},
+			{
+				"date": "2026-06-02",
+				"opponent": "Germany",
+				"oppRank": 7,
+				"result": "1-3",
+				"venue": "away",
+				"comp": "Nations League"
+			},
+			{
+				"date": "2026-05-28",
+				"opponent": "Poland",
+				"oppRank": 29,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-26",
+				"opponent": "Netherlands",
+				"oppRank": 8,
+				"result": "0-1",
+				"venue": "away",
+				"comp": "Nations League"
+			},
+			{
+				"date": "2026-03-21",
+				"opponent": "Austria",
+				"oppRank": 21,
+				"result": "2-2",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-16",
+				"opponent": "Serbia",
+				"oppRank": 25,
+				"result": "3-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-12",
+				"opponent": "Wales",
+				"oppRank": 62,
+				"result": "1-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-14",
+				"opponent": "Austria",
+				"oppRank": 21,
+				"result": "0-2",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-09",
+				"opponent": "Montenegro",
+				"oppRank": 73,
+				"result": "3-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Uruguay": {
+		"formScore": 52,
+		"recent": [
+			{
+				"date": "2026-06-27",
+				"opponent": "Spain",
+				"gf": 0,
+				"ga": 1,
+				"result": "0-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 5
+			},
+			{
+				"date": "2026-06-21",
+				"opponent": "Cape Verde",
+				"gf": 2,
+				"ga": 2,
+				"result": "2-2",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 39
+			},
+			{
+				"date": "2026-06-15",
+				"opponent": "Saudi Arabia",
+				"gf": 1,
+				"ga": 1,
+				"result": "1-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 43
+			},
+			{
+				"date": "2026-06-09",
+				"opponent": "Argentina",
+				"oppRank": 1,
+				"result": "1-3",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-02",
+				"opponent": "Ecuador",
+				"oppRank": 22,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-28",
+				"opponent": "Paraguay",
+				"oppRank": 32,
+				"result": "2-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-23",
+				"opponent": "Brazil",
+				"oppRank": 3,
+				"result": "0-2",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-18",
+				"opponent": "Chile",
+				"oppRank": 34,
+				"result": "3-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-13",
+				"opponent": "Peru",
+				"oppRank": 28,
+				"result": "1-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-16",
+				"opponent": "Colombia",
+				"oppRank": 14,
+				"result": "1-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-10",
+				"opponent": "Venezuela",
+				"oppRank": 58,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-09-06",
+				"opponent": "Argentina",
+				"oppRank": 1,
+				"result": "0-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Croatia": {
+		"formScore": 73,
+		"recent": [
+			{
+				"date": "2026-06-27",
+				"opponent": "Ghana",
+				"gf": 2,
+				"ga": 1,
+				"result": "2-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 42
+			},
+			{
+				"date": "2026-06-23",
+				"opponent": "Panama",
+				"gf": 1,
+				"ga": 0,
+				"result": "1-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 44
+			},
+			{
+				"date": "2026-06-17",
+				"opponent": "England",
+				"gf": 2,
+				"ga": 4,
+				"result": "2-4",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 4
+			},
+			{
+				"date": "2026-06-04",
+				"opponent": "Switzerland",
+				"oppRank": 19,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-26",
+				"opponent": "England",
+				"oppRank": 4,
+				"result": "1-2",
+				"venue": "home",
+				"comp": "Nations League"
+			},
+			{
+				"date": "2026-03-21",
+				"opponent": "Czech Republic",
+				"oppRank": 36,
+				"result": "3-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-17",
+				"opponent": "Serbia",
+				"oppRank": 25,
+				"result": "2-2",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-12",
+				"opponent": "Slovenia",
+				"oppRank": 53,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-15",
+				"opponent": "Czech Republic",
+				"oppRank": 36,
+				"result": "1-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-11",
+				"opponent": "Slovakia",
+				"oppRank": 48,
+				"result": "3-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-09-09",
+				"opponent": "Serbia",
+				"oppRank": 25,
+				"result": "1-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Morocco": {
+		"formScore": 74,
+		"recent": [
+			{
+				"date": "2026-06-30",
+				"opponent": "Netherlands",
+				"gf": 1,
+				"ga": 1,
+				"result": "1-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 8
+			},
+			{
+				"date": "2026-06-24",
+				"opponent": "Haiti",
+				"gf": 4,
+				"ga": 2,
+				"result": "4-2",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 50
+			},
+			{
+				"date": "2026-06-19",
+				"opponent": "Scotland",
+				"gf": 1,
+				"ga": 0,
+				"result": "1-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 35
+			},
+			{
+				"date": "2026-06-13",
+				"opponent": "Brazil",
+				"gf": 1,
+				"ga": 1,
+				"result": "1-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 3
+			},
+			{
+				"date": "2026-06-10",
+				"opponent": "Senegal",
+				"oppRank": 18,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-05",
+				"opponent": "Egypt",
+				"oppRank": 30,
+				"result": "3-1",
+				"venue": "away",
+				"comp": "AFCON Qualifier"
+			},
+			{
+				"date": "2026-03-26",
+				"opponent": "Algeria",
+				"oppRank": 31,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "AFCON Qualifier"
+			},
+			{
+				"date": "2026-03-21",
+				"opponent": "Tunisia",
+				"oppRank": 45,
+				"result": "2-0",
+				"venue": "away",
+				"comp": "AFCON Qualifier"
+			},
+			{
+				"date": "2025-11-18",
+				"opponent": "Mali",
+				"oppRank": 52,
+				"result": "1-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-13",
+				"opponent": "Ivory Coast",
+				"oppRank": 23,
+				"result": "1-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-13",
+				"opponent": "Zambia",
+				"oppRank": 76,
+				"result": "3-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-08",
+				"opponent": "Niger",
+				"oppRank": 116,
+				"result": "5-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Colombia": {
+		"formScore": 75,
+		"recent": [
+			{
+				"date": "2026-06-27",
+				"opponent": "Portugal",
+				"gf": 0,
+				"ga": 0,
+				"result": "0-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 6
+			},
+			{
+				"date": "2026-06-24",
+				"opponent": "DR Congo",
+				"gf": 1,
+				"ga": 0,
+				"result": "1-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 41
+			},
+			{
+				"date": "2026-06-18",
+				"opponent": "Uzbekistan",
+				"gf": 3,
+				"ga": 1,
+				"result": "3-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 38
+			},
+			{
+				"date": "2026-06-07",
+				"opponent": "Brazil",
+				"oppRank": 3,
+				"result": "1-2",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-01",
+				"opponent": "Ecuador",
+				"oppRank": 22,
+				"result": "2-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-26",
+				"opponent": "Peru",
+				"oppRank": 28,
+				"result": "3-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-21",
+				"opponent": "Venezuela",
+				"oppRank": 58,
+				"result": "2-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-18",
+				"opponent": "Chile",
+				"oppRank": 34,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-13",
+				"opponent": "Argentina",
+				"oppRank": 1,
+				"result": "0-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-16",
+				"opponent": "Uruguay",
+				"oppRank": 11,
+				"result": "1-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-10",
+				"opponent": "Paraguay",
+				"oppRank": 32,
+				"result": "3-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-09-09",
+				"opponent": "Bolivia",
+				"oppRank": 79,
+				"result": "4-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Japan": {
+		"formScore": 62,
+		"recent": [
+			{
+				"date": "2026-06-29",
+				"opponent": "Brazil",
+				"gf": 1,
+				"ga": 2,
+				"result": "1-2",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 3
+			},
+			{
+				"date": "2026-06-25",
+				"opponent": "Sweden",
+				"gf": 1,
+				"ga": 1,
+				"result": "1-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 24
+			},
+			{
+				"date": "2026-06-21",
+				"opponent": "Tunisia",
+				"gf": 4,
+				"ga": 0,
+				"result": "4-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 45
+			},
+			{
+				"date": "2026-06-14",
+				"opponent": "Netherlands",
+				"gf": 2,
+				"ga": 2,
+				"result": "2-2",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 8
+			},
+			{
+				"date": "2026-06-09",
+				"opponent": "South Korea",
+				"oppRank": 26,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-04",
+				"opponent": "Australia",
+				"oppRank": 27,
+				"result": "3-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-27",
+				"opponent": "Saudi Arabia",
+				"oppRank": 43,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-22",
+				"opponent": "Iraq",
+				"oppRank": 47,
+				"result": "5-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-19",
+				"opponent": "China PR",
+				"oppRank": 88,
+				"result": "3-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-14",
+				"opponent": "Qatar",
+				"oppRank": 46,
+				"result": "2-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-15",
+				"opponent": "South Korea",
+				"oppRank": 26,
+				"result": "1-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-09",
+				"opponent": "Iran",
+				"oppRank": 49,
+				"result": "3-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"USA": {
+		"formScore": 74,
+		"recent": [
+			{
+				"date": "2026-07-02",
+				"opponent": "Bosnia & Herzegovina",
+				"gf": 2,
+				"ga": 0,
+				"result": "2-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 51
+			},
+			{
+				"date": "2026-06-26",
+				"opponent": "Turkey",
+				"gf": 2,
+				"ga": 3,
+				"result": "2-3",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 33
+			},
+			{
+				"date": "2026-06-19",
+				"opponent": "Australia",
+				"gf": 2,
+				"ga": 0,
+				"result": "2-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 27
+			},
+			{
+				"date": "2026-06-13",
+				"opponent": "Paraguay",
+				"gf": 4,
+				"ga": 1,
+				"result": "4-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 32
+			},
+			{
+				"date": "2026-06-11",
+				"opponent": "Turkey",
+				"oppRank": 33,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "WC Group D"
+			},
+			{
+				"date": "2026-06-06",
+				"opponent": "Ghana",
+				"oppRank": 42,
+				"result": "3-1",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-02",
+				"opponent": "Panama",
+				"oppRank": 44,
+				"result": "2-0",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-26",
+				"opponent": "Jamaica",
+				"oppRank": 64,
+				"result": "3-0",
+				"venue": "home",
+				"comp": "Nations League"
+			},
+			{
+				"date": "2026-03-19",
+				"opponent": "El Salvador",
+				"oppRank": 83,
+				"result": "4-0",
+				"venue": "away",
+				"comp": "Nations League"
+			},
+			{
+				"date": "2025-11-14",
+				"opponent": "Mexico",
+				"oppRank": 17,
+				"result": "0-1",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2025-10-11",
+				"opponent": "Costa Rica",
+				"oppRank": 52,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2025-09-08",
+				"opponent": "Canada",
+				"oppRank": 37,
+				"result": "1-1",
+				"venue": "away",
+				"comp": "Friendly"
+			}
+		]
+	},
+	"Mexico": {
+		"formScore": 81,
+		"recent": [
+			{
+				"date": "2026-07-01",
+				"opponent": "Ecuador",
+				"gf": 2,
+				"ga": 0,
+				"result": "2-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 22
+			},
+			{
+				"date": "2026-06-25",
+				"opponent": "Czech Republic",
+				"gf": 3,
+				"ga": 0,
+				"result": "3-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 36
+			},
+			{
+				"date": "2026-06-19",
+				"opponent": "South Korea",
+				"gf": 1,
+				"ga": 0,
+				"result": "1-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 26
+			},
+			{
+				"date": "2026-06-11",
+				"opponent": "South Africa",
+				"oppRank": 40,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "WC Group A"
+			},
+			{
+				"date": "2026-06-05",
+				"opponent": "Ecuador",
+				"oppRank": 22,
+				"result": "1-0",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-05-29",
+				"opponent": "Chile",
+				"oppRank": 34,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-26",
+				"opponent": "Canada",
+				"oppRank": 37,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "Nations League"
+			},
+			{
+				"date": "2026-03-22",
+				"opponent": "Honduras",
+				"oppRank": 78,
+				"result": "3-1",
+				"venue": "away",
+				"comp": "Nations League"
+			},
+			{
+				"date": "2025-11-14",
+				"opponent": "USA",
+				"oppRank": 16,
+				"result": "1-0",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2025-10-12",
+				"opponent": "Panama",
+				"oppRank": 44,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2025-07-24",
+				"opponent": "USA",
+				"oppRank": 16,
+				"result": "0-2",
+				"venue": "neutral",
+				"comp": "Gold Cup Final"
+			}
+		]
+	},
+	"Senegal": {
+		"formScore": 54,
+		"recent": [
+			{
+				"date": "2026-07-01",
+				"opponent": "Belgium",
+				"gf": 2,
+				"ga": 3,
+				"result": "2-3",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 10
+			},
+			{
+				"date": "2026-06-26",
+				"opponent": "Iraq",
+				"gf": 5,
+				"ga": 0,
+				"result": "5-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 47
+			},
+			{
+				"date": "2026-06-23",
+				"opponent": "Norway",
+				"gf": 2,
+				"ga": 3,
+				"result": "2-3",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 37
+			},
+			{
+				"date": "2026-06-16",
+				"opponent": "France",
+				"gf": 1,
+				"ga": 3,
+				"result": "1-3",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 2
+			},
+			{
+				"date": "2026-06-10",
+				"opponent": "Morocco",
+				"oppRank": 13,
+				"result": "1-2",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-04",
+				"opponent": "Algeria",
+				"oppRank": 31,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "AFCON Qualifier"
+			},
+			{
+				"date": "2026-03-24",
+				"opponent": "Mali",
+				"oppRank": 52,
+				"result": "2-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-20",
+				"opponent": "Ivory Coast",
+				"oppRank": 23,
+				"result": "1-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-17",
+				"opponent": "Burkina Faso",
+				"oppRank": 58,
+				"result": "3-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-11",
+				"opponent": "Gabon",
+				"oppRank": 84,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-13",
+				"opponent": "Mali",
+				"oppRank": 52,
+				"result": "1-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-07",
+				"opponent": "Ivory Coast",
+				"oppRank": 23,
+				"result": "1-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Switzerland": {
+		"formScore": 58,
+		"recent": [
+			{
+				"date": "2026-06-24",
+				"opponent": "Canada",
+				"gf": 2,
+				"ga": 1,
+				"result": "2-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 60
+			},
+			{
+				"date": "2026-06-18",
+				"opponent": "Bosnia & Herzegovina",
+				"oppRank": 51,
+				"result": "未赛",
+				"venue": "neutral",
+				"comp": "WC Group B"
+			},
+			{
+				"date": "2026-06-13",
+				"opponent": "Qatar",
+				"gf": 1,
+				"ga": 1,
+				"result": "1-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 46
+			},
+			{
+				"date": "2026-06-10",
+				"opponent": "Serbia",
+				"oppRank": 25,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-04",
+				"opponent": "Croatia",
+				"oppRank": 12,
+				"result": "1-2",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-24",
+				"opponent": "Italy",
+				"oppRank": 9,
+				"result": "0-2",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-19",
+				"opponent": "Bulgaria",
+				"oppRank": 72,
+				"result": "3-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-17",
+				"opponent": "Northern Ireland",
+				"oppRank": 68,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-11",
+				"opponent": "Scotland",
+				"oppRank": 35,
+				"result": "1-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-12",
+				"opponent": "Italy",
+				"oppRank": 9,
+				"result": "1-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-08",
+				"opponent": "Bulgaria",
+				"oppRank": 72,
+				"result": "2-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Denmark": {
+		"formScore": 67,
+		"recent": [
+			{
+				"date": "2026-06-01",
+				"opponent": "England",
+				"oppRank": 4,
+				"result": "0-3",
+				"venue": "away",
+				"comp": "Nations League"
+			},
+			{
+				"date": "2026-05-27",
+				"opponent": "Sweden",
+				"oppRank": 24,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-28",
+				"opponent": "Portugal",
+				"oppRank": 6,
+				"result": "0-2",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-22",
+				"opponent": "Iceland",
+				"oppRank": 40,
+				"result": "3-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-17",
+				"opponent": "Slovakia",
+				"oppRank": 48,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-12",
+				"opponent": "Greece",
+				"oppRank": 56,
+				"result": "1-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-14",
+				"opponent": "Portugal",
+				"oppRank": 6,
+				"result": "0-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-09",
+				"opponent": "Iceland",
+				"oppRank": 40,
+				"result": "2-2",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Austria": {
+		"formScore": 60,
+		"recent": [
+			{
+				"date": "2026-06-28",
+				"opponent": "Algeria",
+				"gf": 3,
+				"ga": 3,
+				"result": "3-3",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 31
+			},
+			{
+				"date": "2026-06-22",
+				"opponent": "Argentina",
+				"gf": 0,
+				"ga": 2,
+				"result": "0-2",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 1
+			},
+			{
+				"date": "2026-06-17",
+				"opponent": "Jordan",
+				"gf": 3,
+				"ga": 1,
+				"result": "3-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 48
+			},
+			{
+				"date": "2026-06-05",
+				"opponent": "Poland",
+				"oppRank": 29,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-01",
+				"opponent": "Czech Republic",
+				"oppRank": 36,
+				"result": "3-1",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-21",
+				"opponent": "Belgium",
+				"oppRank": 10,
+				"result": "2-2",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-17",
+				"opponent": "Wales",
+				"oppRank": 62,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-13",
+				"opponent": "France",
+				"oppRank": 2,
+				"result": "0-3",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-09",
+				"opponent": "Montenegro",
+				"oppRank": 73,
+				"result": "3-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-14",
+				"opponent": "Belgium",
+				"oppRank": 10,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-08",
+				"opponent": "Serbia",
+				"oppRank": 25,
+				"result": "1-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-09-05",
+				"opponent": "France",
+				"oppRank": 2,
+				"result": "1-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Ecuador": {
+		"formScore": 59,
+		"recent": [
+			{
+				"date": "2026-07-01",
+				"opponent": "Mexico",
+				"gf": 0,
+				"ga": 2,
+				"result": "0-2",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 17
+			},
+			{
+				"date": "2026-06-25",
+				"opponent": "Germany",
+				"gf": 2,
+				"ga": 1,
+				"result": "2-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 7
+			},
+			{
+				"date": "2026-06-21",
+				"opponent": "Curaçao",
+				"gf": 0,
+				"ga": 0,
+				"result": "0-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 54
+			},
+			{
+				"date": "2026-06-14",
+				"opponent": "Ivory Coast",
+				"gf": 0,
+				"ga": 1,
+				"result": "0-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 23
+			},
+			{
+				"date": "2026-06-05",
+				"opponent": "Mexico",
+				"oppRank": 17,
+				"result": "0-1",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-02",
+				"opponent": "Uruguay",
+				"oppRank": 11,
+				"result": "0-2",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-28",
+				"opponent": "Argentina",
+				"oppRank": 1,
+				"result": "1-2",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-24",
+				"opponent": "Venezuela",
+				"oppRank": 58,
+				"result": "3-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-18",
+				"opponent": "Peru",
+				"oppRank": 28,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-13",
+				"opponent": "Brazil",
+				"oppRank": 3,
+				"result": "1-2",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-15",
+				"opponent": "Bolivia",
+				"oppRank": 79,
+				"result": "3-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-10",
+				"opponent": "Colombia",
+				"oppRank": 14,
+				"result": "1-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Ivory Coast": {
+		"formScore": 64,
+		"recent": [
+			{
+				"date": "2026-06-30",
+				"opponent": "Norway",
+				"gf": 1,
+				"ga": 2,
+				"result": "1-2",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 37
+			},
+			{
+				"date": "2026-06-25",
+				"opponent": "Curaçao",
+				"gf": 2,
+				"ga": 0,
+				"result": "2-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 54
+			},
+			{
+				"date": "2026-06-20",
+				"opponent": "Germany",
+				"gf": 1,
+				"ga": 2,
+				"result": "1-2",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 7
+			},
+			{
+				"date": "2026-06-14",
+				"opponent": "Ecuador",
+				"gf": 1,
+				"ga": 0,
+				"result": "1-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 22
+			},
+			{
+				"date": "2026-06-08",
+				"opponent": "Ghana",
+				"oppRank": 42,
+				"result": "3-0",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-03",
+				"opponent": "Cape Verde",
+				"oppRank": 39,
+				"result": "2-1",
+				"venue": "away",
+				"comp": "AFCON Qualifier"
+			},
+			{
+				"date": "2026-03-24",
+				"opponent": "Morocco",
+				"oppRank": 13,
+				"result": "1-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-20",
+				"opponent": "Senegal",
+				"oppRank": 18,
+				"result": "0-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-16",
+				"opponent": "Zambia",
+				"oppRank": 76,
+				"result": "2-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-11",
+				"opponent": "Niger",
+				"oppRank": 116,
+				"result": "4-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-13",
+				"opponent": "Morocco",
+				"oppRank": 13,
+				"result": "1-2",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-07",
+				"opponent": "Senegal",
+				"oppRank": 18,
+				"result": "1-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Sweden": {
+		"formScore": 59,
+		"recent": [
+			{
+				"date": "2026-06-30",
+				"opponent": "France",
+				"gf": 0,
+				"ga": 3,
+				"result": "0-3",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 2
+			},
+			{
+				"date": "2026-06-25",
+				"opponent": "Japan",
+				"gf": 1,
+				"ga": 1,
+				"result": "1-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 15
+			},
+			{
+				"date": "2026-06-20",
+				"opponent": "Netherlands",
+				"gf": 1,
+				"ga": 5,
+				"result": "1-5",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 8
+			},
+			{
+				"date": "2026-06-15",
+				"opponent": "Tunisia",
+				"gf": 5,
+				"ga": 1,
+				"result": "5-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 45
+			},
+			{
+				"date": "2026-06-07",
+				"opponent": "Turkey",
+				"oppRank": 33,
+				"result": "1-1",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-03",
+				"opponent": "Norway",
+				"oppRank": 37,
+				"result": "2-1",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-22",
+				"opponent": "France",
+				"oppRank": 2,
+				"result": "1-4",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2025-11-18",
+				"opponent": "Spain",
+				"oppRank": 5,
+				"result": "0-2",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-13",
+				"opponent": "Greece",
+				"oppRank": 56,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-15",
+				"opponent": "Poland",
+				"oppRank": 29,
+				"result": "1-2",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-10",
+				"opponent": "Serbia",
+				"oppRank": 25,
+				"result": "0-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-09-09",
+				"opponent": "Spain",
+				"oppRank": 5,
+				"result": "0-3",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Serbia": {
+		"formScore": 65,
+		"recent": [
+			{
+				"date": "2026-06-10",
+				"opponent": "Switzerland",
+				"oppRank": 19,
+				"result": "1-2",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-03",
+				"opponent": "Poland",
+				"oppRank": 29,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-25",
+				"opponent": "Belgium",
+				"oppRank": 10,
+				"result": "0-3",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-20",
+				"opponent": "Wales",
+				"oppRank": 62,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-17",
+				"opponent": "Croatia",
+				"oppRank": 12,
+				"result": "2-2",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-12",
+				"opponent": "Slovenia",
+				"oppRank": 53,
+				"result": "1-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-15",
+				"opponent": "Belgium",
+				"oppRank": 10,
+				"result": "0-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-09",
+				"opponent": "Croatia",
+				"oppRank": 12,
+				"result": "0-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"South Korea": {
+		"formScore": 52,
+		"recent": [
+			{
+				"date": "2026-06-25",
+				"opponent": "South Africa",
+				"gf": 0,
+				"ga": 1,
+				"result": "0-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 40
+			},
+			{
+				"date": "2026-06-19",
+				"opponent": "Mexico",
+				"gf": 0,
+				"ga": 1,
+				"result": "0-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 17
+			},
+			{
+				"date": "2026-06-12",
+				"opponent": "Czech Republic",
+				"gf": 2,
+				"ga": 1,
+				"result": "2-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 36
+			},
+			{
+				"date": "2026-06-09",
+				"opponent": "Japan",
+				"oppRank": 15,
+				"result": "1-2",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-04",
+				"opponent": "Iraq",
+				"oppRank": 47,
+				"result": "3-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-25",
+				"opponent": "Australia",
+				"oppRank": 27,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-20",
+				"opponent": "China PR",
+				"oppRank": 88,
+				"result": "4-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-18",
+				"opponent": "Saudi Arabia",
+				"oppRank": 43,
+				"result": "2-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-13",
+				"opponent": "Qatar",
+				"oppRank": 46,
+				"result": "3-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-15",
+				"opponent": "Japan",
+				"oppRank": 15,
+				"result": "0-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-09",
+				"opponent": "Iran",
+				"oppRank": 49,
+				"result": "1-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Australia": {
+		"formScore": 57,
+		"recent": [
+			{
+				"date": "2026-06-26",
+				"opponent": "Paraguay",
+				"gf": 0,
+				"ga": 0,
+				"result": "0-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 32
+			},
+			{
+				"date": "2026-06-19",
+				"opponent": "USA",
+				"gf": 0,
+				"ga": 2,
+				"result": "0-2",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 16
+			},
+			{
+				"date": "2026-06-14",
+				"opponent": "Turkey",
+				"gf": 2,
+				"ga": 0,
+				"result": "2-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 33
+			},
+			{
+				"date": "2026-06-04",
+				"opponent": "Japan",
+				"oppRank": 15,
+				"result": "1-3",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-05-29",
+				"opponent": "New Zealand",
+				"oppRank": 53,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-25",
+				"opponent": "South Korea",
+				"oppRank": 26,
+				"result": "1-2",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-21",
+				"opponent": "China PR",
+				"oppRank": 88,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-17",
+				"opponent": "Iran",
+				"oppRank": 49,
+				"result": "1-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-12",
+				"opponent": "Saudi Arabia",
+				"oppRank": 43,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-14",
+				"opponent": "Qatar",
+				"oppRank": 46,
+				"result": "3-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-08",
+				"opponent": "Iraq",
+				"oppRank": 47,
+				"result": "0-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-09-06",
+				"opponent": "Japan",
+				"oppRank": 15,
+				"result": "0-2",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Peru": {
+		"formScore": 58,
+		"recent": [
+			{
+				"date": "2026-06-01",
+				"opponent": "Paraguay",
+				"oppRank": 32,
+				"result": "1-1",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-05-26",
+				"opponent": "Bolivia",
+				"oppRank": 79,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-26",
+				"opponent": "Colombia",
+				"oppRank": 14,
+				"result": "0-3",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-21",
+				"opponent": "Chile",
+				"oppRank": 34,
+				"result": "1-2",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-18",
+				"opponent": "Ecuador",
+				"oppRank": 22,
+				"result": "1-2",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-13",
+				"opponent": "Uruguay",
+				"oppRank": 11,
+				"result": "0-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-12",
+				"opponent": "Argentina",
+				"oppRank": 1,
+				"result": "0-4",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-08",
+				"opponent": "Venezuela",
+				"oppRank": 58,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Poland": {
+		"formScore": 61,
+		"recent": [
+			{
+				"date": "2026-06-05",
+				"opponent": "Austria",
+				"oppRank": 21,
+				"result": "1-2",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-01",
+				"opponent": "Serbia",
+				"oppRank": 25,
+				"result": "0-2",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-24",
+				"opponent": "Spain",
+				"oppRank": 5,
+				"result": "0-2",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-20",
+				"opponent": "Greece",
+				"oppRank": 56,
+				"result": "2-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-17",
+				"opponent": "Sweden",
+				"oppRank": 24,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-12",
+				"opponent": "Serbia",
+				"oppRank": 25,
+				"result": "1-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-14",
+				"opponent": "Spain",
+				"oppRank": 5,
+				"result": "1-3",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-09",
+				"opponent": "France",
+				"oppRank": 2,
+				"result": "1-2",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Egypt": {
+		"formScore": 61,
+		"recent": [
+			{
+				"date": "2026-06-27",
+				"opponent": "Iran",
+				"gf": 1,
+				"ga": 1,
+				"result": "1-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 49
+			},
+			{
+				"date": "2026-06-22",
+				"opponent": "New Zealand",
+				"gf": 3,
+				"ga": 1,
+				"result": "3-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 53
+			},
+			{
+				"date": "2026-06-15",
+				"opponent": "Belgium",
+				"gf": 1,
+				"ga": 1,
+				"result": "1-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 10
+			},
+			{
+				"date": "2026-06-05",
+				"opponent": "Morocco",
+				"oppRank": 13,
+				"result": "1-3",
+				"venue": "home",
+				"comp": "AFCON Qualifier"
+			},
+			{
+				"date": "2026-06-01",
+				"opponent": "Tunisia",
+				"oppRank": 45,
+				"result": "2-0",
+				"venue": "away",
+				"comp": "AFCON Qualifier"
+			},
+			{
+				"date": "2026-03-26",
+				"opponent": "Ghana",
+				"oppRank": 42,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-21",
+				"opponent": "Mali",
+				"oppRank": 52,
+				"result": "1-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-18",
+				"opponent": "Ethiopia",
+				"oppRank": 89,
+				"result": "3-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-13",
+				"opponent": "Guinea",
+				"oppRank": 71,
+				"result": "2-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-14",
+				"opponent": "Ghana",
+				"oppRank": 42,
+				"result": "1-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-08",
+				"opponent": "Mali",
+				"oppRank": 52,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Algeria": {
+		"formScore": 59,
+		"recent": [
+			{
+				"date": "2026-06-28",
+				"opponent": "Austria",
+				"gf": 3,
+				"ga": 3,
+				"result": "3-3",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 21
+			},
+			{
+				"date": "2026-06-23",
+				"opponent": "Jordan",
+				"gf": 2,
+				"ga": 1,
+				"result": "2-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 48
+			},
+			{
+				"date": "2026-06-17",
+				"opponent": "Argentina",
+				"gf": 0,
+				"ga": 3,
+				"result": "0-3",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 1
+			},
+			{
+				"date": "2026-06-10",
+				"opponent": "Tunisia",
+				"oppRank": 45,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-04",
+				"opponent": "Senegal",
+				"oppRank": 18,
+				"result": "1-2",
+				"venue": "away",
+				"comp": "AFCON Qualifier"
+			},
+			{
+				"date": "2026-03-26",
+				"opponent": "Morocco",
+				"oppRank": 13,
+				"result": "0-2",
+				"venue": "away",
+				"comp": "AFCON Qualifier"
+			},
+			{
+				"date": "2026-03-23",
+				"opponent": "Cape Verde",
+				"oppRank": 39,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-17",
+				"opponent": "Nigeria",
+				"oppRank": 63,
+				"result": "1-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-13",
+				"opponent": "South Africa",
+				"oppRank": 40,
+				"result": "1-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-13",
+				"opponent": "Cape Verde",
+				"oppRank": 39,
+				"result": "2-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-07",
+				"opponent": "Nigeria",
+				"oppRank": 63,
+				"result": "0-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Paraguay": {
+		"formScore": 63,
+		"recent": [
+			{
+				"date": "2026-06-29",
+				"opponent": "Germany",
+				"gf": 1,
+				"ga": 1,
+				"result": "1-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 7
+			},
+			{
+				"date": "2026-06-26",
+				"opponent": "Australia",
+				"gf": 0,
+				"ga": 0,
+				"result": "0-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 27
+			},
+			{
+				"date": "2026-06-20",
+				"opponent": "Turkey",
+				"gf": 1,
+				"ga": 0,
+				"result": "1-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 33
+			},
+			{
+				"date": "2026-06-13",
+				"opponent": "USA",
+				"gf": 1,
+				"ga": 4,
+				"result": "1-4",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 16
+			},
+			{
+				"date": "2026-06-10",
+				"opponent": "Peru",
+				"oppRank": 28,
+				"result": "1-1",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-02",
+				"opponent": "Brazil",
+				"oppRank": 3,
+				"result": "1-3",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-28",
+				"opponent": "Uruguay",
+				"oppRank": 11,
+				"result": "1-2",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-24",
+				"opponent": "Chile",
+				"oppRank": 34,
+				"result": "2-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-19",
+				"opponent": "Argentina",
+				"oppRank": 1,
+				"result": "1-2",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-14",
+				"opponent": "Venezuela",
+				"oppRank": 58,
+				"result": "3-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-12",
+				"opponent": "Colombia",
+				"oppRank": 14,
+				"result": "1-3",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-07",
+				"opponent": "Bolivia",
+				"oppRank": 79,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Turkey": {
+		"formScore": 53,
+		"recent": [
+			{
+				"date": "2026-06-26",
+				"opponent": "USA",
+				"gf": 3,
+				"ga": 2,
+				"result": "3-2",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 16
+			},
+			{
+				"date": "2026-06-20",
+				"opponent": "Paraguay",
+				"gf": 0,
+				"ga": 1,
+				"result": "0-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 32
+			},
+			{
+				"date": "2026-06-14",
+				"opponent": "Australia",
+				"gf": 0,
+				"ga": 2,
+				"result": "0-2",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 27
+			},
+			{
+				"date": "2026-06-11",
+				"opponent": "USA",
+				"oppRank": 16,
+				"result": "1-2",
+				"venue": "away",
+				"comp": "WC Group D"
+			},
+			{
+				"date": "2026-06-07",
+				"opponent": "Sweden",
+				"oppRank": 24,
+				"result": "1-1",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-02",
+				"opponent": "Bosnia & Herzegovina",
+				"oppRank": 51,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-25",
+				"opponent": "Netherlands",
+				"oppRank": 8,
+				"result": "1-2",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-21",
+				"opponent": "Armenia",
+				"oppRank": 82,
+				"result": "3-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-18",
+				"opponent": "Ukraine",
+				"oppRank": 55,
+				"result": "2-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-13",
+				"opponent": "Netherlands",
+				"oppRank": 8,
+				"result": "0-3",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-14",
+				"opponent": "Ukraine",
+				"oppRank": 55,
+				"result": "1-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-09",
+				"opponent": "Armenia",
+				"oppRank": 82,
+				"result": "4-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Chile": {
+		"formScore": 55,
+		"recent": [
+			{
+				"date": "2026-06-02",
+				"opponent": "Argentina",
+				"oppRank": 1,
+				"result": "0-2",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-05-29",
+				"opponent": "Mexico",
+				"oppRank": 17,
+				"result": "1-2",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-24",
+				"opponent": "Paraguay",
+				"oppRank": 32,
+				"result": "1-2",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-21",
+				"opponent": "Peru",
+				"oppRank": 28,
+				"result": "2-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-18",
+				"opponent": "Brazil",
+				"oppRank": 3,
+				"result": "0-3",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-14",
+				"opponent": "Colombia",
+				"oppRank": 14,
+				"result": "1-2",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-14",
+				"opponent": "Uruguay",
+				"oppRank": 11,
+				"result": "1-3",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-08",
+				"opponent": "Venezuela",
+				"oppRank": 58,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-06-10",
+				"opponent": "Argentina",
+				"oppRank": 1,
+				"result": "1-3",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Scotland": {
+		"formScore": 54,
+		"recent": [
+			{
+				"date": "2026-06-24",
+				"opponent": "Brazil",
+				"gf": 0,
+				"ga": 3,
+				"result": "0-3",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 3
+			},
+			{
+				"date": "2026-06-19",
+				"opponent": "Morocco",
+				"gf": 0,
+				"ga": 1,
+				"result": "0-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 13
+			},
+			{
+				"date": "2026-06-14",
+				"opponent": "Haiti",
+				"gf": 1,
+				"ga": 0,
+				"result": "1-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 50
+			},
+			{
+				"date": "2026-06-08",
+				"opponent": "Czech Republic",
+				"oppRank": 36,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-02",
+				"opponent": "Norway",
+				"oppRank": 37,
+				"result": "2-2",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-26",
+				"opponent": "Italy",
+				"oppRank": 9,
+				"result": "1-3",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-22",
+				"opponent": "Northern Ireland",
+				"oppRank": 68,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-17",
+				"opponent": "England",
+				"oppRank": 4,
+				"result": "1-3",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-11",
+				"opponent": "Switzerland",
+				"oppRank": 19,
+				"result": "1-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-12",
+				"opponent": "Bulgaria",
+				"oppRank": 72,
+				"result": "3-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-07",
+				"opponent": "Italy",
+				"oppRank": 9,
+				"result": "0-2",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-09-07",
+				"opponent": "England",
+				"oppRank": 4,
+				"result": "0-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Czech Republic": {
+		"formScore": 45,
+		"recent": [
+			{
+				"date": "2026-06-25",
+				"opponent": "Mexico",
+				"gf": 0,
+				"ga": 3,
+				"result": "0-3",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 17
+			},
+			{
+				"date": "2026-06-18",
+				"opponent": "South Africa",
+				"gf": 1,
+				"ga": 1,
+				"result": "1-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 40
+			},
+			{
+				"date": "2026-06-12",
+				"opponent": "South Korea",
+				"gf": 1,
+				"ga": 2,
+				"result": "1-2",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 26
+			},
+			{
+				"date": "2026-06-08",
+				"opponent": "Scotland",
+				"oppRank": 35,
+				"result": "1-2",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-01",
+				"opponent": "Austria",
+				"oppRank": 21,
+				"result": "1-3",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-21",
+				"opponent": "Croatia",
+				"oppRank": 12,
+				"result": "1-3",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-18",
+				"opponent": "Slovakia",
+				"oppRank": 48,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-17",
+				"opponent": "Slovenia",
+				"oppRank": 53,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-11",
+				"opponent": "Germany",
+				"oppRank": 7,
+				"result": "0-2",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-15",
+				"opponent": "Croatia",
+				"oppRank": 12,
+				"result": "0-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-08",
+				"opponent": "England",
+				"oppRank": 4,
+				"result": "0-3",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Norway": {
+		"formScore": 80,
+		"recent": [
+			{
+				"date": "2026-06-30",
+				"opponent": "Ivory Coast",
+				"gf": 2,
+				"ga": 1,
+				"result": "2-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 23
+			},
+			{
+				"date": "2026-06-26",
+				"opponent": "France",
+				"gf": 1,
+				"ga": 4,
+				"result": "1-4",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 2
+			},
+			{
+				"date": "2026-06-23",
+				"opponent": "Senegal",
+				"gf": 3,
+				"ga": 2,
+				"result": "3-2",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 18
+			},
+			{
+				"date": "2026-06-16",
+				"opponent": "Iraq",
+				"gf": 4,
+				"ga": 1,
+				"result": "4-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 47
+			},
+			{
+				"date": "2026-06-03",
+				"opponent": "Sweden",
+				"oppRank": 24,
+				"result": "1-2",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-05-28",
+				"opponent": "Scotland",
+				"oppRank": 35,
+				"result": "2-2",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-28",
+				"opponent": "Germany",
+				"oppRank": 7,
+				"result": "0-4",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-24",
+				"opponent": "Finland",
+				"oppRank": 61,
+				"result": "3-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-16",
+				"opponent": "England",
+				"oppRank": 4,
+				"result": "1-2",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-11",
+				"opponent": "Romania",
+				"oppRank": 44,
+				"result": "2-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-14",
+				"opponent": "Germany",
+				"oppRank": 7,
+				"result": "1-2",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-08",
+				"opponent": "Czech Republic",
+				"oppRank": 36,
+				"result": "2-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Uzbekistan": {
+		"formScore": 34,
+		"recent": [
+			{
+				"date": "2026-06-27",
+				"opponent": "DR Congo",
+				"gf": 1,
+				"ga": 3,
+				"result": "1-3",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 41
+			},
+			{
+				"date": "2026-06-23",
+				"opponent": "Portugal",
+				"gf": 0,
+				"ga": 5,
+				"result": "0-5",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 6
+			},
+			{
+				"date": "2026-06-18",
+				"opponent": "Colombia",
+				"gf": 1,
+				"ga": 3,
+				"result": "1-3",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 14
+			},
+			{
+				"date": "2026-06-07",
+				"opponent": "Iran",
+				"oppRank": 49,
+				"result": "1-0",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-03",
+				"opponent": "Jordan",
+				"oppRank": 48,
+				"result": "2-1",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-27",
+				"opponent": "Qatar",
+				"oppRank": 46,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-22",
+				"opponent": "China PR",
+				"oppRank": 88,
+				"result": "1-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-18",
+				"opponent": "Australia",
+				"oppRank": 27,
+				"result": "0-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-11",
+				"opponent": "Iran",
+				"oppRank": 49,
+				"result": "1-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-12",
+				"opponent": "Iraq",
+				"oppRank": 47,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-07",
+				"opponent": "Saudi Arabia",
+				"oppRank": 43,
+				"result": "0-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Cape Verde": {
+		"formScore": 55,
+		"recent": [
+			{
+				"date": "2026-06-27",
+				"opponent": "Saudi Arabia",
+				"gf": 0,
+				"ga": 0,
+				"result": "0-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 43
+			},
+			{
+				"date": "2026-06-21",
+				"opponent": "Uruguay",
+				"gf": 2,
+				"ga": 2,
+				"result": "2-2",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 11
+			},
+			{
+				"date": "2026-06-15",
+				"opponent": "Spain",
+				"gf": 0,
+				"ga": 0,
+				"result": "0-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 5
+			},
+			{
+				"date": "2026-06-03",
+				"opponent": "Ivory Coast",
+				"oppRank": 23,
+				"result": "1-2",
+				"venue": "home",
+				"comp": "AFCON Qualifier"
+			},
+			{
+				"date": "2026-05-28",
+				"opponent": "DR Congo",
+				"oppRank": 41,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-23",
+				"opponent": "Algeria",
+				"oppRank": 31,
+				"result": "0-2",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-19",
+				"opponent": "South Africa",
+				"oppRank": 40,
+				"result": "1-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-17",
+				"opponent": "Nigeria",
+				"oppRank": 63,
+				"result": "1-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-13",
+				"opponent": "Algeria",
+				"oppRank": 31,
+				"result": "1-2",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-15",
+				"opponent": "Nigeria",
+				"oppRank": 63,
+				"result": "2-2",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-09",
+				"opponent": "South Africa",
+				"oppRank": 40,
+				"result": "0-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"South Africa": {
+		"formScore": 55,
+		"recent": [
+			{
+				"date": "2026-06-28",
+				"opponent": "Canada",
+				"gf": 0,
+				"ga": 1,
+				"result": "0-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 60
+			},
+			{
+				"date": "2026-06-25",
+				"opponent": "South Korea",
+				"gf": 1,
+				"ga": 0,
+				"result": "1-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 26
+			},
+			{
+				"date": "2026-06-18",
+				"opponent": "Czech Republic",
+				"gf": 1,
+				"ga": 1,
+				"result": "1-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 36
+			},
+			{
+				"date": "2026-06-11",
+				"opponent": "Mexico",
+				"oppRank": 17,
+				"result": "0-2",
+				"venue": "away",
+				"comp": "WC Group A"
+			},
+			{
+				"date": "2026-06-04",
+				"opponent": "Ghana",
+				"oppRank": 42,
+				"result": "1-0",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-05-29",
+				"opponent": "Tunisia",
+				"oppRank": 45,
+				"result": "2-2",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-26",
+				"opponent": "Nigeria",
+				"oppRank": 63,
+				"result": "1-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-19",
+				"opponent": "Cape Verde",
+				"oppRank": 39,
+				"result": "0-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-17",
+				"opponent": "Algeria",
+				"oppRank": 31,
+				"result": "1-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-13",
+				"opponent": "Nigeria",
+				"oppRank": 63,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-09",
+				"opponent": "Cape Verde",
+				"oppRank": 39,
+				"result": "1-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"DR Congo": {
+		"formScore": 57,
+		"recent": [
+			{
+				"date": "2026-07-01",
+				"opponent": "England",
+				"gf": 1,
+				"ga": 2,
+				"result": "1-2",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 4
+			},
+			{
+				"date": "2026-06-27",
+				"opponent": "Uzbekistan",
+				"gf": 3,
+				"ga": 1,
+				"result": "3-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 38
+			},
+			{
+				"date": "2026-06-24",
+				"opponent": "Colombia",
+				"gf": 0,
+				"ga": 1,
+				"result": "0-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 14
+			},
+			{
+				"date": "2026-06-17",
+				"opponent": "Portugal",
+				"gf": 1,
+				"ga": 1,
+				"result": "1-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 6
+			},
+			{
+				"date": "2026-06-08",
+				"opponent": "Ghana",
+				"oppRank": 42,
+				"result": "1-2",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-02",
+				"opponent": "Cape Verde",
+				"oppRank": 39,
+				"result": "1-2",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-25",
+				"opponent": "Mali",
+				"oppRank": 52,
+				"result": "2-2",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-21",
+				"opponent": "Zambia",
+				"oppRank": 76,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-18",
+				"opponent": "Tunisia",
+				"oppRank": 45,
+				"result": "0-2",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-13",
+				"opponent": "Mali",
+				"oppRank": 52,
+				"result": "0-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-15",
+				"opponent": "Ethiopia",
+				"oppRank": 89,
+				"result": "3-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-08",
+				"opponent": "Guinea",
+				"oppRank": 71,
+				"result": "1-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Ghana": {
+		"formScore": 58,
+		"recent": [
+			{
+				"date": "2026-06-27",
+				"opponent": "Croatia",
+				"gf": 1,
+				"ga": 2,
+				"result": "1-2",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 12
+			},
+			{
+				"date": "2026-06-23",
+				"opponent": "England",
+				"gf": 0,
+				"ga": 0,
+				"result": "0-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 4
+			},
+			{
+				"date": "2026-06-17",
+				"opponent": "Panama",
+				"gf": 1,
+				"ga": 0,
+				"result": "1-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 44
+			},
+			{
+				"date": "2026-06-08",
+				"opponent": "DR Congo",
+				"oppRank": 41,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-04",
+				"opponent": "South Africa",
+				"oppRank": 40,
+				"result": "0-1",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-26",
+				"opponent": "Egypt",
+				"oppRank": 30,
+				"result": "1-2",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-21",
+				"opponent": "Ethiopia",
+				"oppRank": 89,
+				"result": "3-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-17",
+				"opponent": "Mali",
+				"oppRank": 52,
+				"result": "1-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-11",
+				"opponent": "Guinea",
+				"oppRank": 71,
+				"result": "2-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-13",
+				"opponent": "Egypt",
+				"oppRank": 30,
+				"result": "1-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-07",
+				"opponent": "Mali",
+				"oppRank": 52,
+				"result": "1-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Saudi Arabia": {
+		"formScore": 48,
+		"recent": [
+			{
+				"date": "2026-06-27",
+				"opponent": "Cape Verde",
+				"gf": 0,
+				"ga": 0,
+				"result": "0-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 39
+			},
+			{
+				"date": "2026-06-21",
+				"opponent": "Spain",
+				"gf": 0,
+				"ga": 4,
+				"result": "0-4",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 5
+			},
+			{
+				"date": "2026-06-15",
+				"opponent": "Uruguay",
+				"gf": 1,
+				"ga": 1,
+				"result": "1-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 11
+			},
+			{
+				"date": "2026-06-05",
+				"opponent": "Qatar",
+				"oppRank": 46,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-01",
+				"opponent": "Iraq",
+				"oppRank": 47,
+				"result": "1-1",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-27",
+				"opponent": "Japan",
+				"oppRank": 15,
+				"result": "0-2",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-20",
+				"opponent": "China PR",
+				"oppRank": 88,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-18",
+				"opponent": "South Korea",
+				"oppRank": 26,
+				"result": "0-2",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-12",
+				"opponent": "Australia",
+				"oppRank": 27,
+				"result": "1-2",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-12",
+				"opponent": "Iran",
+				"oppRank": 49,
+				"result": "0-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-07",
+				"opponent": "Uzbekistan",
+				"oppRank": 38,
+				"result": "0-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Panama": {
+		"formScore": 41,
+		"recent": [
+			{
+				"date": "2026-06-27",
+				"opponent": "England",
+				"gf": 0,
+				"ga": 2,
+				"result": "0-2",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 4
+			},
+			{
+				"date": "2026-06-23",
+				"opponent": "Croatia",
+				"gf": 0,
+				"ga": 1,
+				"result": "0-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 12
+			},
+			{
+				"date": "2026-06-17",
+				"opponent": "Ghana",
+				"gf": 0,
+				"ga": 1,
+				"result": "0-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 42
+			},
+			{
+				"date": "2026-06-07",
+				"opponent": "Costa Rica",
+				"oppRank": 52,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-02",
+				"opponent": "USA",
+				"oppRank": 16,
+				"result": "0-2",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-26",
+				"opponent": "Jamaica",
+				"oppRank": 64,
+				"result": "1-0",
+				"venue": "home",
+				"comp": "Nations League"
+			},
+			{
+				"date": "2026-03-19",
+				"opponent": "Honduras",
+				"oppRank": 78,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "Nations League"
+			},
+			{
+				"date": "2025-11-14",
+				"opponent": "Mexico",
+				"oppRank": 17,
+				"result": "0-2",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2025-10-12",
+				"opponent": "USA",
+				"oppRank": 16,
+				"result": "0-3",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2025-07-22",
+				"opponent": "USA",
+				"oppRank": 16,
+				"result": "1-3",
+				"venue": "neutral",
+				"comp": "Gold Cup"
+			}
+		]
+	},
+	"Tunisia": {
+		"formScore": 38,
+		"recent": [
+			{
+				"date": "2026-06-25",
+				"opponent": "Netherlands",
+				"gf": 1,
+				"ga": 3,
+				"result": "1-3",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 8
+			},
+			{
+				"date": "2026-06-21",
+				"opponent": "Japan",
+				"gf": 0,
+				"ga": 4,
+				"result": "0-4",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 15
+			},
+			{
+				"date": "2026-06-15",
+				"opponent": "Sweden",
+				"gf": 1,
+				"ga": 5,
+				"result": "1-5",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 24
+			},
+			{
+				"date": "2026-06-10",
+				"opponent": "Algeria",
+				"oppRank": 31,
+				"result": "1-2",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-01",
+				"opponent": "Egypt",
+				"oppRank": 30,
+				"result": "0-2",
+				"venue": "home",
+				"comp": "AFCON Qualifier"
+			},
+			{
+				"date": "2026-03-21",
+				"opponent": "Morocco",
+				"oppRank": 13,
+				"result": "0-2",
+				"venue": "home",
+				"comp": "AFCON Qualifier"
+			},
+			{
+				"date": "2026-03-18",
+				"opponent": "DR Congo",
+				"oppRank": 41,
+				"result": "2-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-17",
+				"opponent": "Guinea",
+				"oppRank": 71,
+				"result": "1-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-13",
+				"opponent": "Ethiopia",
+				"oppRank": 89,
+				"result": "3-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-15",
+				"opponent": "DR Congo",
+				"oppRank": 41,
+				"result": "1-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-09",
+				"opponent": "Mali",
+				"oppRank": 52,
+				"result": "0-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Qatar": {
+		"formScore": 38,
+		"recent": [
+			{
+				"date": "2026-06-24",
+				"opponent": "Bosnia & Herzegovina",
+				"gf": 1,
+				"ga": 3,
+				"result": "1-3",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 51
+			},
+			{
+				"date": "2026-06-18",
+				"opponent": "Canada",
+				"gf": 0,
+				"ga": 6,
+				"result": "0-6",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 60
+			},
+			{
+				"date": "2026-06-13",
+				"opponent": "Switzerland",
+				"gf": 1,
+				"ga": 1,
+				"result": "1-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 19
+			},
+			{
+				"date": "2026-06-05",
+				"opponent": "Saudi Arabia",
+				"oppRank": 43,
+				"result": "0-2",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-02",
+				"opponent": "Jordan",
+				"oppRank": 48,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-27",
+				"opponent": "Uzbekistan",
+				"oppRank": 38,
+				"result": "0-2",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-22",
+				"opponent": "Iraq",
+				"oppRank": 47,
+				"result": "1-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-19",
+				"opponent": "Iran",
+				"oppRank": 49,
+				"result": "0-3",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-14",
+				"opponent": "Japan",
+				"oppRank": 15,
+				"result": "0-2",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-14",
+				"opponent": "Australia",
+				"oppRank": 27,
+				"result": "1-3",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-08",
+				"opponent": "South Korea",
+				"oppRank": 26,
+				"result": "1-3",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Iraq": {
+		"formScore": 36,
+		"recent": [
+			{
+				"date": "2026-06-26",
+				"opponent": "Senegal",
+				"gf": 0,
+				"ga": 5,
+				"result": "0-5",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 18
+			},
+			{
+				"date": "2026-06-22",
+				"opponent": "France",
+				"gf": 0,
+				"ga": 3,
+				"result": "0-3",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 2
+			},
+			{
+				"date": "2026-06-16",
+				"opponent": "Norway",
+				"gf": 1,
+				"ga": 4,
+				"result": "1-4",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 37
+			},
+			{
+				"date": "2026-06-04",
+				"opponent": "South Korea",
+				"oppRank": 26,
+				"result": "0-3",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-06-01",
+				"opponent": "Saudi Arabia",
+				"oppRank": 43,
+				"result": "1-1",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-27",
+				"opponent": "Japan",
+				"oppRank": 15,
+				"result": "0-5",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-22",
+				"opponent": "Qatar",
+				"oppRank": 46,
+				"result": "1-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-18",
+				"opponent": "China PR",
+				"oppRank": 88,
+				"result": "2-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-14",
+				"opponent": "Iran",
+				"oppRank": 49,
+				"result": "0-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-12",
+				"opponent": "Uzbekistan",
+				"oppRank": 38,
+				"result": "1-2",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-07",
+				"opponent": "Australia",
+				"oppRank": 27,
+				"result": "0-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Jordan": {
+		"formScore": 38,
+		"recent": [
+			{
+				"date": "2026-06-28",
+				"opponent": "Argentina",
+				"gf": 1,
+				"ga": 3,
+				"result": "1-3",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 1
+			},
+			{
+				"date": "2026-06-23",
+				"opponent": "Algeria",
+				"gf": 1,
+				"ga": 2,
+				"result": "1-2",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 31
+			},
+			{
+				"date": "2026-06-17",
+				"opponent": "Austria",
+				"gf": 1,
+				"ga": 3,
+				"result": "1-3",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 21
+			},
+			{
+				"date": "2026-06-03",
+				"opponent": "Uzbekistan",
+				"oppRank": 38,
+				"result": "1-2",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-01",
+				"opponent": "Qatar",
+				"oppRank": 46,
+				"result": "0-2",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-24",
+				"opponent": "Iran",
+				"oppRank": 49,
+				"result": "0-2",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-20",
+				"opponent": "China PR",
+				"oppRank": 88,
+				"result": "1-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-18",
+				"opponent": "Australia",
+				"oppRank": 27,
+				"result": "0-2",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-13",
+				"opponent": "South Korea",
+				"oppRank": 26,
+				"result": "0-3",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-12",
+				"opponent": "Saudi Arabia",
+				"oppRank": 43,
+				"result": "1-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-07",
+				"opponent": "Iraq",
+				"oppRank": 47,
+				"result": "1-2",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Iran": {
+		"formScore": 53,
+		"recent": [
+			{
+				"date": "2026-06-27",
+				"opponent": "Egypt",
+				"gf": 1,
+				"ga": 1,
+				"result": "1-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 30
+			},
+			{
+				"date": "2026-06-21",
+				"opponent": "Belgium",
+				"gf": 0,
+				"ga": 0,
+				"result": "0-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 10
+			},
+			{
+				"date": "2026-06-16",
+				"opponent": "New Zealand",
+				"gf": 2,
+				"ga": 2,
+				"result": "2-2",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 53
+			},
+			{
+				"date": "2026-06-07",
+				"opponent": "Uzbekistan",
+				"oppRank": 38,
+				"result": "0-1",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-02",
+				"opponent": "Japan",
+				"oppRank": 15,
+				"result": "0-3",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-24",
+				"opponent": "Jordan",
+				"oppRank": 48,
+				"result": "2-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-20",
+				"opponent": "South Korea",
+				"oppRank": 26,
+				"result": "1-2",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-19",
+				"opponent": "Qatar",
+				"oppRank": 46,
+				"result": "3-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-14",
+				"opponent": "Iraq",
+				"oppRank": 47,
+				"result": "1-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-12",
+				"opponent": "Saudi Arabia",
+				"oppRank": 43,
+				"result": "1-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-07",
+				"opponent": "Japan",
+				"oppRank": 15,
+				"result": "1-3",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Haiti": {
+		"formScore": 38,
+		"recent": [
+			{
+				"date": "2026-06-24",
+				"opponent": "Morocco",
+				"gf": 2,
+				"ga": 4,
+				"result": "2-4",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 13
+			},
+			{
+				"date": "2026-06-20",
+				"opponent": "Brazil",
+				"gf": 0,
+				"ga": 3,
+				"result": "0-3",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 3
+			},
+			{
+				"date": "2026-06-14",
+				"opponent": "Scotland",
+				"gf": 0,
+				"ga": 1,
+				"result": "0-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 35
+			},
+			{
+				"date": "2026-06-06",
+				"opponent": "El Salvador",
+				"oppRank": 83,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-05-30",
+				"opponent": "Guatemala",
+				"oppRank": 95,
+				"result": "1-0",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-25",
+				"opponent": "Costa Rica",
+				"oppRank": 52,
+				"result": "0-1",
+				"venue": "home",
+				"comp": "Nations League"
+			},
+			{
+				"date": "2026-03-21",
+				"opponent": "Jamaica",
+				"oppRank": 64,
+				"result": "0-2",
+				"venue": "away",
+				"comp": "Nations League"
+			},
+			{
+				"date": "2025-11-16",
+				"opponent": "Trinidad & Tobago",
+				"oppRank": 85,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2025-10-11",
+				"opponent": "Honduras",
+				"oppRank": 78,
+				"result": "1-2",
+				"venue": "away",
+				"comp": "Nations League"
+			},
+			{
+				"date": "2025-09-05",
+				"opponent": "Curaçao",
+				"oppRank": 54,
+				"result": "1-1",
+				"venue": "home",
+				"comp": "Friendly"
+			}
+		]
+	},
+	"Bosnia & Herzegovina": {
+		"formScore": 50,
+		"recent": [
+			{
+				"date": "2026-07-02",
+				"opponent": "USA",
+				"gf": 0,
+				"ga": 2,
+				"result": "0-2",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 16
+			},
+			{
+				"date": "2026-06-24",
+				"opponent": "Qatar",
+				"gf": 3,
+				"ga": 1,
+				"result": "3-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 46
+			},
+			{
+				"date": "2026-06-18",
+				"opponent": "Switzerland",
+				"gf": 1,
+				"ga": 4,
+				"result": "1-4",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 19
+			},
+			{
+				"date": "2026-06-12",
+				"opponent": "Canada",
+				"oppRank": 37,
+				"result": "0-2",
+				"venue": "away",
+				"comp": "WC Group B"
+			},
+			{
+				"date": "2026-06-06",
+				"opponent": "Turkey",
+				"oppRank": 33,
+				"result": "0-2",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-06-01",
+				"opponent": "Slovenia",
+				"oppRank": 53,
+				"result": "1-1",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-26",
+				"opponent": "Iceland",
+				"oppRank": 40,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-22",
+				"opponent": "Slovakia",
+				"oppRank": 48,
+				"result": "0-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-17",
+				"opponent": "Wales",
+				"oppRank": 62,
+				"result": "1-2",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-11",
+				"opponent": "Montenegro",
+				"oppRank": 73,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-13",
+				"opponent": "Iceland",
+				"oppRank": 40,
+				"result": "0-2",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Mali": {
+		"formScore": 56,
+		"recent": [
+			{
+				"date": "2026-06-05",
+				"opponent": "Senegal",
+				"oppRank": 18,
+				"result": "0-2",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-05-30",
+				"opponent": "Guinea",
+				"oppRank": 71,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-24",
+				"opponent": "Egypt",
+				"oppRank": 30,
+				"result": "0-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-21",
+				"opponent": "DR Congo",
+				"oppRank": 41,
+				"result": "2-2",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-18",
+				"opponent": "Morocco",
+				"oppRank": 13,
+				"result": "0-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-13",
+				"opponent": "DR Congo",
+				"oppRank": 41,
+				"result": "1-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-13",
+				"opponent": "Egypt",
+				"oppRank": 30,
+				"result": "1-2",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-07",
+				"opponent": "Ghana",
+				"oppRank": 42,
+				"result": "1-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"New Zealand": {
+		"formScore": 41,
+		"recent": [
+			{
+				"date": "2026-06-27",
+				"opponent": "Belgium",
+				"gf": 1,
+				"ga": 5,
+				"result": "1-5",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 10
+			},
+			{
+				"date": "2026-06-22",
+				"opponent": "Egypt",
+				"gf": 1,
+				"ga": 3,
+				"result": "1-3",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 30
+			},
+			{
+				"date": "2026-06-16",
+				"opponent": "Iran",
+				"gf": 2,
+				"ga": 2,
+				"result": "2-2",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 49
+			},
+			{
+				"date": "2026-06-09",
+				"opponent": "Fiji",
+				"oppRank": 135,
+				"result": "3-0",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-05-29",
+				"opponent": "Australia",
+				"oppRank": 27,
+				"result": "0-2",
+				"venue": "away",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-26",
+				"opponent": "Tahiti",
+				"oppRank": 162,
+				"result": "5-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-22",
+				"opponent": "Solomon Islands",
+				"oppRank": 131,
+				"result": "2-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-18",
+				"opponent": "New Caledonia",
+				"oppRank": 155,
+				"result": "4-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-12",
+				"opponent": "Papua New Guinea",
+				"oppRank": 140,
+				"result": "3-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-15",
+				"opponent": "Fiji",
+				"oppRank": 135,
+				"result": "2-0",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-09",
+				"opponent": "Solomon Islands",
+				"oppRank": 131,
+				"result": "3-1",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Curaçao": {
+		"formScore": 42,
+		"recent": [
+			{
+				"date": "2026-06-25",
+				"opponent": "Ivory Coast",
+				"gf": 0,
+				"ga": 2,
+				"result": "0-2",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 23
+			},
+			{
+				"date": "2026-06-21",
+				"opponent": "Ecuador",
+				"gf": 0,
+				"ga": 0,
+				"result": "0-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 22
+			},
+			{
+				"date": "2026-06-14",
+				"opponent": "Germany",
+				"gf": 1,
+				"ga": 7,
+				"result": "1-7",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 7
+			},
+			{
+				"date": "2026-06-05",
+				"opponent": "Jamaica",
+				"oppRank": 64,
+				"result": "1-2",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-05-30",
+				"opponent": "Suriname",
+				"oppRank": 125,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-24",
+				"opponent": "Costa Rica",
+				"oppRank": 52,
+				"result": "0-2",
+				"venue": "away",
+				"comp": "Nations League"
+			},
+			{
+				"date": "2026-03-20",
+				"opponent": "El Salvador",
+				"oppRank": 83,
+				"result": "2-1",
+				"venue": "home",
+				"comp": "Nations League"
+			},
+			{
+				"date": "2025-11-15",
+				"opponent": "Trinidad & Tobago",
+				"oppRank": 85,
+				"result": "1-1",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2025-10-12",
+				"opponent": "Honduras",
+				"oppRank": 78,
+				"result": "0-3",
+				"venue": "away",
+				"comp": "Nations League"
+			},
+			{
+				"date": "2025-09-05",
+				"opponent": "Haiti",
+				"oppRank": 50,
+				"result": "1-1",
+				"venue": "away",
+				"comp": "Friendly"
+			}
+		]
+	},
+	"Ukraine": {
+		"formScore": 60,
+		"recent": [
+			{
+				"date": "2026-06-05",
+				"opponent": "Turkey",
+				"oppRank": 33,
+				"result": "1-2",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-05-30",
+				"opponent": "Slovakia",
+				"oppRank": 48,
+				"result": "2-0",
+				"venue": "home",
+				"comp": "Friendly"
+			},
+			{
+				"date": "2026-03-24",
+				"opponent": "Netherlands",
+				"oppRank": 8,
+				"result": "0-3",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2026-03-19",
+				"opponent": "Armenia",
+				"oppRank": 82,
+				"result": "2-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-18",
+				"opponent": "Turkey",
+				"oppRank": 33,
+				"result": "1-2",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-11-13",
+				"opponent": "Netherlands",
+				"oppRank": 8,
+				"result": "0-2",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-14",
+				"opponent": "Turkey",
+				"oppRank": 33,
+				"result": "0-1",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-10-08",
+				"opponent": "Armenia",
+				"oppRank": 82,
+				"result": "3-0",
+				"venue": "home",
+				"comp": "WC Qualifier"
+			},
+			{
+				"date": "2025-09-09",
+				"opponent": "France",
+				"oppRank": 2,
+				"result": "0-3",
+				"venue": "away",
+				"comp": "WC Qualifier"
+			}
+		]
+	},
+	"Canada": {
+		"formScore": 95,
+		"recent": [
+			{
+				"date": "2026-06-28",
+				"opponent": "South Africa",
+				"gf": 1,
+				"ga": 0,
+				"result": "1-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 40
+			},
+			{
+				"date": "2026-06-24",
+				"opponent": "Switzerland",
+				"gf": 1,
+				"ga": 2,
+				"result": "1-2",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 19
+			},
+			{
+				"date": "2026-06-18",
+				"opponent": "Qatar",
+				"gf": 6,
+				"ga": 0,
+				"result": "6-0",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 46
+			},
+			{
+				"date": "2026-06-12",
+				"opponent": "Bosnia & Herzegovina",
+				"gf": 1,
+				"ga": 1,
+				"result": "1-1",
+				"venue": "neutral",
+				"comp": "World Cup",
+				"oppRank": 51
+			}
+		]
+	}
 }

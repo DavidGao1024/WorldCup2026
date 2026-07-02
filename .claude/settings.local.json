@@ -123,7 +123,12 @@
       "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260629-20260719&limit=50\")",
       "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260611-20260719&limit=200\" -o /tmp/espn-scores.json)",
       "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260611-20260719&limit=200\" -o \"E:/GitHub/WorldCup2026/tmp-espn.json\")",
-      "Bash(python3 *)"
+      "Bash(python3 *)",
+      "mcp__chrome-devtools__list_pages",
+      "Bash(curl -s \"https://site.web.api.espn.com/apis/site/v2/sports/soccer/fifa.world/summary?event=760493\")",
+      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260628-20260705&limit=104\")",
+      "Bash(curl -s \"https://site.web.api.espn.com/apis/site/v2/sports/soccer/fifa.world/summary?event=760489\")",
+      "Bash(curl -s \"https://site.web.api.espn.com/apis/site/v2/sports/soccer/fifa.world/summary?event=760488\")"
     ]
   }
 }

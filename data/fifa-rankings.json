@@ -1,57 +1,394 @@
 {
-  "Argentina":         {"rank":1,  "elo":2012, "squadValue":"€8.2亿", "avgAge":28.1, "conf":"CONMEBOL"},
-  "France":            {"rank":2,  "elo":1998, "squadValue":"€11.5亿","avgAge":26.8, "conf":"UEFA"},
-  "Brazil":            {"rank":3,  "elo":1942, "squadValue":"€10.8亿","avgAge":27.3, "conf":"CONMEBOL"},
-  "England":           {"rank":4,  "elo":1931, "squadValue":"€12.6亿","avgAge":26.2, "conf":"UEFA"},
-  "Spain":             {"rank":5,  "elo":1924, "squadValue":"€9.8亿", "avgAge":27.0, "conf":"UEFA"},
-  "Portugal":          {"rank":6,  "elo":1876, "squadValue":"€9.2亿", "avgAge":28.5, "conf":"UEFA"},
-  "Germany":           {"rank":7,  "elo":1858, "squadValue":"€8.5亿", "avgAge":27.6, "conf":"UEFA"},
-  "Netherlands":       {"rank":8,  "elo":1841, "squadValue":"€7.8亿", "avgAge":26.4, "conf":"UEFA"},
-  "Italy":             {"rank":9,  "elo":1823, "squadValue":"€7.2亿", "avgAge":27.8, "conf":"UEFA"},
-  "Belgium":           {"rank":10, "elo":1778, "squadValue":"€5.8亿", "avgAge":29.1, "conf":"UEFA"},
-  "Uruguay":           {"rank":11, "elo":1762, "squadValue":"€4.5亿", "avgAge":28.8, "conf":"CONMEBOL"},
-  "Croatia":           {"rank":12, "elo":1748, "squadValue":"€3.5亿", "avgAge":29.5, "conf":"UEFA"},
-  "Morocco":           {"rank":13, "elo":1735, "squadValue":"€3.8亿", "avgAge":27.2, "conf":"CAF"},
-  "Colombia":          {"rank":14, "elo":1718, "squadValue":"€3.2亿", "avgAge":27.9, "conf":"CONMEBOL"},
-  "Japan":             {"rank":15, "elo":1702, "squadValue":"€3.1亿", "avgAge":27.4, "conf":"AFC"},
-  "USA":               {"rank":16, "elo":1695, "squadValue":"€4.2亿", "avgAge":25.8, "conf":"CONCACAF"},
-  "Mexico":            {"rank":17, "elo":1683, "squadValue":"€3.6亿", "avgAge":27.8, "conf":"CONCACAF"},
-  "Senegal":           {"rank":18, "elo":1671, "squadValue":"€2.8亿", "avgAge":26.5, "conf":"CAF"},
-  "Switzerland":       {"rank":19, "elo":1658, "squadValue":"€2.5亿", "avgAge":27.9, "conf":"UEFA"},
-  "Denmark":           {"rank":20, "elo":1645, "squadValue":"€3.0亿", "avgAge":27.6, "conf":"UEFA"},
-  "Austria":           {"rank":21, "elo":1632, "squadValue":"€2.4亿", "avgAge":26.8, "conf":"UEFA"},
-  "Ecuador":           {"rank":22, "elo":1618, "squadValue":"€1.8亿", "avgAge":25.9, "conf":"CONMEBOL"},
-  "Ivory Coast":       {"rank":23, "elo":1602, "squadValue":"€2.6亿", "avgAge":26.3, "conf":"CAF"},
-  "Sweden":            {"rank":24, "elo":1588, "squadValue":"€2.3亿", "avgAge":27.5, "conf":"UEFA"},
-  "Serbia":            {"rank":25, "elo":1571, "squadValue":"€3.4亿", "avgAge":28.2, "conf":"UEFA"},
-  "South Korea":       {"rank":26, "elo":1558, "squadValue":"€2.1亿", "avgAge":27.0, "conf":"AFC"},
-  "Australia":         {"rank":27, "elo":1542, "squadValue":"€1.2亿", "avgAge":26.8, "conf":"AFC"},
-  "Peru":              {"rank":28, "elo":1528, "squadValue":"€1.0亿", "avgAge":28.5, "conf":"CONMEBOL"},
-  "Poland":            {"rank":29, "elo":1513, "squadValue":"€2.2亿", "avgAge":28.0, "conf":"UEFA"},
-  "Egypt":             {"rank":30, "elo":1498, "squadValue":"€1.5亿", "avgAge":27.3, "conf":"CAF"},
-  "Algeria":           {"rank":31, "elo":1482, "squadValue":"€1.8亿", "avgAge":27.0, "conf":"CAF"},
-  "Paraguay":          {"rank":32, "elo":1468, "squadValue":"€1.4亿", "avgAge":27.8, "conf":"CONMEBOL"},
-  "Turkey":            {"rank":33, "elo":1452, "squadValue":"€2.6亿", "avgAge":26.5, "conf":"UEFA"},
-  "Chile":             {"rank":34, "elo":1438, "squadValue":"€1.1亿", "avgAge":28.8, "conf":"CONMEBOL"},
-  "Scotland":          {"rank":35, "elo":1422, "squadValue":"€1.8亿", "avgAge":26.9, "conf":"UEFA"},
-  "Czech Republic":    {"rank":36, "elo":1406, "squadValue":"€1.5亿", "avgAge":27.2, "conf":"UEFA"},
-  "Norway":            {"rank":37, "elo":1390, "squadValue":"€3.8亿", "avgAge":25.1, "conf":"UEFA"},
-  "Uzbekistan":        {"rank":38, "elo":1375, "squadValue":"€0.4亿", "avgAge":26.0, "conf":"AFC"},
-  "Cape Verde":        {"rank":39, "elo":1358, "squadValue":"€0.3亿", "avgAge":25.8, "conf":"CAF"},
-  "South Africa":      {"rank":40, "elo":1342, "squadValue":"€0.9亿", "avgAge":26.5, "conf":"CAF"},
-  "DR Congo":          {"rank":41, "elo":1328, "squadValue":"€0.5亿", "avgAge":25.6, "conf":"CAF"},
-  "Ghana":             {"rank":42, "elo":1312, "squadValue":"€1.2亿", "avgAge":25.2, "conf":"CAF"},
-  "Saudi Arabia":      {"rank":43, "elo":1298, "squadValue":"€0.6亿", "avgAge":27.6, "conf":"AFC"},
-  "Panama":            {"rank":44, "elo":1282, "squadValue":"€0.2亿", "avgAge":26.8, "conf":"CONCACAF"},
-  "Tunisia":           {"rank":45, "elo":1265, "squadValue":"€0.8亿", "avgAge":27.0, "conf":"CAF"},
-  "Qatar":             {"rank":46, "elo":1248, "squadValue":"€0.3亿", "avgAge":27.2, "conf":"AFC"},
-  "Iraq":              {"rank":47, "elo":1232, "squadValue":"€0.2亿", "avgAge":26.4, "conf":"AFC"},
-  "Jordan":            {"rank":48, "elo":1218, "squadValue":"€0.15亿","avgAge":26.8, "conf":"AFC"},
-  "Iran":              {"rank":49, "elo":1202, "squadValue":"€0.5亿", "avgAge":28.1, "conf":"AFC"},
-  "Haiti":             {"rank":50, "elo":1186, "squadValue":"€0.05亿","avgAge":25.4, "conf":"CONCACAF"},
-  "Bosnia & Herzegovina":{"rank":51,"elo":1170, "squadValue":"€1.0亿", "avgAge":27.8, "conf":"UEFA"},
-  "Mali":              {"rank":52, "elo":1154, "squadValue":"€0.9亿", "avgAge":25.0, "conf":"CAF"},
-  "New Zealand":       {"rank":53, "elo":1138, "squadValue":"€0.1亿", "avgAge":26.5, "conf":"OFC"},
-  "Curaçao":           {"rank":54, "elo":1122, "squadValue":"€0.05亿","avgAge":25.8, "conf":"CONCACAF"},
-  "Ukraine":           {"rank":55, "elo":1106, "squadValue":"€1.7亿", "avgAge":26.5, "conf":"UEFA"}
+	"Algeria": {
+		"rank": 31,
+		"elo": 1492,
+		"squadValue": "€1.8亿",
+		"avgAge": 27,
+		"conf": "CAF"
+	},
+	"Argentina": {
+		"rank": 1,
+		"elo": 2016,
+		"squadValue": "€8.2亿",
+		"avgAge": 28.1,
+		"conf": "CONMEBOL"
+	},
+	"Australia": {
+		"rank": 27,
+		"elo": 1541,
+		"squadValue": "€1.2亿",
+		"avgAge": 26.8,
+		"conf": "AFC"
+	},
+	"Austria": {
+		"rank": 21,
+		"elo": 1626,
+		"squadValue": "€2.4亿",
+		"avgAge": 26.8,
+		"conf": "UEFA"
+	},
+	"Belgium": {
+		"rank": 10,
+		"elo": 1765,
+		"squadValue": "€5.8亿",
+		"avgAge": 29.1,
+		"conf": "UEFA"
+	},
+	"Bosnia & Herzegovina": {
+		"rank": 51,
+		"elo": 1193,
+		"squadValue": "€1.0亿",
+		"avgAge": 27.8,
+		"conf": "UEFA"
+	},
+	"Brazil": {
+		"rank": 3,
+		"elo": 1942,
+		"squadValue": "€10.8亿",
+		"avgAge": 27.3,
+		"conf": "CONMEBOL"
+	},
+	"Canada": {
+		"rank": 60,
+		"elo": 1180,
+		"squadValue": "€0.2亿",
+		"avgAge": 26.5,
+		"conf": "CONCACAF"
+	},
+	"Cape Verde": {
+		"rank": 39,
+		"elo": 1381,
+		"squadValue": "€0.3亿",
+		"avgAge": 25.8,
+		"conf": "CAF"
+	},
+	"Chile": {
+		"rank": 34,
+		"elo": 1438,
+		"squadValue": "€1.1亿",
+		"avgAge": 28.8,
+		"conf": "CONMEBOL"
+	},
+	"Colombia": {
+		"rank": 14,
+		"elo": 1731,
+		"squadValue": "€3.2亿",
+		"avgAge": 27.9,
+		"conf": "CONMEBOL"
+	},
+	"Croatia": {
+		"rank": 12,
+		"elo": 1745,
+		"squadValue": "€3.5亿",
+		"avgAge": 29.5,
+		"conf": "UEFA"
+	},
+	"Curaçao": {
+		"rank": 54,
+		"elo": 1133,
+		"squadValue": "€0.05亿",
+		"avgAge": 25.8,
+		"conf": "CONCACAF"
+	},
+	"Czech Republic": {
+		"rank": 36,
+		"elo": 1390,
+		"squadValue": "€1.5亿",
+		"avgAge": 27.2,
+		"conf": "UEFA"
+	},
+	"DR Congo": {
+		"rank": 41,
+		"elo": 1354,
+		"squadValue": "€0.5亿",
+		"avgAge": 25.6,
+		"conf": "CAF"
+	},
+	"Denmark": {
+		"rank": 20,
+		"elo": 1645,
+		"squadValue": "€3.0亿",
+		"avgAge": 27.6,
+		"conf": "UEFA"
+	},
+	"Ecuador": {
+		"rank": 22,
+		"elo": 1603,
+		"squadValue": "€1.8亿",
+		"avgAge": 25.9,
+		"conf": "CONMEBOL"
+	},
+	"Egypt": {
+		"rank": 30,
+		"elo": 1501,
+		"squadValue": "€1.5亿",
+		"avgAge": 27.3,
+		"conf": "CAF"
+	},
+	"England": {
+		"rank": 4,
+		"elo": 1927,
+		"squadValue": "€12.6亿",
+		"avgAge": 26.2,
+		"conf": "UEFA"
+	},
+	"France": {
+		"rank": 2,
+		"elo": 2006,
+		"squadValue": "€11.5亿",
+		"avgAge": 26.8,
+		"conf": "UEFA"
+	},
+	"Germany": {
+		"rank": 7,
+		"elo": 1827,
+		"squadValue": "€8.5亿",
+		"avgAge": 27.6,
+		"conf": "UEFA"
+	},
+	"Ghana": {
+		"rank": 42,
+		"elo": 1337,
+		"squadValue": "€1.2亿",
+		"avgAge": 25.2,
+		"conf": "CAF"
+	},
+	"Haiti": {
+		"rank": 50,
+		"elo": 1179,
+		"squadValue": "€0.05亿",
+		"avgAge": 25.4,
+		"conf": "CONCACAF"
+	},
+	"Iran": {
+		"rank": 49,
+		"elo": 1223,
+		"squadValue": "€0.5亿",
+		"avgAge": 28.1,
+		"conf": "AFC"
+	},
+	"Iraq": {
+		"rank": 47,
+		"elo": 1221,
+		"squadValue": "€0.2亿",
+		"avgAge": 26.4,
+		"conf": "AFC"
+	},
+	"Italy": {
+		"rank": 9,
+		"elo": 1823,
+		"squadValue": "€7.2亿",
+		"avgAge": 27.8,
+		"conf": "UEFA"
+	},
+	"Ivory Coast": {
+		"rank": 23,
+		"elo": 1591,
+		"squadValue": "€2.6亿",
+		"avgAge": 26.3,
+		"conf": "CAF"
+	},
+	"Japan": {
+		"rank": 15,
+		"elo": 1699,
+		"squadValue": "€3.1亿",
+		"avgAge": 27.4,
+		"conf": "AFC"
+	},
+	"Jordan": {
+		"rank": 48,
+		"elo": 1210,
+		"squadValue": "€0.15亿",
+		"avgAge": 26.8,
+		"conf": "AFC"
+	},
+	"Mali": {
+		"rank": 52,
+		"elo": 1154,
+		"squadValue": "€0.9亿",
+		"avgAge": 25,
+		"conf": "CAF"
+	},
+	"Mexico": {
+		"rank": 17,
+		"elo": 1712,
+		"squadValue": "€3.6亿",
+		"avgAge": 27.8,
+		"conf": "CONCACAF"
+	},
+	"Morocco": {
+		"rank": 13,
+		"elo": 1752,
+		"squadValue": "€3.8亿",
+		"avgAge": 27.2,
+		"conf": "CAF"
+	},
+	"Netherlands": {
+		"rank": 8,
+		"elo": 1838,
+		"squadValue": "€7.8亿",
+		"avgAge": 26.4,
+		"conf": "UEFA"
+	},
+	"New Zealand": {
+		"rank": 53,
+		"elo": 1137,
+		"squadValue": "€0.1亿",
+		"avgAge": 26.5,
+		"conf": "OFC"
+	},
+	"Norway": {
+		"rank": 37,
+		"elo": 1446,
+		"squadValue": "€3.8亿",
+		"avgAge": 25.1,
+		"conf": "UEFA"
+	},
+	"Panama": {
+		"rank": 44,
+		"elo": 1265,
+		"squadValue": "€0.2亿",
+		"avgAge": 26.8,
+		"conf": "CONCACAF"
+	},
+	"Paraguay": {
+		"rank": 32,
+		"elo": 1491,
+		"squadValue": "€1.4亿",
+		"avgAge": 27.8,
+		"conf": "CONMEBOL"
+	},
+	"Peru": {
+		"rank": 28,
+		"elo": 1528,
+		"squadValue": "€1.0亿",
+		"avgAge": 28.5,
+		"conf": "CONMEBOL"
+	},
+	"Poland": {
+		"rank": 29,
+		"elo": 1513,
+		"squadValue": "€2.2亿",
+		"avgAge": 28,
+		"conf": "UEFA"
+	},
+	"Portugal": {
+		"rank": 6,
+		"elo": 1858,
+		"squadValue": "€9.2亿",
+		"avgAge": 28.5,
+		"conf": "UEFA"
+	},
+	"Qatar": {
+		"rank": 46,
+		"elo": 1232,
+		"squadValue": "€0.3亿",
+		"avgAge": 27.2,
+		"conf": "AFC"
+	},
+	"Saudi Arabia": {
+		"rank": 43,
+		"elo": 1313,
+		"squadValue": "€0.6亿",
+		"avgAge": 27.6,
+		"conf": "AFC"
+	},
+	"Scotland": {
+		"rank": 35,
+		"elo": 1422,
+		"squadValue": "€1.8亿",
+		"avgAge": 26.9,
+		"conf": "UEFA"
+	},
+	"Senegal": {
+		"rank": 18,
+		"elo": 1634,
+		"squadValue": "€2.8亿",
+		"avgAge": 26.5,
+		"conf": "CAF"
+	},
+	"Serbia": {
+		"rank": 25,
+		"elo": 1571,
+		"squadValue": "€3.4亿",
+		"avgAge": 28.2,
+		"conf": "UEFA"
+	},
+	"South Africa": {
+		"rank": 40,
+		"elo": 1350,
+		"squadValue": "€0.9亿",
+		"avgAge": 26.5,
+		"conf": "CAF"
+	},
+	"South Korea": {
+		"rank": 26,
+		"elo": 1534,
+		"squadValue": "€2.1亿",
+		"avgAge": 27,
+		"conf": "AFC"
+	},
+	"Spain": {
+		"rank": 5,
+		"elo": 1919,
+		"squadValue": "€9.8亿",
+		"avgAge": 27,
+		"conf": "UEFA"
+	},
+	"Sweden": {
+		"rank": 24,
+		"elo": 1588,
+		"squadValue": "€2.3亿",
+		"avgAge": 27.5,
+		"conf": "UEFA"
+	},
+	"Switzerland": {
+		"rank": 19,
+		"elo": 1654,
+		"squadValue": "€2.5亿",
+		"avgAge": 27.9,
+		"conf": "UEFA"
+	},
+	"Tunisia": {
+		"rank": 45,
+		"elo": 1258,
+		"squadValue": "€0.8亿",
+		"avgAge": 27,
+		"conf": "CAF"
+	},
+	"Turkey": {
+		"rank": 33,
+		"elo": 1452,
+		"squadValue": "€2.6亿",
+		"avgAge": 26.5,
+		"conf": "UEFA"
+	},
+	"USA": {
+		"rank": 16,
+		"elo": 1687,
+		"squadValue": "€4.2亿",
+		"avgAge": 25.8,
+		"conf": "CONCACAF"
+	},
+	"Ukraine": {
+		"rank": 55,
+		"elo": 1106,
+		"squadValue": "€1.7亿",
+		"avgAge": 26.5,
+		"conf": "UEFA"
+	},
+	"Uruguay": {
+		"rank": 11,
+		"elo": 1729,
+		"squadValue": "€4.5亿",
+		"avgAge": 28.8,
+		"conf": "CONMEBOL"
+	},
+	"Uzbekistan": {
+		"rank": 38,
+		"elo": 1353,
+		"squadValue": "€0.4亿",
+		"avgAge": 26,
+		"conf": "AFC"
+	}
 }

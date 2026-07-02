@@ -106,17 +106,54 @@ function buildMatchCard(m) {
   var liveBadge = isLive ? '<span class="live-badge">LIVE</span>' : '';
   var venueName = trVenue(m.ground);
 
+  var t1 = resolveTeamRef(m.team1);
+  var t2 = resolveTeamRef(m.team2);
+
   return '<div class="match-card" data-match-num="' + m.num + '" style="cursor:pointer">' +
     liveBadge +
     (!isGroup ? '<span class="match-round">' + stageLabel + '</span>' : '') +
     '<div class="match-time">' + time + ' (' + getUTCOffsetStr() + ') · ' + venueName + '</div>' +
     '<div class="match-teams">' +
-      '<div class="team">' + getFlagImg(m.team1) + '<span class="name">' + trTeam(m.team1) + '</span></div>' +
+      '<div class="team">' + (t1.flag ? getFlagImg(t1.flag) : '') + '<span class="name">' + t1.display + '</span></div>' +
       '<div class="score">' + scoreDisplay + '</div>' +
-      '<div class="team">' + getFlagImg(m.team2) + '<span class="name">' + trTeam(m.team2) + '</span></div>' +
+      '<div class="team">' + (t2.flag ? getFlagImg(t2.flag) : '') + '<span class="name">' + t2.display + '</span></div>' +
     '</div>' +
     (isGroup ? '<div class="match-ground">' + stageLabel + '</div>' : '') +
   '</div>';
+}
+
+// 解析淘汰赛占位符（W73/W80等），已决出结果则返回实际队名+国旗
+function resolveTeamRef(name) {
+  if (!name) return { display: '', flag: '' };
+  if (name[0] === 'W' || name[0] === 'L') {
+    var refNum = parseInt(name.substring(1));
+    if (refNum) {
+      var all = getMatches();
+      for (var i = 0; i < all.length; i++) {
+        if (all[i].num === refNum) {
+          var ref = all[i];
+          if (ref.score1 != null) {
+            var w = null, l = null;
+            if (ref.hadPen) {
+              if (ref.score1p > ref.score2p) { w = ref.team1; l = ref.team2; }
+              else if (ref.score2p > ref.score1p) { w = ref.team2; l = ref.team1; }
+              else if (ref.winner) { w = ref.winner; l = ref.winner === ref.team1 ? ref.team2 : ref.team1; }
+            }
+            if (!w && ref.score1 > ref.score2) { w = ref.team1; l = ref.team2; }
+            if (!w && ref.score2 > ref.score1) { w = ref.team2; l = ref.team1; }
+            if (name[0] === 'W' && w) return { display: trTeam(w), flag: w };
+            if (name[0] === 'L' && l) return { display: trTeam(l), flag: l };
+          }
+          break;
+        }
+      }
+    }
+    return { display: (name[0] === 'W' ? t('winnerOf') : t('loserOf')) + ' ' + name.substring(1), flag: '' };
+  }
+  if (/^\d[A-Z]/.test(name)) {
+    return { display: name.substring(1) + t('groupFirst'), flag: '' };
+  }
+  return { display: trTeam(name), flag: name };
 }
 
 function populateFilters() {
