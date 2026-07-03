@@ -38,15 +38,17 @@ try {
 var merged = {
   updateTime: new Date().toISOString(),
   source: 'manual',
-  note: '伤病数据手动维护。停赛数据由 ESPN API 实时计算，无需在此填写。'
+  _format: 'v2 — players[] 含 name/importance/status/detail。importance: 1=替补 5=核心。status: out=缺阵 doubtful=伤疑。'
 };
 
 Object.keys(teams).sort().forEach(function(team) {
   var prev = (existing[team] && typeof existing[team] === 'object') ? existing[team] : {};
+  var players = prev.players || [];
   merged[team] = {
-    injuries: prev.injuries || 0,
+    injuries: players.filter(function(p) { return p.status === 'out'; }).length,
     suspensions: 0,
-    note: prev.note || prev.injuryNote || ''
+    players: players,
+    note: prev.note || ''
   };
 });
 

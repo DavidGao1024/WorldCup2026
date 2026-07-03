@@ -1,0 +1,263 @@
+{
+  "_note": "球员重要性评级，用于 ESPN 停赛球员的权重计算。1=替补, 2=轮换, 3=常规主力, 4=关键球员, 5=绝对核心。未收录球员默认 importance=3。",
+  "Algeria": {
+    "Ramy Bensebaini": 4, "Islam Slimani": 3, "Riyad Mahrez": 5, "Ismael Bennacer": 4,
+    "Houssem Aouar": 4, "Said Benrahma": 3, "Amine Gouiri": 3, "Rayan Ait Nouri": 3,
+    "Aissa Mandi": 3, "Mohamed Amoura": 4, "Farès Chaibi": 3
+  },
+  "Argentina": {
+    "Lionel Messi": 5, "Emiliano Martinez": 4, "Cristian Romero": 4, "Julian Alvarez": 4,
+    "Enzo Fernandez": 4, "Alexis Mac Allister": 4, "Lautaro Martinez": 4, "Rodrigo De Paul": 4,
+    "Nicolas Otamendi": 3, "Nahuel Molina": 3, "Angel Di Maria": 4, "Lisandro Martinez": 3,
+    "Giovani Lo Celso": 3, "Leandro Paredes": 3, "Nicolas Tagliafico": 3, "Gonzalo Montiel": 3,
+    "Alejandro Garnacho": 3, "Paulo Dybala": 3, "Thiago Almada": 3, "Nicolas Gonzalez": 3
+  },
+  "Australia": {
+    "Mathew Ryan": 4, "Harry Souttar": 4, "Jackson Irvine": 3, "Riley McGree": 3,
+    "Martin Boyle": 3, "Craig Goodwin": 3, "Awer Mabil": 2, "Connor Metcalfe": 3,
+    "Kye Rowles": 3, "Nathaniel Atkinson": 2, "Jordan Bos": 3, "Garang Kuol": 2
+  },
+  "Austria": {
+    "David Alaba": 5, "Marcel Sabitzer": 4, "Konrad Laimer": 4, "Marko Arnautovic": 3,
+    "Christoph Baumgartner": 4, "Michael Gregoritsch": 3, "Stefan Posch": 3,
+    "Philipp Lienhart": 3, "Kevin Danso": 3, "Nicolas Seiwald": 3, "Xaver Schlager": 3
+  },
+  "Belgium": {
+    "Kevin De Bruyne": 5, "Romelu Lukaku": 4, "Thibaut Courtois": 5, "Jeremy Doku": 4,
+    "Amadou Onana": 3, "Youri Tielemans": 3, "Leandro Trossard": 3, "Loïs Openda": 3,
+    "Johan Bakayoko": 3, "Wout Faes": 3, "Timothy Castagne": 3, "Arthur Theate": 3,
+    "Charles De Ketelaere": 3, "Orel Mangala": 3, "Nathan Ngoy": 2
+  },
+  "Bosnia & Herzegovina": {
+    "Edin Dzeko": 5, "Miralem Pjanic": 4, "Sead Kolasinac": 3, "Rade Krunic": 3,
+    "Ermedin Demirovic": 3, "Amar Dedic": 3, "Anel Ahmedhodzic": 3, "Benjamin Tahirovic": 2
+  },
+  "Brazil": {
+    "Vinicius Junior": 5, "Rodrygo": 5, "Neymar": 5, "Alisson": 4,
+    "Eder Militao": 4, "Marquinhos": 4, "Bruno Guimaraes": 4, "Casemiro": 4,
+    "Gabriel Martinelli": 3, "Raphinha": 4, "Gabriel Jesus": 3, "Danilo": 3,
+    "Lucas Paqueta": 3, "Endrick": 3, "Bremer": 3, "Ederson": 4,
+    "Joelinton": 3, "Andre": 3, "Vanderson": 3, "Estevao Willian": 3
+  },
+  "Canada": {
+    "Alphonso Davies": 5, "Jonathan David": 4, "Tajon Buchanan": 3, "Stephen Eustaquio": 4,
+    "Cyle Larin": 3, "Alistair Johnston": 3, "Ismael Kone": 3, "Jonathan Osorio": 3,
+    "Derek Cornelius": 2, "Milan Borjan": 3, "Richie Laryea": 2, "Marcel Flores": 2
+  },
+  "Cape Verde": {
+    "Ryan Mendes": 4, "Jovane Cabral": 3, "Bebe": 3, "Willy Semedo": 2,
+    "Sidny Lopes Cabral": 2, "Dylan Tavares": 2, "Kenny Rocha Santos": 3,
+    "Patrick Andrade": 2, "Nuno da Costa": 2
+  },
+  "Colombia": {
+    "Luis Diaz": 5, "James Rodriguez": 4, "Jhon Duran": 4, "Davinson Sanchez": 3,
+    "Daniel Munoz": 3, "Jefferson Lerma": 3, "Jhon Arias": 3, "Richard Rios": 3,
+    "Yerry Mina": 3, "Juanfer Quintero": 3, "Rafael Santos Borre": 2, "Johan Mojica": 2,
+    "Carlos Cuesta": 2, "Kevin Mier": 2, "Cucho Hernandez": 3
+  },
+  "Croatia": {
+    "Luka Modric": 5, "Josko Gvardiol": 5, "Mateo Kovacic": 4, "Marcelo Brozovic": 4,
+    "Ivan Perisic": 3, "Andrej Kramaric": 3, "Luka Sucic": 3, "Josip Sutalo": 3,
+    "Borna Sosa": 2, "Josip Stanisic": 3, "Mario Pasalic": 2, "Martin Baturina": 3,
+    "Dominik Livakovic": 3, "Lovro Majer": 3, "Josip Juranovic": 2
+  },
+  "Curaçao": {
+    "Kenji Gorre": 3, "Juninho Bacuna": 3, "Leandro Bacuna": 3, "Rangelo Janga": 2,
+    "Cuco Martina": 2, "Jurien Gaari": 2, "Tyrick Bodak": 2, "Godfried Roemeratoe": 2
+  },
+  "Czech Republic": {
+    "Tomas Soucek": 5, "Patrik Schick": 4, "Vladimir Coufal": 3, "Alex Kral": 2,
+    "Adam Hlozek": 3, "Jakub Jankto": 2, "David Zima": 2, "Matej Jurasek": 2,
+    "Vaclav Cerny": 3, "Ladislav Krejci": 3
+  },
+  "DR Congo": {
+    "Gaël Kakuta": 3, "Cedric Bakambu": 3, "Chancel Mbemba": 4, "Yoane Wissa": 3,
+    "Samuel Moutoussamy": 2, "Arthur Masuaku": 2, "Charles Pickel": 2, "Silas Katompa Mvumpa": 3,
+    "Noah Sadiki": 2, "Theo Bongonda": 2
+  },
+  "Ecuador": {
+    "Moises Caicedo": 5, "Piero Hincapie": 4, "Enner Valencia": 4, "Willian Pacho": 3,
+    "Kendry Paez": 3, "Jeremy Sarmiento": 2, "Angel Mena": 2, "Felix Torres": 2,
+    "Pervis Estupinan": 4, "Gonzalo Plata": 3, "Alan Franco": 2, "Hernan Galindez": 2
+  },
+  "Egypt": {
+    "Mohamed Salah": 5, "Trezeguet": 3, "Mostafa Mohamed": 3, "Omar Marmoush": 4,
+    "Mohamed Abdelmonem": 3, "Ahmed Hegazi": 3, "Mohamed Elneny": 3, "Hamdy Fathy": 2,
+    "Zizo": 2, "Emam Ashour": 2, "Ramy Rabia": 2, "Mohamed Hany": 2
+  },
+  "England": {
+    "Harry Kane": 5, "Jude Bellingham": 5, "Declan Rice": 4, "Phil Foden": 4,
+    "Bukayo Saka": 4, "Cole Palmer": 4, "Trent Alexander-Arnold": 3, "John Stones": 4,
+    "Kyle Walker": 3, "Jordan Pickford": 3, "Marc Guehi": 3, "Conor Gallagher": 3,
+    "Eberechi Eze": 2, "Kobbie Mainoo": 3, "Anthony Gordon": 2, "Jarrod Bowen": 2,
+    "Ollie Watkins": 3, "Levi Colwill": 2, "Rico Lewis": 2, "Morgan Rogers": 2
+  },
+  "France": {
+    "Kylian Mbappe": 5, "Antoine Griezmann": 4, "Aurelien Tchouameni": 4, "William Saliba": 4,
+    "Ousmane Dembele": 4, "Eduardo Camavinga": 3, "Mike Maignan": 4, "Dayot Upamecano": 3,
+    "Theo Hernandez": 4, "Jules Kounde": 3, "Ibrahima Konate": 3, "Adrien Rabiot": 3,
+    "Randal Kolo Muani": 3, "Marcus Thuram": 3, "Warren Zaire-Emery": 3, "Bradley Barcola": 3,
+    "Michael Olise": 3, "N'Golo Kante": 3, "Lucas Hernandez": 3
+  },
+  "Germany": {
+    "Jamal Musiala": 5, "Florian Wirtz": 5, "Joshua Kimmich": 5, "Antonio Rudiger": 4,
+    "Kai Havertz": 4, "Leroy Sane": 4, "Serge Gnabry": 3, "Nico Schlotterbeck": 4,
+    "Marc-Andre ter Stegen": 4, "Jonathan Tah": 3, "Robert Andrich": 3, "Pascal Gross": 3,
+    "Maximilian Mittelstädt": 2, "Deniz Undav": 2, "Chris Fuhrich": 2, "Angelo Stiller": 2
+  },
+  "Ghana": {
+    "Mohammed Kudus": 5, "Thomas Partey": 4, "Inaki Williams": 3, "Antoine Semenyo": 3,
+    "Tariq Lamptey": 3, "Mohammed Salisu": 3, "Alexander Djiku": 2, "Jordan Ayew": 3,
+    "Abdul Fatawu Issahaku": 2, "Ernest Nuamah": 2, "Kamaldeen Sulemana": 2
+  },
+  "Haiti": {
+    "Frantzdy Pierrot": 3, "Duckens Nazon": 3, "Carlens Arcus": 2, "Derrick Etienne Jr.": 2,
+    "Mondy Prunier": 2, "Jean-Kevin Duverne": 2, "Ricardo Ade": 2, "Bryan Alceus": 2
+  },
+  "Iran": {
+    "Mehdi Taremi": 5, "Sardar Azmoun": 4, "Alireza Jahanbakhsh": 3, "Saman Ghoddos": 2,
+    "Alireza Beiranvand": 3, "Hossein Kanani": 2, "Ramin Rezaeian": 2, "Saeid Ezatolahi": 2,
+    "Mohammad Mohebi": 2, "Mehdi Ghaedi": 2
+  },
+  "Iraq": {
+    "Aymen Hussein": 3, "Ali Al-Hamadi": 3, "Zidane Iqbal": 3, "Ali Jasim": 2,
+    "Hussein Ali": 2, "Amir Al-Ammari": 2, "Jalal Hassan": 2, "Mohanad Ali": 2
+  },
+  "Ivory Coast": {
+    "Sebastien Haller": 4, "Franck Kessie": 4, "Evan Ndicka": 3, "Simon Adingra": 3,
+    "Nicolas Pepe": 3, "Seko Fofana": 3, "Ousmane Diomande": 3, "Serge Aurier": 3,
+    "Ibrahim Sangare": 3, "Willy Boly": 2, "Hamed Traore": 2, "Karim Konate": 3,
+    "Amad Diallo": 3, "Yves Bissouma": 3
+  },
+  "Japan": {
+    "Kaoru Mitoma": 5, "Takefusa Kubo": 4, "Wataru Endo": 4, "Takumi Minamino": 3,
+    "Daizen Maeda": 3, "Hidemasa Morita": 3, "Ko Itakura": 3, "Takehiro Tomiyasu": 4,
+    "Ritsu Doan": 3, "Junya Ito": 3, "Kyogo Furuhashi": 3, "Reo Hatate": 2,
+    "Ao Tanaka": 3, "Shogo Taniguchi": 2, "Koki Machida": 2
+  },
+  "Jordan": {
+    "Musa Al-Taamari": 4, "Yazan Al-Naimat": 3, "Ali Olwan": 2, "Mahmoud Al-Mardi": 2,
+    "Ehsan Haddad": 2, "Mousa Tamari": 4, "Noor Al-Rawabdeh": 2, "Yazeed Abu Laila": 2
+  },
+  "Mexico": {
+    "Santiago Gimenez": 5, "Edson Alvarez": 4, "Raul Jimenez": 3, "Hirving Lozano": 3,
+    "Cesar Montes": 3, "Johan Vasquez": 3, "Orbelin Pineda": 3, "Luis Chavez": 3,
+    "Alexis Vega": 2, "Guillermo Ochoa": 3, "Julian Araujo": 2, "Cesar Huerta": 2,
+    "Henry Martin": 3, "Jesus Gallardo": 2, "Gerardo Arteaga": 2
+  },
+  "Morocco": {
+    "Achraf Hakimi": 5, "Brahim Diaz": 4, "Noussair Mazraoui": 3, "Sofyan Amrabat": 3,
+    "Yassine Bounou": 4, "Romain Saiss": 3, "Nayef Aguerd": 3, "Hakim Ziyech": 4,
+    "Youssef En-Nesyri": 3, "Azzedine Ounahi": 3, "Amine Harit": 2, "Ismael Saibari": 2,
+    "Eliesse Ben Seghir": 3, "Issa Diop": 2, "Abde Ezzalzouli": 3
+  },
+  "Netherlands": {
+    "Virgil van Dijk": 5, "Frenkie de Jong": 5, "Cody Gakpo": 4, "Xavi Simons": 4,
+    "Matthijs de Ligt": 4, "Denzel Dumfries": 3, "Nathan Ake": 3, "Micky van de Ven": 3,
+    "Ryan Gravenberch": 3, "Jeremie Frimpong": 3, "Jurrien Timber": 3, "Tijjani Reijnders": 3,
+    "Brian Brobbey": 2, "Donyell Malen": 3, "Teun Koopmeiners": 2, "Bart Verbruggen": 3,
+    "Memphis Depay": 3
+  },
+  "New Zealand": {
+    "Chris Wood": 4, "Sarpreet Singh": 3, "Matthew Garbett": 2, "Joe Bell": 2,
+    "Liberato Cacace": 3, "Winston Reid": 3, "Marko Stamenic": 2, "Alex Greive": 2
+  },
+  "Norway": {
+    "Erling Haaland": 5, "Martin Odegaard": 5, "Alexander Sorloth": 3, "Antonio Nusa": 3,
+    "Oscar Bobb": 2, "Andreas Hanche-Olsen": 2, "Kristoffer Ajer": 3, "Leo Ostigard": 2,
+    "Julian Ryerson": 3, "Sander Berge": 3, "Morten Thorsby": 2, "Patrick Berg": 2,
+    "Orjan Nyland": 2, "Jorgen Strand Larsen": 2
+  },
+  "Panama": {
+    "Edgar Barcenas": 3, "Adalberto Carrasquilla": 3, "Jose Fajardo": 2, "Anibal Godoy": 3,
+    "Michael Murillo": 3, "Yoel Barcenas": 2, "Cesar Blackman": 2, "Fidel Escobar": 2,
+    "Jose Cordoba": 2, "Ismael Diaz": 2
+  },
+  "Paraguay": {
+    "Miguel Almiron": 5, "Julio Enciso": 4, "Ramon Sosa": 3, "Diego Gomez": 3,
+    "Mathias Villasanti": 3, "Omar Alderete": 3, "Gustavo Gomez": 3, "Junior Alonso": 2,
+    "Matias Galarza": 2, "Alex Arce": 2, "Damian Bobadilla": 2, "Fabian Balbuena": 2
+  },
+  "Portugal": {
+    "Cristiano Ronaldo": 5, "Bruno Fernandes": 5, "Ruben Dias": 5, "Bernardo Silva": 4,
+    "Rafael Leao": 4, "Vitinha": 4, "Diogo Costa": 3, "Joao Cancelo": 3, "Nuno Mendes": 3,
+    "Goncalo Ramos": 3, "Joao Palhinha": 3, "Diogo Jota": 3, "Pedro Neto": 3,
+    "Matheus Nunes": 2, "Joao Neves": 3, "Conceicao": 2, "Antonio Silva": 2
+  },
+  "Qatar": {
+    "Akram Afif": 5, "Almoez Ali": 4, "Hassan Al-Haydos": 3, "Boualem Khoukhi": 2,
+    "Abdelkarim Hassan": 3, "Meshaal Barsham": 2, "Tarek Salman": 2, "Mohammed Waad": 2
+  },
+  "Saudi Arabia": {
+    "Salem Al-Dawsari": 4, "Firas Al-Buraikan": 3, "Abdulelah Al-Malki": 2, "Mohammed Al-Owais": 3,
+    "Saud Abdulhamid": 4, "Nasser Al-Dawsari": 2, "Hassan Tambakti": 2, "Abdullah Al-Hamdan": 2,
+    "Fahad Al-Muwallad": 2, "Mohamed Kanno": 3
+  },
+  "Scotland": {
+    "Andrew Robertson": 5, "Scott McTominay": 4, "John McGinn": 4, "Kieran Tierney": 3,
+    "Billy Gilmour": 3, "Ryan Christie": 2, "Che Adams": 2, "Angus Gunn": 2,
+    "Jack Hendry": 2, "Lewis Ferguson": 3, "Nathan Patterson": 2, "Ben Doak": 3
+  },
+  "Senegal": {
+    "Sadio Mane": 5, "Nicolas Jackson": 4, "Ismaila Sarr": 3, "Kalidou Koulibaly": 4,
+    "Pape Matar Sarr": 3, "Edouard Mendy": 3, "Abdou Diallo": 2, "Moussa Niakhate": 2,
+    "Iliman Ndiaye": 3, "Habib Diarra": 2, "Lamine Camara": 3, "Cheikhou Kouyate": 2
+  },
+  "South Africa": {
+    "Percy Tau": 4, "Themba Zwane": 3, "Ronwen Williams": 3, "Teboho Mokoena": 3,
+    "Evidence Makgopa": 2, "Khuliso Mudau": 2, "Aubrey Modiba": 2, "Sphephelo Sithole": 2,
+    "Lyle Foster": 3, "Oswin Appollis": 2, "Mothobi Mvala": 2
+  },
+  "South Korea": {
+    "Heung-Min Son": 5, "Min-Jae Kim": 5, "Kang-In Lee": 4, "Hee-Chan Hwang": 3,
+    "Jae-Sung Lee": 2, "Woo-Yeong Jeong": 2, "Seung-Ho Paik": 2, "Seol Young-Woo": 2,
+    "In-Beom Hwang": 3, "Gue-Sung Cho": 2, "Ju-Sung Kim": 2, "Hyun-Seok Hong": 2
+  },
+  "Spain": {
+    "Rodri": 5, "Lamine Yamal": 5, "Pedri": 4, "Nico Williams": 4,
+    "Dani Olmo": 4, "Alvaro Morata": 3, "Unai Simon": 3, "Fabian Ruiz": 3,
+    "Marc Cucurella": 3, "Dani Carvajal": 3, "Mikel Oyarzabal": 3, "Aymeric Laporte": 3,
+    "Pau Cubarsi": 3, "Gavi": 4, "Alejandro Balde": 3, "Fermin Lopez": 2,
+    "Mikel Merino": 3, "Robin Le Normand": 3, "Alex Baena": 2, "Martin Zubimendi": 3
+  },
+  "Sweden": {
+    "Alexander Isak": 5, "Dejan Kulusevski": 4, "Victor Lindelof": 3, "Viktor Gyokeres": 5,
+    "Emil Forsberg": 3, "Anthony Elanga": 3, "Ludwig Augustinsson": 2, "Isak Hien": 2,
+    "Jens Cajuste": 2, "Hugo Larsson": 2, "Mattias Svanberg": 2, "Robin Olsen": 2
+  },
+  "Switzerland": {
+    "Granit Xhaka": 5, "Manuel Akanji": 4, "Breel Embolo": 3, "Yann Sommer": 3,
+    "Denis Zakaria": 3, "Remo Freuler": 3, "Ruben Vargas": 3, "Fabian Schar": 3,
+    "Silvan Widmer": 2, "Xherdan Shaqiri": 3, "Zeki Amdouni": 2, "Noah Okafor": 2,
+    "Michel Aebischer": 2, "Dan Ndoye": 3, "Ricardo Rodriguez": 2, "Fabian Rieder": 2
+  },
+  "Tunisia": {
+    "Ellyes Skhiri": 4, "Hannibal Mejbri": 3, "Wahbi Khazri": 3, "Aissa Laidouni": 2,
+    "Montassar Talbi": 2, "Yassine Meriah": 2, "Seifeddine Jaziri": 2, "Anis Ben Slimane": 2,
+    "Yan Valery": 2, "Mohamed Ali Ben Romdhane": 2
+  },
+  "Turkey": {
+    "Hakan Calhanoglu": 5, "Arda Guler": 4, "Kenan Yildiz": 4, "Ferdi Kadioglu": 3,
+    "Orkun Kokcu": 3, "Baris Alper Yilmaz": 3, "Abdulkerim Bardakci": 2, "Mert Gunok": 2,
+    "Caglar Soyuncu": 2, "Kerem Akturkoglu": 3, "Salih Ozcan": 2, "Irfan Can Kahveci": 2,
+    "Ismail Yuksek": 2, "Altay Bayindir": 2
+  },
+  "USA": {
+    "Christian Pulisic": 5, "Giovanni Reyna": 4, "Weston McKennie": 4, "Folarin Balogun": 3,
+    "Timothy Weah": 3, "Yunus Musah": 3, "Antonee Robinson": 4, "Tyler Adams": 3,
+    "Sergino Dest": 4, "Chris Richards": 3, "Matt Turner": 3, "Ricardo Pepi": 2,
+    "Malik Tillman": 2, "Brenden Aaronson": 2, "Johnny Cardoso": 2, "Joe Scally": 2,
+    "Cameron Carter-Vickers": 2, "Luca de la Torre": 2, "Haji Wright": 2
+  },
+  "Uruguay": {
+    "Federico Valverde": 5, "Darwin Nunez": 4, "Rodrigo Bentancur": 3, "Ronald Araujo": 4,
+    "Manuel Ugarte": 3, "Jose Maria Gimenez": 3, "Giorgian De Arrascaeta": 3,
+    "Nicolas De la Cruz": 2, "Mathias Olivera": 2, "Facundo Pellistri": 2,
+    "Santiago Mele": 2, "Sergio Rochet": 3, "Maximiliano Araujo": 2, "Cristian Olivera": 2
+  },
+  "Uzbekistan": {
+    "Eldor Shomurodov": 4, "Jaloliddin Masharipov": 3, "Otabek Shukurov": 2,
+    "Khusniddin Alikulov": 2, "Rustam Ashurmatov": 2, "Utkir Yusupov": 2, "Abbosbek Fayzullaev": 3,
+    "Hojimat Erkinov": 2, "Jasurbek Yakhshiboev": 2
+  }
+}

@@ -7,6 +7,7 @@ function loadAnalysisData() {
     fetch('data/team-form.json').then(function(r) { return r.json(); }),
     fetch('data/stadiums.json').then(function(r) { return r.json(); }),
     fetch('data/injuries.json').then(function(r) { return r.json(); }).catch(function() { return {}; }),
+    fetch('data/player-importance.json').then(function(r) { return r.json(); }).catch(function() { return {}; }),
     fetch('data/referee-db.json').then(function(r) { return r.json(); }).catch(function() { return {}; }),
     fetch('data/referee-assignments.json').then(function(r) { return r.json(); }).catch(function() { return []; }),
     fetch('data/stadiums-climate.json').then(function(r) { return r.json(); }).catch(function() { return {}; }),
@@ -15,40 +16,87 @@ function loadAnalysisData() {
     analysisData.rankings = results[0];
     analysisData.forms = results[1];
     analysisData.stadiums = results[2];
+    analysisData.rawInjuries = results[3];
+    analysisData.playerImportance = results[4];
     analysisData.injuries = mergeInjuryAndSuspensionData(
       results[3],
-      (typeof worldCupSuspensions !== 'undefined' && worldCupSuspensions) ? worldCupSuspensions : {}
+      (typeof worldCupSuspensions !== 'undefined' && worldCupSuspensions) ? worldCupSuspensions : {},
+      results[4]
     );
-    analysisData.refereeDB = results[4];
-    analysisData.refereeAssign = results[5];
-    analysisData.stadiumClimate = results[6];
-    analysisData.rotation = results[7];
+    analysisData.refereeDB = results[5];
+    analysisData.refereeAssign = results[6];
+    analysisData.stadiumClimate = results[7];
+    analysisData.rotation = results[8];
     return analysisData;
   });
 }
 
-// 合并伤病数据（来自 injuries.json）和停赛数据（来自 ESPN 红黄牌计算）
-function mergeInjuryAndSuspensionData(injuryData, suspensionData) {
+// 合并伤病数据（injuries.json v2 球员级格式）和停赛数据（ESPN），计算加权 impact
+// importanceData 来自 player-importance.json，用于 ESPN 停赛球员的 importance 查表
+function mergeInjuryAndSuspensionData(injuryData, suspensionData, importanceData) {
   var merged = {};
   var allTeams = {};
   Object.keys(injuryData || {}).forEach(function(t) { allTeams[t] = true; });
   Object.keys(suspensionData || {}).forEach(function(t) { allTeams[t] = true; });
 
-  Object.keys(allTeams).forEach(function(team) {
-    var inj = injuryData[team] || { injuries: 0, suspensions: 0, note: '' };
-    var sus = suspensionData[team] || { suspensions: 0, suspendedPlayers: [], note: '' };
+  function stripAccents(s) { return (s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
 
-    // 伤病和停赛数量分别记录
-    var totalSuspensions = (inj.suspensions || 0) + (sus.suspensions || 0);
+  function lookupImportance(impMap, name) {
+    if (!impMap || !name) return 3;
+    if (impMap[name] != null) return impMap[name];
+    var stripped = stripAccents(name);
+    if (stripped !== name && impMap[stripped] != null) return impMap[stripped];
+    return 3;
+  }
+
+  Object.keys(allTeams).forEach(function(team) {
+    if (team === 'updateTime' || team === 'source' || team === 'note' || team === '_note' || team === '_format') return;
+    var inj = injuryData[team] || { injuries: 0, suspensions: 0, players: [], note: '' };
+    var sus = suspensionData[team] || { suspensions: 0, suspendedPlayers: [], note: '' };
+    var impMap = (importanceData || {})[team] || {};
+
+    var impact = 0;
+    var allAffected = [];
+
+    // 伤病（来自 injuries.json v2 球员级数据）
+    if (inj.players && inj.players.length > 0) {
+      inj.players.forEach(function(p) {
+        var imp = p.importance || 3;
+        var mult = (p.status === 'out') ? 1.0 : 0.5;
+        var pi = imp * mult;
+        impact += pi;
+        allAffected.push({ name: p.name, importance: imp, status: p.status, detail: p.detail || '', impact: pi, source: 'injury' });
+      });
+    } else if (inj.injuries > 0) {
+      // 旧格式兼容：按每伤 2.25 估算
+      impact += inj.injuries * 2.25;
+    }
+
+    // 停赛（来自 ESPN，确定缺阵，mult=1.0）
+    var suspendedPlayers = sus.suspendedPlayers || [];
+    suspendedPlayers.forEach(function(sp) {
+      var imp = lookupImportance(impMap, sp.name);
+      var pi = imp * 1.0;
+      impact += pi;
+      allAffected.push({ name: sp.name, importance: imp, status: 'out', detail: sp.reason || '', impact: pi, source: 'suspension' });
+    });
+
+    // 额外计入旧 injuries.json 中手动标的 suspensions 字段
+    var extraSus = (inj.suspensions || 0) + (sus.suspensions || 0) - suspendedPlayers.length;
+    if (extraSus > 0) impact += extraSus * 3;
+
+    impact = Math.min(20, Math.round(impact * 10) / 10);
+
     var notes = [];
     if (inj.note) notes.push(inj.note);
     if (sus.note) notes.push(sus.note);
 
     merged[team] = {
-      injuries: inj.injuries || 0,
-      suspensions: totalSuspensions,
-      // 保留详细的停赛球员列表供 insights 使用
-      suspendedPlayers: sus.suspendedPlayers || [],
+      injuries: inj.players ? inj.players.filter(function(p) { return p.status === 'out'; }).length : (inj.injuries || 0),
+      suspensions: suspendedPlayers.length,
+      impact: impact,
+      affectedPlayers: allAffected,
+      suspendedPlayers: suspendedPlayers,
       injuryNote: inj.note || '',
       suspensionNote: sus.note || '',
       note: notes.filter(Boolean).join('; ')
@@ -110,12 +158,12 @@ function computeMatchScore(team, opponent, ground, matchDate, kickoffTime) {
   // 7. Home/host advantage (15 pts)
   scores.host = computeHostScore(team, opponent, stadium);
 
-  // 8. Injuries & suspensions (5 pts)
-  var tInj = injuries[team] || { injuries: 0, suspensions: 0 };
-  var oInj = injuries[opponent] || { injuries: 0, suspensions: 0 };
-  var tPenalty = tInj.injuries * 1.5 + tInj.suspensions * 3;
-  var oPenalty = oInj.injuries * 1.5 + oInj.suspensions * 3;
-  scores.injury = Math.round(Math.max(0, Math.min(5, 2.5 + (oPenalty - tPenalty) * 0.8)));
+  // 8. Injuries & suspensions (12 pts) — v8 球员级加权
+  var tInj = injuries[team] || { impact: 0, injuries: 0, suspensions: 0 };
+  var oInj = injuries[opponent] || { impact: 0, injuries: 0, suspensions: 0 };
+  var tImpact = (tInj.impact != null) ? tInj.impact : (tInj.injuries * 2.25 + tInj.suspensions * 3);
+  var oImpact = (oInj.impact != null) ? oInj.impact : (oInj.injuries * 2.25 + oInj.suspensions * 3);
+  scores.injury = Math.round(Math.max(0, Math.min(12, 6 + (oImpact - tImpact) * 0.4)));
 
   // 10. 裁判影响 (2 pts) — v6新增，相对影响
   var refAssign = (analysisData.refereeAssign || []).find(function(a) {
@@ -160,7 +208,7 @@ function computeMatchScore(team, opponent, ground, matchDate, kickoffTime) {
               scores.injury + scores.referee + scores.travel + scores.environment;
   total = Math.round(total);
   total = Math.max(5, Math.min(95, total));
-  var maxTotal = 100;
+  var maxTotal = 107;  // 各维度理论最大和（injury 12pts → v8）
 
   return {
     teamTotal: total,
@@ -776,17 +824,37 @@ function generateInsights(result) {
     insights.push({ icon: '🏟️', text: hostName + '主场作战，东道主球迷支持度极高' });
   }
 
-  // Injury / suspension
+  // Injury / suspension — v8 球员级加权
   var injuries = analysisData.injuries || {};
   var tInj = injuries[result.team] || {};
   var oInj = injuries[result.opponent] || {};
-  var tIssues = (tInj.injuries || 0) + (tInj.suspensions || 0);
-  var oIssues = (oInj.injuries || 0) + (oInj.suspensions || 0);
-  if (tIssues >= 2) {
-    insights.push({ icon: '🏥', text: tName + '伤停' + tIssues + '人' + (tInj.note ? '（' + tInj.note + '）' : '') + '，战力受损需留意' });
+
+  function buildInjInsightText(injData, displayName) {
+    var players = injData.affectedPlayers;
+    if (players && players.length > 0) {
+      var keyPlayers = players.filter(function(p) { return p.importance >= 4; });
+      if (keyPlayers.length > 0) {
+        var keyNames = keyPlayers.slice(0, 2).map(function(p) {
+          return (typeof trPlayer === 'function' ? trPlayer(p.name) : p.name);
+        }).join('、');
+        var statusText = keyPlayers[0].status === 'out' ? '缺阵' : '出战成疑';
+        if ((injData.impact || 0) >= 8) {
+          return displayName + '核心球员' + keyNames + statusText + '，战力严重受损';
+        }
+        return displayName + keyNames + statusText + '，阵容受损需留意';
+      }
+      return displayName + '伤停' + players.length + '人，战力受损需留意';
+    }
+    var issues = (injData.injuries || 0) + (injData.suspensions || 0);
+    if (issues >= 2) return displayName + '伤停' + issues + '人' + (injData.note ? '（' + injData.note + '）' : '') + '，战力受损需留意';
+    return null;
   }
-  if (oIssues >= 1 && tIssues < 2) {
-    insights.push({ icon: '🩹', text: oName + '伤停' + oIssues + '人，' + tName + '有机可乘' });
+
+  var tInsight = buildInjInsightText(tInj, tName);
+  var oInsight = buildInjInsightText(oInj, oName);
+  if (tInsight) insights.push({ icon: '🏥', text: tInsight });
+  if (oInsight && !tInsight) {
+    insights.push({ icon: '🩹', text: oInsight + '，' + tName + '有机可乘' });
   }
 
   // Only show top 5 insights
@@ -937,7 +1005,11 @@ function renderAnalysis() {
 
   // 用最新的 ESPN 实时停赛数据更新分析数据
   if (typeof worldCupSuspensions !== 'undefined' && worldCupSuspensions && Object.keys(worldCupSuspensions).length > 0) {
-    analysisData.injuries = mergeInjuryAndSuspensionData(analysisData.injuries || {}, worldCupSuspensions);
+    analysisData.injuries = mergeInjuryAndSuspensionData(
+      analysisData.rawInjuries || analysisData.injuries || {},
+      worldCupSuspensions,
+      analysisData.playerImportance || {}
+    );
   }
 
   var matches = [];
@@ -1087,12 +1159,30 @@ function renderAnalysisCard(result, insights, m, idx, ctxTags) {
   if (typeof analysisData !== 'undefined' && analysisData.injuries) {
     var injT = analysisData.injuries[result.team] || {};
     var injO = analysisData.injuries[result.opponent] || {};
-    var tIssues = (injT.injuries || 0) + (injT.suspensions || 0);
-    var oIssues = (injO.injuries || 0) + (injO.suspensions || 0);
-    tInjDisplay = tIssues > 0 ? '伤停' + tIssues + '人' : '全员健康';
-    oInjDisplay = oIssues > 0 ? '伤停' + oIssues + '人' : '全员健康';
+
+    function formatInjDisplay(injData) {
+      var players = injData.affectedPlayers;
+      if (players && players.length > 0) {
+        var parts = players.slice(0, 3).map(function(p) {
+          var name = typeof trPlayer === 'function' ? trPlayer(p.name) : p.name;
+          var star = p.importance >= 5 ? '★' : (p.importance >= 4 ? '☆' : '');
+          var label = p.status === 'out' ? '缺阵' : '伤疑';
+          return name + star + label;
+        });
+        var text = parts.join(' ');
+        if (players.length > 3) text += ' +' + (players.length - 3) + '人';
+        // 显示 impact 分数
+        if (injData.impact > 0) text += ' [' + injData.impact.toFixed(1) + ']';
+        return text;
+      }
+      var issues = (injData.injuries || 0) + (injData.suspensions || 0);
+      return issues > 0 ? '伤停' + issues + '人' : '全员健康';
+    }
+
+    tInjDisplay = formatInjDisplay(injT);
+    oInjDisplay = formatInjDisplay(injO);
   }
-  html += renderDimRow(t('analysisInjury'), tInjDisplay, oInjDisplay, result.scores.injury, 5, result.scores.injury > 2.5);
+  html += renderDimRow(t('analysisInjury'), tInjDisplay, oInjDisplay, result.scores.injury, 12, result.scores.injury > 6);
   // v7: 裁判、旅途、环境维度
   if (result.scores.referee !== undefined) {
     var refAssign = (analysisData.refereeAssign || []).find(function(a) {

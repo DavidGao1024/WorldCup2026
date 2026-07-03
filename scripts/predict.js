@@ -16,7 +16,11 @@ worldCupData = JSON.parse(fs.readFileSync('data/worldcup.json','utf8'));
 analysisData.rankings = JSON.parse(fs.readFileSync('data/fifa-rankings.json','utf8'));
 analysisData.forms = JSON.parse(fs.readFileSync('data/team-form.json','utf8'));
 analysisData.stadiums = JSON.parse(fs.readFileSync('data/stadiums.json','utf8'));
-analysisData.injuries = JSON.parse(fs.readFileSync('data/injuries.json','utf8'));
+var rawInjuries = JSON.parse(fs.readFileSync('data/injuries.json','utf8'));
+var playerImportance = JSON.parse(fs.readFileSync('data/player-importance.json','utf8'));
+analysisData.playerImportance = playerImportance;
+analysisData.rawInjuries = rawInjuries;
+analysisData.injuries = mergeInjuryAndSuspensionData(rawInjuries, {}, playerImportance);
 
 var ESPN_REVERSE = {};
 for (var k in ESPN_TEAM_MAP) { ESPN_REVERSE[ESPN_TEAM_MAP[k]] = k; }
