@@ -1159,9 +1159,13 @@ body {
   border-top: 1px dashed rgba(255,255,255,0.08);
 }
 .dims-detail-item {
-  font-size: 0.7rem; color: #94a3b8; padding: 1px 0;
+  font-size: 0.72rem; color: #94a3b8; padding: 1px 0;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
+.dims-detail-item .dd-team { font-weight: 700; color: #e2e8f0; }
+.dims-detail-item .dd-player { color: #86efac; }
+.dims-detail-item .dd-star { color: #ffd700; }
+.dims-detail-item .dd-impact { color: #f87171; font-weight: 600; }
 
 /* Insights */
 .analysis-insights { padding: 12px 20px 16px; border-top: 1px solid rgba(255,215,0,0.1); }

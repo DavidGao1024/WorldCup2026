@@ -1165,16 +1165,16 @@ function renderAnalysisCard(result, insights, m, idx, ctxTags) {
       var players = injData.affectedPlayers;
       if (!players || !players.length) {
         var issues = (injData.injuries || 0) + (injData.suspensions || 0);
-        return issues > 0 ? teamName + ': 伤停' + issues + '人' : '';
+        return issues > 0 ? '<span class="dd-team">' + escHtml(teamName) + '</span>: 伤停' + issues + '人' : '';
       }
       var parts = players.map(function(p) {
         var name = typeof trPlayer === 'function' ? trPlayer(p.name) : p.name;
         if (name.length > 5) name = name.replace(/^.*[·⋅]/, '');
-        var star = p.importance >= 5 ? '★' : (p.importance >= 4 ? '☆' : '');
+        var star = p.importance >= 5 ? '<span class="dd-star">★</span>' : (p.importance >= 4 ? '<span class="dd-star">☆</span>' : '');
         var label = p.status === 'out' ? '缺' : '疑';
-        return name + star + label;
+        return '<span class="dd-player">' + escHtml(name) + '</span>' + star + label;
       });
-      return teamName + ': ' + parts.join(' ') + ' [impact ' + injData.impact.toFixed(0) + ']';
+      return '<span class="dd-team">' + escHtml(teamName) + '</span>: ' + parts.join(' ') + ' <span class="dd-impact">战力-' + injData.impact.toFixed(0) + '</span>';
     }
 
     var tInjScore = (injT.impact != null) ? injT.impact.toFixed(0) : ((injT.injuries||0)+(injT.suspensions||0));
@@ -1205,7 +1205,7 @@ function renderAnalysisCard(result, insights, m, idx, ctxTags) {
     var rt2 = rotData[result.opponent] || {};
     var tRest = rt1.restDays != null ? rt1.restDays : '?';
     var oRest = rt2.restDays != null ? rt2.restDays : '?';
-    travelDetail = tName + '休' + tRest + '天 vs ' + oName + '休' + oRest + '天';
+    travelDetail = '<span class="dd-team">' + escHtml(tName) + '</span>休' + tRest + '天 vs <span class="dd-team">' + escHtml(oName) + '</span>休' + oRest + '天';
     var travelScore = result.scores.travel.toFixed(1);
     html += renderDimRow('✈️ 旅途', travelScore + '/1', '', result.scores.travel, 1, result.scores.travel > 0.5);
   }
