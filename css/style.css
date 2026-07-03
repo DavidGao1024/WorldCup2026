@@ -1142,14 +1142,26 @@ body {
   padding: 5px 0; font-size: 0.78rem;
   border-bottom: 1px solid rgba(255,255,255,0.05);
 }
-.dim-label { width: 70px; color: #aaa; flex-shrink: 0; }
-.dim-val { width: 55px; text-align: center; font-weight: 600; color: #ccc; flex-shrink: 0; }
+.dim-label { width: 65px; color: #aaa; flex-shrink: 0; font-size: 0.75rem; }
+.dim-val { min-width: 45px; max-width: 120px; text-align: center; font-weight: 600; color: #ccc; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .dim-val.dim-edge { color: #ffd700; }
+.dim-val-left { text-align: right; }
+.dim-val-right { text-align: left; }
 .dim-bar-wrap { flex: 1; height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px; overflow: hidden; }
 .dim-bar { height: 100%; border-radius: 3px; }
 .dim-bar.dim-green { background: linear-gradient(90deg, #22c55e, #4ade80); }
 .dim-bar.dim-yellow { background: linear-gradient(90deg, #d4a017, #ffd700); }
 .dim-bar.dim-red { background: linear-gradient(90deg, #dc2626, #f97316); }
+
+/* Dims detail (伤病/旅途/环境 详情) */
+.analysis-dims-detail {
+  padding: 8px 12px; margin-top: 2px;
+  border-top: 1px dashed rgba(255,255,255,0.08);
+}
+.dims-detail-item {
+  font-size: 0.7rem; color: #94a3b8; padding: 1px 0;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
 
 /* Insights */
 .analysis-insights { padding: 12px 20px 16px; border-top: 1px solid rgba(255,215,0,0.1); }

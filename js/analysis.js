@@ -1155,63 +1155,94 @@ function renderAnalysisCard(result, insights, m, idx, ctxTags) {
   html += renderDimRow(t('analysisAttack'), (typeof computeAvgGoals==='function'?computeAvgGoals(result.teamForm).toFixed(1):'-') + '球/场', (typeof computeAvgGoals==='function'?computeAvgGoals(result.oppForm).toFixed(1):'-') + '球/场', result.scores.attack, 10, result.scores.attack > 5);
   html += renderDimRow(t('analysisDefense'), (typeof computeAvgConc==='function'?computeAvgConc(result.teamForm).toFixed(1):'-') + '失/场', (typeof computeAvgConc==='function'?computeAvgConc(result.oppForm).toFixed(1):'-') + '失/场', result.scores.defense, 10, result.scores.defense > 5);
   html += renderDimRow(t('analysisHost'), '-', '-', result.scores.host, 15, result.scores.host > 7);
-  var tInjDisplay = '-', oInjDisplay = '-';
+  // 伤病停赛 — 对比条只显分数，详情放下方
+  var tInjDetail = '', oInjDetail = '';
   if (typeof analysisData !== 'undefined' && analysisData.injuries) {
     var injT = analysisData.injuries[result.team] || {};
     var injO = analysisData.injuries[result.opponent] || {};
 
-    function formatInjDisplay(injData) {
+    function buildInjDetail(injData, teamName) {
       var players = injData.affectedPlayers;
-      if (players && players.length > 0) {
-        var parts = players.slice(0, 3).map(function(p) {
-          var name = typeof trPlayer === 'function' ? trPlayer(p.name) : p.name;
-          var star = p.importance >= 5 ? '★' : (p.importance >= 4 ? '☆' : '');
-          var label = p.status === 'out' ? '缺阵' : '伤疑';
-          return name + star + label;
-        });
-        var text = parts.join(' ');
-        if (players.length > 3) text += ' +' + (players.length - 3) + '人';
-        // 显示 impact 分数
-        if (injData.impact > 0) text += ' [' + injData.impact.toFixed(1) + ']';
-        return text;
+      if (!players || !players.length) {
+        var issues = (injData.injuries || 0) + (injData.suspensions || 0);
+        return issues > 0 ? teamName + ': 伤停' + issues + '人' : '';
       }
-      var issues = (injData.injuries || 0) + (injData.suspensions || 0);
-      return issues > 0 ? '伤停' + issues + '人' : '全员健康';
+      var parts = players.map(function(p) {
+        var name = typeof trPlayer === 'function' ? trPlayer(p.name) : p.name;
+        if (name.length > 5) name = name.replace(/^.*[·⋅]/, '');
+        var star = p.importance >= 5 ? '★' : (p.importance >= 4 ? '☆' : '');
+        var label = p.status === 'out' ? '缺' : '疑';
+        return name + star + label;
+      });
+      return teamName + ': ' + parts.join(' ') + ' [impact ' + injData.impact.toFixed(0) + ']';
     }
 
-    tInjDisplay = formatInjDisplay(injT);
-    oInjDisplay = formatInjDisplay(injO);
+    var tInjScore = (injT.impact != null) ? injT.impact.toFixed(0) : ((injT.injuries||0)+(injT.suspensions||0));
+    var oInjScore = (injO.impact != null) ? injO.impact.toFixed(0) : ((injO.injuries||0)+(injO.suspensions||0));
+    var tInjDisplay2 = tInjScore > 0 ? '' + tInjScore : '0';
+    var oInjDisplay2 = oInjScore > 0 ? '' + oInjScore : '0';
+    tInjDetail = buildInjDetail(injT, tName);
+    oInjDetail = buildInjDetail(injO, oName);
+  } else {
+    var tInjDisplay2 = '-', oInjDisplay2 = '-';
   }
-  html += renderDimRow(t('analysisInjury'), tInjDisplay, oInjDisplay, result.scores.injury, 12, result.scores.injury > 6);
-  // v7: 裁判、旅途、环境维度
+  html += renderDimRow(t('analysisInjury'), tInjDisplay2, oInjDisplay2, result.scores.injury, 12, result.scores.injury > 6);
+
+  // 裁判
   if (result.scores.referee !== undefined) {
     var refAssign = (analysisData.refereeAssign || []).find(function(a) {
       return (a.t1 === result.team && a.t2 === result.opponent) || (a.t1 === result.opponent && a.t2 === result.team);
     });
     var refName = refAssign ? refAssign.ref : '未公布';
-    var refDetail = refName !== '未公布' ? refName : '待定';
-    html += renderDimRow('👨‍⚖️ 裁判', refDetail, '', result.scores.referee, 2, result.scores.referee > 1);
+    html += renderDimRow('👨‍⚖️ 裁判', refName !== '未公布' ? refName : '待定', '', result.scores.referee, 2, result.scores.referee > 1);
   }
+
+  // 旅途 — 只显分数
+  var travelDetail = '';
   if (result.scores.travel !== undefined) {
     var rotData = analysisData.rotation || {};
     var rt1 = rotData[result.team] || {};
     var rt2 = rotData[result.opponent] || {};
-    var travelLabel = '休' + (rt1.restDays||'?') + '天 vs ' + (rt2.restDays||'?') + '天';
-    html += renderDimRow('✈️ 旅途', travelLabel, '', result.scores.travel, 1, result.scores.travel > 0.5);
+    var tRest = rt1.restDays != null ? rt1.restDays : '?';
+    var oRest = rt2.restDays != null ? rt2.restDays : '?';
+    travelDetail = tName + '休' + tRest + '天 vs ' + oName + '休' + oRest + '天';
+    var travelScore = result.scores.travel.toFixed(1);
+    html += renderDimRow('✈️ 旅途', travelScore + '/1', '', result.scores.travel, 1, result.scores.travel > 0.5);
   }
+
+  // 环境适应 — 只显分数
+  var envDetail = '';
   if (result.scores.environment !== undefined) {
     var stadiumClimate = (analysisData.stadiumClimate || {})[m.ground] || {};
-    var envDetail = '';
-    if (stadiumClimate.indoor) envDetail += '室内 · ';
+    var envParts = [];
+    if (stadiumClimate.indoor) envParts.push('室内');
     var heatLabels = { 'cool': '凉爽', 'moderate': '适中', 'warm': '偏暖', 'hot': '炎热', 'extreme': '极端' };
-    envDetail += (heatLabels[stadiumClimate.heatCategory] || '适中');
+    envParts.push(heatLabels[stadiumClimate.heatCategory] || '适中');
     if (m.time) {
       var localHr = parseKickoffLocalHour(m.time);
-      if (localHr >= 0) envDetail += ' · ' + localHr + ':00开球';
+      if (localHr >= 0) envParts.push(localHr + ':00开球');
     }
-    html += renderDimRow('🌍 环境适应', envDetail, '', result.scores.environment, 5, result.scores.environment > 2.5);
+    envDetail = m.ground + ': ' + envParts.join(' · ');
+    var envScore = result.scores.environment.toFixed(1);
+    html += renderDimRow('🌍 环境适应', envScore + '/5', '', result.scores.environment, 5, result.scores.environment > 2.5);
   }
   html += '</div>';
+
+  // 伤停/旅途/环境 详细信息（对比条下方）
+  var detailLines = [];
+  if (tInjDetail || oInjDetail) {
+    if (tInjDetail) detailLines.push(tInjDetail);
+    if (oInjDetail) detailLines.push(oInjDetail);
+  }
+  if (travelDetail) detailLines.push(travelDetail);
+  if (envDetail) detailLines.push(envDetail);
+  if (detailLines.length > 0) {
+    html += '<div class="analysis-dims-detail">';
+    for (var di = 0; di < detailLines.length; di++) {
+      html += '<div class="dims-detail-item">' + detailLines[di] + '</div>';
+    }
+    html += '</div>';
+  }
 
   // Insights
   html += '<div class="analysis-insights">';
@@ -1278,11 +1309,13 @@ function renderDimRow(label, tVal, oVal, score, maxScore, tEdge) {
   var barColor = pct >= 70 ? 'dim-green' : (pct >= 45 ? 'dim-yellow' : 'dim-red');
   return '<div class="analysis-dim-row">' +
     '<span class="dim-label">' + label + '</span>' +
-    '<span class="dim-val dim-val-left ' + (tEdge ? 'dim-edge' : '') + '">' + tVal + '</span>' +
+    '<span class="dim-val dim-val-left ' + (tEdge ? 'dim-edge' : '') + '" title="' + escHtml(tVal) + '">' + tVal + '</span>' +
     '<div class="dim-bar-wrap"><div class="dim-bar ' + barColor + '" style="width:' + pct + '%"></div></div>' +
-    '<span class="dim-val dim-val-right ' + (!tEdge ? 'dim-edge' : '') + '">' + oVal + '</span>' +
+    '<span class="dim-val dim-val-right ' + (!tEdge ? 'dim-edge' : '') + '" title="' + escHtml(oVal) + '">' + oVal + '</span>' +
   '</div>';
 }
+
+function escHtml(s) { return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
 
 function oddsVerdict(result, had) {
   var tOdds = had.h, drawOdds = had.d, oppOdds = had.a;
