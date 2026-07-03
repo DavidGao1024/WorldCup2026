@@ -128,7 +128,8 @@
       "Bash(curl -s \"https://site.web.api.espn.com/apis/site/v2/sports/soccer/fifa.world/summary?event=760493\")",
       "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260628-20260705&limit=104\")",
       "Bash(curl -s \"https://site.web.api.espn.com/apis/site/v2/sports/soccer/fifa.world/summary?event=760489\")",
-      "Bash(curl -s \"https://site.web.api.espn.com/apis/site/v2/sports/soccer/fifa.world/summary?event=760488\")"
+      "Bash(curl -s \"https://site.web.api.espn.com/apis/site/v2/sports/soccer/fifa.world/summary?event=760488\")",
+      "Bash(amp)"
     ]
   }
 }

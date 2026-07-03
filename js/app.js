@@ -50,6 +50,14 @@ function switchTab(tab) {
   document.getElementById('tab-' + tab).classList.add('active');
   document.getElementById(tab + '-content').classList.add('active');
 
+  // 淘汰赛对阵图较宽，放宽内容区限制
+  var mainContent = document.querySelector('.content');
+  if (tab === 'knockout') {
+    mainContent.style.maxWidth = '1700px';
+  } else {
+    mainContent.style.maxWidth = '';
+  }
+
   if (tab === 'schedule') {
     var g = document.getElementById('filter-group');
     var tf = document.getElementById('filter-team');

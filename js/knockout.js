@@ -1,8 +1,18 @@
 // js/knockout.js
+// 淘汰赛对阵图。
+//
+// 对阵树构建策略：通过队伍名中的引用（W{num}/L{num}）和已完成比赛胜者反查
+// 两种方式共同确定父子关系。这是因为数据源（openfootball/worldcup.json）在
+// 比赛结束后会把占位引用替换为实际队名，单靠 parseRef 无法追踪已结束比赛的
+// 晋级路径。findParentMatch 先尝试引用解析，失败则通过胜者队名反查比赛编号。
+
 var KO_ROUNDS = [
   'Round of 32', 'Round of 16', 'Quarter-final',
   'Semi-final', 'Match for third place', 'Final'
 ];
+
+// 每轮应出现的比赛数（用于结构校验）
+var KO_EXPECTED = { 'Round of 32': 16, 'Round of 16': 8, 'Quarter-final': 4, 'Semi-final': 2, 'Match for third place': 1, 'Final': 1 };
 
 function renderKnockout() {
   var container = document.getElementById('knockout-content');
@@ -12,14 +22,22 @@ function renderKnockout() {
   var byNum = {};
   matches.forEach(function(m) { byNum[m.num] = m; });
 
+  var winnerOf = buildWinnerOf(matches);
+
   var parents = {};
   matches.forEach(function(m) {
-    var p1 = parseRef(m.team1), p2 = parseRef(m.team2);
+    var p1 = findParentMatch(m.team1, winnerOf), p2 = findParentMatch(m.team2, winnerOf);
     if (p1 || p2) parents[m.num] = [p1, p2].filter(Boolean);
   });
 
+  // 决赛的对阵双方确定左右半区
   var finalMatch = matches.find(function(m) { return m.round === 'Final'; });
-  var sfNums = parents[finalMatch.num] || [];
+  var sfNums = finalMatch ? (parents[finalMatch.num] || []) : [];
+  // 回退：如果决赛引用丢失（数据已解析为实际队名），从 Semi-final 轮次直接取
+  if (sfNums.length !== 2) {
+    var sfMatches = matches.filter(function(m) { return m.round === 'Semi-final'; });
+    sfNums = sfMatches.map(function(m) { return m.num; });
+  }
 
   function collectHalf(sfNum) {
     var result = {};
@@ -46,6 +64,21 @@ function renderKnockout() {
 
   var leftTree = collectHalf(sfNums[0]);
   var rightTree = collectHalf(sfNums[1]);
+
+  // 结构校验：确保每轮比赛数符合预期
+  var allSlots = {};
+  KO_ROUNDS.forEach(function(r) { allSlots[r] = (leftTree[r] || []).concat(rightTree[r] || []); });
+  if (finalMatch) allSlots['Final'] = [finalMatch];
+  var tpMatch = matches.find(function(m) { return m.round === 'Match for third place'; });
+  if (tpMatch) allSlots['Match for third place'] = [tpMatch];
+
+  for (var r in KO_EXPECTED) {
+    var actual = (allSlots[r] || []).length;
+    if (actual !== KO_EXPECTED[r]) {
+      console.warn('[对阵图] ' + r + ' 应显示 ' + KO_EXPECTED[r] + ' 场，实际 ' + actual + ' 场。' +
+        '可能是数据中引用链断裂，请检查 worldcup.json 中该轮比赛的 team1/team2 是否正确。');
+    }
+  }
 
   var totalH = 82 * 8;
   var html = '<div class="bracket-v">';
@@ -118,6 +151,29 @@ function parseRef(name) {
   return 0;
 }
 
+function buildWinnerOf(matches) {
+  var map = {};
+  matches.forEach(function(m) {
+    if (m.score1 == null) return;
+    var w = null;
+    if (m.hadPen) {
+      if (m.score1p > m.score2p) w = m.team1;
+      else if (m.score2p > m.score1p) w = m.team2;
+      else if (m.winner) w = m.winner;
+    } else if (m.score1 !== m.score2) {
+      w = m.score1 > m.score2 ? m.team1 : m.team2;
+    }
+    if (w) map[w] = m.num;
+  });
+  return map;
+}
+
+function findParentMatch(name, winnerOf) {
+  var ref = parseRef(name);
+  if (ref) return ref;
+  return (winnerOf && winnerOf[name]) || 0;
+}
+
 function renderBracketMatch(m, byNum) {
   var hasScore = m.score1 != null && m.score2 != null;
   var w1 = false, w2 = false;
@@ -177,12 +233,13 @@ function drawLines() {
   container.appendChild(svg);
 
   var drawn = {};
-  var matches = getKnockoutMatches();
-  matches.forEach(function(m) {
+  var koMatches = getKnockoutMatches();
+  var lineWinnerOf = buildWinnerOf(koMatches);
+  koMatches.forEach(function(m) {
     // 三四名、决赛不画常规线（决赛有专门金色连线）
     if (m.round === 'Match for third place' || m.round === 'Final') return;
     [m.team1, m.team2].forEach(function(t) {
-      var pnum = parseRef(t);
+      var pnum = findParentMatch(t, lineWinnerOf);
       if (!pnum) return;
       var key = Math.min(pnum, m.num) + '-' + Math.max(pnum, m.num);
       if (drawn[key]) return;

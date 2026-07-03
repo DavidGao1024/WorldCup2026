@@ -366,7 +366,7 @@ body {
 #knockout-content { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .bracket-v {
   display: flex; align-items: stretch; justify-content: flex-start;
-  gap: 0; min-width: 1250px; position: relative;
+  gap: 0; min-width: 1640px; position: relative;
   padding: 20px 0 30px;
 }
 .br-half { display: flex; gap: 18px; }
@@ -421,7 +421,7 @@ body {
 .br-third-slot .br-score { font-size: 0.9rem; }
 
 @media (max-width: 768px) {
-  .bracket-v { min-width: 950px; }
+  .bracket-v { min-width: 1200px; }
   .br-half { gap: 10px; }
   .br-center { padding: 0 14px; }
   .br-vcol { width: 120px; }
