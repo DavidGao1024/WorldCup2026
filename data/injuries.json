@@ -1,15 +1,35 @@
 {
-  "updateTime": "2026-07-03T00:00:00.000Z",
+  "updateTime": "2026-07-04T06:31:10.359Z",
   "source": "manual",
-  "_format": "v2 — players[] 含 name/importance/status/detail。importance: 1=替补 5=核心。status: out=缺阵 doubtful=伤疑。injuries 字段自动计算保留向后兼容。",
-  "Algeria": { "injuries": 0, "suspensions": 0, "players": [], "note": "" },
+  "_format": "v2 — players[] 含 name/importance/status/detail。importance: 1=替补 5=核心。status: out=缺阵 doubtful=伤疑。",
+  "Algeria": {
+    "injuries": 0,
+    "suspensions": 0,
+    "players": [],
+    "note": ""
+  },
   "Argentina": {
-    "injuries": 3,
+    "injuries": 1,
     "suspensions": 0,
     "players": [
-      { "name": "Lionel Messi", "importance": 5, "status": "doubtful", "detail": "腘绳肌" },
-      { "name": "Cristian Romero", "importance": 4, "status": "out", "detail": "膝盖" },
-      { "name": "Nahuel Molina", "importance": 3, "status": "doubtful", "detail": "大腿" }
+      {
+        "name": "Lionel Messi",
+        "importance": 5,
+        "status": "doubtful",
+        "detail": "腘绳肌"
+      },
+      {
+        "name": "Cristian Romero",
+        "importance": 4,
+        "status": "out",
+        "detail": "膝盖"
+      },
+      {
+        "name": "Nahuel Molina",
+        "importance": 3,
+        "status": "doubtful",
+        "detail": "大腿"
+      }
     ],
     "note": "Messi(腘绳肌)状态不明; Romero(膝盖)+Molina(大腿)有伤"
   },
@@ -17,60 +37,155 @@
     "injuries": 1,
     "suspensions": 0,
     "players": [
-      { "name": "Lewis Miller", "importance": 2, "status": "out", "detail": "跟腱" }
+      {
+        "name": "Lewis Miller",
+        "importance": 2,
+        "status": "out",
+        "detail": "跟腱"
+      }
     ],
     "note": "Miller(跟腱)赛前伤缺"
   },
-  "Austria": { "injuries": 0, "suspensions": 0, "players": [], "note": "" },
+  "Austria": {
+    "injuries": 0,
+    "suspensions": 0,
+    "players": [],
+    "note": ""
+  },
   "Belgium": {
     "injuries": 1,
     "suspensions": 0,
     "players": [
-      { "name": "Jeremy Doku", "importance": 4, "status": "out", "detail": "呼吸道感染" }
+      {
+        "name": "Jeremy Doku",
+        "importance": 4,
+        "status": "out",
+        "detail": "呼吸道感染"
+      }
     ],
     "note": "Doku(呼吸道感染)缺阵伊朗"
   },
-  "Bosnia & Herzegovina": { "injuries": 0, "suspensions": 0, "players": [], "note": "" },
+  "Bosnia & Herzegovina": {
+    "injuries": 0,
+    "suspensions": 0,
+    "players": [],
+    "note": ""
+  },
   "Brazil": {
-    "injuries": 4,
+    "injuries": 3,
     "suspensions": 0,
     "players": [
-      { "name": "Rodrygo", "importance": 5, "status": "out", "detail": "ACL" },
-      { "name": "Eder Militao", "importance": 4, "status": "out", "detail": "赛前报销" },
-      { "name": "Estevao Willian", "importance": 3, "status": "out", "detail": "赛前报销" },
-      { "name": "Raphinha", "importance": 4, "status": "doubtful", "detail": "大腿" },
-      { "name": "Neymar", "importance": 5, "status": "doubtful", "detail": "恢复中" }
+      {
+        "name": "Rodrygo",
+        "importance": 5,
+        "status": "out",
+        "detail": "ACL"
+      },
+      {
+        "name": "Eder Militao",
+        "importance": 4,
+        "status": "out",
+        "detail": "赛前报销"
+      },
+      {
+        "name": "Estevao Willian",
+        "importance": 3,
+        "status": "out",
+        "detail": "赛前报销"
+      },
+      {
+        "name": "Raphinha",
+        "importance": 4,
+        "status": "doubtful",
+        "detail": "大腿"
+      },
+      {
+        "name": "Neymar",
+        "importance": 5,
+        "status": "doubtful",
+        "detail": "恢复中"
+      }
     ],
     "note": "Rodrygo(ACL)+Militao+Estevao赛前报销; Raphinha(大腿)缺席末轮; Neymar恢复中"
   },
   "Canada": {
-    "injuries": 2,
+    "injuries": 1,
     "suspensions": 0,
     "players": [
-      { "name": "Marcel Flores", "importance": 2, "status": "out", "detail": "ACL" },
-      { "name": "Alphonso Davies", "importance": 5, "status": "doubtful", "detail": "ACL+腘绳肌恢复中" }
+      {
+        "name": "Marcel Flores",
+        "importance": 2,
+        "status": "out",
+        "detail": "ACL"
+      },
+      {
+        "name": "Alphonso Davies",
+        "importance": 5,
+        "status": "doubtful",
+        "detail": "ACL+腘绳肌恢复中"
+      }
     ],
     "note": "Flores(ACL)赛前伤缺; Davies(ACL+腘绳肌)恢复中; 已淘汰"
   },
-  "Cape Verde": { "injuries": 0, "suspensions": 0, "players": [], "note": "" },
-  "Colombia": { "injuries": 0, "suspensions": 0, "players": [], "note": "" },
+  "Cape Verde": {
+    "injuries": 0,
+    "suspensions": 0,
+    "players": [],
+    "note": ""
+  },
+  "Colombia": {
+    "injuries": 0,
+    "suspensions": 0,
+    "players": [],
+    "note": ""
+  },
   "Croatia": {
-    "injuries": 1,
+    "injuries": 0,
     "suspensions": 0,
     "players": [
-      { "name": "Luka Modric", "importance": 5, "status": "doubtful", "detail": "颧骨骨折戴面具" }
+      {
+        "name": "Luka Modric",
+        "importance": 5,
+        "status": "doubtful",
+        "detail": "颧骨骨折戴面具"
+      }
     ],
     "note": "Modric(颧骨骨折)戴面具出战"
   },
-  "Curaçao": { "injuries": 0, "suspensions": 0, "players": [], "note": "" },
-  "Czech Republic": { "injuries": 0, "suspensions": 0, "players": [], "note": "" },
-  "DR Congo": { "injuries": 0, "suspensions": 0, "players": [], "note": "" },
-  "Ecuador": { "injuries": 0, "suspensions": 0, "players": [], "note": "" },
+  "Curaçao": {
+    "injuries": 0,
+    "suspensions": 0,
+    "players": [],
+    "note": ""
+  },
+  "Czech Republic": {
+    "injuries": 0,
+    "suspensions": 0,
+    "players": [],
+    "note": ""
+  },
+  "DR Congo": {
+    "injuries": 0,
+    "suspensions": 0,
+    "players": [],
+    "note": ""
+  },
+  "Ecuador": {
+    "injuries": 0,
+    "suspensions": 0,
+    "players": [],
+    "note": ""
+  },
   "Egypt": {
-    "injuries": 1,
+    "injuries": 0,
     "suspensions": 0,
     "players": [
-      { "name": "Mohamed Salah", "importance": 5, "status": "doubtful", "detail": "肩部不适" }
+      {
+        "name": "Mohamed Salah",
+        "importance": 5,
+        "status": "doubtful",
+        "detail": "肩部不适"
+      }
     ],
     "note": "Salah(肩部不适)出战成疑"
   },
@@ -78,7 +193,12 @@
     "injuries": 1,
     "suspensions": 0,
     "players": [
-      { "name": "Tino Livramento", "importance": 2, "status": "out", "detail": "小腿" }
+      {
+        "name": "Tino Livramento",
+        "importance": 2,
+        "status": "out",
+        "detail": "小腿"
+      }
     ],
     "note": "利夫拉门托(小腿)退出; 里斯·詹姆斯恢复中"
   },
@@ -86,69 +206,209 @@
     "injuries": 1,
     "suspensions": 0,
     "players": [
-      { "name": "Hugo Ekitike", "importance": 2, "status": "out", "detail": "跟腱" },
-      { "name": "William Saliba", "importance": 4, "status": "doubtful", "detail": "背部" }
+      {
+        "name": "Hugo Ekitike",
+        "importance": 2,
+        "status": "out",
+        "detail": "跟腱"
+      },
+      {
+        "name": "William Saliba",
+        "importance": 4,
+        "status": "doubtful",
+        "detail": "背部"
+      }
     ],
     "note": "Ekitike(跟腱)赛前伤缺; Saliba(背)存疑"
   },
   "Germany": {
-    "injuries": 2,
+    "injuries": 3,
     "suspensions": 0,
     "players": [
-      { "name": "Nico Schlotterbeck", "importance": 4, "status": "out", "detail": "脚踝赛季报销" },
-      { "name": "Serge Gnabry", "importance": 3, "status": "out", "detail": "赛前伤缺" },
-      { "name": "Marc-Andre ter Stegen", "importance": 4, "status": "out", "detail": "赛前伤缺" }
+      {
+        "name": "Nico Schlotterbeck",
+        "importance": 4,
+        "status": "out",
+        "detail": "脚踝赛季报销"
+      },
+      {
+        "name": "Serge Gnabry",
+        "importance": 3,
+        "status": "out",
+        "detail": "赛前伤缺"
+      },
+      {
+        "name": "Marc-Andre ter Stegen",
+        "importance": 4,
+        "status": "out",
+        "detail": "赛前伤缺"
+      }
     ],
     "note": "Schlotterbeck(脚踝)赛季报销; Gnabry+Karl+Ter Stegen赛前伤缺"
   },
   "Ghana": {
-    "injuries": 1,
+    "injuries": 0,
     "suspensions": 0,
     "players": [
-      { "name": "Mohammed Kudus", "importance": 5, "status": "doubtful", "detail": "股四头肌+腘绳肌反复" }
+      {
+        "name": "Mohammed Kudus",
+        "importance": 5,
+        "status": "doubtful",
+        "detail": "股四头肌+腘绳肌反复"
+      }
     ],
     "note": "Kudus(股四头肌+腘绳肌)反复"
   },
-  "Haiti": { "injuries": 0, "suspensions": 0, "players": [], "note": "" },
-  "Iran": { "injuries": 0, "suspensions": 0, "players": [], "note": "" },
-  "Iraq": { "injuries": 0, "suspensions": 0, "players": [], "note": "" },
-  "Ivory Coast": { "injuries": 0, "suspensions": 0, "players": [], "note": "" },
+  "Haiti": {
+    "injuries": 0,
+    "suspensions": 0,
+    "players": [],
+    "note": ""
+  },
+  "Iran": {
+    "injuries": 0,
+    "suspensions": 0,
+    "players": [],
+    "note": ""
+  },
+  "Iraq": {
+    "injuries": 0,
+    "suspensions": 0,
+    "players": [],
+    "note": ""
+  },
+  "Ivory Coast": {
+    "injuries": 0,
+    "suspensions": 0,
+    "players": [],
+    "note": ""
+  },
   "Japan": {
     "injuries": 3,
     "suspensions": 0,
     "players": [
-      { "name": "Wataru Endo", "importance": 4, "status": "out", "detail": "脚伤退出国家队" },
-      { "name": "Kaoru Mitoma", "importance": 5, "status": "out", "detail": "赛前伤缺" },
-      { "name": "Takumi Minamino", "importance": 3, "status": "out", "detail": "赛前伤缺" }
+      {
+        "name": "Wataru Endo",
+        "importance": 4,
+        "status": "out",
+        "detail": "脚伤退出国家队"
+      },
+      {
+        "name": "Kaoru Mitoma",
+        "importance": 5,
+        "status": "out",
+        "detail": "赛前伤缺"
+      },
+      {
+        "name": "Takumi Minamino",
+        "importance": 3,
+        "status": "out",
+        "detail": "赛前伤缺"
+      }
     ],
     "note": "远藤航(脚伤)退出国家队; 三笘薰+南野拓实赛前伤缺"
   },
-  "Jordan": { "injuries": 0, "suspensions": 0, "players": [], "note": "" },
-  "Mexico": { "injuries": 0, "suspensions": 0, "players": [], "note": "" },
-  "Morocco": { "injuries": 0, "suspensions": 0, "players": [], "note": "" },
+  "Jordan": {
+    "injuries": 0,
+    "suspensions": 0,
+    "players": [],
+    "note": ""
+  },
+  "Mexico": {
+    "injuries": 0,
+    "suspensions": 0,
+    "players": [],
+    "note": ""
+  },
+  "Morocco": {
+    "injuries": 0,
+    "suspensions": 0,
+    "players": [],
+    "note": ""
+  },
   "Netherlands": {
-    "injuries": 2,
+    "injuries": 3,
     "suspensions": 0,
     "players": [
-      { "name": "Xavi Simons", "importance": 4, "status": "out", "detail": "赛前伤缺" },
-      { "name": "Jerdy Schouten", "importance": 2, "status": "out", "detail": "ACL" },
-      { "name": "Matthijs de Ligt", "importance": 4, "status": "out", "detail": "背部" },
-      { "name": "Jurrien Timber", "importance": 3, "status": "doubtful", "detail": "腹股沟" }
+      {
+        "name": "Xavi Simons",
+        "importance": 4,
+        "status": "out",
+        "detail": "赛前伤缺"
+      },
+      {
+        "name": "Jerdy Schouten",
+        "importance": 2,
+        "status": "out",
+        "detail": "ACL"
+      },
+      {
+        "name": "Matthijs de Ligt",
+        "importance": 4,
+        "status": "out",
+        "detail": "背部"
+      },
+      {
+        "name": "Jurrien Timber",
+        "importance": 3,
+        "status": "doubtful",
+        "detail": "腹股沟"
+      }
     ],
     "note": "Xavi Simons+Schouten(ACL)+De Ligt(背)赛前伤缺; Timber(腹股沟)"
   },
-  "New Zealand": { "injuries": 0, "suspensions": 0, "players": [], "note": "" },
-  "Norway": { "injuries": 0, "suspensions": 0, "players": [], "note": "" },
-  "Panama": { "injuries": 0, "suspensions": 0, "players": [], "note": "" },
-  "Paraguay": { "injuries": 0, "suspensions": 0, "players": [], "note": "" },
-  "Portugal": { "injuries": 0, "suspensions": 0, "players": [], "note": "" },
-  "Qatar": { "injuries": 0, "suspensions": 0, "players": [], "note": "" },
-  "Saudi Arabia": { "injuries": 0, "suspensions": 0, "players": [], "note": "" },
+  "New Zealand": {
+    "injuries": 0,
+    "suspensions": 0,
+    "players": [],
+    "note": ""
+  },
+  "Norway": {
+    "injuries": 0,
+    "suspensions": 0,
+    "players": [],
+    "note": ""
+  },
+  "Panama": {
+    "injuries": 0,
+    "suspensions": 0,
+    "players": [],
+    "note": ""
+  },
+  "Paraguay": {
+    "injuries": 0,
+    "suspensions": 0,
+    "players": [],
+    "note": ""
+  },
+  "Portugal": {
+    "injuries": 0,
+    "suspensions": 0,
+    "players": [],
+    "note": ""
+  },
+  "Qatar": {
+    "injuries": 0,
+    "suspensions": 0,
+    "players": [],
+    "note": ""
+  },
+  "Saudi Arabia": {
+    "injuries": 0,
+    "suspensions": 0,
+    "players": [],
+    "note": ""
+  },
   "Scotland": {
     "injuries": 1,
     "suspensions": 0,
     "players": [
-      { "name": "Billy Gilmour", "importance": 3, "status": "out", "detail": "膝伤" }
+      {
+        "name": "Billy Gilmour",
+        "importance": 3,
+        "status": "out",
+        "detail": "膝伤"
+      }
     ],
     "note": "Gilmour(膝伤)赛前缺阵"
   },
@@ -156,42 +416,118 @@
     "injuries": 1,
     "suspensions": 0,
     "players": [
-      { "name": "Edouard Mendy", "importance": 3, "status": "out", "detail": "左膝" }
+      {
+        "name": "Edouard Mendy",
+        "importance": 3,
+        "status": "out",
+        "detail": "左膝"
+      }
     ],
     "note": "Mendy(左膝)缺阵伊拉克"
   },
-  "South Africa": { "injuries": 0, "suspensions": 0, "players": [], "note": "" },
-  "South Korea": { "injuries": 0, "suspensions": 0, "players": [], "note": "" },
+  "South Africa": {
+    "injuries": 0,
+    "suspensions": 0,
+    "players": [],
+    "note": ""
+  },
+  "South Korea": {
+    "injuries": 0,
+    "suspensions": 0,
+    "players": [],
+    "note": ""
+  },
   "Spain": {
     "injuries": 1,
     "suspensions": 0,
     "players": [
-      { "name": "Fermin Lopez", "importance": 2, "status": "out", "detail": "跖骨" },
-      { "name": "Mikel Merino", "importance": 3, "status": "doubtful", "detail": "足部" },
-      { "name": "Lamine Yamal", "importance": 5, "status": "doubtful", "detail": "带伤出战" }
+      {
+        "name": "Fermin Lopez",
+        "importance": 2,
+        "status": "out",
+        "detail": "跖骨"
+      },
+      {
+        "name": "Mikel Merino",
+        "importance": 3,
+        "status": "doubtful",
+        "detail": "足部"
+      },
+      {
+        "name": "Lamine Yamal",
+        "importance": 5,
+        "status": "doubtful",
+        "detail": "带伤出战"
+      }
     ],
     "note": "Fermin Lopez(跖骨)伤缺; Merino(足部)存疑; Yamal带伤"
   },
-  "Sweden": { "injuries": 0, "suspensions": 0, "players": [], "note": "" },
-  "Switzerland": { "injuries": 0, "suspensions": 0, "players": [], "note": "" },
-  "Tunisia": { "injuries": 0, "suspensions": 0, "players": [], "note": "" },
-  "Turkey": { "injuries": 0, "suspensions": 0, "players": [], "note": "" },
-  "USA": {
+  "Sweden": {
     "injuries": 0,
     "suspensions": 0,
+    "players": [],
+    "note": ""
+  },
+  "Switzerland": {
+    "injuries": 0,
+    "suspensions": 0,
+    "players": [],
+    "note": ""
+  },
+  "Tunisia": {
+    "injuries": 0,
+    "suspensions": 0,
+    "players": [],
+    "note": ""
+  },
+  "Turkey": {
+    "injuries": 0,
+    "suspensions": 0,
+    "players": [],
+    "note": ""
+  },
+  "USA": {
+    "injuries": 2,
+    "suspensions": 0,
     "players": [
-      { "name": "Patrick Agyemang", "importance": 2, "status": "out", "detail": "跟腱" },
-      { "name": "Johnny Cardoso", "importance": 2, "status": "out", "detail": "脚踝" }
+      {
+        "name": "Patrick Agyemang",
+        "importance": 2,
+        "status": "out",
+        "detail": "跟腱"
+      },
+      {
+        "name": "Johnny Cardoso",
+        "importance": 2,
+        "status": "out",
+        "detail": "脚踝"
+      }
     ],
     "note": "Agyemang(跟腱)+Cardoso(脚踝)赛前伤缺"
+  },
+  "United States": {
+    "injuries": 0,
+    "suspensions": 0,
+    "players": [],
+    "note": ""
   },
   "Uruguay": {
     "injuries": 1,
     "suspensions": 0,
     "players": [
-      { "name": "Jose Maria Gimenez", "importance": 3, "status": "out", "detail": "脚踝重度扭伤" }
+      {
+        "name": "Jose Maria Gimenez",
+        "importance": 3,
+        "status": "out",
+        "detail": "脚踝重度扭伤"
+      }
     ],
     "note": "Jimenez(脚踝)重度扭伤"
   },
-  "Uzbekistan": { "injuries": 0, "suspensions": 0, "players": [], "note": "" }
+  "Uzbekistan": {
+    "injuries": 0,
+    "suspensions": 0,
+    "players": [],
+    "note": ""
+  }
 }
