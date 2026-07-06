@@ -175,8 +175,13 @@ function populateTeamFilter(groupName, savedTeam) {
   var teamFilter = document.getElementById('filter-team');
   var teams = groupName === 'all' ? getTeams() : getTeamsByGroup(groupName);
   teamFilter.innerHTML = '<option value="all">' + t('allTeams') + '</option>';
+  var seen = {};
   teams.forEach(function(t) {
-    teamFilter.innerHTML += '<option value="' + t + '">' + trTeam(t) + '</option>';
+    // 规范化队名，避免 "USA" 和 "United States" 重复
+    var key = (typeof mapEspnName === 'function') ? mapEspnName(t) : t;
+    if (seen[key]) return;
+    seen[key] = true;
+    teamFilter.innerHTML += '<option value="' + key + '">' + trTeam(key) + '</option>';
   });
   teamFilter.value = savedTeam || 'all';
 }
@@ -516,8 +521,8 @@ function categorizePlayers(players) {
     if (posName === 'goalkeeper' || posAbbr === 'G' || posAbbr === 'GK') {
       cats.GK.push(p); return;
     }
-    // DEF: 以 CD, CB, LB, RB, WB, SW 开头或恰好 == D
-    if (posAbbr === 'D' || /^(CD|CB|LB|RB|WB|SW)/.test(posAbbr)) {
+    // DEF: CD(/-) CB LB RB WB SW 或恰好 == D；CD(?:-|$) 排除 CDM 等中场
+    if (posAbbr === 'D' || /^(CD(?:-|$)|CB|LB|RB|WB|SW)/.test(posAbbr)) {
       cats.DEF.push(p); return;
     }
     // MID: 以 CM, DM, AM, LM, RM, M 开头 或 名称含 midfield
@@ -691,11 +696,13 @@ function fwdDepthRank(abbr) {
 }
 
 // 位置排序值：左=0, 中=2, 右=4
+// -L/-R 后缀的位置(CD-L,CM-L,CF-L,ST-L,AM-L等)都是中路偏左/右，不是纯边路
+// 纯边路位置都以 L/R 开头(LB/LWB/LW/LF/LM 和 RB/RWB/RW/RF/RM)
 function posOrder(abbr) {
   var a = (abbr || '').toUpperCase();
-  if (/(-L$|^LB$|^LWB$|^LW$|^LF$|^LM$)/.test(a)) return 0;
-  if (/(-R$|^RB$|^RWB$|^RW$|^RF$|^RM$)/.test(a)) return 4;
-  if (/(-CL$|^LCB$|^LDM$|^LCM$|^LCF$)/.test(a)) return 1;
-  if (/(-CR$|^RCB$|^RDM$|^RCM$|^RCF$)/.test(a)) return 3;
+  if (/(-L$|^LCB$|^LDM$|^LCM$|^LCF$)/.test(a)) return 1;
+  if (/(-R$|^RCB$|^RDM$|^RCM$|^RCF$)/.test(a)) return 3;
+  if (/^(LB|LWB|LW|LF|LM)$/.test(a)) return 0;
+  if (/^(RB|RWB|RW|RF|RM)$/.test(a)) return 4;
   return 2;
 }

@@ -358,7 +358,7 @@ function formatMatchSummary(data, eventId) {
       (r.roster || []).forEach(function(p) {
         var player = {
           name: (p.athlete || {}).displayName || ((p.athlete || {}).fullName) || '',
-          shortName: (p.athlete || {}).shortName || '',
+          shortName: (p.athlete || {}).displayName || (p.athlete || {}).shortName || '',
           jersey: p.jersey || '',
           position: (p.position || {}).displayName || (p.position || {}).name || '',
           positionAbbr: (p.position || {}).abbreviation || '',

@@ -35,7 +35,9 @@ function roundKey(round) {
 
 function getFlagImg(name) {
   if (!name || name[0] === 'W' || name[0] === 'L' || /^\d[A-Z]/.test(name)) return '';
-  return '<img class="flag-img" src="img/flags/' + name + '.png" alt="" width="24" height="16">';
+  // 应用 ESPN 队名映射（"United States" → "USA" 等），确保国旗文件能找到
+  var mapped = (typeof mapEspnName === 'function') ? mapEspnName(name) : name;
+  return '<img class="flag-img" src="img/flags/' + mapped + '.png" alt="" width="24" height="16">';
 }
 
 var currentTab = 'schedule';

@@ -402,7 +402,22 @@ function trPlayer(name) {
     .replace(/ç/g,'c').replace(/Ç/g,'C')
     .replace(/ñ/g,'n').replace(/Ñ/g,'N')
     .replace(/š/g,'s').replace(/Š/g,'S')
-    .replace(/ž/g,'z').replace(/Ž/g,'Z');
+    .replace(/ž/g,'z').replace(/Ž/g,'Z')
+    .replace(/ø/g,'o').replace(/Ø/g,'O')
+    .replace(/æ/g,'ae').replace(/Æ/g,'AE')
+    .replace(/å/g,'a').replace(/Å/g,'A')
+    .replace(/œ/g,'oe').replace(/Œ/g,'OE')
+    .replace(/ß/g,'ss')
+    .replace(/đ/g,'d').replace(/Đ/g,'D')
+    .replace(/ł/g,'l').replace(/Ł/g,'L')
+    .replace(/ð/g,'d').replace(/Ð/g,'D');
   if (norm !== name && PLAYER_ZH[norm]) return PLAYER_ZH[norm];
+  // 分词回退：Alisson Becker → 尝试 Alisson（巴西球员常用单名）
+  var parts = name.split(/\s+/);
+  if (parts.length > 1) {
+    for (var i = 0; i < parts.length; i++) {
+      if (PLAYER_ZH[parts[i]]) return PLAYER_ZH[parts[i]];
+    }
+  }
   return name;
 }
