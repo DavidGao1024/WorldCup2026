@@ -302,17 +302,18 @@ function renderMatchEventsHTML(summary, match) {
     var alignClass = isHome ? 'match-event-home' : 'match-event-away';
     var icon = '';
     if (ev.type.indexOf('goal') >= 0 && ev.type.indexOf('own') === -1) icon = '⚽';
-    else if (ev.type.indexOf('own-goal') >= 0) icon = '🔴';
+    else if (ev.type.indexOf('own-goal') >= 0) icon = '⚽';
     else if (ev.type === 'yellow-card') icon = '🟨';
     else if (ev.type === 'red-card') icon = '🟥';
     else if (ev.type === 'substitution') icon = '⇄';
+    var isOwnGoal = ev.type.indexOf('own-goal') >= 0;
     var scorer = ev.participants && ev.participants[0] ? trPlayer(ev.participants[0].name) : '';
     var p2 = ev.participants && ev.participants[1] ? trPlayer(ev.participants[1].name) : '';
     var isSub = ev.type === 'substitution';
     html += '<div class="match-event-row ' + alignClass + '">';
     html += '<span class="match-event-time">' + ev.time + '</span>';
     html += '<span class="match-event-icon">' + icon + '</span>';
-    html += '<span class="match-event-player">' + (isSub ? p2 + ' <span class="sub-off">↓</span> ' + scorer + ' <span class="sub-on">↑</span>' : scorer + (p2 ? ' <span class="match-event-assist">(' + t('matchAssist') + ': ' + p2 + ')</span>' : '')) + '</span>';
+    html += '<span class="match-event-player">' + (isSub ? p2 + ' <span class="sub-off">↓</span> ' + scorer + ' <span class="sub-on">↑</span>' : scorer + (isOwnGoal ? ' <span class="own-goal-label">（' + t('ownGoal') + '）</span>' : '') + (p2 ? ' <span class="match-event-assist">(' + t('matchAssist') + ': ' + p2 + ')</span>' : '')) + '</span>';
     html += '</div>';
   }
   html += '</div>';

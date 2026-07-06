@@ -1,0 +1,375 @@
+- generic [active] [ref=f10e1]:
+  - generic [ref=f10e2]:
+    - banner [ref=f10e3]:
+      - generic [ref=f10e4]:
+        - heading "2026 世界杯" [level=1] [ref=f10e6]
+        - generic [ref=f10e7]: 大卫的赛事手册
+      - generic [ref=f10e9]:
+        - generic [ref=f10e10] [cursor=pointer]: 中
+        - generic [ref=f10e11] [cursor=pointer]: EN
+    - navigation [ref=f10e12]:
+      - generic [ref=f10e13] [cursor=pointer]: 赛程
+      - generic [ref=f10e14] [cursor=pointer]: 淘汰赛
+      - generic [ref=f10e15] [cursor=pointer]: 射手榜
+      - generic [ref=f10e16] [cursor=pointer]: 深度分析
+      - generic [ref=f10e17] [cursor=pointer]: 体彩世界
+      - generic [ref=f10e18] [cursor=pointer]: 积分榜
+  - main [ref=f10e19]:
+    - generic [ref=f10e20]:
+      - generic [ref=f10e21]:
+        - combobox [ref=f10e22]:
+          - option "全部小组" [selected]
+          - option "Group A"
+          - option "Group B"
+          - option "Group C"
+          - option "Group D"
+          - option "Group E"
+          - option "Group F"
+          - option "Group G"
+          - option "Group H"
+          - option "Group I"
+          - option "Group J"
+          - option "Group K"
+          - option "Group L"
+        - combobox [ref=f10e23]:
+          - option "全部球队" [selected]
+          - option "阿尔及利亚"
+          - option "阿根廷"
+          - option "澳大利亚"
+          - option "奥地利"
+          - option "比利时"
+          - option "波黑"
+          - option "巴西"
+          - option "加拿大"
+          - option "佛得角"
+          - option "哥伦比亚"
+          - option "克罗地亚"
+          - option "库拉索"
+          - option "捷克"
+          - option "刚果(金)"
+          - option "厄瓜多尔"
+          - option "埃及"
+          - option "英格兰"
+          - option "法国"
+          - option "德国"
+          - option "加纳"
+          - option "海地"
+          - option "伊朗"
+          - option "伊拉克"
+          - option "科特迪瓦"
+          - option "日本"
+          - option "约旦"
+          - option "墨西哥"
+          - option "摩洛哥"
+          - option "荷兰"
+          - option "新西兰"
+          - option "挪威"
+          - option "巴拿马"
+          - option "巴拉圭"
+          - option "葡萄牙"
+          - option "卡塔尔"
+          - option "沙特"
+          - option "苏格兰"
+          - option "塞内加尔"
+          - option "南非"
+          - option "韩国"
+          - option "西班牙"
+          - option "瑞典"
+          - option "瑞士"
+          - option "突尼斯"
+          - option "土耳其"
+          - option "美国"
+          - option "乌拉圭"
+          - option "乌兹别克斯坦"
+        - combobox [ref=f10e24]:
+          - option "北京时间 (UTC+8)" [selected]
+          - option "美东时间 (UTC-4)"
+          - option "格林威治 (UTC+0)"
+      - generic [ref=f10e25]:
+        - generic [ref=f10e27] [cursor=pointer]:
+          - generic [ref=f10e28]: 小组赛 (72 场)
+          - generic [ref=f10e29]: ▼
+        - generic [ref=f10e30]:
+          - generic [ref=f10e31]: 6月29日 周一
+          - generic [ref=f10e33] [cursor=pointer]:
+            - generic [ref=f10e34]: 32强赛
+            - generic [ref=f10e35]: 03:00 (UTC+8) · 洛杉矶
+            - generic [ref=f10e36]:
+              - generic [ref=f10e38]: 南非
+              - generic [ref=f10e39]: 0 - 1
+              - generic [ref=f10e41]: 加拿大
+        - generic [ref=f10e42]:
+          - generic [ref=f10e43]: 6月30日 周二
+          - generic [ref=f10e44]:
+            - generic [ref=f10e45] [cursor=pointer]:
+              - generic [ref=f10e46]: 32强赛
+              - generic [ref=f10e47]: 01:00 (UTC+8) · 休斯顿
+              - generic [ref=f10e48]:
+                - generic [ref=f10e50]: 巴西
+                - generic [ref=f10e51]: 2 - 1
+                - generic [ref=f10e53]: 日本
+            - generic [ref=f10e54] [cursor=pointer]:
+              - generic [ref=f10e55]: 32强赛
+              - generic [ref=f10e56]: 04:30 (UTC+8) · 波士顿
+              - generic [ref=f10e57]:
+                - generic [ref=f10e59]: 德国
+                - generic [ref=f10e60]:
+                  - text: 1 - 1
+                  - generic [ref=f10e61]: 点球 3-4
+                - generic [ref=f10e63]: 巴拉圭
+            - generic [ref=f10e64] [cursor=pointer]:
+              - generic [ref=f10e65]: 32强赛
+              - generic [ref=f10e66]: 09:00 (UTC+8) · 蒙特雷
+              - generic [ref=f10e67]:
+                - generic [ref=f10e69]: 荷兰
+                - generic [ref=f10e70]:
+                  - text: 1 - 1
+                  - generic [ref=f10e71]: 点球 2-3
+                - generic [ref=f10e73]: 摩洛哥
+        - generic [ref=f10e74]:
+          - generic [ref=f10e75]: 7月1日 周三
+          - generic [ref=f10e76]:
+            - generic [ref=f10e77] [cursor=pointer]:
+              - generic [ref=f10e78]: 32强赛
+              - generic [ref=f10e79]: 01:00 (UTC+8) · 达拉斯
+              - generic [ref=f10e80]:
+                - generic [ref=f10e82]: 科特迪瓦
+                - generic [ref=f10e83]: 1 - 2
+                - generic [ref=f10e85]: 挪威
+            - generic [ref=f10e86] [cursor=pointer]:
+              - generic [ref=f10e87]: 32强赛
+              - generic [ref=f10e88]: 05:00 (UTC+8) · 纽约/新泽西
+              - generic [ref=f10e89]:
+                - generic [ref=f10e91]: 法国
+                - generic [ref=f10e92]: 3 - 0
+                - generic [ref=f10e94]: 瑞典
+            - generic [ref=f10e95] [cursor=pointer]:
+              - generic [ref=f10e96]: 32强赛
+              - generic [ref=f10e97]: 09:00 (UTC+8) · 墨西哥城
+              - generic [ref=f10e98]:
+                - generic [ref=f10e100]: 墨西哥
+                - generic [ref=f10e101]: 2 - 0
+                - generic [ref=f10e103]: 厄瓜多尔
+        - generic [ref=f10e104]:
+          - generic [ref=f10e105]: 7月2日 周四
+          - generic [ref=f10e106]:
+            - generic [ref=f10e107] [cursor=pointer]:
+              - generic [ref=f10e108]: 32强赛
+              - generic [ref=f10e109]: 00:00 (UTC+8) · 亚特兰大
+              - generic [ref=f10e110]:
+                - generic [ref=f10e112]: 英格兰
+                - generic [ref=f10e113]: 2 - 1
+                - generic [ref=f10e115]: 刚果(金)
+            - generic [ref=f10e116] [cursor=pointer]:
+              - generic [ref=f10e117]: 32强赛
+              - generic [ref=f10e118]: 04:00 (UTC+8) · 西雅图
+              - generic [ref=f10e119]:
+                - generic [ref=f10e121]: 比利时
+                - generic [ref=f10e122]:
+                  - text: 3 - 2
+                  - generic [ref=f10e123]: 加时
+                - generic [ref=f10e125]: 塞内加尔
+            - generic [ref=f10e126] [cursor=pointer]:
+              - generic [ref=f10e127]: 32强赛
+              - generic [ref=f10e128]: 08:00 (UTC+8) · 旧金山湾区
+              - generic [ref=f10e129]:
+                - generic [ref=f10e131]: 美国
+                - generic [ref=f10e132]: 2 - 0
+                - generic [ref=f10e134]: 波黑
+        - generic [ref=f10e135]:
+          - generic [ref=f10e136]: 7月3日 周五
+          - generic [ref=f10e137]:
+            - generic [ref=f10e138] [cursor=pointer]:
+              - generic [ref=f10e139]: 32强赛
+              - generic [ref=f10e140]: 03:00 (UTC+8) · 洛杉矶
+              - generic [ref=f10e141]:
+                - generic [ref=f10e143]: 西班牙
+                - generic [ref=f10e144]: 3 - 0
+                - generic [ref=f10e146]: 奥地利
+            - generic [ref=f10e147] [cursor=pointer]:
+              - generic [ref=f10e148]: 32强赛
+              - generic [ref=f10e149]: 07:00 (UTC+8) · 多伦多
+              - generic [ref=f10e150]:
+                - generic [ref=f10e152]: 葡萄牙
+                - generic [ref=f10e153]: 2 - 1
+                - generic [ref=f10e155]: 克罗地亚
+            - generic [ref=f10e156] [cursor=pointer]:
+              - generic [ref=f10e157]: 32强赛
+              - generic [ref=f10e158]: 11:00 (UTC+8) · 温哥华
+              - generic [ref=f10e159]:
+                - generic [ref=f10e161]: 瑞士
+                - generic [ref=f10e162]: 2 - 0
+                - generic [ref=f10e164]: 阿尔及利亚
+        - generic [ref=f10e165]:
+          - generic [ref=f10e166]: 7月4日 周六
+          - generic [ref=f10e167]:
+            - generic [ref=f10e168] [cursor=pointer]:
+              - generic [ref=f10e169]: 32强赛
+              - generic [ref=f10e170]: 02:00 (UTC+8) · 达拉斯
+              - generic [ref=f10e171]:
+                - generic [ref=f10e173]: 澳大利亚
+                - generic [ref=f10e174]:
+                  - text: 1 - 1
+                  - generic [ref=f10e175]: 点球 2-4
+                - generic [ref=f10e177]: 埃及
+            - generic [ref=f10e178] [cursor=pointer]:
+              - generic [ref=f10e179]: 32强赛
+              - generic [ref=f10e180]: 06:00 (UTC+8) · 迈阿密
+              - generic [ref=f10e181]:
+                - generic [ref=f10e183]: 阿根廷
+                - generic [ref=f10e184]:
+                  - text: 3 - 2
+                  - generic [ref=f10e185]: 加时
+                - generic [ref=f10e187]: 佛得角
+            - generic [ref=f10e188] [cursor=pointer]:
+              - generic [ref=f10e189]: 32强赛
+              - generic [ref=f10e190]: 09:30 (UTC+8) · 堪萨斯城
+              - generic [ref=f10e191]:
+                - generic [ref=f10e193]: 哥伦比亚
+                - generic [ref=f10e194]: 1 - 0
+                - generic [ref=f10e196]: 加纳
+        - generic [ref=f10e197]:
+          - generic [ref=f10e198]: 7月5日 周日
+          - generic [ref=f10e199]:
+            - generic [ref=f10e200] [cursor=pointer]:
+              - generic [ref=f10e201]: 16强赛
+              - generic [ref=f10e202]: 01:00 (UTC+8) · 休斯顿
+              - generic [ref=f10e203]:
+                - generic [ref=f10e205]: 加拿大
+                - generic [ref=f10e206]: 0 - 3
+                - generic [ref=f10e208]: 摩洛哥
+            - generic [ref=f10e209] [cursor=pointer]:
+              - generic [ref=f10e210]: 16强赛
+              - generic [ref=f10e211]: 05:00 (UTC+8) · 费城
+              - generic [ref=f10e212]:
+                - generic [ref=f10e214]: 巴拉圭
+                - generic [ref=f10e215]: 0 - 1
+                - generic [ref=f10e217]: 法国
+        - generic [ref=f10e218]:
+          - generic [ref=f10e219]: ★ 今天 · 7月6日 周一
+          - generic [ref=f10e220]:
+            - generic [ref=f10e221] [cursor=pointer]:
+              - generic [ref=f10e222]: 16强赛
+              - generic [ref=f10e223]: 04:00 (UTC+8) · 纽约/新泽西
+              - generic [ref=f10e224]:
+                - generic [ref=f10e226]: 巴西
+                - generic [ref=f10e227]: 1 - 2
+                - generic [ref=f10e229]: 挪威
+            - generic [ref=f10e230] [cursor=pointer]:
+              - generic [ref=f10e231]: LIVE
+              - generic [ref=f10e232]: 16强赛
+              - generic [ref=f10e233]: 08:00 (UTC+8) · 墨西哥城
+              - generic [ref=f10e234]:
+                - generic [ref=f10e236]: 墨西哥
+                - generic [ref=f10e237]: 1 - 2
+                - generic [ref=f10e239]: 英格兰
+        - generic [ref=f10e240]:
+          - generic [ref=f10e241]: 7月7日 周二
+          - generic [ref=f10e242]:
+            - generic [ref=f10e243] [cursor=pointer]:
+              - generic [ref=f10e244]: 16强赛
+              - generic [ref=f10e245]: 03:00 (UTC+8) · 达拉斯
+              - generic [ref=f10e246]:
+                - generic [ref=f10e248]: 葡萄牙
+                - generic [ref=f10e249]: vs
+                - generic [ref=f10e251]: 西班牙
+            - generic [ref=f10e252] [cursor=pointer]:
+              - generic [ref=f10e253]: 16强赛
+              - generic [ref=f10e254]: 08:00 (UTC+8) · 西雅图
+              - generic [ref=f10e255]:
+                - generic [ref=f10e257]: 美国
+                - generic [ref=f10e258]: vs
+                - generic [ref=f10e260]: 比利时
+        - generic [ref=f10e261]:
+          - generic [ref=f10e262]: 7月8日 周三
+          - generic [ref=f10e263]:
+            - generic [ref=f10e264] [cursor=pointer]:
+              - generic [ref=f10e265]: 16强赛
+              - generic [ref=f10e266]: 00:00 (UTC+8) · 亚特兰大
+              - generic [ref=f10e267]:
+                - generic [ref=f10e269]: 阿根廷
+                - generic [ref=f10e270]: vs
+                - generic [ref=f10e272]: 埃及
+            - generic [ref=f10e273] [cursor=pointer]:
+              - generic [ref=f10e274]: 16强赛
+              - generic [ref=f10e275]: 04:00 (UTC+8) · 温哥华
+              - generic [ref=f10e276]:
+                - generic [ref=f10e278]: 瑞士
+                - generic [ref=f10e279]: vs
+                - generic [ref=f10e281]: 哥伦比亚
+        - generic [ref=f10e282]:
+          - generic [ref=f10e283]: 7月10日 周五
+          - generic [ref=f10e285] [cursor=pointer]:
+            - generic [ref=f10e286]: 四分之一决赛
+            - generic [ref=f10e287]: 04:00 (UTC+8) · 波士顿
+            - generic [ref=f10e288]:
+              - generic [ref=f10e290]: 法国
+              - generic [ref=f10e291]: vs
+              - generic [ref=f10e293]: 摩洛哥
+        - generic [ref=f10e294]:
+          - generic [ref=f10e295]: 7月11日 周六
+          - generic [ref=f10e297] [cursor=pointer]:
+            - generic [ref=f10e298]: 四分之一决赛
+            - generic [ref=f10e299]: 03:00 (UTC+8) · 洛杉矶
+            - generic [ref=f10e300]:
+              - generic [ref=f10e302]: 胜者 93
+              - generic [ref=f10e303]: vs
+              - generic [ref=f10e305]: 胜者 94
+        - generic [ref=f10e306]:
+          - generic [ref=f10e307]: 7月12日 周日
+          - generic [ref=f10e308]:
+            - generic [ref=f10e309] [cursor=pointer]:
+              - generic [ref=f10e310]: 四分之一决赛
+              - generic [ref=f10e311]: 05:00 (UTC+8) · 迈阿密
+              - generic [ref=f10e312]:
+                - generic [ref=f10e314]: 挪威
+                - generic [ref=f10e315]: vs
+                - generic [ref=f10e317]: 英格兰
+            - generic [ref=f10e318] [cursor=pointer]:
+              - generic [ref=f10e319]: 四分之一决赛
+              - generic [ref=f10e320]: 09:00 (UTC+8) · 堪萨斯城
+              - generic [ref=f10e321]:
+                - generic [ref=f10e323]: 胜者 95
+                - generic [ref=f10e324]: vs
+                - generic [ref=f10e326]: 胜者 96
+        - generic [ref=f10e327]:
+          - generic [ref=f10e328]: 7月15日 周三
+          - generic [ref=f10e330] [cursor=pointer]:
+            - generic [ref=f10e331]: 半决赛
+            - generic [ref=f10e332]: 03:00 (UTC+8) · 达拉斯
+            - generic [ref=f10e333]:
+              - generic [ref=f10e335]: 胜者 97
+              - generic [ref=f10e336]: vs
+              - generic [ref=f10e338]: 胜者 98
+        - generic [ref=f10e339]:
+          - generic [ref=f10e340]: 7月16日 周四
+          - generic [ref=f10e342] [cursor=pointer]:
+            - generic [ref=f10e343]: 半决赛
+            - generic [ref=f10e344]: 03:00 (UTC+8) · 亚特兰大
+            - generic [ref=f10e345]:
+              - generic [ref=f10e347]: 胜者 99
+              - generic [ref=f10e348]: vs
+              - generic [ref=f10e350]: 胜者 100
+        - generic [ref=f10e351]:
+          - generic [ref=f10e352]: 7月19日 周日
+          - generic [ref=f10e354] [cursor=pointer]:
+            - generic [ref=f10e355]: 三四名决赛
+            - generic [ref=f10e356]: 05:00 (UTC+8) · 迈阿密
+            - generic [ref=f10e357]:
+              - generic [ref=f10e359]: 败者 101
+              - generic [ref=f10e360]: vs
+              - generic [ref=f10e362]: 败者 102
+        - generic [ref=f10e363]:
+          - generic [ref=f10e364]: 7月20日 周一
+          - generic [ref=f10e366] [cursor=pointer]:
+            - generic [ref=f10e367]: 决赛
+            - generic [ref=f10e368]: 03:00 (UTC+8) · 纽约/新泽西
+            - generic [ref=f10e369]:
+              - generic [ref=f10e371]: 胜者 101
+              - generic [ref=f10e372]: vs
+              - generic [ref=f10e374]: 胜者 102
+  - contentinfo [ref=f10e375]:
+    - paragraph [ref=f10e376]:
+      - text: "比分 & 积分榜: ESPN | 赛程:"
+      - link "openfootball/worldcup.json" [ref=f10e377] [cursor=pointer]:
+        - /url: https://github.com/openfootball/worldcup.json
