@@ -4,7 +4,7 @@
 // 对阵树构建策略：通过队伍名中的引用（W{num}/L{num}）和已完成比赛胜者反查
 // 两种方式共同确定父子关系。这是因为数据源（openfootball/worldcup.json）在
 // 比赛结束后会把占位引用替换为实际队名，单靠 parseRef 无法追踪已结束比赛的
-// 晋级路径。findParentMatch 先尝试引用解析，失败则通过胜者队名反查比赛编号。
+// 晋级路径。findParent 先尝试引用解析，失败则在前一轮胜者中按队名查找。
 
 var KO_ROUNDS = [
   'Round of 32', 'Round of 16', 'Quarter-final',
@@ -14,6 +14,45 @@ var KO_ROUNDS = [
 // 每轮应出现的比赛数（用于结构校验）
 var KO_EXPECTED = { 'Round of 32': 16, 'Round of 16': 8, 'Quarter-final': 4, 'Semi-final': 2, 'Match for third place': 1, 'Final': 1 };
 
+function getPrevRound(round) {
+  var idx = KO_ROUNDS.indexOf(round);
+  return idx > 0 ? KO_ROUNDS[idx - 1] : null;
+}
+
+// 按轮次索引胜者: { 'Round of 32': { 'France': 77 }, 'Round of 16': { 'France': 89 } }
+// 避免同一球队在多轮中获胜时的歧义
+function buildWinnersByRound(matches) {
+  var wbr = {};
+  KO_ROUNDS.forEach(function(r) { wbr[r] = {}; });
+  matches.forEach(function(m) {
+    if (m.score1 == null || !m.round) return;
+    var w = null;
+    if (m.hadPen) {
+      if (m.score1p > m.score2p) w = m.team1;
+      else if (m.score2p > m.score1p) w = m.team2;
+      else if (m.winner) w = m.winner;
+    } else if (m.score1 !== m.score2) {
+      w = m.score1 > m.score2 ? m.team1 : m.team2;
+    }
+    if (w) wbr[m.round][w] = m.num;
+  });
+  return wbr;
+}
+
+function findParent(name, childRound, wbr) {
+  if (!name) return 0;
+  // 先尝试 W{num}/L{num} 引用解析
+  if (name[0] === 'W' || name[0] === 'L') {
+    return parseInt(name.substring(1)) || 0;
+  }
+  // 回退：在前一轮的胜者中查找该队名
+  var prev = getPrevRound(childRound);
+  if (prev && wbr[prev] && wbr[prev][name]) {
+    return wbr[prev][name];
+  }
+  return 0;
+}
+
 function renderKnockout() {
   var container = document.getElementById('knockout-content');
   var matches = getKnockoutMatches();
@@ -22,11 +61,11 @@ function renderKnockout() {
   var byNum = {};
   matches.forEach(function(m) { byNum[m.num] = m; });
 
-  var winnerOf = buildWinnerOf(matches);
+  var wbr = buildWinnersByRound(matches);
 
   var parents = {};
   matches.forEach(function(m) {
-    var p1 = findParentMatch(m.team1, winnerOf), p2 = findParentMatch(m.team2, winnerOf);
+    var p1 = findParent(m.team1, m.round, wbr), p2 = findParent(m.team2, m.round, wbr);
     if (p1 || p2) parents[m.num] = [p1, p2].filter(Boolean);
   });
 
@@ -151,29 +190,6 @@ function parseRef(name) {
   return 0;
 }
 
-function buildWinnerOf(matches) {
-  var map = {};
-  matches.forEach(function(m) {
-    if (m.score1 == null) return;
-    var w = null;
-    if (m.hadPen) {
-      if (m.score1p > m.score2p) w = m.team1;
-      else if (m.score2p > m.score1p) w = m.team2;
-      else if (m.winner) w = m.winner;
-    } else if (m.score1 !== m.score2) {
-      w = m.score1 > m.score2 ? m.team1 : m.team2;
-    }
-    if (w) map[w] = m.num;
-  });
-  return map;
-}
-
-function findParentMatch(name, winnerOf) {
-  var ref = parseRef(name);
-  if (ref) return ref;
-  return (winnerOf && winnerOf[name]) || 0;
-}
-
 function renderBracketMatch(m, byNum) {
   var hasScore = m.score1 != null && m.score2 != null;
   var w1 = false, w2 = false;
@@ -215,7 +231,6 @@ function drawLines() {
   var oldSvg = container.querySelector('.br-lines');
   if (oldSvg) oldSvg.remove();
 
-  // 取所有卡片的最大右边界作为 SVG 宽度
   var matches = container.querySelectorAll('.br-match');
   var maxRight = 0, maxBottom = 0;
   var cr = container.getBoundingClientRect();
@@ -234,12 +249,11 @@ function drawLines() {
 
   var drawn = {};
   var koMatches = getKnockoutMatches();
-  var lineWinnerOf = buildWinnerOf(koMatches);
+  var lineWbr = buildWinnersByRound(koMatches);
   koMatches.forEach(function(m) {
-    // 三四名、决赛不画常规线（决赛有专门金色连线）
     if (m.round === 'Match for third place' || m.round === 'Final') return;
     [m.team1, m.team2].forEach(function(t) {
-      var pnum = findParentMatch(t, lineWinnerOf);
+      var pnum = findParent(t, m.round, lineWbr);
       if (!pnum) return;
       var key = Math.min(pnum, m.num) + '-' + Math.max(pnum, m.num);
       if (drawn[key]) return;
@@ -267,7 +281,7 @@ function drawLines() {
     var x1 = goRight ? rf.right - cr.left : rf.left - cr.left;
     var y1 = rf.top + rf.height / 2 - cr.top;
     var x2 = goRight ? rt.left - cr.left : rt.right - cr.left;
-    var y2 = y1; // 同一水平线
+    var y2 = y1;
 
     var path = 'M' + x1 + ',' + y1 + ' L' + x2 + ',' + y2;
 

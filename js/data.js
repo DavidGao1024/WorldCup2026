@@ -63,6 +63,21 @@ async function fetchEspnAndMerge() {
 function mergeScoresIntoData(scoreMap) {
   if (!worldCupData || !worldCupData.matches) return false;
   var changed = false;
+  // 构建已完赛比赛胜者索引（用于解析W{num}占位符）
+  var winnerByNum = {};
+  worldCupData.matches.forEach(function(m) {
+    if (m.score1 == null) return;
+    if (m.score1 > m.score2) winnerByNum[m.num] = m.team1;
+    else if (m.score2 > m.score1) winnerByNum[m.num] = m.team2;
+    else if (m.winner) winnerByNum[m.num] = m.winner;
+  });
+  function resolveRef(name) {
+    if (name && (name[0] === 'W' || name[0] === 'L')) {
+      var n = parseInt(name.substring(1));
+      if (n && winnerByNum[n]) return winnerByNum[n];
+    }
+    return name;
+  }
   worldCupData.matches.forEach(function(m) {
     var utcDate = toUTCDate(m.date, m.time);
     var key = utcDate + '|' + m.team1 + '|' + m.team2;
@@ -70,6 +85,18 @@ function mergeScoresIntoData(scoreMap) {
     if (!entry) {
       key = utcDate + '|' + m.team2 + '|' + m.team1;
       entry = scoreMap[key];
+    }
+    // 占位符回退：解析W{num}为实际队名后再尝试匹配
+    if (!entry) {
+      var t1r = resolveRef(m.team1), t2r = resolveRef(m.team2);
+      if (t1r !== m.team1 || t2r !== m.team2) {
+        key = utcDate + '|' + t1r + '|' + t2r;
+        entry = scoreMap[key];
+        if (!entry) {
+          key = utcDate + '|' + t2r + '|' + t1r;
+          entry = scoreMap[key];
+        }
+      }
     }
     if (entry) {
       if (m.score1 !== entry.score1 || m.score2 !== entry.score2) {

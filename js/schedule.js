@@ -273,11 +273,32 @@ function closeMatchModal() {
 }
 
 // 构建淘汰赛比分演进 HTML（加时/点球）
-function buildScoreBreakdown(match) {
+function buildScoreBreakdown(match, summary) {
   if (!match.hadET && !match.hadPen) return '';
+
+  // 从比赛事件中计算90分钟比分（排除加时进球）
+  var regScore1 = match.score1, regScore2 = match.score2;
+  if (match.hadET && !match.hadPen && summary && summary.events) {
+    var et1 = 0, et2 = 0;
+    var t1 = match.team1;
+    var t2 = match.team2;
+    summary.events.forEach(function(ev) {
+      if (ev.type !== 'goal' && ev.type !== 'own-goal') return;
+      // 解析时间：29' → 29, 90'+4' → 90, 105'+1' → 105
+      var baseMin = parseInt((ev.time || '').split('+')[0]) || 0;
+      if (baseMin > 90) {
+        var evtTeam = (typeof mapEspnName === 'function') ? mapEspnName(ev.team) : ev.team;
+        if (evtTeam === t1) et1++;
+        else if (evtTeam === t2) et2++;
+      }
+    });
+    regScore1 = match.score1 - et1;
+    regScore2 = match.score2 - et2;
+  }
+
   var html = '<div class="score-breakdown">';
   html += '<div class="breakdown-title">' + t('scoreBreakdown') + '</div>';
-  html += '<div class="breakdown-row"><span class="breakdown-label">90\' ' + t('regularTime') + '</span><span class="breakdown-score">' + match.score1 + ' - ' + match.score2 + '</span></div>';
+  html += '<div class="breakdown-row"><span class="breakdown-label">90\' ' + t('regularTime') + '</span><span class="breakdown-score">' + regScore1 + ' - ' + regScore2 + '</span></div>';
   if (match.hadET) {
     html += '<div class="breakdown-row breakdown-et"><span class="breakdown-label">120\' ' + t('aet') + '</span><span class="breakdown-score">' + match.score1 + ' - ' + match.score2 + '</span></div>';
   }
@@ -354,7 +375,7 @@ function renderMatchStatsHTML(summary) {
 function renderMatchBasicInfo(match, summary, pred) {
   var hasScore = match.score1 != null && match.score2 != null;
   var scoreDisplay = hasScore ? match.score1 + ' - ' + match.score2 : 'vs';
-  var scoreBreakdownHtml = hasScore ? buildScoreBreakdown(match) : '';
+  var scoreBreakdownHtml = hasScore ? buildScoreBreakdown(match, summary) : '';
   var time = match._displayTime || (match.date + ' ' + (match.time || ''));
   var isGroup = match.group && match.group.indexOf('Group ') === 0;
   var stageLabel = isGroup ? (match.group || '') : (typeof t === 'function' ? t(typeof roundKey === 'function' ? roundKey(match.round) : match.round) : match.round);
@@ -433,7 +454,7 @@ function renderMatchBasicInfo(match, summary, pred) {
 function renderMatchModalContent(summary, match) {
   var hasScore = match.score1 != null && match.score2 != null;
   var scoreDisplay = hasScore ? match.score1 + ' - ' + match.score2 : 'vs';
-  var scoreBreakdownHtml = hasScore ? buildScoreBreakdown(match) : '';
+  var scoreBreakdownHtml = hasScore ? buildScoreBreakdown(match, summary) : '';
   var time = match._displayTime || (match.date + ' ' + (match.time || ''));
   var isGroup = match.group && match.group.indexOf('Group ') === 0;
   var stageLabel = isGroup ? (match.group || '') : (typeof t === 'function' ? t(typeof roundKey === 'function' ? roundKey(match.round) : match.round) : match.round);
@@ -469,7 +490,8 @@ function renderMatchModalContent(summary, match) {
 
 function renderLineupCol(lineup, match) {
   var html = '<div class="match-field-col">';
-  html += '<div class="match-field-team-name">' + trTeam(lineup.team) + '</div>';
+  var lineupTeamName = (typeof mapEspnName === 'function') ? mapEspnName(lineup.team) : lineup.team;
+  html += '<div class="match-field-team-name">' + trTeam(lineupTeamName) + '</div>';
   html += '<div class="match-field-formation">' + (lineup.formation || '') + '</div>';
 
   // Football pitch
