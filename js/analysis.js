@@ -1012,12 +1012,31 @@ function renderAnalysis() {
     );
   }
 
+  // 构建占位符解析索引（供过滤和后续渲染共用）
+  var resolveByNum = {};
+  if (typeof worldCupData !== 'undefined' && worldCupData.matches) {
+    worldCupData.matches.forEach(function(m) {
+      if (m.score1 == null) return;
+      if (m.score1 > m.score2) resolveByNum[m.num] = m.team1;
+      else if (m.score2 > m.score1) resolveByNum[m.num] = m.team2;
+      else if (m.winner) resolveByNum[m.num] = m.winner;
+    });
+  }
+  function tryResolve(name) {
+    if (name && (name[0] === 'W' || name[0] === 'L')) {
+      var n = parseInt(name.substring(1));
+      if (n && resolveByNum[n]) return resolveByNum[n];
+    }
+    return name;
+  }
+
   var matches = [];
   if (typeof worldCupData !== 'undefined' && worldCupData.matches) {
     matches = worldCupData.matches.filter(function(m) {
-      // 只显示未开始的比赛，排除占位符和已完赛的
       var hasScore = m.score1 != null && m.score2 != null;
-      return !hasScore && !isPlaceholder(m.team1) && !isPlaceholder(m.team2);
+      if (hasScore) return false;
+      var t1r = tryResolve(m.team1), t2r = tryResolve(m.team2);
+      return !isPlaceholder(t1r) && !isPlaceholder(t2r);
     });
   }
 
@@ -1079,7 +1098,12 @@ function renderAnalysis() {
 
   for (var j = 0; j < target.length; j++) {
     var m = target[j];
-    var result = computeMatchScore(m.team1, m.team2, m.ground, m.date, m.time);
+    // 解析占位符（W93→Spain等），确保 computeMatchScore 能用实际队名查找数据
+    var t1r = tryResolve(m.team1), t2r = tryResolve(m.team2);
+    var result = computeMatchScore(t1r, t2r, m.ground, m.date, m.time);
+    // 用解析后的队名覆盖，供后续渲染使用
+    result.team = t1r;
+    result.opponent = t2r;
     result.ground = m.ground;
     result.matchInfo = m;
     var insights = generateInsights(result);
