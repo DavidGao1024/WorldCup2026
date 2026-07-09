@@ -110,7 +110,7 @@ async function fetchEspnStandings() {
 }
 
 // 从缓存的 ESPN 事件中提取红黄牌数据
-// 返回 {teamName: {playerName: {yellows, reds, lastMatchNum}}}
+// 返回 {teamName: {playerName: {yellows, reds, lastMatchDate, cardEvents: [{type, date}]}}}
 function processEspnCards() {
   if (!espnRawEvents || !espnRawEvents.length) return null;
 
@@ -145,14 +145,16 @@ function processEspnCards() {
       var playerKey = player.displayName;
 
       if (!cards[cardTeam][playerKey]) {
-        cards[cardTeam][playerKey] = { yellows: 0, reds: 0, lastMatchDate: matchDate };
+        cards[cardTeam][playerKey] = { yellows: 0, reds: 0, lastMatchDate: matchDate, cardEvents: [] };
       }
 
+      var type = d.redCard ? 'red' : 'yellow';
       if (d.redCard) {
         cards[cardTeam][playerKey].reds++;
       } else {
         cards[cardTeam][playerKey].yellows++;
       }
+      cards[cardTeam][playerKey].cardEvents.push({ type: type, date: matchDate });
       cards[cardTeam][playerKey].lastMatchDate = matchDate;
     }
   }
@@ -161,100 +163,236 @@ function processEspnCards() {
   return cards;
 }
 
-// 根据红黄牌数据 + 赛程计算停赛
+// FIFA 2026 黄牌阶段划分（小组赛 / R32+R16+QF / SF+决赛），每阶段结束清零
+// 返回 'gs' | 'ko_early' | 'ko_late' | 'unknown'
+function getCardPhase(round) {
+  if (!round) return 'unknown';
+  if (/^Matchday/.test(round)) return 'gs';
+  if (round === 'Round of 32' || round === 'Round of 16' || round === 'Quarter-final') return 'ko_early';
+  if (round === 'Semi-final' || round === 'Match for third place' || round === 'Final') return 'ko_late';
+  return 'unknown';
+}
+
+// 根据红黄牌数据 + 赛程计算停赛（FIFA 2026 阶段清零规则）
+// - 小组赛（gs）阶段黄牌进 R32 时清零
+// - R32+R16+QF（ko_early）阶段黄牌进 SF 时清零
+// - SF+决赛（ko_late）阶段不再清零
+// - 同阶段累计 2 黄 → 下一场停赛
+// - 直接红牌 → 下一场停赛（只停1场，已被消化则不停）
 // cards: processEspnCards() 的输出
-// matches: worldCupData.matches（用于判断哪些是未来比赛）
+// matches: worldCupData.matches（用于判断阶段和下一场）
 // 返回 {teamName: {suspensions: N, suspendedPlayers: [...], note: "..."}}
 function computeWorldCupSuspensions(cards, matches) {
   if (!cards) { worldCupSuspensions = {}; return {}; }
   if (!matches || !matches.length) { worldCupSuspensions = {}; return {}; }
 
-  // 构建每支球队的赛程（按日期和比赛编号排序）
   var now = new Date();
-  var teamSchedule = {}; // {teamName: [{matchNum, date, time, opponent, isFuture}]}
 
+  // 构建 espnWinnerIndex：key = date|teamA|teamB → winnerTeam（双向）
+  var espnWinnerIndex = {};
+  if (espnRawEvents && espnRawEvents.length) {
+    espnRawEvents.forEach(function(e) {
+      var c = e.competitions && e.competitions[0];
+      if (!c || !c.competitors || c.competitors.length < 2) return;
+      var state = c.status && c.status.type && c.status.type.state;
+      if (state !== 'post') return;
+      var t1 = mapEspnName(c.competitors[0].team.displayName);
+      var t2 = mapEspnName(c.competitors[1].team.displayName);
+      var date = espnDateKey(e.date);
+      var winner = null;
+      if (c.competitors[0].winner) winner = t1;
+      else if (c.competitors[1].winner) winner = t2;
+      if (!winner) return;
+      espnWinnerIndex[date + '|' + t1 + '|' + t2] = winner;
+      espnWinnerIndex[date + '|' + t2 + '|' + t1] = winner;
+    });
+  }
+
+  // 占位符解析映射 (W{num} → winner, L{num} → loser)
+  var placeholderMap = {};
+
+  // 多遍循环，处理嵌套占位符（如 SF W97 = QF match 99 胜者，而 match 99 本身是占位符）
+  function resolveTeam(name) {
+    if (!isPlaceholder(name)) return name;
+    if (/^W\d+$/.test(name) || /^L\d+$/.test(name)) {
+      return placeholderMap[name] || null;
+    }
+    return null;
+  }
+
+  function getWinnerForMatch(pm) {
+    var rt1 = resolveTeam(pm.team1);
+    var rt2 = resolveTeam(pm.team2);
+    if (!rt1 || !rt2) return null;
+    var pmKickoff = new Date(pm.date + 'T' + (pm.time || '00:00').split(' ')[0]);
+    if (pmKickoff > now) return null;
+    // 优先用比分
+    if (pm.score1 != null && pm.score2 != null) {
+      var s1 = parseInt(pm.score1), s2 = parseInt(pm.score2);
+      if (!isNaN(s1) && !isNaN(s2)) {
+        if (pm.score1p != null && pm.score2p != null) {
+          s1 = parseInt(pm.score1p); s2 = parseInt(pm.score2p);
+        }
+        if (s1 > s2) return { winner: rt1, loser: rt2 };
+        if (s2 > s1) return { winner: rt2, loser: rt1 };
+      }
+    }
+    // 回退到 ESPN winner
+    var utcD = typeof toUTCDate === 'function' ? toUTCDate(pm.date, pm.time) : pm.date;
+    var w = espnWinnerIndex[pm.date + '|' + rt1 + '|' + rt2]
+         || espnWinnerIndex[pm.date + '|' + rt2 + '|' + rt1]
+         || espnWinnerIndex[utcD + '|' + rt1 + '|' + rt2]
+         || espnWinnerIndex[utcD + '|' + rt2 + '|' + rt1];
+    if (!w) return null;
+    return { winner: w, loser: w === rt1 ? rt2 : rt1 };
+  }
+
+  // 循环直到无新变化（最多 5 遍，覆盖 SF+QF+R16+R32 占位符嵌套）
+  for (var pass = 0; pass < 5; pass++) {
+    var changed = false;
+    for (var pi = 0; pi < matches.length; pi++) {
+      var pm = matches[pi];
+      var result = getWinnerForMatch(pm);
+      if (!result) continue;
+      var wKey = 'W' + pm.num, lKey = 'L' + pm.num;
+      if (placeholderMap[wKey] !== result.winner) { placeholderMap[wKey] = result.winner; changed = true; }
+      if (placeholderMap[lKey] !== result.loser) { placeholderMap[lKey] = result.loser; changed = true; }
+    }
+    if (!changed) break;
+  }
+
+  // 构建 (date|teamA|teamB) → {matchNum, round, phase} 索引，双向
+  var matchIndex = {};
   for (var i = 0; i < matches.length; i++) {
     var m = matches[i];
-    if (isPlaceholder(m.team1) || isPlaceholder(m.team2)) continue;
+    var phase = getCardPhase(m.round);
+    var entry = { matchNum: m.num, round: m.round, phase: phase };
+    matchIndex[m.date + '|' + m.team1 + '|' + m.team2] = entry;
+    matchIndex[m.date + '|' + m.team2 + '|' + m.team1] = entry;
+  }
 
-    var kickoff = new Date(m.date + 'T' + (m.time || '00:00').split(' ')[0]);
+  // 构建每支球队的赛程（解析占位符后）
+  var teamSchedule = {};
+  for (var k = 0; k < matches.length; k++) {
+    var mm = matches[k];
+    var rt1 = resolveTeam(mm.team1);
+    var rt2 = resolveTeam(mm.team2);
+    if (!rt1 || !rt2) continue;
+    var kickoff = new Date(mm.date + 'T' + (mm.time || '00:00').split(' ')[0]);
     var isFuture = kickoff > now;
-
-    [m.team1, m.team2].forEach(function(t, idx) {
+    [rt1, rt2].forEach(function(t, idx) {
       if (!teamSchedule[t]) teamSchedule[t] = [];
       teamSchedule[t].push({
-        matchNum: m.num,
-        date: m.date,
-        time: m.time,
-        opponent: idx === 0 ? m.team2 : m.team1,
-        round: m.round,
-        group: m.group,
+        matchNum: mm.num,
+        date: mm.date,
+        round: mm.round,
+        phase: getCardPhase(mm.round),
+        opponent: idx === 0 ? rt2 : rt1,
         isFuture: isFuture
       });
     });
   }
-
-  // 按日期排序每个球队的赛程
   Object.keys(teamSchedule).forEach(function(t) {
     teamSchedule[t].sort(function(a, b) {
       return a.date.localeCompare(b.date) || (a.matchNum - b.matchNum);
     });
   });
 
-  // 计算停赛
   var suspensions = {};
   var teamNames = Object.keys(cards);
 
   for (var t = 0; t < teamNames.length; t++) {
     var teamName = teamNames[t];
     var players = cards[teamName];
-    var playerNames = Object.keys(players);
     var schedule = teamSchedule[teamName] || [];
     var suspendedPlayers = [];
 
-    // 找到球队最近一场已赛的比赛编号
-    var lastPlayedMatchNum = 0;
-    for (var s = schedule.length - 1; s >= 0; s--) {
-      if (!schedule[s].isFuture) {
-        lastPlayedMatchNum = schedule[s].matchNum;
-        break;
-      }
-    }
-
-    // 找到球队下一场未赛的比赛
+    // 球队下一场未赛比赛
     var nextMatch = null;
     for (var ns = 0; ns < schedule.length; ns++) {
-      if (schedule[ns].isFuture) {
-        nextMatch = schedule[ns];
-        break;
-      }
+      if (schedule[ns].isFuture) { nextMatch = schedule[ns]; break; }
+    }
+    if (!nextMatch) {
+      suspensions[teamName] = { suspensions: 0, suspendedPlayers: [], note: '' };
+      continue;
     }
 
+    var playerNames = Object.keys(players);
     for (var p = 0; p < playerNames.length; p++) {
       var playerName = playerNames[p];
       var data = players[playerName];
+      var events = data.cardEvents || [];
+
+      // 给每张牌关联 matchNum/round/phase（通过日期+队名反查）
+      // 注意：cardEvents.date 来自 ESPN（UTC 日期），schedule.date 是 worldcup.json 当地日期，需双向匹配
+      var enriched = events.map(function(ev) {
+        var teamSched = schedule.filter(function(s) {
+          if (s.date === ev.date) return true;
+          // 跨日兼容：UTC 转换后可能差1天
+          var utcD = typeof toUTCDate === 'function' ? toUTCDate(s.date, sTimeByNum(s.matchNum)) : null;
+          return utcD === ev.date;
+        });
+        function sTimeByNum(num) {
+          for (var i = 0; i < matches.length; i++) {
+            if (matches[i].num === num) return matches[i].time;
+          }
+          return '00:00';
+        }
+        var round = teamSched.length >= 1 ? teamSched[0].round : null;
+        var phase = teamSched.length >= 1 ? teamSched[0].phase : getCardPhase(round);
+        var matchNum = teamSched.length >= 1 ? teamSched[0].matchNum : 0;
+        return { type: ev.type, date: ev.date, matchNum: matchNum, round: round, phase: phase };
+      }).sort(function(a, b) { return a.date.localeCompare(b.date); });
+
+      // 找球员最近一场已赛比赛（按 cardEvents 的日期 + 球队赛程）
+      var lastPlayedMatchNum = 0;
+      var lastPlayedPhase = 'unknown';
+      for (var s = schedule.length - 1; s >= 0; s--) {
+        if (!schedule[s].isFuture) {
+          lastPlayedMatchNum = schedule[s].matchNum;
+          lastPlayedPhase = schedule[s].phase;
+          break;
+        }
+      }
+
+      // 规则1：最近一场已赛比赛拿了红牌 → 下一场停赛
+      var redInLastMatch = false;
+      if (lastPlayedMatchNum > 0) {
+        for (var e1 = 0; e1 < enriched.length; e1++) {
+          if (enriched[e1].type === 'red' && enriched[e1].matchNum === lastPlayedMatchNum) {
+            redInLastMatch = true;
+            break;
+          }
+        }
+      }
+
+      // 规则2：当前阶段（最近一场的 phase）累计 ≥2 黄 → 下一场停赛
+      var yellowsInPhase = 0;
+      if (lastPlayedPhase !== 'unknown') {
+        for (var e2 = 0; e2 < enriched.length; e2++) {
+          if (enriched[e2].type === 'yellow' && enriched[e2].phase === lastPlayedPhase) {
+            yellowsInPhase++;
+          }
+        }
+      }
+
       var isSuspended = false;
       var reason = '';
-
-      // 红牌 → 下一场停赛
-      if (data.reds > 0) {
-        // 如果红牌在最近一场比赛 → 下一场仍停赛
+      if (redInLastMatch) {
         isSuspended = true;
         reason = '红牌';
-      }
-      // 累计2黄且第2张在最近一场比赛 → 下一场停赛
-      else if (data.yellows >= 2) {
+      } else if (yellowsInPhase >= 2) {
         isSuspended = true;
-        reason = '累计' + data.yellows + '黄';
+        reason = '本阶段累计' + yellowsInPhase + '黄';
       }
 
-      // 如果有未赛比赛且球员停赛，则记录
-      if (isSuspended && nextMatch) {
+      if (isSuspended) {
         suspendedPlayers.push({
           name: playerName,
           reason: reason,
           yellows: data.yellows,
-          reds: data.reds
+          reds: data.reds,
+          yellowsInPhase: yellowsInPhase
         });
       }
     }

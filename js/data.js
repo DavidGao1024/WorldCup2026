@@ -46,17 +46,19 @@ async function fetchEspnAndMerge() {
   var scoreMap = await fetchEspnScores();
   if (!scoreMap) return;
 
-  // 从 ESPN 原始数据中提取红黄牌，计算停赛
+  // 先合并比分（停赛计算依赖已合并的比分来解析 W{num}/L{num} 占位符）
+  if (mergeScoresIntoData(scoreMap)) {
+    saveToCache();
+    if (typeof refreshCurrentTab === 'function') refreshCurrentTab();
+  }
+
+  // 再从 ESPN 原始数据中提取红黄牌，计算停赛
   if (espnRawEvents && espnRawEvents.length) {
     var cards = processEspnCards();
     if (cards && worldCupData && worldCupData.matches) {
       computeWorldCupSuspensions(cards, worldCupData.matches);
+      if (typeof refreshCurrentTab === 'function') refreshCurrentTab();
     }
-  }
-
-  if (mergeScoresIntoData(scoreMap)) {
-    saveToCache();
-    if (typeof refreshCurrentTab === 'function') refreshCurrentTab();
   }
 }
 

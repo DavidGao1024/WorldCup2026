@@ -169,14 +169,16 @@ data/injuries.json (手动维护)
     ↓ analysisData.injuries → 合并后的伤病+停赛
 ```
 
-### FIFA 停赛规则
-- 红牌 → 下场比赛自动停赛
-- 累计2张黄牌 → 下场比赛停赛（需是最近一场比赛拿到的第2张）
-- 黄牌在1/4决赛后清零
+### FIFA 停赛规则（2026 阶段清零规则）
+- 直接红牌 → 下场自动停赛（只停1场，已消化则不停）
+- 同阶段累计 2 黄 → 下场停赛
+- **阶段清零点**：小组赛结束 → R32 清零；QF 结束 → SF 清零
+- 三阶段：`gs`（小组赛）/ `ko_early`（R32+R16+QF）/ `ko_late`（SF+三四名+决赛）
+- 例：球员小组赛 2 黄，进入 R32 时清零，**不停赛**；球员 R16+QF 各 1 黄（同阶段累计），SF 停赛
 
 ### 关键函数 (espn.js)
 - `processEspnCards()` — 从缓存的 ESPN 事件中提取所有红黄牌
-- `computeWorldCupSuspensions(cards, matches)` — 匹配赛程，计算各队停赛
+- `computeWorldCupSuspensions(cards, matches)` — 匹配赛程，按 FIFA 2026 阶段清零规则计算各队停赛（gs / ko_early / ko_late 三阶段独立累计，跨阶段自动清零）
 - `mergeInjuryAndSuspensionData()` — 合并伤病+停赛 (analysis.js)
 - `scripts/fetch-injuries.js` — 生成48队伤病模板（无需 API Key）
 - `.github/workflows/fetch-injuries.yml` — 每天运行一次

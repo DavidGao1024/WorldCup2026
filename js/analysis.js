@@ -1221,7 +1221,7 @@ function renderAnalysisCard(result, insights, m, idx, ctxTags) {
     html += renderDimRow('👨‍⚖️ 裁判', refName !== '未公布' ? refName : '待定', '', result.scores.referee, 2, result.scores.referee > 1);
   }
 
-  // 旅途 — 只显分数
+  // 旅途 — 左右显示各自休息天数
   var travelDetail = '';
   if (result.scores.travel !== undefined) {
     var rotData = analysisData.rotation || {};
@@ -1230,14 +1230,17 @@ function renderAnalysisCard(result, insights, m, idx, ctxTags) {
     var tRest = rt1.restDays != null ? rt1.restDays : '?';
     var oRest = rt2.restDays != null ? rt2.restDays : '?';
     travelDetail = '<span class="dd-team">' + escHtml(tName) + '</span>休' + tRest + '天 vs <span class="dd-team">' + escHtml(oName) + '</span>休' + oRest + '天';
-    var travelScore = result.scores.travel.toFixed(1);
-    html += renderDimRow('✈️ 旅途', travelScore + '/1', '', result.scores.travel, 1, result.scores.travel > 0.5);
+    var tRestN = typeof tRest === 'number' ? tRest : parseFloat(tRest);
+    var oRestN = typeof oRest === 'number' ? oRest : parseFloat(oRest);
+    var travelPct = (!isNaN(tRestN) && !isNaN(oRestN) && (tRestN + oRestN) > 0) ? tRestN / (tRestN + oRestN) : null;
+    html += renderDimRow('✈️ 旅途', tRest + '天', oRest + '天', result.scores.travel, 1, tRestN > oRestN, travelPct);
   }
 
-  // 环境适应 — 只显分数
+  // 环境适应 — 左右显示主客队各自适应度评分
   var envDetail = '';
   if (result.scores.environment !== undefined) {
     var stadiumClimate = (analysisData.stadiumClimate || {})[m.ground] || {};
+    var stadium = (analysisData.stadiums || {})[m.ground] || {};
     var envParts = [];
     if (stadiumClimate.indoor) envParts.push('室内');
     var heatLabels = { 'cool': '凉爽', 'moderate': '适中', 'warm': '偏暖', 'hot': '炎热', 'extreme': '极端' };
@@ -1247,8 +1250,10 @@ function renderAnalysisCard(result, insights, m, idx, ctxTags) {
       if (localHr >= 0) envParts.push(localHr + ':00开球');
     }
     envDetail = m.ground + ': ' + envParts.join(' · ');
-    var envScore = result.scores.environment.toFixed(1);
-    html += renderDimRow('🌍 环境适应', envScore + '/5', '', result.scores.environment, 5, result.scores.environment > 2.5);
+    var tEnvScore = computeEnvironmentScore(result.team, result.opponent, stadium, stadiumClimate, m.time);
+    var oEnvScore = computeEnvironmentScore(result.opponent, result.team, stadium, stadiumClimate, m.time);
+    var envPct = (tEnvScore + oEnvScore) > 0 ? tEnvScore / (tEnvScore + oEnvScore) : null;
+    html += renderDimRow('🌍 环境适应', tEnvScore.toFixed(1), oEnvScore.toFixed(1), result.scores.environment, 5, tEnvScore > oEnvScore, envPct);
   }
   html += '</div>';
 
@@ -1328,8 +1333,13 @@ function renderAnalysisCard(result, insights, m, idx, ctxTags) {
   return html;
 }
 
-function renderDimRow(label, tVal, oVal, score, maxScore, tEdge) {
-  var pct = Math.round(score / maxScore * 100);
+function renderDimRow(label, tVal, oVal, score, maxScore, tEdge, pctOverride) {
+  var pct;
+  if (pctOverride != null) {
+    pct = Math.round(pctOverride * 100);
+  } else {
+    pct = Math.round(score / maxScore * 100);
+  }
   var barColor = pct >= 70 ? 'dim-green' : (pct >= 45 ? 'dim-yellow' : 'dim-red');
   return '<div class="analysis-dim-row">' +
     '<span class="dim-label">' + label + '</span>' +
