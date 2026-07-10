@@ -13,9 +13,15 @@ const fs = require('fs');
 const path = require('path');
 
 // ========== 配置 ==========
-const API_URL = 'https://webapi.sporttery.cn/gateway/jc/football/getMatchCalculatorV1.qry';
+// 默认直连体彩 API；GitHub Actions 中通过 ODDS_PROXY_URL 环境变量切换为 CF Worker 代理
+// （腾讯云 WAF 自 2026-07-05 起拦截 GitHub Actions IP 段，需走 Cloudflare Workers 反代）
+const API_URL = process.env.ODDS_PROXY_URL
+  ? process.env.ODDS_PROXY_URL.replace(/\/$/, '')
+  : 'https://webapi.sporttery.cn/gateway/jc/football/getMatchCalculatorV1.qry';
 const POOL_CODES = 'hhad,had,crsp,ttg,hafu';
-const OUTPUT_FILE = path.join(__dirname, '..', 'data', 'lottery-odds.json');
+const OUTPUT_FILE = process.argv[2]
+  ? path.resolve(process.argv[2])
+  : path.join(__dirname, '..', 'data', 'lottery-odds.json');
 const REQUEST_TIMEOUT = 15000;
 
 // ========== 工具函数 ==========

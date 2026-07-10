@@ -22,6 +22,10 @@ jobs:
           node-version: '20'
 
       - name: 抓取体彩赔率
+        env:
+          # 通过 Cloudflare Workers 反代绕过腾讯云 WAF 对 GitHub IP 的拦截
+          # 在 repo Settings → Secrets → Actions 配置 ODDS_PROXY_URL
+          ODDS_PROXY_URL: ${{ secrets.ODDS_PROXY_URL }}
         run: node scripts/fetch-odds.js
 
       - name: 提交更新（如有变化）

@@ -139,7 +139,29 @@
       "Bash(curl -s \"https://site.web.api.espn.com/apis/site/v2/sports/soccer/fifa.world/summary?event=760507\" -o E:/GitHub/WorldCup2026/.tmp_bel.json)",
       "Bash(curl -s \"https://site.web.api.espn.com/apis/site/v2/sports/soccer/fifa.world/summary?event=760477\" -o E:/GitHub/WorldCup2026/.tmp_bel_nz.json)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/ --max-time 2)",
-      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/ --max-time 3)"
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/ --max-time 3)",
+      "Bash(python -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\('总数:',len\\(d['matches']\\)\\); print\\('日期范围:', sorted\\(set\\(m['matchDate'] for m in d['matches']\\)\\)\\)\")",
+      "Bash(python)",
+      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260611-20260719&limit=300\" -o /tmp/espn.json)",
+      "Read(//tmp/**)",
+      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260611-20260719&limit=300\" -o espn_tmp.json)",
+      "Bash(curl -s \"https://webapi.sporttery.cn/gateway/jc/football/getMatchCalculatorV1.qry?poolCode=hhad,had,crsp,ttg,hafu&channel=c\" -H \"User-Agent: Mozilla/5.0\" -H \"Referer: https://www.sporttery.cn/\" --compressed -o odds_now.json)",
+      "Bash(python -X utf8 -c ' *)",
+      "Bash(python -X utf8)",
+      "Bash(python -X utf8 tmp_pnl.py)",
+      "Bash(python tmp_pnl.py)",
+      "Bash(PYTHONUTF8=1 python tmp_pnl.py)",
+      "Bash(python -c ' *)",
+      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260611-20260719&limit=200\" -o espn_tmp.json)",
+      "Bash(gh run *)",
+      "Bash(curl -s \"https://api.github.com/repos/DavidGao1024/WorldCup2026/actions/runs?per_page=15&branch=main\")",
+      "Bash(curl -s \"https://api.github.com/repos/DavidGao1024/WorldCup2026/actions/workflows\")",
+      "Bash(curl -s \"https://api.github.com/repos/DavidGao1024/WorldCup2026/actions/runs?per_page=1&status=failure\")",
+      "Bash(curl -s 'https://api.github.com/repos/DavidGao1024/WorldCup2026/actions/runs?per_page=1&status=failure')",
+      "Bash(curl -s \"https://api.github.com/repos/DavidGao1024/WorldCup2026/actions/jobs/$\\(curl -s 'https://api.github.com/repos/DavidGao1024/WorldCup2026/actions/runs?per_page=1&status=failure')",
+      "Bash(curl -s \"https://api.github.com/repos/DavidGao1024/WorldCup2026/actions/workflows/fetch-odds.yml/runs?per_page=50&status=failure\")",
+      "Bash(curl -s \"https://api.github.com/repos/DavidGao1024/WorldCup2026/actions/workflows/fetch-odds.yml/runs?per_page=20&status=success\")",
+      "Bash(curl -s \"https://api.github.com/repos/DavidGao1024/WorldCup2026/actions/runs/29071461237/jobs\")"
     ]
   }
 }
