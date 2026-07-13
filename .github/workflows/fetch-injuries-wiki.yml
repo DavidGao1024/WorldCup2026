@@ -1,0 +1,37 @@
+name: 从 Wikipedia 拉取伤病数据
+
+on:
+  schedule:
+    # 每天 4 点运行（在 fetch-injuries.yml 之后）
+    - cron: '27 3 * * *'
+  workflow_dispatch:
+
+jobs:
+  fetch-injuries-wiki:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 安装 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 从 Wikipedia 拉取伤病数据
+        run: node scripts/fetch-injuries-wiki.js
+
+      - name: 提交更新（如有变化）
+        run: |
+          if git diff --quiet data/injuries.json; then
+            echo "伤病数据无变化，跳过提交"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add data/injuries.json
+            git commit -m "chore: 从 Wikipedia 自动更新伤病数据 [skip ci]"
+            git push
+            echo "伤病数据已更新并推送"
+          fi

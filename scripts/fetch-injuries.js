@@ -29,41 +29,65 @@ var teams = {};
 var existing = {};
 try {
   existing = JSON.parse(fs.readFileSync(injuriesPath, 'utf-8'));
-  // 旧格式可能有 updateTime/source 等顶层字段，跳过非对象的值
 } catch (e) {
   // 文件不存在或损坏，将创建新文件
 }
 
-// 合并：保留已有伤病数据，为新队伍添加空记录
-var merged = {
-  updateTime: new Date().toISOString(),
-  source: 'manual',
-  _format: 'v2 — players[] 含 name/importance/status/detail。importance: 1=替补 5=核心。status: out=缺阵 doubtful=伤疑。'
-};
-
-Object.keys(teams).sort().forEach(function(team) {
-  var prev = (existing[team] && typeof existing[team] === 'object') ? existing[team] : {};
-  var players = prev.players || [];
-  merged[team] = {
-    injuries: players.filter(function(p) { return p.status === 'out'; }).length,
-    suspensions: 0,
-    players: players,
-    note: prev.note || ''
+// 先生成不包含 updateTime 的内容，与原文件比较看是否真有变化
+function buildContent(prevUpdateTime) {
+  var merged = {
+    updateTime: prevUpdateTime || new Date().toISOString(),
+    source: 'manual',
+    _format: 'v2 — players[] 含 name/importance/status/detail。importance: 1=替补 5=核心。status: out=缺阵 doubtful=伤疑。'
   };
-});
+  Object.keys(teams).sort().forEach(function(team) {
+    var prev = (existing[team] && typeof existing[team] === 'object') ? existing[team] : {};
+    var players = prev.players || [];
+    merged[team] = {
+      injuries: players.filter(function(p) { return p.status === 'out'; }).length,
+      suspensions: 0,
+      players: players,
+      note: prev.note || ''
+    };
+  });
+  return merged;
+}
 
-fs.writeFileSync(injuriesPath, JSON.stringify(merged, null, 2), 'utf-8');
+// 用旧时间戳构建内容，比较除 updateTime 外是否有变化
+var prevUpdateTime = existing.updateTime || null;
+var newContent = buildContent(prevUpdateTime);
+
+// 移除 updateTime 比较，看其他字段是否有变化
+function withoutUpdateTime(obj) {
+  var copy = JSON.parse(JSON.stringify(obj));
+  delete copy.updateTime;
+  return copy;
+}
+
+var existingWithoutTime = JSON.parse(JSON.stringify(existing));
+delete existingWithoutTime.updateTime;
+
+var hasContentChange = JSON.stringify(withoutUpdateTime(newContent)) !== JSON.stringify(existingWithoutTime);
+
+if (hasContentChange || !fs.existsSync(injuriesPath)) {
+  // 真有变化（或文件不存在），更新时间戳并写回
+  newContent.updateTime = new Date().toISOString();
+  fs.writeFileSync(injuriesPath, JSON.stringify(newContent, null, 2), 'utf-8');
+  console.log('已更新 data/injuries.json（内容有变化）');
+} else {
+  // 没变化，不动文件，让 git diff --quiet 跳过提交
+  console.log('伤病数据无变化，跳过写入（避免无意义提交）');
+}
 
 var teamCount = Object.keys(teams).length;
 var hasData = Object.keys(existing).filter(function(k) {
   return existing[k] && typeof existing[k] === 'object' && existing[k].injuries;
 }).length;
 
-console.log('已更新 data/injuries.json');
 console.log('  共 ' + teamCount + ' 支球队');
 console.log('  ' + hasData + ' 支球队有伤病记录');
 if (process.env.CI || process.env.GITHUB_ACTIONS) {
-  if (hasData > 0) {
+  if (hasContentChange) {
     console.log('有伤病数据更新，将提交到仓库');
   } else {
     console.log('伤病数据无变化');

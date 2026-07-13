@@ -161,7 +161,17 @@
       "Bash(curl -s \"https://api.github.com/repos/DavidGao1024/WorldCup2026/actions/jobs/$\\(curl -s 'https://api.github.com/repos/DavidGao1024/WorldCup2026/actions/runs?per_page=1&status=failure')",
       "Bash(curl -s \"https://api.github.com/repos/DavidGao1024/WorldCup2026/actions/workflows/fetch-odds.yml/runs?per_page=50&status=failure\")",
       "Bash(curl -s \"https://api.github.com/repos/DavidGao1024/WorldCup2026/actions/workflows/fetch-odds.yml/runs?per_page=20&status=success\")",
-      "Bash(curl -s \"https://api.github.com/repos/DavidGao1024/WorldCup2026/actions/runs/29071461237/jobs\")"
+      "Bash(curl -s \"https://api.github.com/repos/DavidGao1024/WorldCup2026/actions/runs/29071461237/jobs\")",
+      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260611-20260719&limit=200\" -o /tmp/espn_latest.json)",
+      "WebFetch(domain:www.espn.com)",
+      "WebFetch(domain:www.bbc.com)",
+      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/summary?event=2026071419\")",
+      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260714-20260715&limit=10\" -o /tmp/sf_espn.json)",
+      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260714-20260715&limit=10\")",
+      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/summary?event=760514\" -o sf1_summary.json)",
+      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/summary?event=760514\" -o sf1_sum.json)",
+      "Bash(curl -s \"https://en.wikipedia.org/w/api.php?action=query&titles=2026_FIFA_World_Cup_squads&prop=revisions&rvprop=content&format=json\" -o wiki_squads.json)",
+      "Bash(curl -sL \"https://en.wikipedia.org/w/api.php?action=query&titles=2026_FIFA_World_Cup_squads&prop=revisions&rvprop=content&format=json\" -o wiki_squads.json)"
     ]
   }
 }
