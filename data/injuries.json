@@ -1,15 +1,22 @@
 {
-  "updateTime": "2026-07-13T06:32:45.036Z",
-  "source": "manual",
-  "_format": "v2 — players[] 含 name/importance/status/detail。importance: 1=替补 5=核心。status: out=缺阵 doubtful=伤疑。",
+  "updateTime": "2026-07-14T05:44:08.128Z",
+  "source": "wikipedia+manual",
+  "_format": "v2 — players[] 含 name/importance/status/detail。status: out=缺阵(来自Wikipedia) doubtful=伤疑(手动维护)。",
   "Algeria": {
-    "injuries": 0,
+    "injuries": 1,
     "suspensions": 0,
-    "players": [],
+    "players": [
+      {
+        "name": "Algeria national football team",
+        "importance": 3,
+        "status": "out",
+        "detail": "injury (Wikipedia)"
+      }
+    ],
     "note": ""
   },
   "Argentina": {
-    "injuries": 1,
+    "injuries": 2,
     "suspensions": 0,
     "players": [
       {
@@ -29,12 +36,18 @@
         "importance": 3,
         "status": "doubtful",
         "detail": "大腿"
+      },
+      {
+        "name": "Argentina national football team",
+        "importance": 3,
+        "status": "out",
+        "detail": "injury (Wikipedia)"
       }
     ],
     "note": "Messi(腘绳肌)状态不明; Romero(膝盖)+Molina(大腿)有伤"
   },
   "Australia": {
-    "injuries": 1,
+    "injuries": 2,
     "suspensions": 0,
     "players": [
       {
@@ -42,14 +55,27 @@
         "importance": 2,
         "status": "out",
         "detail": "跟腱"
+      },
+      {
+        "name": "Connor Metcalfe",
+        "importance": 3,
+        "status": "out",
+        "detail": "injury (Wikipedia)"
       }
     ],
     "note": "Miller(跟腱)赛前伤缺"
   },
   "Austria": {
-    "injuries": 0,
+    "injuries": 1,
     "suspensions": 0,
-    "players": [],
+    "players": [
+      {
+        "name": "Austria national football team",
+        "importance": 3,
+        "status": "out",
+        "detail": "injury (Wikipedia)"
+      }
+    ],
     "note": ""
   },
   "Belgium": {
@@ -66,13 +92,20 @@
     "note": "Doku(呼吸道感染)缺阵伊朗"
   },
   "Bosnia & Herzegovina": {
-    "injuries": 0,
+    "injuries": 1,
     "suspensions": 0,
-    "players": [],
+    "players": [
+      {
+        "name": "Bosnia and Herzegovina national football team",
+        "importance": 3,
+        "status": "out",
+        "detail": "injury (Wikipedia)"
+      }
+    ],
     "note": ""
   },
   "Brazil": {
-    "injuries": 3,
+    "injuries": 4,
     "suspensions": 0,
     "players": [
       {
@@ -104,12 +137,18 @@
         "importance": 5,
         "status": "doubtful",
         "detail": "恢复中"
+      },
+      {
+        "name": "Brazil national football team",
+        "importance": 3,
+        "status": "out",
+        "detail": "injury (Wikipedia)"
       }
     ],
     "note": "Rodrygo(ACL)+Militao+Estevao赛前报销; Raphinha(大腿)缺席末轮; Neymar恢复中"
   },
   "Canada": {
-    "injuries": 1,
+    "injuries": 2,
     "suspensions": 0,
     "players": [
       {
@@ -123,6 +162,12 @@
         "importance": 5,
         "status": "doubtful",
         "detail": "ACL+腘绳肌恢复中"
+      },
+      {
+        "name": "Canada men's national soccer team",
+        "importance": 3,
+        "status": "out",
+        "detail": "injury (Wikipedia)"
       }
     ],
     "note": "Flores(ACL)赛前伤缺; Davies(ACL+腘绳肌)恢复中; 已淘汰"
@@ -165,9 +210,16 @@
     "note": ""
   },
   "DR Congo": {
-    "injuries": 0,
+    "injuries": 1,
     "suspensions": 0,
-    "players": [],
+    "players": [
+      {
+        "name": "DR Congo national football team",
+        "importance": 3,
+        "status": "out",
+        "detail": "injury (Wikipedia)"
+      }
+    ],
     "note": ""
   },
   "Ecuador": {
@@ -190,7 +242,7 @@
     "note": "Salah(肩部不适)出战成疑"
   },
   "England": {
-    "injuries": 1,
+    "injuries": 2,
     "suspensions": 0,
     "players": [
       {
@@ -198,6 +250,12 @@
         "importance": 2,
         "status": "out",
         "detail": "小腿"
+      },
+      {
+        "name": "England national football team",
+        "importance": 3,
+        "status": "out",
+        "detail": "injury (Wikipedia)"
       }
     ],
     "note": "利夫拉门托(小腿)退出; 里斯·詹姆斯恢复中"
@@ -222,7 +280,7 @@
     "note": "Ekitike(跟腱)赛前伤缺; Saliba(背)存疑"
   },
   "Germany": {
-    "injuries": 3,
+    "injuries": 4,
     "suspensions": 0,
     "players": [
       {
@@ -242,12 +300,18 @@
         "importance": 4,
         "status": "out",
         "detail": "赛前伤缺"
+      },
+      {
+        "name": "Germany national football team",
+        "importance": 3,
+        "status": "out",
+        "detail": "injury (Wikipedia)"
       }
     ],
     "note": "Schlotterbeck(脚踝)赛季报销; Gnabry+Karl+Ter Stegen赛前伤缺"
   },
   "Ghana": {
-    "injuries": 0,
+    "injuries": 1,
     "suspensions": 0,
     "players": [
       {
@@ -255,14 +319,39 @@
         "importance": 5,
         "status": "doubtful",
         "detail": "股四头肌+腘绳肌反复"
+      },
+      {
+        "name": "Ghana national football team",
+        "importance": 3,
+        "status": "out",
+        "detail": "injury (Wikipedia)"
       }
     ],
     "note": "Kudus(股四头肌+腘绳肌)反复"
   },
   "Haiti": {
-    "injuries": 0,
+    "injuries": 3,
     "suspensions": 0,
-    "players": [],
+    "players": [
+      {
+        "name": "Haiti national football team",
+        "importance": 3,
+        "status": "out",
+        "detail": "injury (Wikipedia)"
+      },
+      {
+        "name": "Duke Lacroix",
+        "importance": 3,
+        "status": "out",
+        "detail": "injury (Wikipedia)"
+      },
+      {
+        "name": "Garven Metusala",
+        "importance": 3,
+        "status": "out",
+        "detail": "injury (Wikipedia)"
+      }
+    ],
     "note": ""
   },
   "Iran": {
@@ -272,19 +361,39 @@
     "note": ""
   },
   "Iraq": {
-    "injuries": 0,
+    "injuries": 1,
     "suspensions": 0,
-    "players": [],
+    "players": [
+      {
+        "name": "Iraq national football team",
+        "importance": 3,
+        "status": "out",
+        "detail": "injury (Wikipedia)"
+      }
+    ],
     "note": ""
   },
   "Ivory Coast": {
-    "injuries": 0,
+    "injuries": 2,
     "suspensions": 0,
-    "players": [],
+    "players": [
+      {
+        "name": "Ivory Coast national football team",
+        "importance": 3,
+        "status": "out",
+        "detail": "injury (Wikipedia)"
+      },
+      {
+        "name": "Jean Michaël Seri",
+        "importance": 3,
+        "status": "out",
+        "detail": "injury (Wikipedia)"
+      }
+    ],
     "note": ""
   },
   "Japan": {
-    "injuries": 3,
+    "injuries": 4,
     "suspensions": 0,
     "players": [
       {
@@ -304,14 +413,27 @@
         "importance": 3,
         "status": "out",
         "detail": "赛前伤缺"
+      },
+      {
+        "name": "Japan national football team",
+        "importance": 3,
+        "status": "out",
+        "detail": "injury (Wikipedia)"
       }
     ],
     "note": "远藤航(脚伤)退出国家队; 三笘薰+南野拓实赛前伤缺"
   },
   "Jordan": {
-    "injuries": 0,
+    "injuries": 1,
     "suspensions": 0,
-    "players": [],
+    "players": [
+      {
+        "name": "Jordan national football team",
+        "importance": 3,
+        "status": "out",
+        "detail": "injury (Wikipedia)"
+      }
+    ],
     "note": ""
   },
   "Mexico": {
@@ -321,13 +443,20 @@
     "note": ""
   },
   "Morocco": {
-    "injuries": 0,
+    "injuries": 1,
     "suspensions": 0,
-    "players": [],
+    "players": [
+      {
+        "name": "Morocco national football team",
+        "importance": 3,
+        "status": "out",
+        "detail": "injury (Wikipedia)"
+      }
+    ],
     "note": ""
   },
   "Netherlands": {
-    "injuries": 3,
+    "injuries": 4,
     "suspensions": 0,
     "players": [
       {
@@ -353,14 +482,27 @@
         "importance": 3,
         "status": "doubtful",
         "detail": "腹股沟"
+      },
+      {
+        "name": "Netherlands national football team",
+        "importance": 3,
+        "status": "out",
+        "detail": "injury (Wikipedia)"
       }
     ],
     "note": "Xavi Simons+Schouten(ACL)+De Ligt(背)赛前伤缺; Timber(腹股沟)"
   },
   "New Zealand": {
-    "injuries": 0,
+    "injuries": 1,
     "suspensions": 0,
-    "players": [],
+    "players": [
+      {
+        "name": "New Zealand men's national football team",
+        "importance": 3,
+        "status": "out",
+        "detail": "injury (Wikipedia)"
+      }
+    ],
     "note": ""
   },
   "Norway": {
@@ -376,15 +518,29 @@
     "note": ""
   },
   "Paraguay": {
-    "injuries": 0,
+    "injuries": 1,
     "suspensions": 0,
-    "players": [],
+    "players": [
+      {
+        "name": "Paraguay national football team",
+        "importance": 3,
+        "status": "out",
+        "detail": "injury (Wikipedia)"
+      }
+    ],
     "note": ""
   },
   "Portugal": {
-    "injuries": 0,
+    "injuries": 1,
     "suspensions": 0,
-    "players": [],
+    "players": [
+      {
+        "name": "Portugal national football team",
+        "importance": 3,
+        "status": "out",
+        "detail": "injury (Wikipedia)"
+      }
+    ],
     "note": ""
   },
   "Qatar": {
@@ -400,7 +556,7 @@
     "note": ""
   },
   "Scotland": {
-    "injuries": 1,
+    "injuries": 2,
     "suspensions": 0,
     "players": [
       {
@@ -408,6 +564,12 @@
         "importance": 3,
         "status": "out",
         "detail": "膝伤"
+      },
+      {
+        "name": "Scotland national football team",
+        "importance": 3,
+        "status": "out",
+        "detail": "injury (Wikipedia)"
       }
     ],
     "note": "Gilmour(膝伤)赛前缺阵"
@@ -432,9 +594,16 @@
     "note": ""
   },
   "South Korea": {
-    "injuries": 0,
+    "injuries": 1,
     "suspensions": 0,
-    "players": [],
+    "players": [
+      {
+        "name": "South Korea national football team",
+        "importance": 3,
+        "status": "out",
+        "detail": "injury (Wikipedia)"
+      }
+    ],
     "note": ""
   },
   "Spain": {
@@ -463,9 +632,16 @@
     "note": "Fermin Lopez(跖骨)伤缺; Merino(足部)存疑; Yamal带伤"
   },
   "Sweden": {
-    "injuries": 0,
+    "injuries": 1,
     "suspensions": 0,
-    "players": [],
+    "players": [
+      {
+        "name": "Sweden men's national football team",
+        "importance": 3,
+        "status": "out",
+        "detail": "injury (Wikipedia)"
+      }
+    ],
     "note": ""
   },
   "Switzerland": {
@@ -475,9 +651,22 @@
     "note": ""
   },
   "Tunisia": {
-    "injuries": 0,
+    "injuries": 2,
     "suspensions": 0,
-    "players": [],
+    "players": [
+      {
+        "name": "Tunisia national football team",
+        "importance": 3,
+        "status": "out",
+        "detail": "injury (Wikipedia)"
+      },
+      {
+        "name": "Omar Rekik",
+        "importance": 3,
+        "status": "out",
+        "detail": "injury (Wikipedia)"
+      }
+    ],
     "note": ""
   },
   "Turkey": {
@@ -519,9 +708,16 @@
     "note": "Jimenez(脚踝)重度扭伤"
   },
   "Uzbekistan": {
-    "injuries": 0,
+    "injuries": 1,
     "suspensions": 0,
-    "players": [],
+    "players": [
+      {
+        "name": "Uzbekistan national football team",
+        "importance": 3,
+        "status": "out",
+        "detail": "injury (Wikipedia)"
+      }
+    ],
     "note": ""
   }
 }
