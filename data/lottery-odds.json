@@ -1,451 +1,96 @@
 {
-  "updateTime": "2026-06-29T03:34:13.262Z",
+  "updateTime": "2026-07-14T03:23:03.807Z",
   "source": "sporttery.cn",
-  "matchCount": 9,
+  "matchCount": 2,
   "matches": [
     {
-      "matchNum": 1074,
-      "matchNumStr": "周一074",
-      "matchDate": "2026-06-30",
-      "matchTime": "01:00:00",
-      "homeTeam": "巴西",
-      "awayTeam": "日本",
-      "homeTeamEn": "BRZ",
-      "awayTeamEn": "JPN",
+      "matchNum": 2101,
+      "matchNumStr": "周二101",
+      "matchDate": "2026-07-15",
+      "matchTime": "03:00:00",
+      "homeTeam": "法国",
+      "awayTeam": "西班牙",
+      "homeTeamEn": "FRA",
+      "awayTeamEn": "SPA",
       "homeRank": "[世界杯1]",
-      "awayRank": "[世界杯2]",
-      "venue": "比赛将在美国-得克萨斯州休斯敦举行",
-      "status": "Selling",
-      "pools": {
-        "HHAD": {
-          "poolCode": "HHAD",
-          "updateTime": "21:02:19",
-          "h": 2.73,
-          "d": 3.2,
-          "a": 2.22,
-          "goalLine": "-1"
-        },
-        "HAFU": {
-          "poolCode": "HAFU",
-          "updateTime": "21:46:36",
-          "hh": 2.47,
-          "hd": 15,
-          "ha": 32,
-          "dh": 4.1,
-          "dd": 5.6,
-          "da": 10.5,
-          "ah": 20,
-          "ad": 15,
-          "aa": 8.5
-        },
-        "HAD": {
-          "poolCode": "HAD",
-          "updateTime": "11:04:20",
-          "h": 1.5,
-          "d": 3.72,
-          "a": 5.15
-        },
-        "TTG": {
-          "poolCode": "TTG",
-          "updateTime": "11:20:38",
-          "s0": 11,
-          "s1": 4.9,
-          "s2": 3.4,
-          "s3": 3.7,
-          "s4": 5.1,
-          "s5": 9.75,
-          "s6": 17.5,
-          "s7": 26
-        }
-      },
-      "availablePools": [
-        {
-          "poolCode": "HHAD",
-          "bettingSingle": 0,
-          "bettingAllup": 1
-        },
-        {
-          "poolCode": "HAFU",
-          "bettingSingle": 1,
-          "bettingAllup": 1
-        },
-        {
-          "poolCode": "TTG",
-          "bettingSingle": 1,
-          "bettingAllup": 1
-        },
-        {
-          "poolCode": "HAD",
-          "bettingSingle": 1,
-          "bettingAllup": 1
-        }
-      ]
-    },
-    {
-      "matchNum": 1075,
-      "matchNumStr": "周一075",
-      "matchDate": "2026-06-30",
-      "matchTime": "04:30:00",
-      "homeTeam": "德国",
-      "awayTeam": "巴拉圭",
-      "homeTeamEn": "GER",
-      "awayTeamEn": "PGY",
-      "homeRank": "[世界杯1]",
-      "awayRank": "[世界杯3]",
-      "venue": "比赛将在美国-马萨诸塞州福克斯伯勒举行",
-      "status": "Selling",
-      "pools": {
-        "HHAD": {
-          "poolCode": "HHAD",
-          "updateTime": "11:31:02",
-          "h": 1.7,
-          "d": 3.9,
-          "a": 3.52,
-          "goalLine": "-1"
-        },
-        "HAFU": {
-          "poolCode": "HAFU",
-          "updateTime": "10:07:20",
-          "hh": 1.63,
-          "hd": 21,
-          "ha": 50,
-          "dh": 3.9,
-          "dd": 8.1,
-          "da": 22,
-          "ah": 21,
-          "ad": 21,
-          "aa": 19
-        },
-        "TTG": {
-          "poolCode": "TTG",
-          "updateTime": "10:07:36",
-          "s0": 15,
-          "s1": 6.1,
-          "s2": 3.9,
-          "s3": 3.5,
-          "s4": 4.6,
-          "s5": 7.75,
-          "s6": 12.5,
-          "s7": 18
-        },
-        "HAD": {
-          "poolCode": "HAD",
-          "updateTime": "10:07:08",
-          "h": 1.2,
-          "d": 5.18,
-          "a": 9.7
-        }
-      },
-      "availablePools": [
-        {
-          "poolCode": "HHAD",
-          "bettingSingle": 0,
-          "bettingAllup": 1
-        },
-        {
-          "poolCode": "HAFU",
-          "bettingSingle": 1,
-          "bettingAllup": 1
-        },
-        {
-          "poolCode": "TTG",
-          "bettingSingle": 1,
-          "bettingAllup": 1
-        },
-        {
-          "poolCode": "HAD",
-          "bettingSingle": 1,
-          "bettingAllup": 1
-        }
-      ]
-    },
-    {
-      "matchNum": 1076,
-      "matchNumStr": "周一076",
-      "matchDate": "2026-06-30",
-      "matchTime": "09:00:00",
-      "homeTeam": "荷兰",
-      "awayTeam": "摩洛哥",
-      "homeTeamEn": "NET",
-      "awayTeamEn": "MCO",
-      "homeRank": "[世界杯1]",
-      "awayRank": "[世界杯2]",
-      "venue": "比赛将在墨西哥-瓜达卢佩举行",
-      "status": "Selling",
-      "pools": {
-        "HHAD": {
-          "poolCode": "HHAD",
-          "updateTime": "11:09:32",
-          "h": 4.2,
-          "d": 3.55,
-          "a": 1.64,
-          "goalLine": "-1"
-        },
-        "HAFU": {
-          "poolCode": "HAFU",
-          "updateTime": "11:09:18",
-          "hh": 3.15,
-          "hd": 13.5,
-          "ha": 26,
-          "dh": 4.8,
-          "dd": 5,
-          "da": 7.5,
-          "ah": 20,
-          "ad": 13.5,
-          "aa": 6.3
-        },
-        "HAD": {
-          "poolCode": "HAD",
-          "updateTime": "11:08:39",
-          "h": 1.99,
-          "d": 2.95,
-          "a": 3.48
-        },
-        "TTG": {
-          "poolCode": "TTG",
-          "updateTime": "20:43:35",
-          "s0": 8.75,
-          "s1": 4.6,
-          "s2": 3.2,
-          "s3": 3.6,
-          "s4": 5.8,
-          "s5": 12,
-          "s6": 22,
-          "s7": 33
-        }
-      },
-      "availablePools": [
-        {
-          "poolCode": "HHAD",
-          "bettingSingle": 0,
-          "bettingAllup": 1
-        },
-        {
-          "poolCode": "HAFU",
-          "bettingSingle": 1,
-          "bettingAllup": 1
-        },
-        {
-          "poolCode": "TTG",
-          "bettingSingle": 1,
-          "bettingAllup": 1
-        },
-        {
-          "poolCode": "HAD",
-          "bettingSingle": 1,
-          "bettingAllup": 1
-        }
-      ]
-    },
-    {
-      "matchNum": 2077,
-      "matchNumStr": "周二077",
-      "matchDate": "2026-07-01",
-      "matchTime": "01:00:00",
-      "homeTeam": "科特迪瓦",
-      "awayTeam": "挪威",
-      "homeTeamEn": "CIV",
-      "awayTeamEn": "NOW",
-      "homeRank": "[世界杯4]",
-      "awayRank": "[世界杯2]",
+      "awayRank": "[世界杯1]",
       "venue": "比赛将在美国-得克萨斯州阿灵顿举行",
       "status": "Selling",
       "pools": {
         "HHAD": {
           "poolCode": "HHAD",
-          "updateTime": "19:57:15",
-          "h": 1.79,
-          "d": 3.7,
-          "a": 3.33,
-          "goalLine": "+1"
-        },
-        "HAFU": {
-          "poolCode": "HAFU",
-          "updateTime": "09:40:38",
-          "hh": 6,
-          "hd": 14,
-          "ha": 23,
-          "dh": 7.5,
-          "dd": 5.7,
-          "da": 4.8,
-          "ah": 30,
-          "ad": 14,
-          "aa": 2.85
-        },
-        "TTG": {
-          "poolCode": "TTG",
-          "updateTime": "09:40:38",
-          "s0": 12,
-          "s1": 5.1,
-          "s2": 3.35,
-          "s3": 3.5,
-          "s4": 5.25,
-          "s5": 10,
-          "s6": 17,
-          "s7": 24
-        },
-        "HAD": {
-          "poolCode": "HAD",
-          "updateTime": "19:57:07",
-          "h": 3.7,
-          "d": 3.33,
-          "a": 1.79
-        }
-      },
-      "availablePools": [
-        {
-          "poolCode": "HHAD",
-          "bettingSingle": 0,
-          "bettingAllup": 1
-        },
-        {
-          "poolCode": "HAFU",
-          "bettingSingle": 1,
-          "bettingAllup": 1
-        },
-        {
-          "poolCode": "TTG",
-          "bettingSingle": 1,
-          "bettingAllup": 1
-        },
-        {
-          "poolCode": "HAD",
-          "bettingSingle": 1,
-          "bettingAllup": 1
-        }
-      ]
-    },
-    {
-      "matchNum": 2078,
-      "matchNumStr": "周二078",
-      "matchDate": "2026-07-01",
-      "matchTime": "05:00:00",
-      "homeTeam": "法国",
-      "awayTeam": "瑞典",
-      "homeTeamEn": "FRA",
-      "awayTeamEn": "SWE",
-      "homeRank": "[世界杯1]",
-      "awayRank": "[世界杯3]",
-      "venue": "比赛将在美国-新泽西州东拉瑟福德举行",
-      "status": "Selling",
-      "pools": {
-        "HHAD": {
-          "poolCode": "HHAD",
-          "updateTime": "10:36:34",
-          "h": 1.63,
-          "d": 3.9,
-          "a": 3.85,
-          "goalLine": "-1"
-        },
-        "HAFU": {
-          "poolCode": "HAFU",
-          "updateTime": "10:37:33",
-          "hh": 1.6,
-          "hd": 21,
-          "ha": 50,
-          "dh": 4.05,
-          "dd": 9,
-          "da": 20,
-          "ah": 24,
-          "ad": 21,
-          "aa": 16
-        },
-        "TTG": {
-          "poolCode": "TTG",
-          "updateTime": "10:37:20",
-          "s0": 21,
-          "s1": 7,
-          "s2": 4.3,
-          "s3": 3.55,
-          "s4": 4.25,
-          "s5": 6.8,
-          "s6": 10.5,
-          "s7": 14
-        },
-        "HAD": {
-          "poolCode": "HAD",
-          "updateTime": "10:36:31",
-          "h": 1.17,
-          "d": 5.6,
-          "a": 10.5
-        }
-      },
-      "availablePools": [
-        {
-          "poolCode": "HHAD",
-          "bettingSingle": 0,
-          "bettingAllup": 1
-        },
-        {
-          "poolCode": "HAFU",
-          "bettingSingle": 1,
-          "bettingAllup": 1
-        },
-        {
-          "poolCode": "TTG",
-          "bettingSingle": 1,
-          "bettingAllup": 1
-        },
-        {
-          "poolCode": "HAD",
-          "bettingSingle": 1,
-          "bettingAllup": 1
-        }
-      ]
-    },
-    {
-      "matchNum": 2079,
-      "matchNumStr": "周二079",
-      "matchDate": "2026-07-01",
-      "matchTime": "09:00:00",
-      "homeTeam": "墨西哥",
-      "awayTeam": "厄瓜多尔",
-      "homeTeamEn": "MEX",
-      "awayTeamEn": "ECU",
-      "homeRank": "[世界杯1]",
-      "awayRank": "[世界杯3]",
-      "venue": "比赛将在墨西哥-墨西哥城举行",
-      "status": "Selling",
-      "pools": {
-        "HHAD": {
-          "poolCode": "HHAD",
-          "updateTime": "11:12:46",
-          "h": 4.68,
-          "d": 3.4,
+          "updateTime": "21:27:55",
+          "h": 4.33,
+          "d": 3.6,
           "a": 1.61,
           "goalLine": "-1"
         },
         "HAFU": {
           "poolCode": "HAFU",
-          "updateTime": "09:15:46",
-          "hh": 3.25,
-          "hd": 16,
-          "ha": 42,
-          "dh": 4.4,
-          "dd": 4,
-          "da": 7.5,
-          "ah": 30,
-          "ad": 16,
-          "aa": 6.5
+          "updateTime": "10:54:24",
+          "hh": 3.8,
+          "hd": 12,
+          "ha": 20,
+          "dh": 4.8,
+          "dd": 5.65,
+          "da": 7.25,
+          "ah": 15,
+          "ad": 12,
+          "aa": 5.4
+        },
+        "CRS": {
+          "poolCode": "CRS",
+          "updateTime": "20:11:51",
+          "s00s00": 12.5,
+          "s00s01": 11,
+          "s00s02": 19,
+          "s00s03": 45,
+          "s00s04": 125,
+          "s00s05": 350,
+          "s01s00": 9.7,
+          "s01s01": 5.5,
+          "s01s02": 9,
+          "s01s03": 25,
+          "s01s04": 100,
+          "s01s05": 300,
+          "s02s00": 13,
+          "s02s01": 6.25,
+          "s02s02": 9.5,
+          "s02s03": 25,
+          "s02s04": 90,
+          "s02s05": 300,
+          "s03s00": 27,
+          "s03s01": 13.5,
+          "s03s02": 18,
+          "s03s03": 30,
+          "s04s00": 80,
+          "s04s01": 55,
+          "s04s02": 45,
+          "s05s00": 250,
+          "s05s01": 200,
+          "s05s02": 125,
+          "s1sa": 80,
+          "s1sd": 150,
+          "s1sh": 60
         },
         "TTG": {
           "poolCode": "TTG",
-          "updateTime": "09:15:45",
-          "s0": 6,
-          "s1": 3.3,
-          "s2": 3,
-          "s3": 4.25,
-          "s4": 8.5,
-          "s5": 20,
-          "s6": 35,
-          "s7": 50
+          "updateTime": "18:45:47",
+          "s0": 12.5,
+          "s1": 5.2,
+          "s2": 3.5,
+          "s3": 3.4,
+          "s4": 5.1,
+          "s5": 9.5,
+          "s6": 17,
+          "s7": 24
         },
         "HAD": {
           "poolCode": "HAD",
-          "updateTime": "11:12:36",
-          "h": 2.04,
-          "d": 2.7,
-          "a": 3.72
+          "updateTime": "16:53:16",
+          "h": 2.03,
+          "d": 3.13,
+          "a": 3.15
         }
       },
       "availablePools": [
@@ -456,6 +101,11 @@
         },
         {
           "poolCode": "HAFU",
+          "bettingSingle": 1,
+          "bettingAllup": 1
+        },
+        {
+          "poolCode": "CRS",
           "bettingSingle": 1,
           "bettingAllup": 1
         },
@@ -472,136 +122,93 @@
       ]
     },
     {
-      "matchNum": 3080,
-      "matchNumStr": "周三080",
-      "matchDate": "2026-07-02",
-      "matchTime": "00:00:00",
+      "matchNum": 3102,
+      "matchNumStr": "周三102",
+      "matchDate": "2026-07-16",
+      "matchTime": "03:00:00",
       "homeTeam": "英格兰",
-      "awayTeam": "刚果(金)",
+      "awayTeam": "阿根廷",
       "homeTeamEn": "ENG",
-      "awayTeamEn": "COD",
+      "awayTeamEn": "ARG",
       "homeRank": "[世界杯1]",
-      "awayRank": "[世界杯3]",
+      "awayRank": "[世界杯1]",
       "venue": "比赛将在美国-佐治亚州亚特兰大举行",
       "status": "Selling",
       "pools": {
-        "HHAD": {
-          "poolCode": "HHAD",
-          "updateTime": "09:15:46",
-          "h": 1.71,
-          "d": 3.5,
-          "a": 3.86,
-          "goalLine": "-1"
-        },
         "HAFU": {
           "poolCode": "HAFU",
-          "updateTime": "09:15:46",
-          "hh": 1.57,
-          "hd": 27,
-          "ha": 100,
-          "dh": 3.55,
-          "dd": 7.5,
-          "da": 25,
-          "ah": 30,
-          "ad": 27,
-          "aa": 22
+          "updateTime": "15:28:59",
+          "hh": 4.2,
+          "hd": 12,
+          "ha": 23,
+          "dh": 5.5,
+          "dd": 4.4,
+          "da": 6.5,
+          "ah": 21,
+          "ad": 12,
+          "aa": 5.1
+        },
+        "HHAD": {
+          "poolCode": "HHAD",
+          "updateTime": "20:43:38",
+          "h": 5.65,
+          "d": 3.75,
+          "a": 1.46,
+          "goalLine": "-1"
+        },
+        "CRS": {
+          "poolCode": "CRS",
+          "updateTime": "10:49:33",
+          "s00s00": 8,
+          "s00s01": 8.5,
+          "s00s02": 16,
+          "s00s03": 40,
+          "s00s04": 110,
+          "s00s05": 500,
+          "s01s00": 8,
+          "s01s01": 5,
+          "s01s02": 8.5,
+          "s01s03": 28,
+          "s01s04": 110,
+          "s01s05": 350,
+          "s02s00": 12.5,
+          "s02s01": 6.5,
+          "s02s02": 10.5,
+          "s02s03": 38,
+          "s02s04": 100,
+          "s02s05": 400,
+          "s03s00": 30,
+          "s03s01": 21,
+          "s03s02": 28,
+          "s03s03": 42,
+          "s04s00": 85,
+          "s04s01": 75,
+          "s04s02": 80,
+          "s05s00": 350,
+          "s05s01": 300,
+          "s05s02": 250,
+          "s1sa": 175,
+          "s1sd": 175,
+          "s1sh": 100
         },
         "TTG": {
           "poolCode": "TTG",
-          "updateTime": "09:15:45",
-          "s0": 12,
-          "s1": 4.75,
-          "s2": 3.5,
-          "s3": 3.5,
-          "s4": 5.2,
-          "s5": 9.5,
-          "s6": 18,
-          "s7": 28
-        },
-        "HAD": {
-          "poolCode": "HAD",
-          "updateTime": "09:15:46",
-          "h": 1.17,
-          "d": 5.25,
-          "a": 12
-        }
-      },
-      "availablePools": [
-        {
-          "poolCode": "HHAD",
-          "bettingSingle": 0,
-          "bettingAllup": 1
-        },
-        {
-          "poolCode": "HAFU",
-          "bettingSingle": 1,
-          "bettingAllup": 1
-        },
-        {
-          "poolCode": "TTG",
-          "bettingSingle": 1,
-          "bettingAllup": 1
-        },
-        {
-          "poolCode": "HAD",
-          "bettingSingle": 1,
-          "bettingAllup": 1
-        }
-      ]
-    },
-    {
-      "matchNum": 3081,
-      "matchNumStr": "周三081",
-      "matchDate": "2026-07-02",
-      "matchTime": "04:00:00",
-      "homeTeam": "比利时",
-      "awayTeam": "塞内加尔",
-      "homeTeamEn": "BEG",
-      "awayTeamEn": "SEN",
-      "homeRank": "[世界杯1]",
-      "awayRank": "[世界杯3]",
-      "venue": "比赛将在美国-华盛顿州西雅图举行",
-      "status": "Selling",
-      "pools": {
-        "HHAD": {
-          "poolCode": "HHAD",
-          "updateTime": "09:15:46",
-          "h": 4.15,
-          "d": 3.6,
-          "a": 1.64,
-          "goalLine": "-1"
-        },
-        "HAFU": {
-          "poolCode": "HAFU",
-          "updateTime": "09:15:46",
-          "hh": 3.25,
-          "hd": 14,
-          "ha": 32,
-          "dh": 4.75,
-          "dd": 4.9,
-          "da": 7,
-          "ah": 26,
-          "ad": 14,
-          "aa": 5.7
-        },
-        "TTG": {
-          "poolCode": "TTG",
-          "updateTime": "09:15:45",
-          "s0": 8.5,
-          "s1": 4,
-          "s2": 3.2,
-          "s3": 3.75,
-          "s4": 6.2,
-          "s5": 12.5,
-          "s6": 24,
+          "updateTime": "10:49:49",
+          "s0": 8,
+          "s1": 4.2,
+          "s2": 2.95,
+          "s3": 3.8,
+          "s4": 6.5,
+          "s5": 14,
+          "s6": 26,
           "s7": 40
         },
         "HAD": {
           "poolCode": "HAD",
-          "updateTime": "09:15:46",
-          "h": 1.99,
-          "d": 3,
-          "a": 3.42
+          "updateTime": "14:12:13",
+          "h": 2.35,
+          "d": 2.75,
+          "a": 2.94
         }
       },
       "availablePools": [
@@ -616,80 +223,7 @@
           "bettingAllup": 1
         },
         {
-          "poolCode": "TTG",
-          "bettingSingle": 1,
-          "bettingAllup": 1
-        },
-        {
-          "poolCode": "HAD",
-          "bettingSingle": 1,
-          "bettingAllup": 1
-        }
-      ]
-    },
-    {
-      "matchNum": 3082,
-      "matchNumStr": "周三082",
-      "matchDate": "2026-07-02",
-      "matchTime": "08:00:00",
-      "homeTeam": "美国",
-      "awayTeam": "波黑",
-      "homeTeamEn": "USA",
-      "awayTeamEn": "BOS",
-      "homeRank": "[世界杯1]",
-      "awayRank": "[世界杯3]",
-      "venue": "比赛将在美国-加利福尼亚州圣克拉拉举行",
-      "status": "Selling",
-      "pools": {
-        "HHAD": {
-          "poolCode": "HHAD",
-          "updateTime": "09:15:46",
-          "h": 1.97,
-          "d": 3.5,
-          "a": 2.98,
-          "goalLine": "-1"
-        },
-        "HAFU": {
-          "poolCode": "HAFU",
-          "updateTime": "09:15:46",
-          "hh": 1.85,
-          "hd": 20,
-          "ha": 60,
-          "dh": 3.75,
-          "dd": 6.5,
-          "da": 16,
-          "ah": 27,
-          "ad": 20,
-          "aa": 13
-        },
-        "TTG": {
-          "poolCode": "TTG",
-          "updateTime": "09:15:45",
-          "s0": 13,
-          "s1": 5,
-          "s2": 3.6,
-          "s3": 3.45,
-          "s4": 5.1,
-          "s5": 9,
-          "s6": 16,
-          "s7": 25
-        },
-        "HAD": {
-          "poolCode": "HAD",
-          "updateTime": "09:15:46",
-          "h": 1.28,
-          "d": 4.4,
-          "a": 8.25
-        }
-      },
-      "availablePools": [
-        {
-          "poolCode": "HHAD",
-          "bettingSingle": 0,
-          "bettingAllup": 1
-        },
-        {
-          "poolCode": "HAFU",
+          "poolCode": "CRS",
           "bettingSingle": 1,
           "bettingAllup": 1
         },

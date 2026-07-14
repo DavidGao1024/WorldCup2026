@@ -619,6 +619,28 @@ body {
 .lottery-odds-row.pool-hhad { grid-template-columns: repeat(3, 1fr); }
 .lottery-odds-row.pool-ttg { grid-template-columns: repeat(4, 1fr); }
 .lottery-odds-row.pool-hafu { grid-template-columns: repeat(3, 1fr); }
+.lottery-odds-row.pool-crs {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  padding: 10px 12px;
+}
+.lottery-odds-row.pool-crs .lottery-odds-btn {
+  padding: 8px 4px;
+}
+.lottery-odds-row.pool-crs .odds-label {
+  font-size: 0.65rem;
+  margin-bottom: 2px;
+}
+.lottery-odds-row.pool-crs .odds-value {
+  font-size: 0.85rem;
+}
+.lottery-odds-row.pool-crs .crs-other {
+  background: #1a3d2a;
+  border-color: #4a9a6e;
+}
+.lottery-odds-row.pool-crs .crs-other .odds-label {
+  color: #fbbf24;
+}
 .lottery-odds-btn {
   flex: 1;
   text-align: center;

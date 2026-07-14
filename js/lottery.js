@@ -22,9 +22,22 @@ var POOL_META = {
     { id: 'hh', label: 'lotteryHH' }, { id: 'hd', label: 'lotteryHD' }, { id: 'ha', label: 'lotteryHA' },
     { id: 'dh', label: 'lotteryDH' }, { id: 'dd', label: 'lotteryDD' }, { id: 'da', label: 'lotteryDA' },
     { id: 'ah', label: 'lotteryAH' }, { id: 'ad', label: 'lotteryAD' }, { id: 'aa', label: 'lotteryAA' }
-  ]}
+  ]},
+  CRS:  { key: 'lotteryCRS', options: [] }
 };
-var POOL_ORDER = ['HAD', 'HHAD', 'TTG', 'HAFU'];
+var POOL_ORDER = ['HAD', 'HHAD', 'CRS', 'TTG', 'HAFU'];
+
+// CRS 比分固定顺序：主胜12个 + 胜其他, 平局4个 + 平其他, 客胜12个 + 负其他
+var CRS_SCORE_ORDER = [
+  's01s00', 's02s00', 's02s01', 's03s00', 's03s01', 's03s02',
+  's04s00', 's04s01', 's04s02', 's05s00', 's05s01', 's05s02', 's1sa',
+  's00s00', 's01s01', 's02s02', 's03s03', 's1sd',
+  's00s01', 's00s02', 's01s02', 's00s03', 's01s03', 's02s03',
+  's00s04', 's01s04', 's02s04', 's00s05', 's01s05', 's02s05', 's1sh'
+];
+var CRS_LABEL_MAP = {
+  's1sa': 'lotteryOtherHome', 's1sd': 'lotteryOtherDraw', 's1sh': 'lotteryOtherAway'
+};
 
 function fetchLotteryOdds() {
   return fetch('data/lottery-odds.json')
@@ -300,19 +313,46 @@ function renderMatchCard(m) {
   return html;
 }
 
+function getCrsOptions(pool) {
+  var options = [];
+  for (var i = 0; i < CRS_SCORE_ORDER.length; i++) {
+    var key = CRS_SCORE_ORDER[i];
+    if (typeof pool[key] === 'undefined' || pool[key] === null) continue;
+    var label;
+    if (CRS_LABEL_MAP[key]) {
+      label = t(CRS_LABEL_MAP[key]);
+    } else {
+      // s01s02 → "1:2"
+      var home = parseInt(key.substring(1, 3));
+      var away = parseInt(key.substring(4, 6));
+      label = home + ':' + away;
+    }
+    options.push({ id: key, label: label, _raw: true });
+  }
+  return options;
+}
+
 function renderOddsRow(m, poolCode) {
   var pool = m.pools[poolCode];
   var meta = POOL_META[poolCode];
-  var firstOpt = meta.options[0];
-  var hasData = pool && firstOpt && typeof pool[firstOpt.id] !== 'undefined' && pool[firstOpt.id] !== null;
+  var options;
 
-  if (!hasData) {
-    return '<div class="lottery-no-data">' + t('lotteryNoData') + '</div>';
+  if (poolCode === 'CRS') {
+    if (!pool) return '<div class="lottery-no-data">' + t('lotteryNoData') + '</div>';
+    options = getCrsOptions(pool);
+    if (options.length === 0) return '<div class="lottery-no-data">' + t('lotteryNoData') + '</div>';
+  } else {
+    var firstOpt = meta.options[0];
+    var hasData = pool && firstOpt && typeof pool[firstOpt.id] !== 'undefined' && pool[firstOpt.id] !== null;
+    if (!hasData) {
+      return '<div class="lottery-no-data">' + t('lotteryNoData') + '</div>';
+    }
+    options = meta.options;
   }
 
   var html = '<div class="lottery-odds-row pool-' + poolCode.toLowerCase() + '">';
-  for (var i = 0; i < meta.options.length; i++) {
-    var opt = meta.options[i];
+  for (var i = 0; i < options.length; i++) {
+    var opt = options[i];
     var odds = pool[opt.id];
     var selIdxs = getSelectionsForMatch(m.matchNum);
     var isSelected = false;
@@ -321,9 +361,9 @@ function renderOddsRow(m, poolCode) {
         isSelected = true; break;
       }
     }
-
-    html += '<div class="lottery-odds-btn' + (isSelected ? ' selected' : '') + '" data-match="' + m.matchNum + '" data-pool="' + poolCode + '" data-option="' + opt.id + '" data-odds="' + odds + '">';
-    html += '<span class="odds-label">' + t(opt.label) + '</span>';
+    var isOther = poolCode === 'CRS' && CRS_LABEL_MAP[opt.id];
+    html += '<div class="lottery-odds-btn' + (isSelected ? ' selected' : '') + (isOther ? ' crs-other' : '') + '" data-match="' + m.matchNum + '" data-pool="' + poolCode + '" data-option="' + opt.id + '" data-odds="' + odds + '">';
+    html += '<span class="odds-label">' + (opt._raw ? opt.label : t(opt.label)) + '</span>';
     html += '<span class="odds-value">' + odds.toFixed(2) + '</span>';
     if (poolCode === 'HHAD' && pool.goalLine) {
       html += '<span class="odds-goalline">' + t('lotteryGoalLine') + ' ' + pool.goalLine + '</span>';
@@ -508,9 +548,19 @@ function bindOddsButton(btn) {
     var matchLabel = (currentLang === 'zh' ? m.homeTeam : m.homeTeamEn) + ' vs ' + (currentLang === 'zh' ? m.awayTeam : m.awayTeamEn);
     var poolLabel = POOL_META[pool].key;
     var optionLabel = '';
-    var metaOptions = POOL_META[pool].options;
-    for (var o = 0; o < metaOptions.length; o++) {
-      if (metaOptions[o].id === option) { optionLabel = metaOptions[o].label; break; }
+    if (pool === 'CRS') {
+      if (CRS_LABEL_MAP[option]) {
+        optionLabel = t(CRS_LABEL_MAP[option]);
+      } else {
+        var ch = parseInt(option.substring(1, 3));
+        var ca = parseInt(option.substring(4, 6));
+        optionLabel = ch + ':' + ca;
+      }
+    } else {
+      var metaOptions = POOL_META[pool].options;
+      for (var o = 0; o < metaOptions.length; o++) {
+        if (metaOptions[o].id === option) { optionLabel = metaOptions[o].label; break; }
+      }
     }
 
     // Find if this exact option is already selected

@@ -18,7 +18,7 @@ const path = require('path');
 const API_URL = process.env.ODDS_PROXY_URL
   ? process.env.ODDS_PROXY_URL.replace(/\/$/, '')
   : 'https://webapi.sporttery.cn/gateway/jc/football/getMatchCalculatorV1.qry';
-const POOL_CODES = 'hhad,had,crsp,ttg,hafu';
+const POOL_CODES = 'hhad,had,crs,ttg,hafu';
 const OUTPUT_FILE = process.argv[2]
   ? path.resolve(process.argv[2])
   : path.join(__dirname, '..', 'data', 'lottery-odds.json');
@@ -153,6 +153,21 @@ function extractMatchOdds(match) {
     pools.TTG.s6 = parseFloat(match.ttg.s6) || null;
     pools.TTG.s7 = parseFloat(match.ttg.s7) || null;
     pools.TTG.updateTime = pools.TTG.updateTime || match.ttg.updateTime || '';
+  }
+
+  // CRS 比分：31个具体比分 + 3个"其他比分"
+  // 格式: s{HH}s{AA} = 主队HH球:客队AA球 (如 s01s02 = 1:2)
+  // s1sa=其他主胜, s1sd=其他平局, s1sh=其他客胜
+  // f后缀字段为标记位，跳过
+  if (match.crs && Object.keys(match.crs).some(k => k.startsWith('s') && !k.endsWith('f') && k !== 'goalLine' && k !== 'goalLineValue' && k !== 'updateDate' && k !== 'updateTime')) {
+    if (!pools.CRS) {
+      pools.CRS = { poolCode: 'CRS' };
+    }
+    Object.keys(match.crs).forEach(function(key) {
+      if (key.endsWith('f') || key === 'goalLine' || key === 'goalLineValue' || key === 'updateDate' || key === 'updateTime') return;
+      pools.CRS[key] = parseFloat(match.crs[key]) || null;
+    });
+    pools.CRS.updateTime = pools.CRS.updateTime || match.crs.updateTime || '';
   }
 
   // HAFU 半全场：9个选项

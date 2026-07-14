@@ -220,6 +220,8 @@ https://webapi.sporttery.cn/gateway/jc/football/getMatchCalculatorV1.qry
 
 **重要约束**：API 无 CORS 头 + 腾讯云 WAF 防护，**浏览器直接 fetch 会被拦截**。当前方案通过 GitHub Actions 服务端抓取写入静态文件来绕过。
 
+**比分(CRS)关键发现**：`poolCode` 必须用 `crs`（不是 `crsp`），否则返回空 `{}`。数据格式：`s{HH}s{AA}` = 主队HH球:客队AA球（如 `s01s02` = 1:2），`s1sa`/`s1sd`/`s1sh` = 胜其他/平其他/负其他。共 31 个比分选项。
+
 ### 赔率数据格式 (lottery-odds.json)
 
 ```json
@@ -267,7 +269,7 @@ https://webapi.sporttery.cn/gateway/jc/football/getMatchCalculatorV1.qry
 | 让球胜平负 | HHAD | 完整赔率 + 让球数 ok |
 | 总进球 | TTG | 完整赔率 ok（s0~s7，来源 `m.ttg`） |
 | 半全场 | HAFU | 完整赔率 ok（hh~aa 9项，来源 `m.hafu`） |
-| 比分 | CRS | 接口返回空 `{}`，无法获取 |
+| 比分 | CRS | ✅ 完整赔率 ok（`poolCode=crs`，31个比分选项，注意不是 `crsp`） |
 
 **关键发现**：TTG/HAFU 赔率不在 `oddsList` 中，而是在 match 对象的 `m.ttg` / `m.hafu` 字段。
 
