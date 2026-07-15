@@ -1,0 +1,125 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - heading "2026 世界杯" [level=1] [ref=e6]
+        - generic [ref=e7]: 大卫的赛事手册
+      - generic [ref=e9]:
+        - generic [ref=e10] [cursor=pointer]: 中
+        - generic [ref=e11] [cursor=pointer]: EN
+    - navigation [ref=e12]:
+      - generic [ref=e13] [cursor=pointer]: 赛程
+      - generic [ref=e14] [cursor=pointer]: 淘汰赛
+      - generic [ref=e15] [cursor=pointer]: 射手榜
+      - generic [ref=e16] [cursor=pointer]: 深度分析
+      - generic [ref=e17] [cursor=pointer]: 体彩世界
+      - generic [ref=e18] [cursor=pointer]: 积分榜
+  - main [ref=e19]:
+    - generic [ref=e728]:
+      - generic [ref=e729]:
+        - heading "比赛深度分析" [level=2] [ref=e730]
+        - paragraph [ref=e731]: 多维度数据模型 · 独立分析 · 不盲从赔率
+      - generic [ref=e732]:
+        - generic [ref=e733]: 共 1 场比赛
+        - generic [ref=e734]: 10维分析 v7
+      - generic [ref=e735]:
+        - generic [ref=e736]:
+          - generic [ref=e737]: 半决赛 · 2026-07-15 15:00
+          - generic [ref=e738]:
+            - generic [ref=e739]: 英格兰
+            - generic [ref=e741]: VS
+            - generic [ref=e742]: 阿根廷
+          - generic [ref=e744]:
+            - generic [ref=e746]:
+              - generic "2-1 vs Norway" [ref=e747]: W
+              - generic "3-2 vs Mexico" [ref=e748]: W
+              - generic "2-1 vs DR Congo" [ref=e749]: W
+              - generic "2-0 vs Panama" [ref=e750]: W
+              - generic "0-0 vs Ghana" [ref=e751]: D
+            - generic [ref=e753]:
+              - generic "3-1 vs Switzerland" [ref=e754]: W
+              - generic "3-2 vs Egypt" [ref=e755]: W
+              - generic "3-2 vs Cape Verde" [ref=e756]: W
+              - generic "3-1 vs Jordan" [ref=e757]: W
+              - generic "3-0 vs Algeria" [ref=e758]: W
+          - generic [ref=e759]: 半决赛 · 亚特兰大
+        - generic [ref=e760]:
+          - generic [ref=e761]:
+            - generic [ref=e762]: "65"
+            - generic [ref=e763]: ★★☆ 较大优势
+            - generic [ref=e767]: "52"
+          - generic [ref=e768]: "综合差距: 13 分"
+        - generic [ref=e769]:
+          - generic [ref=e770]:
+            - generic [ref=e771]: FIFA排名
+            - generic "4" [ref=e772]
+            - generic "1" [ref=e775]
+          - generic [ref=e776]:
+            - generic [ref=e777]: 近期状态
+            - generic "84" [ref=e778]
+            - generic "84" [ref=e781]
+          - generic [ref=e782]:
+            - generic [ref=e783]: 球队身价
+            - generic "€12.6亿" [ref=e784]
+            - generic "€8.2亿" [ref=e787]
+          - generic [ref=e788]:
+            - generic [ref=e789]: 进攻火力
+            - generic "2.6球/场" [ref=e790]
+            - generic "3.1球/场" [ref=e793]
+          - generic [ref=e794]:
+            - generic [ref=e795]: 防守稳固
+            - generic "0.8失/场" [ref=e796]
+            - generic "0.8失/场" [ref=e799]
+          - generic [ref=e800]:
+            - generic [ref=e801]: 主场优势
+            - generic "-" [ref=e802]
+            - generic "-" [ref=e805]
+          - generic [ref=e806]:
+            - generic [ref=e807]: 伤病停赛
+            - generic "5" [ref=e808]
+            - generic "11" [ref=e811]
+          - generic [ref=e812]:
+            - generic [ref=e813]: 🤝 历史交锋
+            - generic "无数据" [ref=e814]
+            - generic "无数据" [ref=e817]
+          - generic [ref=e818]:
+            - generic [ref=e819]: 👨‍⚖️ 裁判
+            - generic "待定" [ref=e820]
+          - generic [ref=e823]:
+            - generic [ref=e824]: ✈️ 旅途
+            - generic "4天" [ref=e825]
+            - generic "6天" [ref=e828]
+          - generic [ref=e829]:
+            - generic [ref=e830]: 🌍 环境适应
+            - generic "3.0" [ref=e831]
+            - generic "3.0" [ref=e834]
+        - generic [ref=e835]:
+          - generic [ref=e836]: "英格兰: 利夫拉门托缺 England national football team缺 战力-5"
+          - generic [ref=e837]: "阿根廷: 梅西★疑 罗梅洛☆缺 莫利纳疑 Argentina national football team缺 战力-11"
+          - generic [ref=e838]: 英格兰休4天 vs 阿根廷休6天
+          - generic [ref=e839]: "Atlanta: 室内 · 炎热 · 15:00开球"
+        - generic [ref=e840]:
+          - generic [ref=e841]: 关键洞察
+          - generic [ref=e842]: 🔥 英格兰近5场4胜1平，状态极佳，场均1.8球
+          - generic [ref=e843]: 🏥 英格兰伤停2人，战力受损需留意
+        - generic [ref=e844]:
+          - generic [ref=e845]: 赛前预测
+          - generic [ref=e847]:
+            - generic [ref=e848]: 英格兰 27%
+            - generic [ref=e849]: 平 48%
+            - generic [ref=e850]: 阿根廷 25%
+          - generic [ref=e851]: 英格兰 27%平 48%阿根廷 25%
+          - generic [ref=e855]: 英格兰占优，但阿根廷有能力制造麻烦
+          - generic [ref=e856]:
+            - generic [ref=e857]: 预测比分
+            - generic [ref=e858]: 1-1
+            - generic [ref=e859]: 23%
+            - generic [ref=e860]: 0-0
+            - generic [ref=e861]: 16%
+            - generic [ref=e862]: 2-2
+            - generic [ref=e863]: 8%
+  - contentinfo [ref=e374]:
+    - paragraph [ref=e375]:
+      - text: "比分 & 积分榜: ESPN | 赛程:"
+      - link "openfootball/worldcup.json" [ref=e376] [cursor=pointer]:
+        - /url: https://github.com/openfootball/worldcup.json

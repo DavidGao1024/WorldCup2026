@@ -461,6 +461,12 @@ function fetchMatchSummary(eventId) {
   }).then(function(data) {
     var summary = formatMatchSummary(data, eventId);
     matchSummaryCache[eventId] = summary;
+    // 同步缓存 H2H 数据到 analysisData，供 computeMatchScore 使用
+    if (summary.h2h && typeof analysisData !== 'undefined') {
+      analysisData.h2h = analysisData.h2h || {};
+      var key = h2hCacheKey(summary.h2h.teamA, summary.h2h.teamB);
+      if (key) analysisData.h2h[key] = summary.h2h;
+    }
     return summary;
   }).catch(function(e) {
     console.warn('Failed to fetch match summary for event ' + eventId + ':', e.message);
@@ -478,7 +484,8 @@ function formatMatchSummary(data, eventId) {
     events: [],
     stats: null,
     header: data.header || {},
-    gameInfo: data.gameInfo || {}
+    gameInfo: data.gameInfo || {},
+    h2h: extractH2H(data.headToHeadGames)
   };
 
   // 阵容数据
@@ -566,4 +573,50 @@ function formatMatchSummary(data, eventId) {
   }
 
   return summary;
+}
+
+// 提取两队历史交锋数据 (H2H) — 来自 ESPN summary 的 headToHeadGames 字段
+// 返回 { teams: [name1, name2], games: [{date, competition, score, result}] }
+// result 是从 teams[0] 视角的 W/D/L
+function extractH2H(h2hRaw) {
+  if (!h2hRaw || !h2hRaw.length) return null;
+
+  var teamA = (h2hRaw[0].team || {}).displayName || '';
+  var teamAName = mapEspnName(teamA);
+
+  // teamB 优先从 h2hRaw[1] 取;ESPN 对未开赛比赛常只返回 1 个 entry,此时从首个 event 的 opponent 字段补
+  var teamBName = '';
+  if (h2hRaw[1] && h2hRaw[1].team && h2hRaw[1].team.displayName) {
+    teamBName = mapEspnName(h2hRaw[1].team.displayName);
+  } else if (h2hRaw[0].events && h2hRaw[0].events[0] && h2hRaw[0].events[0].opponent) {
+    teamBName = mapEspnName(h2hRaw[0].events[0].opponent.displayName || '');
+  }
+
+  var games = [];
+  // 用第一支队伍的 events 列表（两队 events 是同一场比赛的两个视角）
+  var evList = h2hRaw[0].events || [];
+  for (var i = 0; i < evList.length; i++) {
+    var ev = evList[i];
+    games.push({
+      date: ev.gameDate ? ev.gameDate.slice(0, 10) : '',
+      competition: ev.competitionName || ev.leagueName || '',
+      round: ev.roundName || '',
+      score: ev.score || '',
+      result: ev.gameResult || '',  // W/D/L from teamA perspective
+      note: ev.matchNote || ''
+    });
+  }
+
+  return {
+    teams: [teamAName, teamBName],
+    teamA: teamAName,
+    teamB: teamBName,
+    games: games
+  };
+}
+
+// 生成 H2H 缓存的规范键名（按字母排序，让 A vs B 和 B vs A 命中同一键）
+function h2hCacheKey(teamA, teamB) {
+  if (!teamA || !teamB) return '';
+  return [teamA, teamB].sort().join('|');
 }

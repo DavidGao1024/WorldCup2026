@@ -8,8 +8,6 @@ function loadAnalysisData() {
     fetch('data/stadiums.json').then(function(r) { return r.json(); }),
     fetch('data/injuries.json').then(function(r) { return r.json(); }).catch(function() { return {}; }),
     fetch('data/player-importance.json').then(function(r) { return r.json(); }).catch(function() { return {}; }),
-    fetch('data/referee-db.json').then(function(r) { return r.json(); }).catch(function() { return {}; }),
-    fetch('data/referee-assignments.json').then(function(r) { return r.json(); }).catch(function() { return []; }),
     fetch('data/stadiums-climate.json').then(function(r) { return r.json(); }).catch(function() { return {}; }),
     fetch('data/rotation-analysis.json').then(function(r) { return r.json(); }).catch(function() { return {}; })
   ]).then(function(results) {
@@ -23,10 +21,11 @@ function loadAnalysisData() {
       (typeof worldCupSuspensions !== 'undefined' && worldCupSuspensions) ? worldCupSuspensions : {},
       results[4]
     );
-    analysisData.refereeDB = results[5];
-    analysisData.refereeAssign = results[6];
-    analysisData.stadiumClimate = results[7];
-    analysisData.rotation = results[8];
+    analysisData.stadiumClimate = results[5];
+    analysisData.rotation = results[6];
+    // v10: 裁判维度移除,refereeDB/refereeAssign 留空壳避免其它代码 ReferenceError
+    analysisData.refereeDB = {};
+    analysisData.refereeAssign = [];
     return analysisData;
   });
 }
@@ -108,6 +107,191 @@ function mergeInjuryAndSuspensionData(injuryData, suspensionData, importanceData
 
 // ---- Scoring engine ----
 
+// 历史交锋评分 (10 pts) — 基于近5年两队相互交锋记录
+// 数据源: ESPN summary.headToHeadGames,缓存于 analysisData.h2h[key]
+// 评分逻辑: 净胜率(队A胜率-负率) × 5 + 5(中性),范围 [0, 10]
+// 时间衰减: 近2年权重 1.0,2-5年权重 0.5
+function computeH2HScore(team, opponent) {
+  if (!analysisData.h2h) return 5;
+  var key = [team, opponent].sort().join('|');
+  var cached = analysisData.h2h[key];
+  if (!cached || !cached.games || !cached.games.length) return 5;
+
+  var now = new Date();
+  var fiveYearsAgo = new Date(now.getFullYear() - 5, now.getMonth(), now.getDate());
+  var twoYearsAgo = new Date(now.getFullYear() - 2, now.getMonth(), now.getDate());
+
+  var wW = 0, dW = 0, lW = 0, totalW = 0;
+
+  for (var i = 0; i < cached.games.length; i++) {
+    var g = cached.games[i];
+    if (!g.date) continue;
+    var gd = new Date(g.date);
+    if (isNaN(gd.getTime())) continue;
+    if (gd < fiveYearsAgo) continue;
+
+    var weight = gd >= twoYearsAgo ? 1.0 : 0.5;
+
+    // g.result 是从 cached.teamA 视角的 W/D/L
+    var result;
+    if (cached.teamA === team) {
+      result = g.result;
+    } else if (cached.teamA === opponent) {
+      result = g.result === 'W' ? 'L' : (g.result === 'L' ? 'W' : 'D');
+    } else {
+      continue;
+    }
+    if (!result) continue;
+
+    totalW += weight;
+    if (result === 'W') wW += weight;
+    else if (result === 'D') dW += weight;
+    else lW += weight;
+  }
+
+  if (totalW === 0) return 5;
+  var netWinRate = (wW - lW) / totalW;
+  var score = 5 + netWinRate * 5;
+  return Math.max(0, Math.min(10, Math.round(score)));
+}
+
+// 后台预取未开赛比赛的 H2H 数据(用于在 renderAnalysis 时填充 analysisData.h2h)
+function prefetchH2HForUpcoming() {
+  if (typeof worldCupData === 'undefined' || !worldCupData.matches) return;
+  if (typeof findEspnEventId !== 'function' || typeof fetchMatchSummary !== 'function') return;
+
+  analysisData.h2h = analysisData.h2h || {};
+
+  var upcoming = worldCupData.matches.filter(function(m) {
+    if (m.score1 != null && m.score2 != null) return false;
+    if (typeof isPlaceholder === 'function' && (isPlaceholder(m.team1) || isPlaceholder(m.team2))) return false;
+    return true;
+  });
+
+  var fetched = 0;
+  var scheduled = false;
+  function scheduleRerender() {
+    if (scheduled) return;
+    scheduled = true;
+    setTimeout(function() {
+      scheduled = false;
+      if (document.getElementById('analysis-content')) renderAnalysis();
+    }, 800);
+  }
+
+  upcoming.slice(0, 10).forEach(function(m) {
+    var eventId = findEspnEventId(m);
+    if (!eventId) return;
+    fetchMatchSummary(eventId).then(function(summary) {
+      if (!summary || !summary.h2h) return;
+      fetched++;
+      // fetchMatchSummary 已经把 H2H 写入 analysisData.h2h
+      scheduleRerender();
+    });
+  });
+}
+
+// H2H 维度的 UI 文案：返回 {t, o} 两队各自的"近X场 Y胜Z平W负"
+// 5年内有交锋 → 显示近期战绩; 5年内无 → 显示历史战绩(标"X年未交手")
+function buildH2HDetail(team, opponent, tName, oName) {
+  if (!analysisData.h2h) return { t: '-', o: '-' };
+  var key = [team, opponent].sort().join('|');
+  var cached = analysisData.h2h[key];
+  if (!cached || !cached.games || !cached.games.length) return { t: '无数据', o: '无数据' };
+
+  var now = new Date();
+  var fiveYearsAgo = new Date(now.getFullYear() - 5, now.getMonth(), now.getDate());
+
+  var tW5 = 0, tD5 = 0, tL5 = 0;
+  var tWAll = 0, tDAll = 0, tLAll = 0;
+  var latestDate = null;
+  for (var i = 0; i < cached.games.length; i++) {
+    var g = cached.games[i];
+    if (!g.date) continue;
+    var gd = new Date(g.date);
+    if (isNaN(gd.getTime())) continue;
+    var result;
+    if (cached.teamA === team) result = g.result;
+    else if (cached.teamA === opponent) result = g.result === 'W' ? 'L' : (g.result === 'L' ? 'W' : 'D');
+    else continue;
+    if (!result) continue;
+    if (result === 'W') { tWAll++; if (gd >= fiveYearsAgo) tW5++; }
+    else if (result === 'D') { tDAll++; if (gd >= fiveYearsAgo) tD5++; }
+    else { tLAll++; if (gd >= fiveYearsAgo) tL5++; }
+    if (!latestDate || gd > latestDate) latestDate = gd;
+  }
+
+  var total5 = tW5 + tD5 + tL5;
+  var totalAll = tWAll + tDAll + tLAll;
+  if (total5 > 0) {
+    return {
+      t: '近' + total5 + '场 ' + tW5 + '胜' + tD5 + '平' + tL5 + '负',
+      o: '近' + total5 + '场 ' + tL5 + '胜' + tD5 + '平' + tW5 + '负'
+    };
+  }
+  if (totalAll > 0) {
+    var yearsAgo = latestDate ? Math.floor((now - latestDate) / (365.25 * 24 * 3600 * 1000)) : 0;
+    var yearsLabel = yearsAgo > 0 ? yearsAgo + '年未交手·' : '';
+    return {
+      t: yearsLabel + '历史' + totalAll + '场 ' + tWAll + '胜' + tDAll + '平' + tLAll + '负',
+      o: yearsLabel + '历史' + totalAll + '场 ' + tLAll + '胜' + tDAll + '平' + tWAll + '负'
+    };
+  }
+  return { t: '无交锋记录', o: '无交锋记录' };
+}
+
+// H2H insight 文本洞察（只对有显著差距的 H2H 输出）
+function buildH2HInsight(team, opponent, tName, oName) {
+  if (!analysisData.h2h) return null;
+  var key = [team, opponent].sort().join('|');
+  var cached = analysisData.h2h[key];
+  if (!cached || !cached.games || !cached.games.length) return null;
+
+  var now = new Date();
+  var fiveYearsAgo = new Date(now.getFullYear() - 5, now.getMonth(), now.getDate());
+  var twoYearsAgo = new Date(now.getFullYear() - 2, now.getMonth(), now.getDate());
+
+  var tW = 0, tD = 0, tL = 0, recent = [];
+  for (var i = 0; i < cached.games.length; i++) {
+    var g = cached.games[i];
+    if (!g.date) continue;
+    var gd = new Date(g.date);
+    if (isNaN(gd.getTime()) || gd < fiveYearsAgo) continue;
+    var result;
+    if (cached.teamA === team) result = g.result;
+    else if (cached.teamA === opponent) result = g.result === 'W' ? 'L' : (g.result === 'L' ? 'W' : 'D');
+    else continue;
+    if (!result) continue;
+    if (result === 'W') tW++;
+    else if (result === 'D') tD++;
+    else tL++;
+    if (gd >= twoYearsAgo) recent.push({ result: result, date: g.date, score: g.score, competition: g.competition });
+  }
+
+  var total = tW + tD + tL;
+  if (total === 0) return null;
+
+  var tNameLocal = (typeof TEAM_ZH !== 'undefined' && TEAM_ZH[team]) ? TEAM_ZH[team] : tName;
+  var oNameLocal = (typeof TEAM_ZH !== 'undefined' && TEAM_ZH[opponent]) ? TEAM_ZH[opponent] : oName;
+
+  // 显著差距阈值：胜率差 >= 33%（近5场至少2场净胜差）
+  var netRate = (tW - tL) / total;
+  if (Math.abs(netRate) < 0.33) return null;
+
+  var stronger = netRate > 0 ? tNameLocal : oNameLocal;
+  var sw = netRate > 0 ? tW : tL;
+  var sl = netRate > 0 ? tL : tW;
+  var recentTxt = '';
+  if (recent.length > 0) {
+    var last = recent[recent.length - 1] || recent[0];
+    recentTxt = '，最近一次(' + (last.date || '') + (last.competition ? ' ' + last.competition : '') + (last.score ? ' ' + last.score : '') + ')';
+  }
+  return {
+    icon: '🤝',
+    text: '近5年交锋' + total + '场，' + stronger + sw + '胜' + tD + '平' + sl + '负，心理占优' + recentTxt
+  };
+}
+
 function computeMatchScore(team, opponent, ground, matchDate, kickoffTime) {
   var rank = analysisData.rankings || {};
   var form = analysisData.forms || {};
@@ -165,32 +349,7 @@ function computeMatchScore(team, opponent, ground, matchDate, kickoffTime) {
   var oImpact = (oInj.impact != null) ? oInj.impact : (oInj.injuries * 2.25 + oInj.suspensions * 3);
   scores.injury = Math.round(Math.max(0, Math.min(12, 6 + (oImpact - tImpact) * 0.4)));
 
-  // 10. 裁判影响 (2 pts) — v6新增，相对影响
-  var refAssign = (analysisData.refereeAssign || []).find(function(a) {
-    return (a.t1 === team && a.t2 === opponent) || (a.t1 === opponent && a.t2 === team);
-  });
-  var ref = refAssign && refAssign.ref !== '未公布' ? (analysisData.refereeDB || {})[refAssign.ref] : null;
-  if (ref) {
-    var refImpact = 0;
-    // 失球少=更防守，进球多=更进攻
-    var defDiff = oConc - tConc; // >0 主队更防守
-    var atkDiff = tGoals - oGoals; // >0 主队更进攻
-    if (ref.strictness >= 7) {
-      if (defDiff > 0.5) refImpact += 0.6;
-      else if (defDiff < -0.5) refImpact -= 0.6;
-    }
-    if (ref.strictness <= 3) {
-      if (atkDiff > 0.5) refImpact += 0.3;
-      else if (atkDiff < -0.5) refImpact -= 0.3;
-    }
-    if (ref.penaltyRate >= 0.2) {
-      if (atkDiff > 0.5) refImpact += 0.3;
-      else if (atkDiff < -0.5) refImpact -= 0.3;
-    }
-    scores.referee = Math.round(Math.max(0, Math.min(2, 1 + refImpact)));
-  } else {
-    scores.referee = 1;
-  }
+  // 10. 裁判影响 — v10 已移除（覆盖率低、SF 阶段缺数据、影响边际）
 
   // 11. 旅途/休息 (1 pt) — v6新增
   var rotData = analysisData.rotation || {};
@@ -203,12 +362,15 @@ function computeMatchScore(team, opponent, ground, matchDate, kickoffTime) {
   // 11. 环境适应 (5 pts) — v7新增: 海拔+天气+开球时间+气候适应
   scores.environment = computeEnvironmentScore(team, opponent, stadium, stadiumClimate, kickoffTime);
 
+  // 12. 历史交锋 H2H (10 pts) — v9新增: 基于近5年两队相互战绩
+  scores.h2h = computeH2HScore(team, opponent);
+
   var total = scores.ranking + scores.form + scores.squad +
               scores.attack + scores.defense + scores.host +
-              scores.injury + scores.referee + scores.travel + scores.environment;
+              scores.injury + scores.travel + scores.environment + scores.h2h;
   total = Math.round(total);
   total = Math.max(5, Math.min(95, total));
-  var maxTotal = 107;  // 各维度理论最大和（injury 12pts → v8）
+  var maxTotal = 115;  // v10: -referee 2pts (117 → 115)
 
   return {
     teamTotal: total,
@@ -559,18 +721,14 @@ function computeFormScore(formData, isTeam) {
 }
 
 function computeHostScore(team, opponent, stadium) {
-  var hostCountries = ['美国', '加拿大', '墨西哥'];
   if (!stadium) return 7;
-  var tRank = analysisData.rankings[team] || {};
-  var oRank = analysisData.rankings[opponent] || {};
-
-  if (tRank.conf === 'CONCACAF' && hostCountries.indexOf(stadium.country) !== -1) return 14;
-  if (oRank.conf === 'CONCACAF' && hostCountries.indexOf(stadium.country) !== -1) return 1;
-  // General: check if playing in own confederation region
-  if (stadium.country === '墨西哥' && tRank.conf === 'CONCACAF') return 12;
-  if (stadium.country === '加拿大' && tRank.conf === 'CONCACAF') return 12;
-  if (stadium.country === '美国' && tRank.conf === 'CONCACAF') return 12;
-  return 7;
+  // 世界杯只有3个东道主(USA/Canada/Mexico)在自己国土比赛才算主场,其它一律中立场地
+  var hostTeamByCountry = { '美国': 'USA', '加拿大': 'Canada', '墨西哥': 'Mexico' };
+  var hostTeam = hostTeamByCountry[stadium.country];
+  if (!hostTeam) return 7;        // 比赛不在东道主国家(理论上 2026 不会出现,纯中立)
+  if (team === hostTeam) return 14;     // 东道主在自己主场
+  if (opponent === hostTeam) return 1; // 对手是东道主
+  return 7;                              // 两队都不是该场地东道主(例: 法国vs西班牙在达拉斯)
 }
 
 function computeSituationScore(team, opponent, matchDate) {
@@ -787,18 +945,11 @@ function generateInsights(result) {
     insights.push({ icon: '😴', text: tName + '近' + n + '场比赛场均仅' + (totalGoals / actualGames).toFixed(1) + '球，偏向小球' });
   }
 
-  // Strong opponent quality
-  var strongOpps = [];
-  for (var j = 0; j < tRecents.length; j++) {
-    if (tRecents[j].oppRank <= 15) strongOpps.push(tRecents[j]);
-  }
-  if (strongOpps.length > 0) {
-    var sw = 0;
-    for (var k = 0; k < strongOpps.length; k++) {
-      if (strongOpps[k].result.split('-')[0] > strongOpps[k].result.split('-')[1]) sw++;
-    }
-    insights.push({ icon: '💪', text: tName + '近一年对阵TOP15球队' + strongOpps.length + '场，取得' + sw + '胜，抗强能力' + (sw >= strongOpps.length * 0.5 ? '出色' : '一般') });
-  }
+  // Strong opponent quality (removed — redundant with form dimension; H2H is more relevant)
+
+  // H2H insight — 近5年交锋记录
+  var h2hInsight = buildH2HInsight(result.team, result.opponent, tName, oName);
+  if (h2hInsight) insights.push(h2hInsight);
 
   // Squad value gap
   var tv = parseSquadValue(result.teamRank.squadValue);
@@ -992,10 +1143,17 @@ function renderAnalysis() {
     container.innerHTML = '<div class="spinner"></div>';
     loadAnalysisData().then(function() {
       renderAnalysis();
+      // 后台预取未开赛比赛的 H2H 数据，拉取后自动重渲染
+      if (typeof prefetchH2HForUpcoming === 'function') prefetchH2HForUpcoming();
     }).catch(function(err) {
       container.innerHTML = '<div class="analysis-empty">' + t('analysisLoadFailed') + '<br><small>' + t('analysisRetry') + ' <a href="javascript:renderAnalysis()">' + t('analysisClickRetry') + '</a></small></div>';
     });
     return;
+  }
+
+  // 后台预取 H2H（首次加载已完成但 H2H 可能还没拉取）
+  if (typeof prefetchH2HForUpcoming === 'function' && (!analysisData.h2h || Object.keys(analysisData.h2h).length === 0)) {
+    prefetchH2HForUpcoming();
   }
 
   if (typeof worldCupData === 'undefined' || !worldCupData.matches || worldCupData.matches.length === 0) {
@@ -1071,7 +1229,7 @@ function renderAnalysis() {
 
   html += '<div class="analysis-info-bar">';
   html += '<span>' + t('analysisMatchCount').replace('{count}', target.length) + '</span>';
-  html += '<span class="analysis-model-badge">10维分析 v7</span>';
+  html += '<span class="analysis-model-badge">10维分析 v10 · +H2H -裁判</span>';
   html += '</div>';
 
   // 小组末轮形势分析 → 融入比赛卡片
@@ -1212,14 +1370,13 @@ function renderAnalysisCard(result, insights, m, idx, ctxTags) {
   }
   html += renderDimRow(t('analysisInjury'), tInjDisplay2, oInjDisplay2, result.scores.injury, 12, result.scores.injury > 6);
 
-  // 裁判
-  if (result.scores.referee !== undefined) {
-    var refAssign = (analysisData.refereeAssign || []).find(function(a) {
-      return (a.t1 === result.team && a.t2 === result.opponent) || (a.t1 === result.opponent && a.t2 === result.team);
-    });
-    var refName = refAssign ? refAssign.ref : '未公布';
-    html += renderDimRow('👨‍⚖️ 裁判', refName !== '未公布' ? refName : '待定', '', result.scores.referee, 2, result.scores.referee > 1);
+  // 历史交锋 H2H
+  if (result.scores.h2h !== undefined) {
+    var h2hDetail = buildH2HDetail(result.team, result.opponent, tName, oName);
+    html += renderDimRow('🤝 ' + t('analysisH2H'), h2hDetail.t, h2hDetail.o, result.scores.h2h, 10, result.scores.h2h > 5);
   }
+
+  // 裁判维度 — v10 已移除（覆盖率低、影响边际）
 
   // 旅途 — 左右显示各自休息天数
   var travelDetail = '';
