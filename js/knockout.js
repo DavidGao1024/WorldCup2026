@@ -134,7 +134,7 @@ function renderKnockout() {
   html += '<div class="br-vcol"><div class="br-vslots" style="height:' + totalH + 'px">';
   // 决赛对齐 SF 高度（50%），三四名放下面
   if (finalMatch) {
-    html += '<div class="br-slot br-final-slot" style="top:38%;height:24%;" data-match="' + finalMatch.num + '">';
+    html += '<div class="br-slot br-final-slot" style="top:34%;height:30%;" data-match="' + finalMatch.num + '">';
     html += renderBracketMatch(finalMatch, byNum);
     html += '</div>';
   }
