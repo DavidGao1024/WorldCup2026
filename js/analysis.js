@@ -1171,19 +1171,66 @@ function renderAnalysis() {
   }
 
   // 构建占位符解析索引（供过滤和后续渲染共用）
+  // ⚠️ 淘汰赛 m.team1/m.team2 是占位符 (W97/W98)，m.winner 才是 ESPN 真实队名
+  //   需多轮迭代：先解析 R32 → R16 → QF → SF，前一轮比分合并后才能解析下一轮占位符
   var resolveByNum = {};
+  var _loserByNum = {};
+  function _isPh(n) { return n && (n[0] === 'W' || n[0] === 'L' || (/^\d/.test(n) && /[A-Z]$/.test(n))); }
+  function _tryResolve(name) {
+    if (name && (name[0] === 'W' || name[0] === 'L')) {
+      var n = parseInt(name.substring(1));
+      if (name[0] === 'W') {
+        if (n && resolveByNum[n]) return resolveByNum[n];
+      } else {
+        if (n && _loserByNum[n]) return _loserByNum[n];
+      }
+    }
+    return name;
+  }
   if (typeof worldCupData !== 'undefined' && worldCupData.matches) {
-    worldCupData.matches.forEach(function(m) {
-      if (m.score1 == null) return;
-      if (m.score1 > m.score2) resolveByNum[m.num] = m.team1;
-      else if (m.score2 > m.score1) resolveByNum[m.num] = m.team2;
-      else if (m.winner) resolveByNum[m.num] = m.winner;
-    });
+    // 多轮迭代直到不动点（最多 6 轮：group → R32 → R16 → QF → SF → final）
+    for (var pass = 0; pass < 6; pass++) {
+      var changed = false;
+      worldCupData.matches.forEach(function(m) {
+        if (m.score1 == null) return;
+        var t1r = _tryResolve(m.team1), t2r = _tryResolve(m.team2);
+        var t1IsPh = _isPh(m.team1), t2IsPh = _isPh(m.team2);
+        // 优先用 m.winner（ESPN 真实队名）
+        if (m.winner && !_isPh(m.winner) && resolveByNum[m.num] !== m.winner) {
+          resolveByNum[m.num] = m.winner;
+          changed = true;
+        }
+        // 推断 loser：哪边是真实队名且 != winner
+        if (m.winner && !_isPh(m.winner) && !_loserByNum[m.num]) {
+          if (t1r && !_isPh(t1r) && t1r !== m.winner && (m.winner === t2r || m.score2 > m.score1)) {
+            _loserByNum[m.num] = t1r; changed = true;
+          } else if (t2r && !_isPh(t2r) && t2r !== m.winner && (m.winner === t1r || m.score1 > m.score2)) {
+            _loserByNum[m.num] = t2r; changed = true;
+          }
+        }
+        // 没有 m.winner 时退回 team1/team2（占位符已解析为真实队名）
+        if (!m.winner || _isPh(m.winner)) {
+          if (m.score1 > m.score2 && !t1IsPh && resolveByNum[m.num] !== t1r) {
+            resolveByNum[m.num] = t1r; changed = true;
+            if (!t2IsPh) _loserByNum[m.num] = t2r;
+          } else if (m.score2 > m.score1 && !t2IsPh && resolveByNum[m.num] !== t2r) {
+            resolveByNum[m.num] = t2r; changed = true;
+            if (!t1IsPh) _loserByNum[m.num] = t1r;
+          }
+        }
+      });
+      if (!changed) break;
+    }
   }
   function tryResolve(name) {
     if (name && (name[0] === 'W' || name[0] === 'L')) {
       var n = parseInt(name.substring(1));
-      if (n && resolveByNum[n]) return resolveByNum[n];
+      // W 前缀 → 胜者；L 前缀 → 败者（必须先查 loser，否则会误返回 winner）
+      if (name[0] === 'W') {
+        if (n && resolveByNum[n]) return resolveByNum[n];
+      } else {
+        if (n && _loserByNum[n]) return _loserByNum[n];
+      }
     }
     return name;
   }

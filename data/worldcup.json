@@ -11,7 +11,8 @@
       "ground": "Mexico City",
       "score1": 2,
       "score2": 0,
-      "status": "post"
+      "status": "post",
+      "winner": "Mexico"
     },
     {
       "round": "Matchday 1",
@@ -23,7 +24,8 @@
       "ground": "Guadalajara (Zapopan)",
       "score1": 2,
       "score2": 1,
-      "status": "post"
+      "status": "post",
+      "winner": "South Korea"
     },
     {
       "round": "Matchday 8",
@@ -47,7 +49,8 @@
       "ground": "Guadalajara (Zapopan)",
       "score1": 1,
       "score2": 0,
-      "status": "post"
+      "status": "post",
+      "winner": "Mexico"
     },
     {
       "round": "Matchday 14",
@@ -59,7 +62,8 @@
       "ground": "Mexico City",
       "score1": 0,
       "score2": 3,
-      "status": "post"
+      "status": "post",
+      "winner": "Mexico"
     },
     {
       "round": "Matchday 14",
@@ -71,7 +75,8 @@
       "ground": "Monterrey (Guadalupe)",
       "score1": 1,
       "score2": 0,
-      "status": "post"
+      "status": "post",
+      "winner": "South Africa"
     },
     {
       "round": "Matchday 2",
@@ -107,7 +112,8 @@
       "ground": "Los Angeles (Inglewood)",
       "score1": 4,
       "score2": 1,
-      "status": "post"
+      "status": "post",
+      "winner": "Switzerland"
     },
     {
       "round": "Matchday 8",
@@ -119,7 +125,8 @@
       "ground": "Vancouver",
       "score1": 6,
       "score2": 0,
-      "status": "post"
+      "status": "post",
+      "winner": "Canada"
     },
     {
       "round": "Matchday 14",
@@ -131,7 +138,8 @@
       "ground": "Vancouver",
       "score1": 2,
       "score2": 1,
-      "status": "post"
+      "status": "post",
+      "winner": "Switzerland"
     },
     {
       "round": "Matchday 14",
@@ -143,7 +151,8 @@
       "ground": "Seattle",
       "score1": 3,
       "score2": 1,
-      "status": "post"
+      "status": "post",
+      "winner": "Bosnia & Herzegovina"
     },
     {
       "round": "Matchday 3",
@@ -167,7 +176,8 @@
       "ground": "Boston (Foxborough)",
       "score1": 0,
       "score2": 1,
-      "status": "post"
+      "status": "post",
+      "winner": "Scotland"
     },
     {
       "round": "Matchday 9",
@@ -179,7 +189,8 @@
       "ground": "Boston (Foxborough)",
       "score1": 0,
       "score2": 1,
-      "status": "post"
+      "status": "post",
+      "winner": "Morocco"
     },
     {
       "round": "Matchday 9",
@@ -191,7 +202,8 @@
       "ground": "Philadelphia",
       "score1": 3,
       "score2": 0,
-      "status": "post"
+      "status": "post",
+      "winner": "Brazil"
     },
     {
       "round": "Matchday 14",
@@ -203,7 +215,8 @@
       "ground": "Miami (Miami Gardens)",
       "score1": 0,
       "score2": 3,
-      "status": "post"
+      "status": "post",
+      "winner": "Brazil"
     },
     {
       "round": "Matchday 14",
@@ -215,7 +228,8 @@
       "ground": "Atlanta",
       "score1": 4,
       "score2": 2,
-      "status": "post"
+      "status": "post",
+      "winner": "Morocco"
     },
     {
       "round": "Matchday 2",
@@ -227,7 +241,8 @@
       "ground": "Los Angeles (Inglewood)",
       "score1": 4,
       "score2": 1,
-      "status": "post"
+      "status": "post",
+      "winner": "USA"
     },
     {
       "round": "Matchday 3",
@@ -239,7 +254,8 @@
       "ground": "Vancouver",
       "score1": 2,
       "score2": 0,
-      "status": "post"
+      "status": "post",
+      "winner": "Australia"
     },
     {
       "round": "Matchday 9",
@@ -251,7 +267,8 @@
       "ground": "Seattle",
       "score1": 2,
       "score2": 0,
-      "status": "post"
+      "status": "post",
+      "winner": "USA"
     },
     {
       "round": "Matchday 9",
@@ -263,7 +280,8 @@
       "ground": "San Francisco Bay Area (Santa Clara)",
       "score1": 0,
       "score2": 1,
-      "status": "post"
+      "status": "post",
+      "winner": "Paraguay"
     },
     {
       "round": "Matchday 15",
@@ -272,7 +290,11 @@
       "team1": "Turkey",
       "team2": "USA",
       "group": "Group D",
-      "ground": "Los Angeles (Inglewood)"
+      "ground": "Los Angeles (Inglewood)",
+      "score1": 3,
+      "score2": 2,
+      "status": "post",
+      "winner": "Turkey"
     },
     {
       "round": "Matchday 15",
@@ -281,7 +303,10 @@
       "team1": "Paraguay",
       "team2": "Australia",
       "group": "Group D",
-      "ground": "San Francisco Bay Area (Santa Clara)"
+      "ground": "San Francisco Bay Area (Santa Clara)",
+      "score1": 0,
+      "score2": 0,
+      "status": "post"
     },
     {
       "round": "Matchday 4",
@@ -293,7 +318,8 @@
       "ground": "Houston",
       "score1": 7,
       "score2": 1,
-      "status": "post"
+      "status": "post",
+      "winner": "Germany"
     },
     {
       "round": "Matchday 4",
@@ -305,7 +331,8 @@
       "ground": "Philadelphia",
       "score1": 1,
       "score2": 0,
-      "status": "post"
+      "status": "post",
+      "winner": "Ivory Coast"
     },
     {
       "round": "Matchday 10",
@@ -317,7 +344,8 @@
       "ground": "Toronto",
       "score1": 2,
       "score2": 1,
-      "status": "post"
+      "status": "post",
+      "winner": "Germany"
     },
     {
       "round": "Matchday 10",
@@ -341,7 +369,8 @@
       "ground": "Philadelphia",
       "score1": 0,
       "score2": 2,
-      "status": "post"
+      "status": "post",
+      "winner": "Ivory Coast"
     },
     {
       "round": "Matchday 15",
@@ -353,7 +382,8 @@
       "ground": "New York/New Jersey (East Rutherford)",
       "score1": 2,
       "score2": 1,
-      "status": "post"
+      "status": "post",
+      "winner": "Ecuador"
     },
     {
       "round": "Matchday 4",
@@ -377,7 +407,8 @@
       "ground": "Monterrey (Guadalupe)",
       "score1": 5,
       "score2": 1,
-      "status": "post"
+      "status": "post",
+      "winner": "Sweden"
     },
     {
       "round": "Matchday 10",
@@ -389,7 +420,8 @@
       "ground": "Houston",
       "score1": 5,
       "score2": 1,
-      "status": "post"
+      "status": "post",
+      "winner": "Netherlands"
     },
     {
       "round": "Matchday 10",
@@ -401,7 +433,8 @@
       "ground": "Monterrey (Guadalupe)",
       "score1": 0,
       "score2": 4,
-      "status": "post"
+      "status": "post",
+      "winner": "Japan"
     },
     {
       "round": "Matchday 15",
@@ -425,7 +458,8 @@
       "ground": "Kansas City",
       "score1": 1,
       "score2": 3,
-      "status": "post"
+      "status": "post",
+      "winner": "Netherlands"
     },
     {
       "round": "Matchday 5",
@@ -473,7 +507,8 @@
       "ground": "Vancouver",
       "score1": 1,
       "score2": 3,
-      "status": "post"
+      "status": "post",
+      "winner": "Egypt"
     },
     {
       "round": "Matchday 16",
@@ -482,7 +517,10 @@
       "team1": "Egypt",
       "team2": "Iran",
       "group": "Group G",
-      "ground": "Seattle"
+      "ground": "Seattle",
+      "score1": 1,
+      "score2": 1,
+      "status": "post"
     },
     {
       "round": "Matchday 16",
@@ -491,7 +529,11 @@
       "team1": "New Zealand",
       "team2": "Belgium",
       "group": "Group G",
-      "ground": "Vancouver"
+      "ground": "Vancouver",
+      "score1": 1,
+      "score2": 5,
+      "status": "post",
+      "winner": "Belgium"
     },
     {
       "round": "Matchday 5",
@@ -527,7 +569,8 @@
       "ground": "Atlanta",
       "score1": 4,
       "score2": 0,
-      "status": "post"
+      "status": "post",
+      "winner": "Spain"
     },
     {
       "round": "Matchday 11",
@@ -548,7 +591,10 @@
       "team1": "Cape Verde",
       "team2": "Saudi Arabia",
       "group": "Group H",
-      "ground": "Houston"
+      "ground": "Houston",
+      "score1": 0,
+      "score2": 0,
+      "status": "post"
     },
     {
       "round": "Matchday 16",
@@ -557,7 +603,11 @@
       "team1": "Uruguay",
       "team2": "Spain",
       "group": "Group H",
-      "ground": "Guadalajara (Zapopan)"
+      "ground": "Guadalajara (Zapopan)",
+      "score1": 0,
+      "score2": 1,
+      "status": "post",
+      "winner": "Spain"
     },
     {
       "round": "Matchday 6",
@@ -569,7 +619,8 @@
       "ground": "New York/New Jersey (East Rutherford)",
       "score1": 3,
       "score2": 1,
-      "status": "post"
+      "status": "post",
+      "winner": "France"
     },
     {
       "round": "Matchday 6",
@@ -581,7 +632,8 @@
       "ground": "Boston (Foxborough)",
       "score1": 1,
       "score2": 4,
-      "status": "post"
+      "status": "post",
+      "winner": "Norway"
     },
     {
       "round": "Matchday 12",
@@ -593,7 +645,8 @@
       "ground": "Philadelphia",
       "score1": 3,
       "score2": 0,
-      "status": "post"
+      "status": "post",
+      "winner": "France"
     },
     {
       "round": "Matchday 12",
@@ -605,7 +658,8 @@
       "ground": "New York/New Jersey (East Rutherford)",
       "score1": 3,
       "score2": 2,
-      "status": "post"
+      "status": "post",
+      "winner": "Norway"
     },
     {
       "round": "Matchday 16",
@@ -614,7 +668,11 @@
       "team1": "Norway",
       "team2": "France",
       "group": "Group I",
-      "ground": "Boston (Foxborough)"
+      "ground": "Boston (Foxborough)",
+      "score1": 1,
+      "score2": 4,
+      "status": "post",
+      "winner": "France"
     },
     {
       "round": "Matchday 16",
@@ -623,7 +681,11 @@
       "team1": "Senegal",
       "team2": "Iraq",
       "group": "Group I",
-      "ground": "Toronto"
+      "ground": "Toronto",
+      "score1": 5,
+      "score2": 0,
+      "status": "post",
+      "winner": "Senegal"
     },
     {
       "round": "Matchday 6",
@@ -635,7 +697,8 @@
       "ground": "Kansas City",
       "score1": 3,
       "score2": 0,
-      "status": "post"
+      "status": "post",
+      "winner": "Argentina"
     },
     {
       "round": "Matchday 6",
@@ -647,7 +710,8 @@
       "ground": "San Francisco Bay Area (Santa Clara)",
       "score1": 3,
       "score2": 1,
-      "status": "post"
+      "status": "post",
+      "winner": "Austria"
     },
     {
       "round": "Matchday 12",
@@ -659,7 +723,8 @@
       "ground": "Dallas (Arlington)",
       "score1": 2,
       "score2": 0,
-      "status": "post"
+      "status": "post",
+      "winner": "Argentina"
     },
     {
       "round": "Matchday 12",
@@ -671,7 +736,8 @@
       "ground": "San Francisco Bay Area (Santa Clara)",
       "score1": 1,
       "score2": 2,
-      "status": "post"
+      "status": "post",
+      "winner": "Algeria"
     },
     {
       "round": "Matchday 17",
@@ -680,7 +746,10 @@
       "team1": "Algeria",
       "team2": "Austria",
       "group": "Group J",
-      "ground": "Kansas City"
+      "ground": "Kansas City",
+      "score1": 3,
+      "score2": 3,
+      "status": "post"
     },
     {
       "round": "Matchday 17",
@@ -689,7 +758,11 @@
       "team1": "Jordan",
       "team2": "Argentina",
       "group": "Group J",
-      "ground": "Dallas (Arlington)"
+      "ground": "Dallas (Arlington)",
+      "score1": 1,
+      "score2": 3,
+      "status": "post",
+      "winner": "Argentina"
     },
     {
       "round": "Matchday 7",
@@ -713,7 +786,8 @@
       "ground": "Mexico City",
       "score1": 1,
       "score2": 3,
-      "status": "post"
+      "status": "post",
+      "winner": "Colombia"
     },
     {
       "round": "Matchday 13",
@@ -725,7 +799,8 @@
       "ground": "Houston",
       "score1": 5,
       "score2": 0,
-      "status": "post"
+      "status": "post",
+      "winner": "Portugal"
     },
     {
       "round": "Matchday 13",
@@ -737,7 +812,8 @@
       "ground": "Guadalajara (Zapopan)",
       "score1": 1,
       "score2": 0,
-      "status": "post"
+      "status": "post",
+      "winner": "Colombia"
     },
     {
       "round": "Matchday 17",
@@ -746,7 +822,10 @@
       "team1": "Colombia",
       "team2": "Portugal",
       "group": "Group K",
-      "ground": "Miami (Miami Gardens)"
+      "ground": "Miami (Miami Gardens)",
+      "score1": 0,
+      "score2": 0,
+      "status": "post"
     },
     {
       "round": "Matchday 17",
@@ -755,7 +834,11 @@
       "team1": "DR Congo",
       "team2": "Uzbekistan",
       "group": "Group K",
-      "ground": "Atlanta"
+      "ground": "Atlanta",
+      "score1": 3,
+      "score2": 1,
+      "status": "post",
+      "winner": "DR Congo"
     },
     {
       "round": "Matchday 7",
@@ -767,7 +850,8 @@
       "ground": "Dallas (Arlington)",
       "score1": 4,
       "score2": 2,
-      "status": "post"
+      "status": "post",
+      "winner": "England"
     },
     {
       "round": "Matchday 7",
@@ -779,7 +863,8 @@
       "ground": "Toronto",
       "score1": 1,
       "score2": 0,
-      "status": "post"
+      "status": "post",
+      "winner": "Ghana"
     },
     {
       "round": "Matchday 13",
@@ -803,7 +888,8 @@
       "ground": "Toronto",
       "score1": 0,
       "score2": 1,
-      "status": "post"
+      "status": "post",
+      "winner": "Croatia"
     },
     {
       "round": "Matchday 17",
@@ -812,7 +898,11 @@
       "team1": "Panama",
       "team2": "England",
       "group": "Group L",
-      "ground": "New York/New Jersey (East Rutherford)"
+      "ground": "New York/New Jersey (East Rutherford)",
+      "score1": 0,
+      "score2": 2,
+      "status": "post",
+      "winner": "England"
     },
     {
       "round": "Matchday 17",
@@ -821,7 +911,11 @@
       "team1": "Croatia",
       "team2": "Ghana",
       "group": "Group L",
-      "ground": "Philadelphia"
+      "ground": "Philadelphia",
+      "score1": 2,
+      "score2": 1,
+      "status": "post",
+      "winner": "Croatia"
     },
     {
       "round": "Round of 32",
@@ -834,7 +928,8 @@
       "espnEventId": "760486",
       "score1": 0,
       "score2": 1,
-      "status": "post"
+      "status": "post",
+      "winner": "Canada"
     },
     {
       "round": "Round of 32",
@@ -844,7 +939,15 @@
       "team1": "Germany",
       "team2": "Paraguay",
       "ground": "Boston (Foxborough)",
-      "espnEventId": "760489"
+      "espnEventId": "760489",
+      "score1": 1,
+      "score2": 1,
+      "status": "post",
+      "hadET": true,
+      "hadPen": true,
+      "winner": "Paraguay",
+      "score1p": 3,
+      "score2p": 4
     },
     {
       "round": "Round of 32",
@@ -854,7 +957,15 @@
       "team1": "Netherlands",
       "team2": "Morocco",
       "ground": "Monterrey (Guadalupe)",
-      "espnEventId": "760488"
+      "espnEventId": "760488",
+      "score1": 1,
+      "score2": 1,
+      "status": "post",
+      "hadET": true,
+      "hadPen": true,
+      "winner": "Morocco",
+      "score1p": 2,
+      "score2p": 3
     },
     {
       "round": "Round of 32",
@@ -864,7 +975,11 @@
       "team1": "Brazil",
       "team2": "Japan",
       "ground": "Houston",
-      "espnEventId": "760487"
+      "espnEventId": "760487",
+      "score1": 2,
+      "score2": 1,
+      "status": "post",
+      "winner": "Brazil"
     },
     {
       "round": "Round of 32",
@@ -874,7 +989,11 @@
       "team1": "France",
       "team2": "Sweden",
       "ground": "New York/New Jersey (East Rutherford)",
-      "espnEventId": "760492"
+      "espnEventId": "760492",
+      "score1": 3,
+      "score2": 0,
+      "status": "post",
+      "winner": "France"
     },
     {
       "round": "Round of 32",
@@ -884,7 +1003,11 @@
       "team1": "Ivory Coast",
       "team2": "Norway",
       "ground": "Dallas (Arlington)",
-      "espnEventId": "760490"
+      "espnEventId": "760490",
+      "score1": 1,
+      "score2": 2,
+      "status": "post",
+      "winner": "Norway"
     },
     {
       "round": "Round of 32",
@@ -894,7 +1017,11 @@
       "team1": "Mexico",
       "team2": "Ecuador",
       "ground": "Mexico City",
-      "espnEventId": "760491"
+      "espnEventId": "760491",
+      "score1": 2,
+      "score2": 0,
+      "status": "post",
+      "winner": "Mexico"
     },
     {
       "round": "Round of 32",
@@ -904,7 +1031,11 @@
       "team1": "England",
       "team2": "DR Congo",
       "ground": "Atlanta",
-      "espnEventId": "760495"
+      "espnEventId": "760495",
+      "score1": 2,
+      "score2": 1,
+      "status": "post",
+      "winner": "England"
     },
     {
       "round": "Round of 32",
@@ -914,7 +1045,11 @@
       "team1": "USA",
       "team2": "Bosnia & Herzegovina",
       "ground": "San Francisco Bay Area (Santa Clara)",
-      "espnEventId": "760494"
+      "espnEventId": "760494",
+      "score1": 2,
+      "score2": 0,
+      "status": "post",
+      "winner": "USA"
     },
     {
       "round": "Round of 32",
@@ -924,7 +1059,12 @@
       "team1": "Belgium",
       "team2": "Senegal",
       "ground": "Seattle",
-      "espnEventId": "760493"
+      "espnEventId": "760493",
+      "score1": 3,
+      "score2": 2,
+      "status": "post",
+      "hadET": true,
+      "winner": "Belgium"
     },
     {
       "round": "Round of 32",
@@ -934,7 +1074,11 @@
       "team1": "Portugal",
       "team2": "Croatia",
       "ground": "Toronto",
-      "espnEventId": "760496"
+      "espnEventId": "760496",
+      "score1": 2,
+      "score2": 1,
+      "status": "post",
+      "winner": "Portugal"
     },
     {
       "round": "Round of 32",
@@ -944,7 +1088,11 @@
       "team1": "Spain",
       "team2": "Austria",
       "ground": "Los Angeles (Inglewood)",
-      "espnEventId": "760497"
+      "espnEventId": "760497",
+      "score1": 3,
+      "score2": 0,
+      "status": "post",
+      "winner": "Spain"
     },
     {
       "round": "Round of 32",
@@ -954,7 +1102,11 @@
       "team1": "Switzerland",
       "team2": "Algeria",
       "ground": "Vancouver",
-      "espnEventId": "760498"
+      "espnEventId": "760498",
+      "score1": 2,
+      "score2": 0,
+      "status": "post",
+      "winner": "Switzerland"
     },
     {
       "round": "Round of 32",
@@ -964,7 +1116,12 @@
       "team1": "Argentina",
       "team2": "Cape Verde",
       "ground": "Miami (Miami Gardens)",
-      "espnEventId": "760500"
+      "espnEventId": "760500",
+      "score1": 3,
+      "score2": 2,
+      "status": "post",
+      "hadET": true,
+      "winner": "Argentina"
     },
     {
       "round": "Round of 32",
@@ -974,7 +1131,11 @@
       "team1": "Colombia",
       "team2": "Ghana",
       "ground": "Kansas City",
-      "espnEventId": "760501"
+      "espnEventId": "760501",
+      "score1": 1,
+      "score2": 0,
+      "status": "post",
+      "winner": "Colombia"
     },
     {
       "round": "Round of 32",
@@ -984,7 +1145,15 @@
       "team1": "Australia",
       "team2": "Egypt",
       "ground": "Dallas (Arlington)",
-      "espnEventId": "760499"
+      "espnEventId": "760499",
+      "score1": 1,
+      "score2": 1,
+      "status": "post",
+      "hadET": true,
+      "hadPen": true,
+      "winner": "Egypt",
+      "score1p": 2,
+      "score2p": 4
     },
     {
       "round": "Round of 16",
@@ -993,7 +1162,11 @@
       "time": "17:00 UTC-4",
       "team1": "W74",
       "team2": "W77",
-      "ground": "Philadelphia"
+      "ground": "Philadelphia",
+      "score1": 0,
+      "score2": 1,
+      "status": "post",
+      "winner": "France"
     },
     {
       "round": "Round of 16",
@@ -1002,7 +1175,11 @@
       "time": "12:00 UTC-5",
       "team1": "W73",
       "team2": "W75",
-      "ground": "Houston"
+      "ground": "Houston",
+      "score1": 0,
+      "score2": 3,
+      "status": "post",
+      "winner": "Morocco"
     },
     {
       "round": "Round of 16",
@@ -1011,7 +1188,11 @@
       "time": "16:00 UTC-4",
       "team1": "W76",
       "team2": "W78",
-      "ground": "New York/New Jersey (East Rutherford)"
+      "ground": "New York/New Jersey (East Rutherford)",
+      "score1": 1,
+      "score2": 2,
+      "status": "post",
+      "winner": "Norway"
     },
     {
       "round": "Round of 16",
@@ -1020,7 +1201,11 @@
       "time": "18:00 UTC-6",
       "team1": "W79",
       "team2": "W80",
-      "ground": "Mexico City"
+      "ground": "Mexico City",
+      "score1": 2,
+      "score2": 3,
+      "status": "post",
+      "winner": "England"
     },
     {
       "round": "Round of 16",
@@ -1029,7 +1214,11 @@
       "time": "14:00 UTC-5",
       "team1": "W83",
       "team2": "W84",
-      "ground": "Dallas (Arlington)"
+      "ground": "Dallas (Arlington)",
+      "score1": 0,
+      "score2": 1,
+      "status": "post",
+      "winner": "Spain"
     },
     {
       "round": "Round of 16",
@@ -1038,7 +1227,11 @@
       "time": "17:00 UTC-7",
       "team1": "W81",
       "team2": "W82",
-      "ground": "Seattle"
+      "ground": "Seattle",
+      "score1": 1,
+      "score2": 4,
+      "status": "post",
+      "winner": "Belgium"
     },
     {
       "round": "Round of 16",
@@ -1047,7 +1240,11 @@
       "time": "12:00 UTC-4",
       "team1": "W86",
       "team2": "W88",
-      "ground": "Atlanta"
+      "ground": "Atlanta",
+      "score1": 3,
+      "score2": 2,
+      "status": "post",
+      "winner": "Argentina"
     },
     {
       "round": "Round of 16",
@@ -1056,7 +1253,15 @@
       "time": "13:00 UTC-7",
       "team1": "W85",
       "team2": "W87",
-      "ground": "Vancouver"
+      "ground": "Vancouver",
+      "score1": 0,
+      "score2": 0,
+      "status": "post",
+      "hadET": true,
+      "hadPen": true,
+      "winner": "Switzerland",
+      "score1p": 4,
+      "score2p": 3
     },
     {
       "round": "Quarter-final",
@@ -1065,7 +1270,11 @@
       "time": "16:00 UTC-4",
       "team1": "W89",
       "team2": "W90",
-      "ground": "Boston (Foxborough)"
+      "ground": "Boston (Foxborough)",
+      "score1": 2,
+      "score2": 0,
+      "status": "post",
+      "winner": "France"
     },
     {
       "round": "Quarter-final",
@@ -1074,7 +1283,11 @@
       "time": "12:00 UTC-7",
       "team1": "W93",
       "team2": "W94",
-      "ground": "Los Angeles (Inglewood)"
+      "ground": "Los Angeles (Inglewood)",
+      "score1": 2,
+      "score2": 1,
+      "status": "post",
+      "winner": "Spain"
     },
     {
       "round": "Quarter-final",
@@ -1083,7 +1296,12 @@
       "time": "17:00 UTC-4",
       "team1": "W91",
       "team2": "W92",
-      "ground": "Miami (Miami Gardens)"
+      "ground": "Miami (Miami Gardens)",
+      "score1": 1,
+      "score2": 2,
+      "status": "post",
+      "hadET": true,
+      "winner": "England"
     },
     {
       "round": "Quarter-final",
@@ -1092,7 +1310,12 @@
       "time": "20:00 UTC-5",
       "team1": "W95",
       "team2": "W96",
-      "ground": "Kansas City"
+      "ground": "Kansas City",
+      "score1": 3,
+      "score2": 1,
+      "status": "post",
+      "hadET": true,
+      "winner": "Argentina"
     },
     {
       "round": "Semi-final",
@@ -1101,7 +1324,11 @@
       "time": "14:00 UTC-5",
       "team1": "W97",
       "team2": "W98",
-      "ground": "Dallas (Arlington)"
+      "ground": "Dallas (Arlington)",
+      "score1": 0,
+      "score2": 2,
+      "status": "post",
+      "winner": "Spain"
     },
     {
       "round": "Semi-final",
@@ -1110,7 +1337,11 @@
       "time": "15:00 UTC-4",
       "team1": "W99",
       "team2": "W100",
-      "ground": "Atlanta"
+      "ground": "Atlanta",
+      "score1": 1,
+      "score2": 2,
+      "status": "post",
+      "winner": "Argentina"
     },
     {
       "round": "Match for third place",

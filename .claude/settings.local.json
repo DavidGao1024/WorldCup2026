@@ -173,7 +173,9 @@
       "Bash(curl -s \"https://en.wikipedia.org/w/api.php?action=query&titles=2026_FIFA_World_Cup_squads&prop=revisions&rvprop=content&format=json\" -o wiki_squads.json)",
       "Bash(curl -sL \"https://en.wikipedia.org/w/api.php?action=query&titles=2026_FIFA_World_Cup_squads&prop=revisions&rvprop=content&format=json\" -o wiki_squads.json)",
       "mcp__playwright__browser_close",
-      "Bash(grep -v \"referee.*//\")"
+      "Bash(grep -v \"referee.*//\")",
+      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260611-20260719&limit=200\" -o /tmp/espn_scoreboard.json)",
+      "Bash(curl -s \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260611-20260719&limit=200\" -o ./espn_tmp.json)"
     ]
   }
 }
