@@ -1,7 +1,7 @@
 {
-  "updateTime": "2026-07-28T06:06:48.687Z",
-  "source": "wikipedia+manual",
-  "_format": "v2 — players[] 含 name/importance/status/detail。status: out=缺阵(来自Wikipedia) doubtful=伤疑(手动维护)。",
+  "updateTime": "2026-07-29T06:09:28.407Z",
+  "source": "manual",
+  "_format": "v2 — players[] 含 name/importance/status/detail。importance: 1=替补 5=核心。status: out=缺阵 doubtful=伤疑。",
   "Algeria": {
     "injuries": 1,
     "suspensions": 0,
