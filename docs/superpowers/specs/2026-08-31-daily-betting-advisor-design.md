@@ -1,6 +1,6 @@
 # 每日投注推荐系统 · 设计文档（v1）
 
-> 日期：2026-08-31｜状态：待总司令批准
+> 日期：2026-08-31｜状态：**已批准，v1 已实施并上线（提交 cae94eb）**——本机计划任务为主通道（schtasks 注册待执行）；二期 CF Worker+GitHub Actions 未启动；§10「停用 fetch-odds 定时」仍待批
 > 前置阅读：`docs/lottery-pnl.md`（数据依据）、`docs/lottery-strategy.md`（规则来源）
 
 ## 1. 目标
@@ -158,15 +158,15 @@ GitHub Actions (cron: 03:30 UTC = 北京 11:30，每日一次)
 4. 部署演练：手动 workflow_dispatch 跑一次真实生成（用当天 11:30 后数据），核对 JSON 与页面
 5. 次日自动跑：验证回收判定真实生效
 
-## 10. 交付物清单
+## 10. 交付物清单（v1 状态）
 
-- `scripts/daily-advisor.js`（引擎+回收+自测，零依赖）
-- `.github/workflows/daily-advice.yml`
-- `workers/odds-proxy.js`（CF Worker 代码）+ 部署与配 secret 分步指引（README 附录）
-- `data/daily-advice.json`（初始化空结构）
-- `js/daily-advice.js` + `index.html`/`app.js`/`i18n.js`/`style.css` 增量修改
-- 备用通道：`schtasks` 注册命令与 `run-daily-advisor.ps1`（或 .bat）
-- 可选：停用 `fetch-odds.yml` 的 cron（保留文件）——待批准
+- ✅ `scripts/daily-advisor.js`（引擎+回收+自测 26 用例，零依赖；含 --regen/--force 守卫、原子写、无变化不写盘）
+- ⬜ `.github/workflows/daily-advice.yml`（二期，随 CF Worker 一起做）
+- ⬜ `workers/odds-proxy.js` + 部署指引（二期）
+- ✅ `data/daily-advice.json`（已有真实首跑批次 2026-08-31：2 张票待赛）
+- ✅ `js/daily-advice.js` + `index.html`/`app.js`/`i18n.js`/`style.css`（页签第一位默认，浏览器四态实测过）
+- ✅ 本机主通道 `run-daily-advisor.ps1`（schtasks 注册命令在脚本头注释，**注册动作待总司令执行**）
+- ⬜ 停用 `fetch-odds.yml` cron——仍待批准
 
 ## 11. 风险与免责
 

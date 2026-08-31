@@ -9,6 +9,14 @@
 **Tech Stack:** Node 20 内置模块（https/zlib/fs）、GitHub Actions cron、Cloudflare Workers、Vanilla JS（项目无框架无构建）。
 
 **Spec:** `docs/superpowers/specs/2026-08-31-daily-betting-advisor-design.md`
+
+> ## 📌 执行进度（2026-08-31 记录，提交 cae94eb 已 push）
+> - ✅ Task 1/2/3/4（骨架、引擎 26 selftest、回收、网络层+本机真数据首跑+幂等验证）
+> - ✅ Task 7 前端页签（浏览器实测：正常/无数据/中英切换/页签回归四态）
+> - ✅ Task 8 脚本落地；⬜ schtasks 注册待总司令执行（ps1 头注释有命令）
+> - ⬜ Task 5/6（CF Worker + Actions）二期；⬜ Task 9 停用 fetch-odds cron 待批；⬜ Task 10 验收随注册后首跑观察
+> - 审查期修复：夹具 bettingSingle 映射、边缘候选去重绕行、roi/命中率精度、UTC/北京日期键幂等、regen 结算守卫、原子写+损坏即停、无变化不写盘
+> - 下方步骤复选框未逐项勾选，以本进度块为准
 **已实测事实（2026-08-31）：** 两个上游接口 Node 本机直连均 200；赛果端点为 `getUniformMatchResultV1.qry`（旧名 403）。联赛简称值样例：`英超/西甲/意甲/德甲/法甲/欧冠/欧罗巴`（白名单用 `leagueAbbName` 全等匹配）。
 
 > ⚠️ 本项目铁律：**所有 commit 步骤仅在总司令明确说"提交"后执行**。计划中的 commit 命令是给用户看的建议，不是自动执行。
