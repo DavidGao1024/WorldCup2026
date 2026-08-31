@@ -40,7 +40,7 @@ function getFlagImg(name) {
   return '<img class="flag-img" src="img/flags/' + mapped + '.png" alt="" width="24" height="16">';
 }
 
-var currentTab = 'schedule';
+var currentTab = 'advice';
 
 function switchTab(tab) {
   currentTab = tab;
@@ -77,6 +77,8 @@ function switchTab(tab) {
     renderLottery();
   } else if (tab === 'analysis') {
     renderAnalysis();
+  } else if (tab === 'advice') {
+    renderAdvice();
   }
 }
 
@@ -179,7 +181,7 @@ async function init() {
 
   updateUIText();
   populateFilters();
-  switchTab('schedule');
+  switchTab('advice');
 }
 
 function updateUIText() {

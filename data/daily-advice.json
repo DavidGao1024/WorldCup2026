@@ -1,0 +1,79 @@
+{
+  "updateTime": "2026-08-31T09:08:13.868Z",
+  "summary": {
+    "days": 1,
+    "tickets": 2,
+    "legsHit": 0,
+    "legsTotal": 0,
+    "legHitRate": 0,
+    "ticketsHit": 0,
+    "ticketHitRate": 0,
+    "staked": 0,
+    "returned": 0,
+    "roi": 0,
+    "curWinStreak": 0
+  },
+  "days": [
+    {
+      "date": "2026-08-31",
+      "generatedAt": "2026-08-31T08:57:14.887Z",
+      "rest": false,
+      "tickets": [
+        {
+          "kind": "single",
+          "rule": "可单关场次·黄金中段",
+          "stake": 4,
+          "combinedOdds": 1.38,
+          "legs": [
+            {
+              "matchId": 2041183,
+              "matchNumStr": "周一009",
+              "league": "英超",
+              "match": "阿斯顿维拉 vs 阿森纳",
+              "kickoff": "2026-09-01 03:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "a",
+              "pickLabel": "客胜",
+              "odds": 1.38,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-09-01",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20260901-T1"
+        },
+        {
+          "kind": "single",
+          "rule": "赔率接近黄金区间下限·只买最小一注",
+          "stake": 2,
+          "combinedOdds": 1.31,
+          "legs": [
+            {
+              "matchId": 2041177,
+              "matchNumStr": "周一003",
+              "league": "意甲",
+              "match": "莱切 vs 罗马",
+              "kickoff": "2026-09-01 00:30",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "a",
+              "pickLabel": "客胜",
+              "odds": 1.31,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-09-01",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20260901-T2"
+        }
+      ]
+    }
+  ]
+}

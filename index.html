@@ -58,7 +58,8 @@ var _hmt = _hmt || [];
   </header>
 
   <nav class="tabs">
-    <div class="tab active" id="tab-schedule" data-i18n="schedule" onclick="switchTab('schedule')">赛程</div>
+    <div class="tab active" id="tab-advice" data-i18n="advice" onclick="switchTab('advice')">每日推荐</div>
+    <div class="tab" id="tab-schedule" data-i18n="schedule" onclick="switchTab('schedule')">赛程</div>
     <div class="tab" id="tab-knockout" data-i18n="knockout" onclick="switchTab('knockout')">淘汰赛</div>
     <div class="tab" id="tab-scorers" data-i18n="scorers" onclick="switchTab('scorers')">射手榜</div>
     <div class="tab" id="tab-analysis" data-i18n="analysis" onclick="switchTab('analysis')">深度分析</div>
@@ -69,7 +70,8 @@ var _hmt = _hmt || [];
   </div>
 
   <main class="content">
-    <div class="tab-content active" id="schedule-content">
+    <div class="tab-content active" id="advice-content"><div class="spinner"></div></div>
+    <div class="tab-content" id="schedule-content">
       <div class="filters">
         <select id="filter-group" onchange="onFilterChange()"></select>
         <select id="filter-team" onchange="onTeamFilterChange()"></select>
@@ -100,6 +102,7 @@ var _hmt = _hmt || [];
   <script src="js/lottery.js"></script>
   <script src="js/scorers.js"></script>
   <script src="js/analysis.js"></script>
+  <script src="js/daily-advice.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
