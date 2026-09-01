@@ -1,17 +1,17 @@
 {
-  "updateTime": "2026-08-31T09:08:13.868Z",
+  "updateTime": "2026-09-01T03:30:04.194Z",
   "summary": {
-    "days": 1,
+    "days": 2,
     "tickets": 2,
-    "legsHit": 0,
-    "legsTotal": 0,
-    "legHitRate": 0,
-    "ticketsHit": 0,
-    "ticketHitRate": 0,
-    "staked": 0,
-    "returned": 0,
-    "roi": 0,
-    "curWinStreak": 0
+    "legsHit": 2,
+    "legsTotal": 2,
+    "legHitRate": 1,
+    "ticketsHit": 2,
+    "ticketHitRate": 1,
+    "staked": 6,
+    "returned": 8.14,
+    "roi": 0.3567,
+    "curWinStreak": 1
   },
   "days": [
     {
@@ -36,13 +36,13 @@
               "pick": "a",
               "pickLabel": "客胜",
               "odds": 1.38,
-              "score": null,
-              "result": "pending"
+              "score": "0:1",
+              "result": "hit"
             }
           ],
           "date": "2026-09-01",
-          "result": "pending",
-          "payout": null,
+          "result": "hit",
+          "payout": 5.52,
           "void": false,
           "id": "20260901-T1"
         },
@@ -63,17 +63,23 @@
               "pick": "a",
               "pickLabel": "客胜",
               "odds": 1.31,
-              "score": null,
-              "result": "pending"
+              "score": "0:4",
+              "result": "hit"
             }
           ],
           "date": "2026-09-01",
-          "result": "pending",
-          "payout": null,
+          "result": "hit",
+          "payout": 2.62,
           "void": false,
           "id": "20260901-T2"
         }
       ]
+    },
+    {
+      "date": "2026-09-01",
+      "generatedAt": "2026-09-01T03:30:03.453Z",
+      "rest": true,
+      "tickets": []
     }
   ]
 }
