@@ -9,7 +9,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project overview
 
-Pure frontend static site for 2026 FIFA World Cup (USA/Canada/Mexico). Four tabs: Schedule (赛程), Standings (积分榜), Analysis (深度分析), Lottery (体彩世界). Hosted on GitHub Pages. Zero build tools, zero frameworks — vanilla HTML/CSS/JS.
+Pure frontend static site for 2026 FIFA World Cup (USA/Canada/Mexico). Tab order (index.html): **每日推荐 (默认首页)**, 赛程, 淘汰赛, 射手榜, 深度分析, 体彩世界, 历届冠军(隐藏), 积分榜. Hosted on GitHub Pages. Zero build tools, zero frameworks — vanilla HTML/CSS/JS.
 
 ## Development
 
@@ -35,7 +35,8 @@ Scripts load in this sequence in `index.html` because later files depend on earl
 8. **analysis.js** — `renderAnalysis()`, `loadAnalysisData()`, `computeMatchScore()`, `predictScores()`, `computePrediction()` — 10维分析+泊松比分预测。`predictScores()` 返回比分+胜平负，`computePrediction()` 统一用泊松模型输出（比分和进度条同源，自洽）
 9. **champions.js** — `renderChampions()`
 10. **lottery.js** — `renderLottery()` — 体彩赔率展示、模拟投注、过关计算
-11. **app.js** — `init()`, `switchTab()`, `onFilterChange()`, `onTeamFilterChange()`, `getFlagImg()`, `getFlag()`, `roundKey()`, `updateUIText()`, `refreshCurrentTab()`, `scrollToToday()`, `FLAG_MAP`
+11. **daily-advice.js** — `renderAdvice()` — 「每日推荐」页签渲染（徽章三态/票卡/历史表/收益曲线），数据源 `data/daily-advice.json`
+12. **app.js** — `init()`, `switchTab()`, `onFilterChange()`, `onTeamFilterChange()`, `getFlagImg()`, `getFlag()`, `roundKey()`, `updateUIText()`, `refreshCurrentTab()`, `scrollToToday()`, `FLAG_MAP`。默认页签 `advice`
 
 All variables are global (`var`). No modules or bundler.
 
@@ -213,18 +214,15 @@ data/injuries.json (手动维护)
 ### 当前进度
 
 - [x] 数据获取脚本 `scripts/fetch-odds.js`
-- [x] 定时抓取 GitHub Action `.github/workflows/fetch-odds.yml`（每15分钟）
-- [x] 赔率数据文件 `data/lottery-odds.json`
+- [x] 定时抓取 GitHub Action `.github/workflows/fetch-odds.yml`（**2026-09-01 起停用定时，仅留手动触发**）
+- [x] 赔率数据文件 `data/lottery-odds.json`（**已冻结于世界杯收官快照，勿恢复采集**——WCC 池赛后为空，跑一次 fetch-odds.js 会用空数据覆盖页签展示）
 - [x] 前端 UI（体彩世界页签）— 模拟投注、多选串关、混合过关
 
-### 数据获取架构
+### 数据获取架构（已停摆，留档）
 
 ```
-GitHub Action (每15分钟)
-    ↓ node scripts/fetch-odds.js
-sporttery.cn 官方 API (webapi.sporttery.cn)
-    ↓ 写入
-data/lottery-odds.json  ← 前端可直接 fetch
+GitHub Action (原每15分钟) → node scripts/fetch-odds.js → data/lottery-odds.json
+（2026-09-01 停摆：世界杯闭幕后无 WCC 场次，数据定格收官快照）
 ```
 
 - 纯 Node.js 内置模块（https/zlib/fs），**无需 npm install**
@@ -239,7 +237,7 @@ https://webapi.sporttery.cn/gateway/jc/football/getMatchCalculatorV1.qry
   ?poolCode=hhad,had,crsp,ttg,hafu&channel=c
 ```
 
-**重要约束**：API 无 CORS 头 + 腾讯云 WAF 防护，**浏览器直接 fetch 会被拦截**。当前方案通过 GitHub Actions 服务端抓取写入静态文件来绕过。
+**重要约束**：API 无 CORS 头 + 腾讯云 EdgeOne WAF 防护，**浏览器直接 fetch、GitHub Actions 出口（2026-07-05 起 403）、Cloudflare Worker 出口（2026-09-01 实测 567 拦截页）均被拦；仅国内 IP 直连通畅**。海外反代路线已证伪（疑为地域/机房 IP 封锁，换任何海外中继无效）；CF Worker `sporttery-proxy` 已部署留作他用（前端 CORS 中转，绑自定义域才对大陆可用）。赛果接口真端点：`/gateway/uniform/football/getUniformMatchResultV1.qry`（返回 `winFlag` 官方 90 分钟判定、`sectionsNo999` 终场比分）；旧名 `getMatchResultV1.qry` 已 403 勿用。体彩时间规律：9:00–11:00 开盘/变盘高峰，11:00 开售（周一~五至 22:00，周末至 23:00），19:00 后结束的比赛次日晨结算。
 
 **比分(CRS)关键发现**：`poolCode` 必须用 `crs`（不是 `crsp`），否则返回空 `{}`。数据格式：`s{HH}s{AA}` = 主队HH球:客队AA球（如 `s01s02` = 1:2），`s1sa`/`s1sd`/`s1sh` = 胜其他/平其他/负其他。共 31 个比分选项。
 
@@ -315,6 +313,17 @@ https://webapi.sporttery.cn/gateway/jc/football/getMatchCalculatorV1.qry
 - 比赛卡片 × N（国旗、队名、玩法标签 + 赔率按钮）
 - 底部固定栏（已选X场 | Y注 | N串1 | [详情]）
 - 详情弹窗（分组显示已选、倍数调节 ±、收益范围、投注金额）
+
+## 每日推荐系统（v1，2026-08-31 上线）
+
+> 详细规格：`docs/superpowers/specs/2026-08-31-daily-betting-advisor-design.md`；规则依据：`docs/lottery-strategy.md` 五条黄金法则。修改 `scripts/daily-advisor.js` 前必读规格 §4-§6 不变量。
+
+- **引擎** `scripts/daily-advisor.js`（零依赖 Node）：`--selftest` 31 用例；无参运行=回收昨日赛果→判定→为今日批次出模拟票→写 `data/daily-advice.json`；`--regen` 覆盖当日（有结算腿需 `--force`）；`--settle <matchId|pool>=<hit|miss>` 人工判定长期未回收场（判后即时结算）
+- **回收口径（2026-09-01 总司令令）**：~~开球 7 天未回收自动作废退本~~ **已废除**（曾致盈亏虚增退本额）。长期查无赛果的票保持 `pending` 不计任何统计，前端显示"**待判定**"（开球超 7 天推算），定输赢只能靠体彩赛果或 `--settle` 人工判定
+- **核心规则常量**：白名单=英超/西甲/意甲/德甲/法甲/欧冠/欧罗巴（`leagueAbbName` 全等）；黄金区间 [1.30,1.60]、<1.35 边缘只 ¥2 单关；串关配对按 |赔率−1.47| 升序最多 2 张；±2 彩蛋需两场且让球方赔率 [1.6,2.6]；日预算 ¥20；零候选=休战
+- **不变量**：`day.date`=北京生成日（勿改回 UTC/销售日，曾致幂等失效）；历史 day 只追加；去重键 `matchId|pool` 跨日；无变化跳过写盘；原子写；数据损坏抛错终止不静默清空
+- **通道**（2026-09-01 定论）：本机计划任务 `DailyBettingAdvisor` = **唯一采集通道**（每天北京 11:30，已注册并实跑验证；脚本 v1.1 加固：日志落 `logs\daily-advisor.log`、`pull --rebase --autostash`、逐步查退出码；**ps1 必须存 UTF-8 BOM**，PS5.1 无 BOM 按 GBK 读会吞中文引号）。二期云端反代**放弃**（CF 出口同样被 EdgeOne 拦，详见「体彩赔率」节），不再建 `daily-advice.yml`
+- **前端**：`js/daily-advice.js` 渲染默认页签；新鲜度徽章 ≤26h 绿 / ≤48h 橙 / >48h 红；UI 文案禁行话（「腿」→「场」、ROI→收益率）；战绩档案任一行可点→弹窗展示当日全部票（复用 `ticketHtml()`、汇总头与行同算式；委托绑 `#advice-content` 仅一次；规格见 `docs/superpowers/specs/2026-09-01-history-ticket-modal-design.md`）
 
 ## GitHub Pages
 
