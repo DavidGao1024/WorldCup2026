@@ -1641,3 +1641,8 @@ body {
 .advice-curvebox{background:#122512;border:1px solid #2a4a2a;border-radius:10px;padding:12px}
 .advice-curve{width:100%;height:120px;display:block}
 .advice-disc{margin-top:24px;font-size:.7rem;color:#5a6b5a;text-align:center}
+.advice-hist tr[data-date]{cursor:pointer}
+.advice-hist tr[data-date]:hover td{background:rgba(255,215,0,.06)}
+.advice-modal-box{max-height:85vh;overflow-y:auto;min-width:480px}
+.advice-modal-head{color:#ffd700;font-weight:700;font-size:.95rem;padding:12px 14px;border-bottom:1px solid rgba(255,215,0,.15)}
+@media (max-width:640px){ .advice-modal-box{min-width:0;width:94vw} }
