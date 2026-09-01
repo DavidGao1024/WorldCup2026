@@ -1,5 +1,7 @@
 # 每日投注推荐系统 · 设计文档（v1）
 
+> **2026-09-01 修订（总司令令）**：§回收 中"开球 7 天未回收自动作废退本"机制**废止**。长期未回收场保持 pending 不计统计，改由 `--settle` 人工判定；前端显示"待判定"。详见 `docs/superpowers/plans/2026-09-01-settlement-amendment-and-history-modal.md` Part A。同日实况更新：本机计划任务已注册并实跑通过；二期云端反代证伪（CF 出口同被 EdgeOne 拦截），`fetch-odds.yml` 定时已停用、赔率数据冻结。
+
 > 日期：2026-08-31｜状态：**已批准，v1 已实施并上线（提交 cae94eb）**——本机计划任务为主通道（schtasks 注册待执行）；二期 CF Worker+GitHub Actions 未启动；§10「停用 fetch-odds 定时」仍待批
 > 前置阅读：`docs/lottery-pnl.md`（数据依据）、`docs/lottery-strategy.md`（规则来源）
 

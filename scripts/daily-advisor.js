@@ -2,6 +2,7 @@
 // usage: node scripts/daily-advisor.js            完整运行(回收+出票)
 //        node scripts/daily-advisor.js --regen    重新出票(覆盖今日，当日已有结算腿需加 --force)
 //        node scripts/daily-advisor.js --selftest 纯函数自检
+//        node scripts/daily-advisor.js --settle <matchId|pool>=<hit|miss> [更多...]  人工判定长期未回收场
 'use strict';
 
 var https = require('https'), zlib = require('zlib'), fs = require('fs'), path = require('path');
@@ -140,20 +141,36 @@ function evaluateTickets(data, idx, nowMs) {
       t.legs.forEach(function(l){
         if (l.result === 'pending') {
           judgeLeg(l, findResult(idx, l));
-          if (l.result === 'pending') {
-            var ageDays = (nowMs - new Date(l.kickoff.replace(' ','T')+'+08:00').getTime()) / 86400e3;
-            if (ageDays > 7) { l.result = 'void'; } else allSettled = false;
-          }
+          if (l.result === 'pending') allSettled = false;
         }
       });
-      var voided = t.legs.some(function(l){return l.result==='void';});
-      if (voided) { t.void = true; t.result='void'; t.payout=t.stake; return; }
       if (!allSettled) { t.result = 'pending'; return; }
       var hit = t.legs.every(function(l){return l.result==='hit';});
       t.result = hit ? 'hit' : 'miss';
       t.payout = hit ? round2(t.stake * t.combinedOdds) : 0;
     });
   });
+}
+// 人工判定: 总司令对长期未回收场次定输赢。directive 形如 "2041183|HAD=hit"
+function applySettleDirectives(data, directives) {
+  var applied = 0;
+  (directives||[]).forEach(function(directive){
+    var kv = String(directive).split('=');
+    var key = kv[0], verdict = (kv[1]||'').trim();
+    if (!/^(hit|miss)$/.test(verdict)) throw new Error('判定只接受 hit|miss: '+directive);
+    var found = false;
+    data.days.forEach(function(day){ day.tickets.forEach(function(t){ t.legs.forEach(function(l){
+      if (l.matchId+'|'+l.pool === key) {
+        found = true;
+        if (l.result !== 'pending') throw new Error('该场已有判定, 人工不覆盖: '+key+' ('+l.result+')');
+        l.result = verdict;
+        if (l.score === null || l.score === undefined) l.score = '人工判定';
+        applied++;
+      }
+    });});});
+    if (!found) throw new Error('未找到待判定的场: '+key+' (键=比赛ID|玩法, 如 2041183|HAD)');
+  });
+  return applied;
 }
 function recomputeSummary(data) {
   var s = { days:0, tickets:0, legsHit:0, legsTotal:0, legHitRate:0, ticketsHit:0, ticketHitRate:0, staked:0, returned:0, roi:0, curWinStreak:0 };
@@ -274,10 +291,22 @@ function runSelftests() {
   var d2 = { days:[ {date:'2026-08-30', tickets:[{stake:2, void:false, result:'hit', payout:4, legs:[]}]},
                     {date:'2026-09-01', tickets:[{stake:2, void:false, result:'pending', payout:null, legs:[]}]} ]};
   ok(recomputeSummary(d2).curWinStreak===1, 'G2 未出结果日不打断连红');
-  // G3: void 票退回不计统计
-  var d3 = { days:[ {date:'2026-09-01', tickets:[{stake:4, void:true, result:'void', payout:4, legs:[{result:'void'}]}]} ]};
+  // G3(修订2026-09-01 总司令令): 长期未回收保持 pending, 不再自动作废
+  var d3 = { days:[ {date:'2026-09-01', tickets:[{id:'Z1', kind:'single', stake:4, combinedOdds:1.5, void:false, result:'pending', payout:null,
+      legs:[{matchId:77, matchNumStr:'周一077', kickoff:'2026-08-01 03:00', pool:'HAD', pick:'h', goalLine:null, result:'pending', score:null}]}]} ]};
+  evaluateTickets(d3, indexResults([]), new Date('2026-09-01T12:00:00Z').getTime()); // 开球已过 31 天
+  ok(d3.days[0].tickets[0].result==='pending' && !d3.days[0].tickets[0].void, 'G3 超30天无赛果仍 pending(自动作废已废除)');
   var s3 = recomputeSummary(d3);
-  ok(s3.staked===0 && s3.returned===0 && s3.ticketHitRate===0, 'G3 void 不进分母');
+  ok(s3.staked===0 && s3.returned===0 && s3.legsTotal===0, 'G3 pending 不进任何统计');
+  // G4: 人工判定入口
+  var n4 = applySettleDirectives(d3, ['77|HAD=hit']);
+  evaluateTickets(d3, indexResults([]), Date.now());
+  var t4 = d3.days[0].tickets[0];
+  ok(n4===1 && t4.result==='hit' && t4.payout===6, 'G4 人工判 hit 即结算 4×1.5=6');
+  var threw=0; try { applySettleDirectives(d3, ['77|HAD=miss']); } catch(e){ threw=1; }
+  ok(threw===1, 'G4 已有判定不可重复人工覆盖');
+  var threw2=0; try { applySettleDirectives({days:[]}, ['999|HAD=hit']); } catch(e){ threw2=1; }
+  ok(threw2===1, 'G4 找不到目标场即抛错');
   return fails;
 }
 
@@ -391,5 +420,18 @@ function runMain(regen, force) {
 
 function selftest() { var fails = runSelftests(); if (fails) { console.error(fails+' FAIL'); process.exit(1);} console.log('ALL PASS'); }
 
-if (process.argv.indexOf('--selftest') >= 0) selftest();
+var settleIdx = process.argv.indexOf('--settle');
+if (settleIdx >= 0) {
+  var dirs = process.argv.slice(settleIdx+1).filter(function(a){ return a.indexOf('--')!==0; });
+  try {
+    var sData = readData();
+    var n = applySettleDirectives(sData, dirs);
+    evaluateTickets(sData, indexResults([]), Date.now());
+    sData.days.sort(function(a,b){ return a.date<b.date?-1:1; });
+    sData.summary = recomputeSummary(sData);
+    sData.updateTime = new Date().toISOString();
+    writeDataAtomic(sData);
+    console.log('人工判定 '+n+' 场已落盘(关联票已即时结算)');
+  } catch(e){ console.error('settle 失败: '+e.message); process.exit(1); }
+} else if (process.argv.indexOf('--selftest') >= 0) selftest();
 else runMain(process.argv.indexOf('--regen') >= 0, process.argv.indexOf('--force') >= 0).catch(function(e){ console.error('RUN FAIL:', e.message); process.exit(1); });
