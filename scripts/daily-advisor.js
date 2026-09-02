@@ -13,6 +13,7 @@ var WHITELIST = { '英超':1,'西甲':1,'意甲':1,'德甲':1,'法甲':1,'欧冠
 var GOLDEN_LO = 1.30, GOLDEN_HI = 1.60, EDGE_HI = 1.35, MID = 1.47;
 var BONUS_LO = 1.6, BONUS_HI = 2.6, BONUS_MID = 2.1;
 var DAILY_BUDGET = 20;
+var WIN_MIN_H = 3, WIN_MAX_H = 48; // 开球窗口(小时)：下限=来得及下单的诚信闸；上限=每日推荐最远覆盖，2026-09-02 由 36 微放宽至 48 以多收~2日内场次
 
 function parseKickoff(m) { return new Date(m.matchDate + 'T' + m.matchTime + '+08:00'); }
 
@@ -33,7 +34,7 @@ function normalizeMatch(m) {
 
 function inWindow(m, nowIso) {
   var t = m.kickoff.getTime(), now = new Date(nowIso).getTime();
-  return t >= now + 3*3600e3 && t <= now + 36*3600e3;
+  return t >= now + WIN_MIN_H*3600e3 && t <= now + WIN_MAX_H*3600e3;
 }
 
 function findGoldenCandidates(ms) {
@@ -260,8 +261,8 @@ function runSelftests() {
 
   ok(inWindow(normalizeMatch(fxMatch({matchDate:'2026-08-31', matchTime:'14:30:00'})), NOW)===true, 'B5 inWindow NOW+3h 边界 true');
   ok(inWindow(normalizeMatch(fxMatch({matchDate:'2026-08-31', matchTime:'14:29:00'})), NOW)===false, 'B5 inWindow NOW+2h59m false');
-  ok(inWindow(normalizeMatch(fxMatch({matchDate:'2026-09-01', matchTime:'23:30:00'})), NOW)===true, 'B5 inWindow NOW+36h 边界 true');
-  ok(inWindow(normalizeMatch(fxMatch({matchDate:'2026-09-01', matchTime:'23:31:00'})), NOW)===false, 'B5 inWindow NOW+36h1m false');
+  ok(inWindow(normalizeMatch(fxMatch({matchDate:'2026-09-02', matchTime:'11:30:00'})), NOW)===true, 'B5 inWindow NOW+48h 边界 true');
+  ok(inWindow(normalizeMatch(fxMatch({matchDate:'2026-09-02', matchTime:'11:31:00'})), NOW)===false, 'B5 inWindow NOW+48h1m false');
   ok(bjHM(new Date('2026-08-31T17:00:00Z'))==='01:00', 'B5 bjHM 17Z→01:00');
   ok(bjHM(new Date('2026-09-01T16:00:00Z'))==='00:00', 'B5 bjHM 16Z→00:00');
   ok(t5.map(function(t,i){return t.id;}).join(',')==='20260901-T1,20260901-T2,20260901-T3,20260901-T4,20260901-T5', 'B5 裁剪后 id 连续 T1..T5');
