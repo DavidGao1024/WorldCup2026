@@ -1,10 +1,7 @@
 name: 更新伤病数据模板
 
 on:
-  schedule:
-    # 每天运行一次（伤病数据变化频率低）
-    - cron: '17 3 * * *'
-  workflow_dispatch:
+  workflow_dispatch: # 2026-09-02 停用每日定时（世界杯已结束、伤病数据冻结）；仅留手动触发
 
 jobs:
   update-injuries:

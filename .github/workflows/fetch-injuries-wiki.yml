@@ -1,10 +1,7 @@
 name: 从 Wikipedia 拉取伤病数据
 
 on:
-  schedule:
-    # 每天 4 点运行（在 fetch-injuries.yml 之后）
-    - cron: '27 3 * * *'
-  workflow_dispatch:
+  workflow_dispatch: # 2026-09-02 停用每日定时（世界杯已结束、伤病数据冻结）；仅留手动触发
 
 jobs:
   fetch-injuries-wiki:
