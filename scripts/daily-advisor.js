@@ -399,7 +399,10 @@ function runMain(regen, force) {
     return fetchOdds().then(function(raw){
       var norm = raw.map(function(m){ return normalizeMatch(m); })
                     .filter(function(m){ return WHITELIST[m.league] && inWindow(m, nowIso); });
-      var tickets = generateTickets(findGoldenCandidates(norm), findBonusCandidates(norm), legKeys(data, regen ? today : null));
+      var goldens = findGoldenCandidates(norm);
+      var bonuses = findBonusCandidates(norm);
+      console.log('[取数漏斗] 在售'+raw.length+' -> 白名单窗口内'+norm.length+' -> 黄金候选'+goldens.length+' 彩蛋候选'+bonuses.length);
+      var tickets = generateTickets(goldens, bonuses, legKeys(data, regen ? today : null));
       if (exists && regen) data.days = data.days.filter(function(d){ return d.date!==today; });
       var day = { date: today, generatedAt: nowIso, rest: tickets.length===0, tickets: tickets };
       data.days.push(day);
@@ -418,6 +421,26 @@ function runMain(regen, force) {
   });
 }
 
+function runPeek() {
+  var now = new Date(), nowIso = now.toISOString();
+  var data = readData(); // 只读：本路径绝不 writeDataAtomic
+  var today = todayKey(nowIso);
+  return fetchOdds().then(function(raw){
+    var norm = raw.map(function(m){ return normalizeMatch(m); })
+                  .filter(function(m){ return WHITELIST[m.league] && inWindow(m, nowIso); });
+    var goldens = findGoldenCandidates(norm);
+    var bonuses = findBonusCandidates(norm);
+    var tickets = generateTickets(goldens, bonuses, legKeys(data, today));
+    var PL = { h:'主胜', d:'平', a:'客胜' };
+    console.log('[只读复看·不写盘] 北京时间 '+bjHM(now)+' | 在售'+raw.length+' -> 白名单窗口内'+norm.length+' -> 黄金候选'+goldens.length+' 彩蛋候选'+bonuses.length);
+    goldens.forEach(function(c,i){ console.log('  黄金#'+(i+1)+' '+c.m.league+' '+c.m.home+' vs '+c.m.away+' '+PL[c.pick]+'@'+c.odds+(c.edge?'(边缘)':'')+' 开赛'+c.m.matchDate+' '+bjHM(c.m.kickoff)); });
+    bonuses.forEach(function(c,i){ console.log('  彩蛋#'+(i+1)+' '+c.m.league+' '+c.m.home+' vs '+c.m.away+' '+PL[c.pick]+'(让'+c.gl+')@'+c.odds+' 开赛'+c.m.matchDate+' '+bjHM(c.m.kickoff)); });
+    console.log('若此刻出票 -> ' + (tickets.length===0 ? '休战(零候选)' :
+      tickets.map(function(t){ return t.kind+'/'+t.stake+'元/'+t.legs.map(function(l){return l.match+' '+l.pickLabel+'@'+l.odds;}).join(' + '); }).join(' | ')));
+    console.log('（仅供参考：未写入 daily-advice.json，不影响计划任务）');
+  });
+}
+
 function selftest() { var fails = runSelftests(); if (fails) { console.error(fails+' FAIL'); process.exit(1);} console.log('ALL PASS'); }
 
 var settleIdx = process.argv.indexOf('--settle');
@@ -433,5 +456,6 @@ if (settleIdx >= 0) {
     writeDataAtomic(sData);
     console.log('人工判定 '+n+' 场已落盘(关联票已即时结算)');
   } catch(e){ console.error('settle 失败: '+e.message); process.exit(1); }
-} else if (process.argv.indexOf('--selftest') >= 0) selftest();
+} else if (process.argv.indexOf('--peek') >= 0) runPeek().catch(function(e){ console.error('PEEK FAIL:', e.message); process.exit(1); });
+else if (process.argv.indexOf('--selftest') >= 0) selftest();
 else runMain(process.argv.indexOf('--regen') >= 0, process.argv.indexOf('--force') >= 0).catch(function(e){ console.error('RUN FAIL:', e.message); process.exit(1); });
