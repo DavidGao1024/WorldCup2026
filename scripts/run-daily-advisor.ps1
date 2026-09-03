@@ -30,7 +30,7 @@ if ((RunStep 'git pull' { git pull --rebase --autostash }) -ne 0) { Log '警告:
 if ((RunStep 'engine' { node scripts/daily-advisor.js }) -ne 0) { Log '引擎运行失败, 中止不提交'; exit 1 }
 if ((RunStep 'git add' { git add data/daily-advice.json }) -ne 0) { Log 'git add 失败, 中止'; exit 1 }
 if ((RunStep 'git diff --cached' { git diff --cached --quiet }) -ne 0) {
-  if ((RunStep 'git commit' { git commit -m 'chore: 每日投注推荐 [skip ci]' }) -ne 0) { Log 'git commit 失败, 中止'; exit 1 }
+  if ((RunStep 'git commit' { git commit -m 'chore: 每日投注推荐' }) -ne 0) { Log 'git commit 失败, 中止'; exit 1 }
   if ((RunStep 'git push' { git push origin main }) -ne 0) { Log 'git push 失败, 明日随 pull 重试'; exit 1 }
   Log '已提交并推送'
 } else {
