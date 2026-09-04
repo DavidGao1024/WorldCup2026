@@ -1,13 +1,13 @@
 {
-  "updateTime": "2026-09-03T03:30:08.969Z",
+  "updateTime": "2026-09-04T03:30:08.167Z",
   "summary": {
-    "days": 4,
-    "tickets": 2,
+    "days": 5,
+    "tickets": 5,
     "legsHit": 2,
     "legsTotal": 2,
     "legHitRate": 1,
     "ticketsHit": 2,
-    "ticketHitRate": 1,
+    "ticketHitRate": 0.4,
     "staked": 6,
     "returned": 8.14,
     "roi": 0.3567,
@@ -92,6 +92,136 @@
       "generatedAt": "2026-09-03T03:30:08.842Z",
       "rest": true,
       "tickets": []
+    },
+    {
+      "date": "2026-09-04",
+      "generatedAt": "2026-09-04T03:30:08.040Z",
+      "rest": false,
+      "tickets": [
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 2.22,
+          "legs": [
+            {
+              "matchId": 2041284,
+              "matchNumStr": "周六018",
+              "league": "意甲",
+              "match": "国际米兰 vs 那不勒斯",
+              "kickoff": "2026-09-06 00:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.46,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2041280,
+              "matchNumStr": "周六014",
+              "league": "英超",
+              "match": "布伦特福德 vs 桑德兰",
+              "kickoff": "2026-09-05 22:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.52,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-09-06",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20260906-T1"
+        },
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 1.93,
+          "legs": [
+            {
+              "matchId": 2041252,
+              "matchNumStr": "周五008",
+              "league": "德甲",
+              "match": "斯图加特 vs 科隆",
+              "kickoff": "2026-09-05 02:30",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.39,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2041254,
+              "matchNumStr": "周五010",
+              "league": "英超",
+              "match": "伊普斯维奇 vs 利物浦",
+              "kickoff": "2026-09-05 03:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "a",
+              "pickLabel": "客胜",
+              "odds": 1.39,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-09-05",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20260905-T2"
+        },
+        {
+          "kind": "bonus",
+          "rule": "此场只开让球玩法·赔率1.6~2.6之间·需净胜3球以上",
+          "stake": 2,
+          "combinedOdds": 4.11,
+          "legs": [
+            {
+              "matchId": 2041279,
+              "matchNumStr": "周六013",
+              "league": "英超",
+              "match": "曼彻斯特城 vs 考文垂",
+              "kickoff": "2026-09-05 22:00",
+              "pool": "HHAD",
+              "goalLine": "-2",
+              "pick": "h",
+              "pickLabel": "主胜(让-2)",
+              "odds": 2.12,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2041287,
+              "matchNumStr": "周六021",
+              "league": "德甲",
+              "match": "沙尔克04 vs 拜仁慕尼黑",
+              "kickoff": "2026-09-06 00:30",
+              "pool": "HHAD",
+              "goalLine": "+2",
+              "pick": "a",
+              "pickLabel": "客胜(让+2)",
+              "odds": 1.94,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-09-05",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20260905-T3"
+        }
+      ]
     }
   ]
 }
