@@ -1,0 +1,8 @@
+# 复制到 Gitee 私密 shadow 仓库根目录为 config.sh 并填实值（shadow.sh 自动 source）
+# 纪律：GH_PAT 30 天过期即换；GITEE_TOKEN 季度删旧发新；换令牌=改本文件+push
+# ⚠️ 本模板严禁填入真实令牌——真实值只存在于私密仓库（此公开目录仅留形状）
+export GH_USER='DavidGao1024'
+export GH_PAT='<GitHub细粒度PAT:仅WorldCup2026/Contents读写/30天>'
+export GITEE_USER='<Gitee用户名>'
+export GITEE_TOKEN='<Gitee私人令牌:projects权限>'
+export SHADOW_MODE='issue'

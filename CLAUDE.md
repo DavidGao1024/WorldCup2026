@@ -322,7 +322,7 @@ https://webapi.sporttery.cn/gateway/jc/football/getMatchCalculatorV1.qry
 - **回收口径（2026-09-01 总司令令）**：~~开球 7 天未回收自动作废退本~~ **已废除**（曾致盈亏虚增退本额）。长期查无赛果的票保持 `pending` 不计任何统计，前端显示"**待判定**"（开球超 7 天推算），定输赢只能靠体彩赛果或 `--settle` 人工判定
 - **核心规则常量**：白名单=英超/西甲/意甲/德甲/法甲/欧冠/欧罗巴（`leagueAbbName` 全等）；黄金区间 [1.30,1.60]、<1.35 边缘只 ¥2 单关；串关配对按 |赔率−1.47| 升序最多 2 张；±2 彩蛋需两场且让球方赔率 [1.6,2.6]；日预算 ¥20；零候选=休战
 - **不变量**：`day.date`=北京生成日（勿改回 UTC/销售日，曾致幂等失效）；历史 day 只追加；去重键 `matchId|pool` 跨日；无变化跳过写盘；原子写；数据损坏抛错终止不静默清空
-- **通道**（2026-09-01 定论）：本机计划任务 `DailyBettingAdvisor` = **唯一采集通道**（每天北京 11:30，已注册并实跑验证；脚本 v1.1 加固：日志落 `logs\daily-advisor.log`、`pull --rebase --autostash`、逐步查退出码；**ps1 必须存 UTF-8 BOM**，PS5.1 无 BOM 按 GBK 读会吞中文引号）。二期云端反代**放弃**（CF 出口同样被 EdgeOne 拦，详见「体彩赔率」节），不再建 `daily-advice.yml`
+- **通道**（2026-09-07 总司令令**倒置为云为主**，原 09-01「本机唯一通道」定论作废）：**Gitee Go 私密库 `gao-jiashun/shadow`** = 主出票通道（UI「定时运行」配 cron `30 11 * * *` 北京时间；`shadow.sh`=克隆 GitHub→引擎 selftest 闸门→出票→仅当日批次有 diff 才回写 GitHub main，commit 标 `[cloud-primary]`；执行摘要回写该库 `status` 分支；出口百度云苏州可直连 sporttery；两枚令牌明文仅存私密库 yml `variables:`，GH PAT 30 天、Gitee 令牌季度轮换）。**本机计划任务 `DailyBettingAdvisor` 降为 12:45 兜底**：pull 后预检「当日批次已存在→待命退出」，无批次才顶跑，commit 标 `[local-backstop]`；ps1 加固纪律保留（日志 `logs\daily-advisor.log`、**UTF-8 BOM 必须**、逐步查退出码）。幂等（去重键+day.date+无变化跳过）保证先写者得当日档案、另一方自动空转，**引擎零改动**。海外反代仍放弃（CF 出口被 EdgeOne 拦）。本仓 `shadow/` 目录为占位符模板镜像（无密钥），source of truth=Gitee 私密库；计划详见 `projectDoc/plan/2026-09-04-gitee-go-shadow-channel.md`（v2）
 - **前端**：`js/daily-advice.js` 渲染默认页签；新鲜度徽章 ≤26h 绿 / ≤48h 橙 / >48h 红；UI 文案禁行话（「腿」→「场」、ROI→收益率）；战绩档案任一行可点→弹窗展示当日全部票（复用 `ticketHtml()`、汇总头与行同算式；委托绑 `#advice-content` 仅一次；规格见 `docs/superpowers/specs/2026-09-01-history-ticket-modal-design.md`）
 
 ## GitHub Pages

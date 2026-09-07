@@ -1,8 +1,8 @@
-﻿# scripts/run-daily-advisor.ps1 — 每日推荐引擎·本机主通道(备用: 二期 CF Worker+Actions 上线后此任务可停用)
-# 每天北京时间 11:30 自动: 拉最新 -> 回收昨日赛果 -> 生成今日票 -> 提交推送
+﻿# scripts/run-daily-advisor.ps1 — 每日推荐引擎·本机兜底通道(2026-09-07 起: 云 Gitee Go 11:30 为主, 本机 12:45 兜底)
+# 每天北京时间 12:45 自动: 拉最新 -> 预检"当日批次已存在则待命退出" -> 无批次才回收赛果+出今日票 -> 提交推送([local-backstop])
 # 全程写日志 logs\daily-advisor.log(追加、带时间戳)，窗口一闪而过也能查现场
 # 注册(一次性, 管理员 PowerShell):
-#   schtasks /create /tn DailyBettingAdvisor /sc daily /st 11:30 /f ^
+#   schtasks /create /tn DailyBettingAdvisor /sc daily /st 12:45 /f ^
 #     /tr "powershell -ExecutionPolicy Bypass -File E:\GitHub\WorldCup2026\scripts\run-daily-advisor.ps1"
 # 注销: schtasks /delete /tn DailyBettingAdvisor /f
 $ErrorActionPreference = 'Continue'
@@ -27,10 +27,14 @@ function RunStep([string]$name, [scriptblock]$cmd) {
 
 Log '===== 任务启动 ====='
 if ((RunStep 'git pull' { git pull --rebase --autostash }) -ne 0) { Log '警告: pull 失败, 以本地仓库继续' }
+$bj = (Get-Date).ToUniversalTime().AddHours(8).ToString('yyyy-MM-dd')
+$lastDay = ((node -e "var d=require('./data/daily-advice.json'),a=d.days||[];console.log(a.length?a[a.length-1].date:'')") | Out-String).Trim()
+if ($lastDay -eq $bj) { Log "当日批次已存在(${bj}, 云已出票), 本机待命退出"; Log '===== 任务结束 ====='; exit 0 }
+Log "无当日批次(最后=${lastDay}), 本机兜底顶跑出票"
 if ((RunStep 'engine' { node scripts/daily-advisor.js }) -ne 0) { Log '引擎运行失败, 中止不提交'; exit 1 }
 if ((RunStep 'git add' { git add data/daily-advice.json }) -ne 0) { Log 'git add 失败, 中止'; exit 1 }
 if ((RunStep 'git diff --cached' { git diff --cached --quiet }) -ne 0) {
-  if ((RunStep 'git commit' { git commit -m 'chore: 每日投注推荐' }) -ne 0) { Log 'git commit 失败, 中止'; exit 1 }
+  if ((RunStep 'git commit' { git commit -m 'chore: 每日投注推荐 [local-backstop]' }) -ne 0) { Log 'git commit 失败, 中止'; exit 1 }
   if ((RunStep 'git push' { git push origin main }) -ne 0) { Log 'git push 失败, 明日随 pull 重试'; exit 1 }
   Log '已提交并推送'
 } else {

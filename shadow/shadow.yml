@@ -1,0 +1,33 @@
+# 二期云端主通道 · Gitee Go 流水线模板（2026-09-07 起云为主：每日 11:30 出票；本机 12:45 兜底）
+# 用法：复制本文件 → 私密 shadow 仓库的 .workflow/shadow.yml（仓库必须命名为 shadow）
+#       5 个占位符填实值后保存即注册流水线；先手动触发跑 M2，绿了再改 SHADOW_MODE=issue 跑 M3
+# 军规：本文件含令牌明文（只准存在于私密仓库）。M4 后 PAT 到期即轮换并重新编辑本文件。
+# 密钥不走流水线 variables（实测平台把值洗成空串）——shadow.sh 自动 source 仓库根 config.sh（模板见 config.sh.example）。
+# 定时：社区版走 yml triggers.schedule（仅一条 cron，5 段 POSIX，北京时间 11:30）。企业版才有 UI「定时运行」。
+
+version: '1.0'
+name: wc-shadow-daily
+displayName: 云端主出票通道(每日11:30)
+
+triggers:
+  trigger: push
+  push:
+    branches:
+      include:
+        - master
+  schedule:
+    - cron: '30 11 * * *'
+
+stages:
+  - name: shadow
+    displayName: 云端主出票
+    strategy: naturally
+    trigger: auto
+    executor: []
+    steps:
+      - step: build@nodejs
+        name: run_shadow
+        displayName: 执行 shadow.sh
+        nodeVersion: 14.16.0
+        commands:
+          - "bash ./shadow.sh"

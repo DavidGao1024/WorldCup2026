@@ -1,52 +1,57 @@
-# 二期计划：Gitee Go 云端影子灾备通道（daily-advisor）
+# 二期计划：Gitee Go 云端主出票通道 + 本机 12:45 兜底（v2）
 
-> 立项日：2026-09-04 ｜ 状态：待总司令批准
-> 前置实证：探针仓库 sporttery-probe 16 轮全链路验证（详见记忆「Gitee Go 流水线要点」）
+> 立项：2026-09-04 ｜ v2 改令：2026-09-07 总司令令**倒置**（原：本机 11:30 主、云影子）
+> 状态：M4 执行中——M2/M3 已于 2026-09-07 当日验收（GitHub `14b4de7` 云端主出票首批 + `status` 分支幂等空转审计）
+> 前置实证：探针仓库 sporttery-probe 16 轮全链路验证（已按 M1 吊销令牌，待删/归档）
 
 ## 一、目标与原则
 
-- **目标**：本机计划任务（北京 11:30，唯一正式通道）离线时，云端自动顶上出票，保证"当日必出票"。
-- **原则（军规不变）**：
-  1. 本机 11:30 仍是唯一正式通道，云端只做影子，不改 engine 一行代码；
-  2. 云端真写 GitHub 仅发生在"本机当日没出票"时（靠引擎幂等：去重键 `matchId|pool`、无变化跳过写盘、原子写）；
-  3. 影子批次 commit 一律带 `[cloud-shadow]` 标记，事后可审计。
+- **目标**：云端为主，「当日必出票」彻底不依赖本机在线；本机降为兜底，云断则补位。
+- **原则（v2 军规）**：
+  1. 云 Gitee Go 每日 **11:30**（北京）主出票，commit 标 `[cloud-primary]`；
+  2. 本机计划任务 `DailyBettingAdvisor` 改 **12:45**：pull 后预检「当日批次已存在→待命退出」，无批次才顶跑，commit 标 `[local-backstop]`；
+  3. **引擎零改动**：幂等键 `matchId|pool` + `day.date`=北京生成日 + 无变化跳过——谁先写入谁得当日档案，另一方自动空转；
+  4. 令牌只存私密 shadow 库 yml `variables:`；GitHub PAT 30 天过期，Gitee 令牌季度手动轮换（进过 git 历史即视为泄露面）。
 
 ## 二、架构
 
 ```
-Gitee Go（百度云苏州）每日 12:00 cron
-  └─ shadow 仓库(私密) 的 .workflow/shadow.yml
-       └─ shadow.sh：
-            1) git clone --depth=1 https://github.com/DavidGao1024/WorldCup2026.git   # 公开库，读免令牌
-            2) cd WorldCup2026 && node scripts/daily-advisor.js                        # 无参=正常出票流，幂等
-            3) 若 data/daily-advice.json 有 diff → commit "[cloud-shadow] ..." → push GitHub（重试×5，间隔30s，治抖动）
-            4) 无论成败，把执行摘要回写 shadow 仓库 status 分支（探针已实证通道）
+Gitee Go（百度云苏州）「定时运行」cron 30 11 * * *（UI 配置，不走 yml）
+  └─ gao-jiashun/shadow(私密) .workflow/shadow.yml   # variables 含 GH PAT + Gitee 令牌
+       └─ shadow.sh（仓库根）:
+            1) clone GitHub 公开库 --depth=1（重试×5，治苏州→GitHub 抖动）
+            2) node scripts/daily-advisor.js --selftest —— 两模式共用闸门
+            3) SHADOW_MODE=issue：无参跑引擎（回收+出票）→ daily-advice.json 有 diff 才
+               commit "[cloud-primary]" → pull --rebase → push GitHub main（重试×5）
+            4) 无论成败：执行摘要回写本库 status 分支（每日一 md，日志需登录方可看）
+本机 12:45：run-daily-advisor.ps1 → 预检 → 无当日批次才顶跑 [local-backstop]
 ```
 
-- 12:00 设计依据：本机 11:30 通常 1 分钟内完赛；错峰 30 分钟彻底避开双跑竞争。
-- 引擎零依赖 Node：云镜像 node 14.16 需过 `--selftest` 31 用例验证（M2 首个任务）。
-- 令牌：GitHub 细粒度 PAT（仅 WorldCup2026 / Contents 读写 / 短过期），只存在于 shadow 私密库 yml `variables:`，总司令亲手填，会进构建日志 → 到期即轮换。
+- 产物镜像：本仓库 `shadow/shadow.sh` + `shadow/shadow.yml`（占位符模板、无密钥）；**source of truth = Gitee 私密库**。
+- 已知代价：Gitee Go 免费档无 SLA，漏跑/延迟时批次漂到 ~12:45 本机补位；极端竞态（云迟写撞本机批次）由 rebase 冲突自动败者退让，不脏数据。
+- 免费额度：每日 1 跑约 3-5 分钟，月耗 ~120 分钟 < 500 分钟个人月额。
 
-## 三、里程碑
+## 三、里程碑与现状
 
-| 阶段 | 内容 | 通过标准 |
-|------|------|----------|
-| M1 | 本计划批准；总司令吊销探针令牌 | 已部分完成 |
-| M2 | 建 shadow 私密仓库 + shadow.sh + cron（先 `--selftest` 版）；新令牌注入 | 云端 selftest 31/31 绿 |
-| M3 | 换真出票命令，手动触发一次（今日本机已出票→应幂等空转、push 不发生） | 日志见"无变化跳过"且 GitHub 无新 commit |
-| M4 | 上 cron 12:00，连跑一周；模拟本机离线一次（当天禁用本机任务）验证顶替 | 一周影子全绿 + 一次成功顶替（或明确记录为何未顶） |
-| M5 | 收尾：CLAUDE.md「通道」节更新（请示）、记忆同步、文档归档 | 总司令验收 |
+| 阶段 | 内容 | 通过标准 | 状态 |
+|------|------|----------|------|
+| M1 | 探针令牌吊销、实验仓库清理 | 双平台令牌列表清空 | ✅ 09-07（probe 库删除与否待确认） |
+| M2 | shadow 私密库 + shadow.sh/yml 推送 + 双新令牌注入 | 云端日志 `selftest PASS (31 用例)` + `result=selftest_only` | ✅ 09-07（修两格式坑：`step:` 键名、参数平铺；密钥改 `config.sh` 走仓库，平台会洗 variables 值） |
+| M3 | SHADOW_MODE=issue 真首发 | 云端出当日批次+回写 GitHub + 并发轮幂等空转 | ✅ 09-07：#4 落 `14b4de7 [cloud-primary]`（回收 ¥7.72+休战记录）；#6 `result=no_change`+status 分支建档 |
+| M4 | 「定时运行」上 `30 11 * * *`；连跑一周；**断云演练**：某天停云端→验证本机 12:45 顶替出 `[local-backstop]` | 一周云绿 + 一次成功顶替 | 🔄 cron 待配；本机兜底待 12:45 首验「待命退出」 |
+| M5 | 收尾：CLAUDE.md 通道节 + 记忆同步（09-07 已改）、探针库归档、本文档归档 | 总司令验收 | ⬜ 进行中 |
 
 ## 四、风险与对策
 
 | 风险 | 对策 |
 |------|------|
-| 苏州→GitHub 抖动（实测同跳 15s 超时与 3s 成功并存） | push 重试×5；最终失败则结果只落 Gitee status 分支，次日晨本机自然补位 |
-| Gitee 平台政策/额度变化（社区版随时收紧） | 免费月 500 分钟只耗 ~60；代码零侵入，随时可弃用不伤主链路 |
-| 令牌经日志泄露 | 单库最小权限 + 短过期 + 季度轮换纪律；泄露窗口内攻击面=仅能改本站仓库文件（GH Pages 有审校习惯兜底） |
-| 双机竞写 daily-advice.json | 错峰 30 分钟 + 云端 push 前 `pull --rebase`；引擎原子写/幂等键双保险 |
-| 云端时钟/时区漂移（day.date=北京生成日不变量） | 脚本内部以北京时区算日期，与运行机器无关；M2 selftest 已覆盖 |
+| 云定时漏跑/延迟（无 SLA） | 本机 12:45 天然兜底；status 分支留每日执行摘要 |
+| 苏州→GitHub 抖动 | clone/push 各重试×5；仍失败则摘要落 status 分支、次日本机为当日主力 |
+| 双机竞写 daily-advice.json | 错峰 75 分钟 + 先 pull --rebase + 引擎幂等；冲突时云自动落败 |
+| 令牌经日志/历史泄露 | 单库最小权限 + 30 天过期 + 季度轮换；泄露窗口攻击面=仅本站仓库文件 |
+| Gitee yaml 保存但流水线对象不注册（探针期 issue #IJUFI0） | 兜底：Gitee Go 页「新建流水线→YAML 编辑」指向 .workflow/shadow.yml |
+| Gitee Go 日志强制登录 | 未登录浏览器 403，验收日志由总司令本人复制 |
 
 ## 五、不做清单（防蔓延）
 
-- 不动本机计划任务；不碰 daily-advisor.js；不复活 WCC/lottery-odds 采集（冻结令不变）；不建 GH 侧新 secret/Action。
+- 不动 `daily-advisor.js`/前端/数据接口；不复活 WCC/lottery-odds 采集（冻结令不变）；不建 GH 侧新 secret/Action；不再尝试海外反代（CF 出口被 EdgeOne 拦已证伪）。
