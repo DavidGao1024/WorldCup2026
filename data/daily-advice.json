@@ -1,17 +1,17 @@
 {
-  "updateTime": "2026-09-04T03:30:08.167Z",
+  "updateTime": "2026-09-07T03:06:22.232Z",
   "summary": {
-    "days": 5,
+    "days": 6,
     "tickets": 5,
-    "legsHit": 2,
-    "legsTotal": 2,
-    "legHitRate": 1,
-    "ticketsHit": 2,
-    "ticketHitRate": 0.4,
-    "staked": 6,
-    "returned": 8.14,
-    "roi": 0.3567,
-    "curWinStreak": 1
+    "legsHit": 5,
+    "legsTotal": 6,
+    "legHitRate": 0.833,
+    "ticketsHit": 3,
+    "ticketHitRate": 0.6,
+    "staked": 14,
+    "returned": 15.86,
+    "roi": 0.1329,
+    "curWinStreak": 2
   },
   "days": [
     {
@@ -115,8 +115,8 @@
               "pick": "h",
               "pickLabel": "主胜",
               "odds": 1.46,
-              "score": null,
-              "result": "pending"
+              "score": "3:2",
+              "result": "hit"
             },
             {
               "matchId": 2041280,
@@ -129,13 +129,13 @@
               "pick": "h",
               "pickLabel": "主胜",
               "odds": 1.52,
-              "score": null,
-              "result": "pending"
+              "score": "1:1",
+              "result": "miss"
             }
           ],
           "date": "2026-09-06",
-          "result": "pending",
-          "payout": null,
+          "result": "miss",
+          "payout": 0,
           "void": false,
           "id": "20260906-T1"
         },
@@ -156,8 +156,8 @@
               "pick": "h",
               "pickLabel": "主胜",
               "odds": 1.39,
-              "score": null,
-              "result": "pending"
+              "score": "4:1",
+              "result": "hit"
             },
             {
               "matchId": 2041254,
@@ -170,13 +170,13 @@
               "pick": "a",
               "pickLabel": "客胜",
               "odds": 1.39,
-              "score": null,
-              "result": "pending"
+              "score": "0:2",
+              "result": "hit"
             }
           ],
           "date": "2026-09-05",
-          "result": "pending",
-          "payout": null,
+          "result": "hit",
+          "payout": 7.72,
           "void": false,
           "id": "20260905-T2"
         },
@@ -222,6 +222,12 @@
           "id": "20260905-T3"
         }
       ]
+    },
+    {
+      "date": "2026-09-07",
+      "generatedAt": "2026-09-07T03:06:21.737Z",
+      "rest": true,
+      "tickets": []
     }
   ]
 }
