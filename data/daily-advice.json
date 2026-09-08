@@ -1,13 +1,13 @@
 {
-  "updateTime": "2026-09-07T03:06:22.232Z",
+  "updateTime": "2026-09-08T04:45:09.923Z",
   "summary": {
-    "days": 6,
-    "tickets": 5,
+    "days": 7,
+    "tickets": 7,
     "legsHit": 5,
     "legsTotal": 6,
     "legHitRate": 0.833,
     "ticketsHit": 3,
-    "ticketHitRate": 0.6,
+    "ticketHitRate": 0.429,
     "staked": 14,
     "returned": 15.86,
     "roi": 0.1329,
@@ -228,6 +228,95 @@
       "generatedAt": "2026-09-07T03:06:21.737Z",
       "rest": true,
       "tickets": []
+    },
+    {
+      "date": "2026-09-08",
+      "generatedAt": "2026-09-08T04:45:09.160Z",
+      "rest": false,
+      "tickets": [
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 2.1,
+          "legs": [
+            {
+              "matchId": 2041354,
+              "matchNumStr": "周二011",
+              "league": "欧冠",
+              "match": "波尔图 vs 曼彻斯特城",
+              "kickoff": "2026-09-09 03:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "a",
+              "pickLabel": "客胜",
+              "odds": 1.48,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2041352,
+              "matchNumStr": "周二008",
+              "league": "欧冠",
+              "match": "皇家马德里 vs 国际米兰",
+              "kickoff": "2026-09-09 03:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.42,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-09-09",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20260909-T1"
+        },
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 2.48,
+          "legs": [
+            {
+              "matchId": 2041353,
+              "matchNumStr": "周二009",
+              "league": "欧冠",
+              "match": "多特蒙德 vs 比利亚雷亚尔",
+              "kickoff": "2026-09-09 03:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.57,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2041361,
+              "matchNumStr": "周三006",
+              "league": "欧冠",
+              "match": "里斯本竞技 vs 加拉塔萨雷",
+              "kickoff": "2026-09-10 03:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.58,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-09-09",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20260909-T2"
+        }
+      ]
     }
   ]
 }
