@@ -3,7 +3,9 @@
 #       5 个占位符填实值后保存即注册流水线；先手动触发跑 M2，绿了再改 SHADOW_MODE=issue 跑 M3
 # 军规：本文件含令牌明文（只准存在于私密仓库）。M4 后 PAT 到期即轮换并重新编辑本文件。
 # 密钥不走流水线 variables（实测平台把值洗成空串）——shadow.sh 自动 source 仓库根 config.sh（模板见 config.sh.example）。
-# 定时：社区版走 yml triggers.schedule（仅一条 cron，5 段 POSIX，北京时间 11:30）。企业版才有 UI「定时运行」。
+# 定时：社区版走 yml triggers.schedule（仅一条 cron）。「定时运行」表单是企业版专属。
+# cron 必须 6 段 Quartz「秒 分 时 日 月 周」、周位用 ?——实测 09-08：'30 11 * * *'(5段) 静默不触发；'30 11 * * ?'(5段) 报 cronExpressionError；'0 30 11 * * ?'(6段) 定时触发实锤。
+# 注册纪律：cron 改动必须走网页编辑器保存才生效；转换失败会挂起全部触发(push/定时全哑)，空内容再保存一次即复活；平台报错弹窗后仍会把内容写回仓库，git 端以 HEAD 为准。
 
 version: '1.0'
 name: wc-shadow-daily
@@ -16,7 +18,7 @@ triggers:
       include:
         - master
   schedule:
-    - cron: '30 11 * * *'
+    - cron: '0 30 11 * * ?'
 
 stages:
   - name: shadow

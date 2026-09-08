@@ -18,7 +18,7 @@
 ## 二、架构
 
 ```
-Gitee Go（百度云苏州）yml triggers.schedule cron 30 11 * * *（社区版定时写在 yml，仅一条；「定时运行」表单是企业版功能）
+Gitee Go（百度云苏州）yml triggers.schedule cron '0 30 11 * * ?'（**6 段 Quartz 秒分时日月周**；社区版定时写在 yml，仅一条；「定时运行」表单是企业版功能）
   └─ gao-jiashun/shadow(私密) .workflow/shadow.yml   # variables 含 GH PAT + Gitee 令牌
        └─ shadow.sh（仓库根）:
             1) clone GitHub 公开库 --depth=1（重试×5，治苏州→GitHub 抖动）
@@ -40,7 +40,7 @@ Gitee Go（百度云苏州）yml triggers.schedule cron 30 11 * * *（社区版�
 | M1 | 探针令牌吊销、实验仓库清理 | 双平台令牌列表清空 | ✅ 09-07（probe 库删除与否待确认） |
 | M2 | shadow 私密库 + shadow.sh/yml 推送 + 双新令牌注入 | 云端日志 `selftest PASS (31 用例)` + `result=selftest_only` | ✅ 09-07（修两格式坑：`step:` 键名、参数平铺；密钥改 `config.sh` 走仓库，平台会洗 variables 值） |
 | M3 | SHADOW_MODE=issue 真首发 | 云端出当日批次+回写 GitHub + 并发轮幂等空转 | ✅ 09-07：#4 落 `14b4de7 [cloud-primary]`（回收 ¥7.72+休战记录）；#6 `result=no_change`+status 分支建档 |
-| M4 | 云定时 `triggers.schedule '30 11 * * *'`（社区版走 yml，c69c45e 已配）；连跑一周；**断云演练**：某天停云端→验证本机 12:45 顶替出 `[local-backstop]` | 一周云绿 + 一次成功顶替 | 🔄 09-07 本机兜底首验✅「待命退出」；待明晨 11:30 云定时首跑判定 |
+| M4 | 云定时 `triggers.schedule '0 30 11 * * ?'`（6 段 Quartz，定稿 7418292）；连跑一周；**断云演练**：某天停云端→验证本机 12:45 顶替出 `[local-backstop]` | 一周云绿 + 一次成功顶替 | 🔄 09-07 本机兜底首验✅；09-08 上午定时哑火（5 段 POSIX 被平台静默忽略从未注册，见 §六），当日换 6 段实锤「定时触发」（#9）+ 本机 12:45 顶跑出 `ce22565 [local-backstop]`（断云演练✅歪打正着）；云绿自 09-09 晨起算 |
 | M5 | 收尾：CLAUDE.md 通道节 + 记忆同步（09-07 已改）、探针库归档、本文档归档 | 总司令验收 | ⬜ 进行中 |
 
 ## 四、风险与对策
@@ -48,12 +48,20 @@ Gitee Go（百度云苏州）yml triggers.schedule cron 30 11 * * *（社区版�
 | 风险 | 对策 |
 |------|------|
 | 云定时漏跑/延迟（无 SLA） | 本机 12:45 天然兜底；status 分支留每日执行摘要 |
-| 苏州→GitHub 抖动 | clone/push 各重试×5；仍失败则摘要落 status 分支、次日本机为当日主力 |
+| 苏州→GitHub 抖动 | clone/push 各重试×5；仍失败则摘要落 status 分支、次日本机为当日主力。⚠️ 09-08 #7 单次 clone 挂死 16 分钟（GnuTLS recv/early EOF），重试无 fail-fast 会空烧构建额度——**clone 加 timeout 护栏/换 Gitee 镜像源待裁决** |
 | 双机竞写 daily-advice.json | 错峰 75 分钟 + 先 pull --rebase + 引擎幂等；冲突时云自动落败 |
 | 令牌经日志/历史泄露 | 单库最小权限 + 30 天过期 + 季度轮换；泄露窗口攻击面=仅本站仓库文件 |
 | Gitee yaml 保存但流水线对象不注册（探针期 issue #IJUFI0） | 兜底：Gitee Go 页「新建流水线→YAML 编辑」指向 .workflow/shadow.yml |
 | Gitee Go 日志强制登录 | 未登录浏览器 403，验收日志由总司令本人复制 |
 
-## 五、不做清单（防蔓延）
+## 五·附：09-08 云定时哑火事件簿（当日闭环）
+
+- **现象**：11:30 无 `[cloud-primary]`；构建历史连 push 事件也不触发（12:44/13:22 两推零动静）。
+- **根因链**：`cron '30 11 * * *'`（5 段 POSIX，官方文档示例样式）被平台**静默忽略、定时从未注册**；后探明 Gitee Go 真格式为 **6 段 Quartz `秒 分 时 日 月 周`（周位 `?`）**——`'30 11 * * ?'` 报 `YamlConvertException.cronExpressionError`，`'0 55 13 * * ?'` 通过。
+- **注册纪律（血泪）**：cron 改动**必须网页编辑器保存**才重新注册；平台报错弹窗后**仍会把内容写回仓库**（git 端以 HEAD 为准）；转换失败挂起**全部**触发（push/定时全哑），**空内容再保存一次即复活**；报错但内容相同 = 跳过校验的假绿「没报错」。
+- **实锤**：15:07:45 #9 构建历史标注「**定时触发**」自动起跑；当日票未缺——12:45 本机保险丝顶跑 `[local-backstop]`（M4 断云演练同日意外完成）。
+- **附带发现**：云 `clone GitHub` 可单次挂死 16 分钟+（retry×5 无超时护栏）。
+
+## 六、不做清单（防蔓延）
 
 - 不动 `daily-advisor.js`/前端/数据接口；不复活 WCC/lottery-odds 采集（冻结令不变）；不建 GH 侧新 secret/Action；不再尝试海外反代（CF 出口被 EdgeOne 拦已证伪）。
