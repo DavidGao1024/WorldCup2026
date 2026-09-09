@@ -29,11 +29,13 @@ trap 'rm -rf "$WORK"' EXIT
 SUMMARY_LOG="$WORK/summary.txt"; : > "$SUMMARY_LOG"
 say() { printf '%s %s\n' "$(NOW)" "$*" | tee -a "$SUMMARY_LOG"; }
 retry() { local n="$1" i=1; shift; while [ "$i" -le "$n" ]; do if "$@"; then return 0; fi; say "retry ${i}/${n} failed: $*"; sleep 30; i=$((i+1)); done; return 1; }
+# 09-08 #7 教训：苏州→GitHub 半死链路单发 clone 挂 16.5 分钟，×5 重试空烧额度。git 原生掐速：60s 内低于 1KB/s 即 abort。
+STALL="-c http.lowSpeedLimit=1024 -c http.lowSpeedTime=60"
 gitid() { git -C "$1" config user.name wc-cloud-shadow && git -C "$1" config user.email cloud-shadow@users.noreply.github.com; }
 
 say "start mode=$MODE node=$(node -v 2>/dev/null || echo NONE)"
 
-if ! retry 5 git clone --quiet --depth=1 "$GH_READ" "$WORK/wc"; then
+if ! retry 5 git $STALL clone --quiet --depth=1 "$GH_READ" "$WORK/wc"; then
   say "FAIL: GitHub clone 5x 均失败（疑网络断）"; RESULT=clone_fail
 else
   if ! ( cd "$WORK/wc" && node scripts/daily-advisor.js --selftest >"$WORK/st.log" 2>&1 ); then
@@ -53,7 +55,7 @@ else
       else
         gitid "$WORK/wc"
         git -C "$WORK/wc" commit -qam "[cloud-primary] ${TODAY} 云端主出票"
-        if retry 5 sh -c "git -C '$WORK/wc' pull --rebase --quiet '$GH_PUSH' main && git -C '$WORK/wc' push --quiet '$GH_PUSH' HEAD:main"; then
+        if retry 5 sh -c "git $STALL -C '$WORK/wc' pull --rebase --quiet '$GH_PUSH' main && git $STALL -C '$WORK/wc' push --quiet '$GH_PUSH' HEAD:main"; then
           RESULT=pushed
           say "GitHub 回写成功"
         else
@@ -72,7 +74,7 @@ else
 fi
 
 if git ls-remote --exit-code --heads "$GITEE_PUSH" status >/dev/null 2>&1; then
-  retry 3 git clone --quiet --depth=1 -b status "$GITEE_PUSH" "$WORK/st"
+  retry 3 git $STALL clone --quiet --depth=1 -b status "$GITEE_PUSH" "$WORK/st"
 else
   git init -q -b status "$WORK/st"
   git -C "$WORK/st" remote add origin "$GITEE_PUSH"
@@ -83,7 +85,7 @@ if [ -d "$WORK/st/.git" ]; then
   { echo "# shadow ${TODAY} mode=${MODE} result=${RESULT}"; cat "$SUMMARY_LOG"; } > "$WORK/st/${TODAY}.md"
   git -C "$WORK/st" add -A
   git -C "$WORK/st" commit -qm "[shadow] ${TODAY} result=${RESULT}" || true
-  retry 3 git -C "$WORK/st" push --quiet origin "HEAD:status" \
+  retry 3 git $STALL -C "$WORK/st" push --quiet origin "HEAD:status" \
     && say "摘要已回写 Gitee status 分支" || say "WARN: 摘要回写失败"
 else
   say "WARN: status 分支 clone 失败，摘要丢失于: $(cat "$SUMMARY_LOG" | tr '\n' '|')"

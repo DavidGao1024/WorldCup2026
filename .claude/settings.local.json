@@ -288,7 +288,32 @@
       "Bash(powershell *)",
       "Bash(MSYS_NO_PATHCONV=1 schtasks /run /tn DailyBettingAdvisor)",
       "Bash(gh auth *)",
-      "Bash(awk '{print $5, $9}')"
+      "Bash(awk '{print $5, $9}')",
+      "Bash(iconv -f UTF-8 -t UTF-8)",
+      "Bash(git -C E:/GitHub/WorldCup2026 ls-files)",
+      "Bash(git rev-list *)",
+      "Bash(git *)",
+      "Bash(schtasks /query /tn DailyBettingAdvisor /fo LIST /v)",
+      "Bash(cmd //c \"schtasks /query /tn DailyBettingAdvisor /fo LIST /v\")",
+      "Bash(bash -n shadow/shadow.sh)",
+      "Bash(cmd //c \"schtasks /change /tn DailyBettingAdvisor /st 12:45\")",
+      "Bash(cmd //c \"schtasks /create /tn DailyBettingAdvisor /tr \\\\\"powershell -ExecutionPolicy Bypass -File E:\\\\GitHub\\\\WorldCup2026\\\\scripts\\\\run-daily-advisor.ps1\\\\\" /sc daily /st 12:45 /it /f\")",
+      "Bash(cmd //c 'schtasks /create /tn DailyBettingAdvisor /tr \"powershell -ExecutionPolicy Bypass -File E:\\\\GitHub\\\\WorldCup2026\\\\scripts\\\\run-daily-advisor.ps1\" /sc daily /st 12:45 /it /f')",
+      "Bash(cmd //c 'schtasks /change /tn DailyBettingAdvisor /st 12:45')",
+      "Bash(cmd //c 'schtasks /query /tn DailyBettingAdvisor /fo LIST /v')",
+      "Read(//e/GitHub/**)",
+      "Bash(bash -n /e/gitee/shadow/shadow.sh)",
+      "Bash(bash -n /e/GitHub/WorldCup2026/shadow/shadow.sh)",
+      "Bash(schtasks /query /tn DailyBettingAdvisor)",
+      "Bash(cmd /c \"schtasks /query /tn DailyBettingAdvisor /fo LIST /v\")",
+      "Bash(cmd /c \"schtasks /query /tn DailyBettingAdvisor\")",
+      "Bash(iconv -f GBK -t UTF-8//IGNORE)",
+      "Bash(schtasks //query //tn DailyBettingAdvisor //fo CSV)",
+      "Bash(ssh -T git@gitee.com -o ConnectTimeout=8 -o StrictHostKeyChecking=accept-new)",
+      "Bash(cmdkey //list)",
+      "Bash(env)",
+      "Read(//c/Users/User/**)",
+      "Bash(MSYS_NO_PATHCONV=1 git -C /e/gitee/shadow show 'origin/master:.workflow/shadow.yml')"
     ]
   }
 }
