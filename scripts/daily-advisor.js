@@ -119,7 +119,12 @@ function findResult(idx, leg) {
   return idx.byId[leg.matchId] || idx.byKey[leg.matchNumStr+'|'+leg.kickoff.slice(0,10)] || null;
 }
 function judgeLeg(leg, r) {
-  if (!r || r.poolStatus !== 'Payout') return;
+  if (!r) return;
+  // 09-09 实锤: 只开让球玩法的场次(彩蛋票必选), 赛果行 poolStatus/winFlag 恒空(无 HAD 池)但比分照常公布。
+  // HHAD 腿改按「赛果已公布」判定: matchResultStatus='2' 且比分完整; HAD 腿闸门维持 Payout 不放宽。
+  var settled = r.poolStatus === 'Payout' ||
+    (leg.pool !== 'HAD' && r.matchResultStatus === '2' && /^\d+:\d+$/.test(r.sectionsNo999 || ''));
+  if (!settled) return;
   var sc = (r.sectionsNo999 || '').split(':');
   if (sc.length !== 2) return;
   var hs = parseInt(sc[0],10), as = parseInt(sc[1],10);
@@ -308,6 +313,27 @@ function runSelftests() {
   ok(threw===1, 'G4 已有判定不可重复人工覆盖');
   var threw2=0; try { applySettleDirectives({days:[]}, ['999|HAD=hit']); } catch(e){ threw2=1; }
   ok(threw2===1, 'G4 找不到目标场即抛错');
+  // G5(09-09 实锤): 只开让球玩法的场次, 赛果行 poolStatus/winFlag/h赔率恒空(无HAD池)但有比分且 matchResultStatus='2'。
+  // 原闸门只认 poolStatus==='Payout' → 彩蛋(HHAD)腿永挂 pending。修复: HHAD 腿按「比分已公布」判定; HAD 腿闸门不放宽。
+  var d5 = { days:[{ date:'2026-09-06', tickets:[
+    { id:'Y1', kind:'bonus', stake:2, combinedOdds:4.11, void:false, result:'pending', payout:null,
+      legs:[ {matchId:21, matchNumStr:'周六013', kickoff:'2026-09-05 22:00', pool:'HHAD', pick:'h', goalLine:'-2', result:'pending', score:null},
+             {matchId:22, matchNumStr:'周六021', kickoff:'2026-09-06 00:30', pool:'HHAD', pick:'h', goalLine:'+2', result:'pending', score:null} ]},
+    { id:'Y2', kind:'parlay2', stake:4, combinedOdds:2.0, void:false, result:'pending', payout:null,
+      legs:[ {matchId:23, matchNumStr:'周六014', kickoff:'2026-09-05 22:00', pool:'HAD', pick:'h', goalLine:null, result:'pending', score:null},
+             {matchId:24, matchNumStr:'周六015', kickoff:'2026-09-05 23:00', pool:'HHAD', pick:'h', goalLine:'-1', result:'pending', score:null} ]}
+  ]}]};
+  evaluateTickets(d5, indexResults([
+    { matchId:21, matchNumStr:'周六013', matchDate:'2026-09-05', sectionsNo999:'1:0', winFlag:'', poolStatus:'', matchResultStatus:'2', goalLine:'-2' },
+    { matchId:22, matchNumStr:'周六021', matchDate:'2026-09-06', sectionsNo999:'0:0', winFlag:'', poolStatus:'', matchResultStatus:'2', goalLine:'+2' },
+    { matchId:23, matchNumStr:'周六014', matchDate:'2026-09-05', sectionsNo999:'2:0', winFlag:'H', poolStatus:'', matchResultStatus:'2', goalLine:'' },
+    { matchId:24, matchNumStr:'周六015', matchDate:'2026-09-05', sectionsNo999:'', winFlag:'', poolStatus:'', matchResultStatus:'1', goalLine:'-1' }
+  ]), new Date('2026-09-06T12:00:00Z').getTime());
+  var y1=d5.days[0].tickets[0], y2=d5.days[0].tickets[1];
+  ok(y1.legs[0].result==='miss' && y1.legs[0].score==='1:0', 'G5 让-2仅净胜1 → adj=-1 客胜, 拾主胜=miss(pool空+赛果已公布)');
+  ok(y1.legs[1].result==='hit' && y1.result==='miss' && y1.payout===0, 'G5 受让+2平局 → adj=+2 主胜hit; 一票含miss → 整票miss');
+  ok(y2.legs[0].result==='pending', 'G5 HAD腿 poolStatus空 不判(原闸门不放宽)');
+  ok(y2.legs[1].result==='pending', 'G5 HHAD腿 无比分/状态未公布 不判');
   return fails;
 }
 
