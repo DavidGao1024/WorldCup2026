@@ -313,7 +313,13 @@
       "Bash(cmdkey //list)",
       "Bash(env)",
       "Read(//c/Users/User/**)",
-      "Bash(MSYS_NO_PATHCONV=1 git -C /e/gitee/shadow show 'origin/master:.workflow/shadow.yml')"
+      "Bash(MSYS_NO_PATHCONV=1 git -C /e/gitee/shadow show 'origin/master:.workflow/shadow.yml')",
+      "Bash(cmd //c \"schtasks /query /tn DailyBettingAdvisor /fo LIST\")",
+      "Bash(tee /dev/stderr)",
+      "Bash(node scripts/daily-advisor.js --selftest)",
+      "Bash(mkdir -p .itest/scripts .itest/data)",
+      "Bash(cp scripts/daily-advisor.js .itest/scripts/)",
+      "Bash(cp data/daily-advice.json .itest/data/)"
     ]
   }
 }
