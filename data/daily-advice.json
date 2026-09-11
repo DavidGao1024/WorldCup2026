@@ -1,16 +1,16 @@
 {
-  "updateTime": "2026-09-10T03:33:26.708Z",
+  "updateTime": "2026-09-11T04:45:09.473Z",
   "summary": {
-    "days": 9,
-    "tickets": 9,
-    "legsHit": 11,
-    "legsTotal": 15,
-    "legHitRate": 0.733,
+    "days": 10,
+    "tickets": 11,
+    "legsHit": 12,
+    "legsTotal": 16,
+    "legHitRate": 0.75,
     "ticketsHit": 6,
-    "ticketHitRate": 0.667,
-    "staked": 28,
+    "ticketHitRate": 0.545,
+    "staked": 30,
     "returned": 43.66,
-    "roi": 0.5593,
+    "roi": 0.4553,
     "curWinStreak": 4
   },
   "days": [
@@ -395,13 +395,13 @@
               "pick": "h",
               "pickLabel": "主胜(让-2)",
               "odds": 1.71,
-              "score": null,
-              "result": "pending"
+              "score": "4:0",
+              "result": "hit"
             }
           ],
           "date": "2026-09-10",
-          "result": "pending",
-          "payout": null,
+          "result": "miss",
+          "payout": 0,
           "void": false,
           "id": "20260910-T2"
         }
@@ -412,6 +412,95 @@
       "generatedAt": "2026-09-10T03:33:25.133Z",
       "rest": true,
       "tickets": []
+    },
+    {
+      "date": "2026-09-11",
+      "generatedAt": "2026-09-11T04:45:09.213Z",
+      "rest": false,
+      "tickets": [
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 2.02,
+          "legs": [
+            {
+              "matchId": 2041431,
+              "matchNumStr": "周六027",
+              "league": "意甲",
+              "match": "亚特兰大 vs 卡利亚里",
+              "kickoff": "2026-09-13 02:45",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.44,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2041433,
+              "matchNumStr": "周六029",
+              "league": "英超",
+              "match": "桑德兰 vs 阿森纳",
+              "kickoff": "2026-09-13 03:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "a",
+              "pickLabel": "客胜",
+              "odds": 1.4,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-09-13",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20260913-T1"
+        },
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 1.85,
+          "legs": [
+            {
+              "matchId": 2041420,
+              "matchNumStr": "周六016",
+              "league": "英超",
+              "match": "利物浦 vs 富勒姆",
+              "kickoff": "2026-09-12 22:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.37,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2041428,
+              "matchNumStr": "周六024",
+              "league": "西甲",
+              "match": "毕尔巴鄂竞技 vs 埃尔切",
+              "kickoff": "2026-09-13 00:30",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.35,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-09-12",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20260912-T2"
+        }
+      ]
     }
   ]
 }
