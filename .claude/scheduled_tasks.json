@@ -1,18 +1,29 @@
 {
   "tasks": [
     {
-      "id": "c803787a",
-      "cron": "55 9 5 10 *",
-      "prompt": "提醒总司令轮换 Gitee Go shadow 通道令牌（GH PAT 约 10-07 到期）：① https://github.com/settings/personal-access-tokens/new 重发细粒度 PAT（仅 WorldCup2026 / Contents 读写 / 30 天）；② 更新 E:\\gitee\\shadow\\config.sh 的 GH_PAT 行并 push master（勿带含\"Gitee Go\"字样的提交信息以防触发词规则，正常信息即可）；③ 吊销旧 PAT；④ Gitee 私人令牌顺手按季度纪律处理（https://gitee.com/profile/personal_access_tokens）。完成后跑一次手动触发验证 result=no_change 或 pushed。",
-      "createdAt": 1788758560398
+      "id": "8259708e",
+      "cron": "0 12 * * *",
+      "prompt": "【M4 云绿哨兵 D4~D7 · 标准b（09-11 总司令裁决）】只读核验，绝不 commit/push/改文件。M4 通过标准 = D1~D7（09-09~09-15）中 ≥6 天绿，且唯一非绿之日由本机 [local-backstop] 兜底补位成功（origin/main 存在该日票）。已入册战绩：D1✅ D2✅ D3❌云push_fail但兜底补位成功(d650891，2张票)——**红日额度已用尽，D4 起再红即不达标（仅5绿）**。步骤：1) 在 E:\\GitHub\\WorldCup2026 执行 git fetch origin main，查 origin/main 是否出现当日日期的「[cloud-primary]」提交（约 11:30-11:45）；2) 用 git show origin/main:data/daily-advice.json 经 node 解析（勿 pull，避免动工作区），确认最后批次 date=当日、票张数与内容正常（休战也算绿）；3) 回顾昨日：若昨日无 [cloud-primary]，查 origin/main 有无昨日日期 [local-backstop] 提交——有则记「兜底补位成功」，无则红色警报（双通道齐哑=当日缺票，立即请示）；4) 可选加证：git -C E:\\gitee\\shadow fetch origin status 后 show origin/status:<当日>.md 看时间线（09-11 起新 GH PAT 生效、say() 日志已脱敏，摘要中不应再出现任何明文令牌，若发现明文=脱敏失效红色警报）；5) 判定汇报：绿→报「云绿 Dn/7」（D4=09-12…D7=09-15）；红→报云端哑火，提示 12:45 本机兜底将自动顶跑 [local-backstop]，建议总司令登 Gitee 网页端查流水线日志；6) D7（09-15）当日收尾盘点：≥6绿且红日已补位 → 宣布 M4 通过标准达成（四步验收09-09全绿+断云顶替09-08+标准b满足），请示转 M5 收尾归档并提醒 CronDelete 注销本哨兵；不满足 → 如实汇报请总司令裁决。若当日已超过 09-15 → 直接提醒注销。按汇报规范（结论→表格→风险→请示）简报。",
+      "createdAt": 1789108939183,
+      "recurring": true
     },
     {
-      "id": "d7ec947d",
-      "cron": "0 12 * * *",
-      "prompt": "【M4 云绿连跑哨兵 D2~D7】只读核验，绝不 commit/push/改文件：1) 在 E:\\GitHub\\WorldCup2026 执行 git fetch origin main，查 origin/main 是否出现当日日期的「[cloud-primary]」提交（提交时间应约 11:30-11:45）；2) 用 git show origin/main:data/daily-advice.json 通过 node 解析（勿 pull，避免动工作区未提交文档），确认最后批次 date=当日、票张数与内容正常（休战也算正常产出）；3) 可选加证：git -C E:\\gitee\\shadow fetch origin status 后 show origin/status:<当日日期>.md 看执行摘要时间线；4) 判定汇报：✅绿 → 报「云绿 Dn/7」（D2=09-10、D3=09-11、…、D7=09-15）；❌无提交 → 报云端哑火，提示 12:45 本机兜底会自动顶跑 [local-backstop]，建议总司令登录 Gitee Go 网页端查流水线日志；5) 若当日已是 2026-09-15（D7）且全绿 → 宣布 M4 通过标准达成（四步验收 09-09 全绿+断云顶替 09-08+云绿一周），请示转 M5 收尾归档并提醒用 CronDelete 注销本哨兵；若当日已超过 09-15 → 直接提醒注销。按汇报规范（结论→表格→风险→请示）向总司令简报。",
-      "createdAt": 1788936414389,
-      "lastFiredAt": 1789101000847,
-      "recurring": true
+      "id": "132b49d7",
+      "cron": "33 9 16 9 *",
+      "prompt": "提醒总司令：今天实施 B 案「云端双窗口补跑」（09-11 已批准，计划见 projectDoc/plan/2026-09-04-gitee-go-shadow-channel.md §九；前提核验：M4 应已于 09-15 收官，若 D7 核验未过先请示再实施）。步骤：1) 我先换装哨兵任务文本——12:00 红判改「初判」（13:30 云端补跑可翻盘，次日回顾定终判），判定窗口加 13:30~13:45；2) 总司令网页编辑器改 cron（唯一入口，git push 不重注册）：https://gitee.com/gao-jiashun/shadow → 流水线 → YAML 编辑，schedule 行改为 - cron: '0 30 11,13 * * ?' 保存；坑纪律：报 cronExpressionError=转换失败挂起全部触发→空内容再保存一次即复活；确认无报错弹窗（报错但内容相同=假绿）；3) 当日观察：11:30 主班照常 + 13:30 首班补跑（已出票则 result=no_change 空转约3分钟）；注意多班制下 status 当日 md 只留最后一班，取证看 status 分支 git 历史；4) 结果入册 §九（⬜改✅）并随批提交。回滚预案：改回 '0 30 11 * * ?' 即可，本机 12:45 兜底不断粮。按汇报规范简报。",
+      "createdAt": 1789111662070
+    },
+    {
+      "id": "a78a9aaa",
+      "cron": "37 9 5 12 *",
+      "prompt": "提醒总司令：Gitee 令牌「shadow」将于 **2026-12-10 后过期**（09-11 界面直改的 90 天死线，剩 5 天）。按 09-11 裁决：本次轮换升级为**仓库级私人令牌**（总司令发现 Gitee 支持创建，权限只锁 gao-jiashun/shadow 库，替代现行账号级 projects 大权限）。流程：① 用总司令当时发现的入口创建仓库级私人令牌（常规入口 https://gitee.com/profile/personal_access_tokens 或 shadow 仓库设置页），权限按需最小化，有效期建议 90 天（与季度纪律对齐），复制新令牌；② 改 E:\\gitee\\shadow\\config.sh 的 GITEE_TOKEN= 行 → commit → push master（提交信息避开\"Gitee Go\"字样；push 自动触发一轮流水线=白捡验证）；③ 营长核验 status 分支当日 md 更新成功（新令牌回写实锤）；④ **实锤通过后**才删旧「shadow」令牌（顺序军规，删早了断审计链）；⑤ 顺手把下次到期提醒挂上（约 90 天后，自续期）。注意：若创建界面找不到仓库级选项或权限粒度不符，退回普通私人令牌 90 天方案亦可。按汇报规范简报。",
+      "createdAt": 1789112886187
+    },
+    {
+      "id": "83c34dad",
+      "cron": "55 9 5 10 *",
+      "prompt": "提醒总司令轮换 shadow 通道 GH PAT（现行令牌 2026-09-11 签发，30 天期，约 10-11 到期）。五步流程（避开 11:25~11:45 云端定时窗口）：① GitHub 发新细粒度 PAT（仅 WorldCup2026 / Contents 读写 / 30 天）：https://github.com/settings/personal-access-tokens/new ② 改 E:\\gitee\\shadow\\config.sh 的 GH_PAT= 行 → commit → push master（提交信息避开\"Gitee Go\"字样；push 自动触发一轮流水线，预期 result=no_change 即脚本正常）③ 本机 dry-run 实锤写权限：cd /e/gitee/shadow && . <(sed 's/\\r$//' config.sh) && git -C /e/GitHub/WorldCup2026 push --dry-run \"https://${GH_USER}:${GH_PAT}@github.com/DavidGao1024/WorldCup2026.git\" main（期望 Everything up-to-date；443 被重置属墙况波动，重试几发；输出注意脱敏）④ 验证通过后吊销旧 PAT：https://github.com/settings/personal-access-tokens ⑤ **自续期链（09-11 总司令批准）**：完成后立即挂下一次 GH PAT 轮换提醒（约 30 天后、新令牌到期前 5~7 天，一次性、持久化，文本沿用本条五步含自续期条款）——每环触发时自动挂下一环，链条永不断；周期如需调整以总司令裁决为准。备注：Gitee 令牌已有独立提醒（12-05 `a78a9aaa`，换仓库级令牌方案），本任务无需顺带处理；shadow.sh 已于 09-11 加装 say() 日志脱敏，令牌不会再泄入 status 分支；yml 无需改动。完成后按汇报规范简报，并提醒把弄脏的 .claude/scheduled_tasks.json 随下批提交。",
+      "createdAt": 1789113969216
     }
   ]
 }

@@ -1,7 +1,7 @@
 # 二期云端主通道 · Gitee Go 流水线模板（2026-09-07 起云为主：每日 11:30 出票；本机 12:45 兜底）
 # 用法：复制本文件 → 私密 shadow 仓库的 .workflow/shadow.yml（仓库必须命名为 shadow）
-#       5 个占位符填实值后保存即注册流水线；先手动触发跑 M2，绿了再改 SHADOW_MODE=issue 跑 M3
-# 军规：本文件含令牌明文（只准存在于私密仓库）。M4 后 PAT 到期即轮换并重新编辑本文件。
+#       密钥填仓库根 config.sh（模板见 config.sh.example），本文件不含任何凭据；保存即注册流水线
+# 军规：令牌明文仅存仓库根 config.sh（只准存在于私密仓库）。PAT 到期即轮换：改 config.sh 推送即生效，本文件无需改动。
 # 密钥不走流水线 variables（实测平台把值洗成空串）——shadow.sh 自动 source 仓库根 config.sh（模板见 config.sh.example）。
 # 定时：社区版走 yml triggers.schedule（仅一条 cron）。「定时运行」表单是企业版专属。
 # cron 必须 6 段 Quartz「秒 分 时 日 月 周」、周位用 ?——实测 09-08：'30 11 * * *'(5段) 静默不触发；'30 11 * * ?'(5段) 报 cronExpressionError；'0 30 11 * * ?'(6段) 定时触发实锤。

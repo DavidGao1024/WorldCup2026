@@ -319,7 +319,9 @@
       "Bash(node scripts/daily-advisor.js --selftest)",
       "Bash(mkdir -p .itest/scripts .itest/data)",
       "Bash(cp scripts/daily-advisor.js .itest/scripts/)",
-      "Bash(cp data/daily-advice.json .itest/data/)"
+      "Bash(cp data/daily-advice.json .itest/data/)",
+      "Bash(bash -c 'cat < /dev/null > /dev/tcp/github.com/443')",
+      "Bash(bash -c 'cat < /dev/null > /dev/tcp/github.com/22')"
     ]
   }
 }
