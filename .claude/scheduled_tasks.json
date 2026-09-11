@@ -1,0 +1,18 @@
+{
+  "tasks": [
+    {
+      "id": "c803787a",
+      "cron": "55 9 5 10 *",
+      "prompt": "提醒总司令轮换 Gitee Go shadow 通道令牌（GH PAT 约 10-07 到期）：① https://github.com/settings/personal-access-tokens/new 重发细粒度 PAT（仅 WorldCup2026 / Contents 读写 / 30 天）；② 更新 E:\\gitee\\shadow\\config.sh 的 GH_PAT 行并 push master（勿带含\"Gitee Go\"字样的提交信息以防触发词规则，正常信息即可）；③ 吊销旧 PAT；④ Gitee 私人令牌顺手按季度纪律处理（https://gitee.com/profile/personal_access_tokens）。完成后跑一次手动触发验证 result=no_change 或 pushed。",
+      "createdAt": 1788758560398
+    },
+    {
+      "id": "d7ec947d",
+      "cron": "0 12 * * *",
+      "prompt": "【M4 云绿连跑哨兵 D2~D7】只读核验，绝不 commit/push/改文件：1) 在 E:\\GitHub\\WorldCup2026 执行 git fetch origin main，查 origin/main 是否出现当日日期的「[cloud-primary]」提交（提交时间应约 11:30-11:45）；2) 用 git show origin/main:data/daily-advice.json 通过 node 解析（勿 pull，避免动工作区未提交文档），确认最后批次 date=当日、票张数与内容正常（休战也算正常产出）；3) 可选加证：git -C E:\\gitee\\shadow fetch origin status 后 show origin/status:<当日日期>.md 看执行摘要时间线；4) 判定汇报：✅绿 → 报「云绿 Dn/7」（D2=09-10、D3=09-11、…、D7=09-15）；❌无提交 → 报云端哑火，提示 12:45 本机兜底会自动顶跑 [local-backstop]，建议总司令登录 Gitee Go 网页端查流水线日志；5) 若当日已是 2026-09-15（D7）且全绿 → 宣布 M4 通过标准达成（四步验收 09-09 全绿+断云顶替 09-08+云绿一周），请示转 M5 收尾归档并提醒用 CronDelete 注销本哨兵；若当日已超过 09-15 → 直接提醒注销。按汇报规范（结论→表格→风险→请示）向总司令简报。",
+      "createdAt": 1788936414389,
+      "lastFiredAt": 1789101000847,
+      "recurring": true
+    }
+  ]
+}
