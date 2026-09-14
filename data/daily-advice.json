@@ -1,16 +1,16 @@
 {
-  "updateTime": "2026-09-13T03:33:22.981Z",
+  "updateTime": "2026-09-14T03:39:24.078Z",
   "summary": {
-    "days": 11,
+    "days": 12,
     "tickets": 14,
     "legsHit": 13,
-    "legsTotal": 20,
-    "legHitRate": 0.65,
+    "legsTotal": 25,
+    "legHitRate": 0.52,
     "ticketsHit": 6,
     "ticketHitRate": 0.429,
-    "staked": 38,
+    "staked": 44,
     "returned": 43.66,
-    "roi": 0.1489,
+    "roi": -0.0077,
     "curWinStreak": 0
   },
   "days": [
@@ -538,8 +538,8 @@
               "pick": "a",
               "pickLabel": "客胜",
               "odds": 1.5,
-              "score": null,
-              "result": "pending"
+              "score": "3:2",
+              "result": "miss"
             }
           ],
           "date": "2026-09-15",
@@ -565,8 +565,8 @@
               "pick": "a",
               "pickLabel": "客胜",
               "odds": 1.51,
-              "score": null,
-              "result": "pending"
+              "score": "2:2",
+              "result": "miss"
             },
             {
               "matchId": 2041437,
@@ -579,13 +579,13 @@
               "pick": "h",
               "pickLabel": "主胜",
               "odds": 1.56,
-              "score": null,
-              "result": "pending"
+              "score": "1:1",
+              "result": "miss"
             }
           ],
           "date": "2026-09-13",
-          "result": "pending",
-          "payout": null,
+          "result": "miss",
+          "payout": 0,
           "void": false,
           "id": "20260913-T2"
         },
@@ -606,8 +606,8 @@
               "pick": "a",
               "pickLabel": "客胜(让+2)",
               "odds": 1.82,
-              "score": null,
-              "result": "pending"
+              "score": "2:4",
+              "result": "miss"
             },
             {
               "matchId": 2041447,
@@ -620,17 +620,23 @@
               "pick": "a",
               "pickLabel": "客胜(让+2)",
               "odds": 1.78,
-              "score": null,
-              "result": "pending"
+              "score": "1:2",
+              "result": "miss"
             }
           ],
           "date": "2026-09-13",
-          "result": "pending",
-          "payout": null,
+          "result": "miss",
+          "payout": 0,
           "void": false,
           "id": "20260913-T3"
         }
       ]
+    },
+    {
+      "date": "2026-09-14",
+      "generatedAt": "2026-09-14T03:39:23.305Z",
+      "rest": true,
+      "tickets": []
     }
   ]
 }
