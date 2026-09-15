@@ -1,16 +1,16 @@
 {
-  "updateTime": "2026-09-14T03:39:24.078Z",
+  "updateTime": "2026-09-15T03:34:55.848Z",
   "summary": {
-    "days": 12,
-    "tickets": 14,
-    "legsHit": 13,
-    "legsTotal": 25,
-    "legHitRate": 0.52,
+    "days": 13,
+    "tickets": 15,
+    "legsHit": 14,
+    "legsTotal": 26,
+    "legHitRate": 0.538,
     "ticketsHit": 6,
-    "ticketHitRate": 0.429,
-    "staked": 44,
+    "ticketHitRate": 0.4,
+    "staked": 48,
     "returned": 43.66,
-    "roi": -0.0077,
+    "roi": -0.0904,
     "curWinStreak": 0
   },
   "days": [
@@ -524,8 +524,8 @@
               "pick": "a",
               "pickLabel": "客胜",
               "odds": 1.47,
-              "score": null,
-              "result": "pending"
+              "score": "0:2",
+              "result": "hit"
             },
             {
               "matchId": 2041452,
@@ -543,8 +543,8 @@
             }
           ],
           "date": "2026-09-15",
-          "result": "pending",
-          "payout": null,
+          "result": "miss",
+          "payout": 0,
           "void": false,
           "id": "20260915-T1"
         },
@@ -637,6 +637,40 @@
       "generatedAt": "2026-09-14T03:39:23.305Z",
       "rest": true,
       "tickets": []
+    },
+    {
+      "date": "2026-09-15",
+      "generatedAt": "2026-09-15T03:34:55.662Z",
+      "rest": false,
+      "tickets": [
+        {
+          "kind": "single",
+          "rule": "赔率接近黄金区间下限·只买最小一注",
+          "stake": 2,
+          "combinedOdds": 1.31,
+          "legs": [
+            {
+              "matchId": 2041499,
+              "matchNumStr": "周三006",
+              "league": "西甲",
+              "match": "马德里竞技 vs 奥萨苏纳",
+              "kickoff": "2026-09-17 01:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.31,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-09-17",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20260917-T1"
+        }
+      ]
     }
   ]
 }
