@@ -1,13 +1,13 @@
 {
-  "updateTime": "2026-09-15T03:34:55.848Z",
+  "updateTime": "2026-09-16T03:30:42.156Z",
   "summary": {
-    "days": 13,
-    "tickets": 15,
+    "days": 14,
+    "tickets": 16,
     "legsHit": 14,
     "legsTotal": 26,
     "legHitRate": 0.538,
     "ticketsHit": 6,
-    "ticketHitRate": 0.4,
+    "ticketHitRate": 0.375,
     "staked": 48,
     "returned": 43.66,
     "roi": -0.0904,
@@ -660,6 +660,54 @@
               "pick": "h",
               "pickLabel": "主胜",
               "odds": 1.31,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-09-17",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20260917-T1"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-16",
+      "generatedAt": "2026-09-16T03:30:41.846Z",
+      "rest": false,
+      "tickets": [
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 2.19,
+          "legs": [
+            {
+              "matchId": 2041516,
+              "matchNumStr": "周三009",
+              "league": "欧罗巴",
+              "match": "桑德兰 vs 阿尔克马尔",
+              "kickoff": "2026-09-17 03:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.41,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2041510,
+              "matchNumStr": "周四004",
+              "league": "西甲",
+              "match": "皇家贝蒂斯 vs 赫塔费",
+              "kickoff": "2026-09-18 01:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.55,
               "score": null,
               "result": "pending"
             }
