@@ -1,19 +1,6 @@
 {
   "tasks": [
     {
-      "id": "8259708e",
-      "cron": "0 12 * * *",
-      "prompt": "【M4 云绿哨兵 D4~D7 · 标准b（09-11 总司令裁决）】只读核验，绝不 commit/push/改文件。M4 通过标准 = D1~D7（09-09~09-15）中 ≥6 天绿，且唯一非绿之日由本机 [local-backstop] 兜底补位成功（origin/main 存在该日票）。已入册战绩：D1✅ D2✅ D3❌云push_fail但兜底补位成功(d650891，2张票)——**红日额度已用尽，D4 起再红即不达标（仅5绿）**。步骤：1) 在 E:\\GitHub\\WorldCup2026 执行 git fetch origin main，查 origin/main 是否出现当日日期的「[cloud-primary]」提交（约 11:30-11:45）；2) 用 git show origin/main:data/daily-advice.json 经 node 解析（勿 pull，避免动工作区），确认最后批次 date=当日、票张数与内容正常（休战也算绿）；3) 回顾昨日：若昨日无 [cloud-primary]，查 origin/main 有无昨日日期 [local-backstop] 提交——有则记「兜底补位成功」，无则红色警报（双通道齐哑=当日缺票，立即请示）；4) 可选加证：git -C E:\\gitee\\shadow fetch origin status 后 show origin/status:<当日>.md 看时间线（09-11 起新 GH PAT 生效、say() 日志已脱敏，摘要中不应再出现任何明文令牌，若发现明文=脱敏失效红色警报）；5) 判定汇报：绿→报「云绿 Dn/7」（D4=09-12…D7=09-15）；红→报云端哑火，提示 12:45 本机兜底将自动顶跑 [local-backstop]，建议总司令登 Gitee 网页端查流水线日志；6) D7（09-15）当日收尾盘点：≥6绿且红日已补位 → 宣布 M4 通过标准达成（四步验收09-09全绿+断云顶替09-08+标准b满足），请示转 M5 收尾归档并提醒 CronDelete 注销本哨兵；不满足 → 如实汇报请总司令裁决。若当日已超过 09-15 → 直接提醒注销。按汇报规范（结论→表格→风险→请示）简报。",
-      "createdAt": 1789108939183,
-      "recurring": true
-    },
-    {
-      "id": "132b49d7",
-      "cron": "33 9 16 9 *",
-      "prompt": "提醒总司令：今天实施 B 案「云端双窗口补跑」（09-11 已批准，计划见 projectDoc/plan/2026-09-04-gitee-go-shadow-channel.md §九；前提核验：M4 应已于 09-15 收官，若 D7 核验未过先请示再实施）。步骤：1) 我先换装哨兵任务文本——12:00 红判改「初判」（13:30 云端补跑可翻盘，次日回顾定终判），判定窗口加 13:30~13:45；2) 总司令网页编辑器改 cron（唯一入口，git push 不重注册）：https://gitee.com/gao-jiashun/shadow → 流水线 → YAML 编辑，schedule 行改为 - cron: '0 30 11,13 * * ?' 保存；坑纪律：报 cronExpressionError=转换失败挂起全部触发→空内容再保存一次即复活；确认无报错弹窗（报错但内容相同=假绿）；3) 当日观察：11:30 主班照常 + 13:30 首班补跑（已出票则 result=no_change 空转约3分钟）；注意多班制下 status 当日 md 只留最后一班，取证看 status 分支 git 历史；4) 结果入册 §九（⬜改✅）并随批提交。回滚预案：改回 '0 30 11 * * ?' 即可，本机 12:45 兜底不断粮。按汇报规范简报。",
-      "createdAt": 1789111662070
-    },
-    {
       "id": "a78a9aaa",
       "cron": "37 9 5 12 *",
       "prompt": "提醒总司令：Gitee 令牌「shadow」将于 **2026-12-10 后过期**（09-11 界面直改的 90 天死线，剩 5 天）。按 09-11 裁决：本次轮换升级为**仓库级私人令牌**（总司令发现 Gitee 支持创建，权限只锁 gao-jiashun/shadow 库，替代现行账号级 projects 大权限）。流程：① 用总司令当时发现的入口创建仓库级私人令牌（常规入口 https://gitee.com/profile/personal_access_tokens 或 shadow 仓库设置页），权限按需最小化，有效期建议 90 天（与季度纪律对齐），复制新令牌；② 改 E:\\gitee\\shadow\\config.sh 的 GITEE_TOKEN= 行 → commit → push master（提交信息避开\"Gitee Go\"字样；push 自动触发一轮流水线=白捡验证）；③ 营长核验 status 分支当日 md 更新成功（新令牌回写实锤）；④ **实锤通过后**才删旧「shadow」令牌（顺序军规，删早了断审计链）；⑤ 顺手把下次到期提醒挂上（约 90 天后，自续期）。注意：若创建界面找不到仓库级选项或权限粒度不符，退回普通私人令牌 90 天方案亦可。按汇报规范简报。",
@@ -24,6 +11,19 @@
       "cron": "55 9 5 10 *",
       "prompt": "提醒总司令轮换 shadow 通道 GH PAT（现行令牌 2026-09-11 签发，30 天期，约 10-11 到期）。五步流程（避开 11:25~11:45 云端定时窗口）：① GitHub 发新细粒度 PAT（仅 WorldCup2026 / Contents 读写 / 30 天）：https://github.com/settings/personal-access-tokens/new ② 改 E:\\gitee\\shadow\\config.sh 的 GH_PAT= 行 → commit → push master（提交信息避开\"Gitee Go\"字样；push 自动触发一轮流水线，预期 result=no_change 即脚本正常）③ 本机 dry-run 实锤写权限：cd /e/gitee/shadow && . <(sed 's/\\r$//' config.sh) && git -C /e/GitHub/WorldCup2026 push --dry-run \"https://${GH_USER}:${GH_PAT}@github.com/DavidGao1024/WorldCup2026.git\" main（期望 Everything up-to-date；443 被重置属墙况波动，重试几发；输出注意脱敏）④ 验证通过后吊销旧 PAT：https://github.com/settings/personal-access-tokens ⑤ **自续期链（09-11 总司令批准）**：完成后立即挂下一次 GH PAT 轮换提醒（约 30 天后、新令牌到期前 5~7 天，一次性、持久化，文本沿用本条五步含自续期条款）——每环触发时自动挂下一环，链条永不断；周期如需调整以总司令裁决为准。备注：Gitee 令牌已有独立提醒（12-05 `a78a9aaa`，换仓库级令牌方案），本任务无需顺带处理；shadow.sh 已于 09-11 加装 say() 日志脱敏，令牌不会再泄入 status 分支；yml 无需改动。完成后按汇报规范简报，并提醒把弄脏的 .claude/scheduled_tasks.json 随下批提交。",
       "createdAt": 1789113969216
+    },
+    {
+      "id": "37195ac0",
+      "cron": "57 11 * * *",
+      "prompt": "【每日出票全账本哨兵 · 全历史账本模式 v3（09-16 总司令令：每天记录出票情况，每日汇报必须输出从第一天 08-31 起的完整成功失败列表）】只读核验，绝不 commit/push/改仓库文件。\n\n一、基线账本（08-31~09-16 已定案入册，定性勿改）：\n08-31✅本机|上线首日2票single(cae94eb)；09-01✅本机|休战0票(440d371)；09-02✅本机|休战0票(b128462)；09-03✅本机|休战0票(5ff5649)；09-04✅本机|3票(3cfe369)；09-05⬜无批次|周六本机通道未跑；09-06⬜无批次|周日同前；09-07✅云(手动push触发)|休战0票(14b4de7)云通道首跑；09-08⚠️云缺席(5段cron被平台静默忽略)→本机兜底补位2票(ce22565)；09-09✅云|2票·M4D1(2325349)；09-10✅云|休战0票·M4D2(d7ad58c)；09-11⚠️云push_fail→本机兜底补位2票·M4D3(d650891)；09-12❌❌双哑永久缺票·M4D4(云clone5连败+本机周末关机)；09-13✅云|3票·M4D5(6f43dac)；09-14✅云|休战0票·M4D6(7e90ce1)；09-15✅云|1票single·M4D7=M4七天收官(316f602)；09-16✅云|1票parlay2·延期观察D1(da50d3c)。\n\n二、每日步骤：\n1) git -C E:/GitHub/WorldCup2026 fetch origin main；查 git log origin/main 有无当日 [cloud-primary]（约11:30~11:45）或 [local-backstop]（12:45）提交；两者皆无则记「云哑火，兜底待跑/双哑」，不下红判；\n2) git show origin/main:data/daily-advice.json 经 node stdin 解析（勿 pull，本地 main 可能落后/分叉）：列出基线 09-16 之后所有新日期批次的 date/票数/票型，对照 git log 提交信息标注通道（[cloud-primary]=云✅、[local-backstop]=兜底⚠️、有批次无提交=异常、无批次=❌缺票），逐日追加进账本；\n3) 回顾昨日：有云提交=✅；仅兜底=⚠️补位；两者皆无且无批次=❌双哑缺票（事实记录不判定）；\n4) 加证：git -C E:/gitee/shadow fetch origin status 后 show origin/status:<当日>.md 看时间线与 result；执行脱敏哨戒——摘要出现明文令牌（ghp_/github_pat_/glpat-/带完整token的URL）=红色警报立即请示；注意 status 当日 md 只留最后一班，多班取证看 status 分支 git 历史；\n5) 汇报格式（铁律）：第一行今日结论；然后输出**从 08-31 至今日的完整账本列表**，表格列：日期|状态(✅/⚠️/❌/⬜)|通道|票数|提交|备注；末尾累计统计：总天数、✅/⚠️/❌/⬜各计、累计出票张数；不给达标结论；\n6) 若当日已超过 10-15（延期观察期末）：输出完整账本汇总，宣布「延期记录完毕，候总司令裁决」，提醒 CronDelete 注销本哨兵。\n\n三、备注：B案「云端双窗口补跑」(projectDoc/plan/2026-09-04-gitee-go-shadow-channel.md §九) 09-16 总司令令暂缓，若日后实施则每日有 11:30/13:30 两班云窗口，记录以当日最终提交为准。本哨兵由滚动续期链保活（约每7天期满，续期任务会重建本文本）。按汇报规范（结论→表格→风险→请示）简报。",
+      "createdAt": 1789530872752,
+      "recurring": true
+    },
+    {
+      "id": "1175aed2",
+      "cron": "23 9 22 9 *",
+      "prompt": "【哨兵续期日 · 滚动链 1/4】每日出票全账本哨兵（全历史账本模式 v3，id 37195ac0，每日 11:57）将于今日前后 7 天期满自删。请执行：1) CronList 确认哨兵是否仍在册；2) 若已过期或即将过期，按原哨戒规格重新登记 recurring durable 任务（每日 11:57，延期观察期至 10-15，全历史账本模式：基线账本 08-31~09-16 定性入册 + 每日 fetch origin main 查 [cloud-primary]/[local-backstop] + node stdin 解析 data/daily-advice.json 重建追加新批次 + 回顾昨日 + E:/gitee/shadow fetch status 当日 md 取证与脱敏哨戒(g hp_/github_pat_/glpat- 明文=红色警报) + 每日汇报输出从 08-31 第一天起的完整账本列表与累计统计，纯记录不判定）——原哨戒全文优先从 git log -p -- .claude/scheduled_tasks.json 的 09-16 换装版获取，其次从当日会话记录；3) 登记下一发续期提醒：09-29 09:23 一次性（滚动链 2/4，prompt 同本条但日期与新哨兵 id 顺延更新；后续链：10-06、10-13 各一发，10-13 那发注明「观察期 10-15 收官在即，续期后候哨兵自行输出总账本」）；4) 向总司令简报续期完成（结论→动作→下一链日期）。只动 cron 登记，绝不 commit/push/改仓库文件。",
+      "createdAt": 1789530892345
     }
   ]
 }
