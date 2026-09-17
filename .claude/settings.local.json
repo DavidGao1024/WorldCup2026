@@ -321,7 +321,14 @@
       "Bash(cp scripts/daily-advisor.js .itest/scripts/)",
       "Bash(cp data/daily-advice.json .itest/data/)",
       "Bash(bash -c 'cat < /dev/null > /dev/tcp/github.com/443')",
-      "Bash(bash -c 'cat < /dev/null > /dev/tcp/github.com/22')"
+      "Bash(bash -c 'cat < /dev/null > /dev/tcp/github.com/22')",
+      "Bash(schtasks /query /tn \"DailyBettingAdvisor\" /v /fo LIST)",
+      "Bash(schtasks /query /tn \"DailyBettingAdvisor\" /fo LIST)",
+      "Bash(schtasks /query /fo TABLE)",
+      "Bash(MSYS_NO_PATHCONV=1 schtasks /query /tn \"DailyBettingAdvisor\" /v /fo LIST)",
+      "Bash(MSYS_NO_PATHCONV=1 schtasks /query /fo CSV)",
+      "Bash(MSYS_NO_PATHCONV=1 grep -n \"09-17 |\" projectDoc/plan/2026-09-04-gitee-go-shadow-channel.md)",
+      "Bash(sed 's/\\\\$$//')"
     ]
   }
 }
