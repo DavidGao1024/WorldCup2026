@@ -1,17 +1,17 @@
 {
-  "updateTime": "2026-09-16T03:30:42.156Z",
+  "updateTime": "2026-09-17T04:45:07.425Z",
   "summary": {
-    "days": 14,
+    "days": 15,
     "tickets": 16,
-    "legsHit": 14,
-    "legsTotal": 26,
-    "legHitRate": 0.538,
-    "ticketsHit": 6,
-    "ticketHitRate": 0.375,
-    "staked": 48,
-    "returned": 43.66,
-    "roi": -0.0904,
-    "curWinStreak": 0
+    "legsHit": 16,
+    "legsTotal": 28,
+    "legHitRate": 0.571,
+    "ticketsHit": 7,
+    "ticketHitRate": 0.438,
+    "staked": 50,
+    "returned": 46.279999999999994,
+    "roi": -0.0744,
+    "curWinStreak": 1
   },
   "days": [
     {
@@ -660,13 +660,13 @@
               "pick": "h",
               "pickLabel": "主胜",
               "odds": 1.31,
-              "score": null,
-              "result": "pending"
+              "score": "4:0",
+              "result": "hit"
             }
           ],
           "date": "2026-09-17",
-          "result": "pending",
-          "payout": null,
+          "result": "hit",
+          "payout": 2.62,
           "void": false,
           "id": "20260917-T1"
         }
@@ -694,8 +694,8 @@
               "pick": "h",
               "pickLabel": "主胜",
               "odds": 1.41,
-              "score": null,
-              "result": "pending"
+              "score": "1:0",
+              "result": "hit"
             },
             {
               "matchId": 2041510,
@@ -719,6 +719,12 @@
           "id": "20260917-T1"
         }
       ]
+    },
+    {
+      "date": "2026-09-17",
+      "generatedAt": "2026-09-17T04:45:06.872Z",
+      "rest": true,
+      "tickets": []
     }
   ]
 }
