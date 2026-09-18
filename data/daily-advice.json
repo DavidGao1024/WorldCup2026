@@ -1,17 +1,17 @@
 {
-  "updateTime": "2026-09-17T04:45:07.425Z",
+  "updateTime": "2026-09-18T03:33:13.221Z",
   "summary": {
-    "days": 15,
-    "tickets": 16,
-    "legsHit": 16,
-    "legsTotal": 28,
-    "legHitRate": 0.571,
-    "ticketsHit": 7,
-    "ticketHitRate": 0.438,
-    "staked": 50,
-    "returned": 46.279999999999994,
-    "roi": -0.0744,
-    "curWinStreak": 1
+    "days": 16,
+    "tickets": 17,
+    "legsHit": 17,
+    "legsTotal": 29,
+    "legHitRate": 0.586,
+    "ticketsHit": 8,
+    "ticketHitRate": 0.471,
+    "staked": 54,
+    "returned": 55.03999999999999,
+    "roi": 0.0193,
+    "curWinStreak": 2
   },
   "days": [
     {
@@ -708,13 +708,13 @@
               "pick": "h",
               "pickLabel": "主胜",
               "odds": 1.55,
-              "score": null,
-              "result": "pending"
+              "score": "1:0",
+              "result": "hit"
             }
           ],
           "date": "2026-09-17",
-          "result": "pending",
-          "payout": null,
+          "result": "hit",
+          "payout": 8.76,
           "void": false,
           "id": "20260917-T1"
         }
@@ -725,6 +725,54 @@
       "generatedAt": "2026-09-17T04:45:06.872Z",
       "rest": true,
       "tickets": []
+    },
+    {
+      "date": "2026-09-18",
+      "generatedAt": "2026-09-18T03:33:12.885Z",
+      "rest": false,
+      "tickets": [
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 2.09,
+          "legs": [
+            {
+              "matchId": 2041573,
+              "matchNumStr": "周六018",
+              "league": "西甲",
+              "match": "毕尔巴鄂竞技 vs 阿拉维斯",
+              "kickoff": "2026-09-19 22:15",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.48,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2041571,
+              "matchNumStr": "周六016",
+              "league": "英超",
+              "match": "纽卡斯尔联 vs 赫尔城",
+              "kickoff": "2026-09-19 22:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.41,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-09-19",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20260919-T1"
+        }
+      ]
     }
   ]
 }
