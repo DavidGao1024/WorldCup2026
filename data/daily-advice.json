@@ -1,17 +1,17 @@
 {
-  "updateTime": "2026-09-18T03:33:13.221Z",
+  "updateTime": "2026-09-20T04:45:07.894Z",
   "summary": {
-    "days": 16,
-    "tickets": 17,
-    "legsHit": 17,
-    "legsTotal": 29,
-    "legHitRate": 0.586,
+    "days": 17,
+    "tickets": 19,
+    "legsHit": 18,
+    "legsTotal": 31,
+    "legHitRate": 0.581,
     "ticketsHit": 8,
-    "ticketHitRate": 0.471,
-    "staked": 54,
+    "ticketHitRate": 0.421,
+    "staked": 58,
     "returned": 55.03999999999999,
-    "roi": 0.0193,
-    "curWinStreak": 2
+    "roi": -0.051,
+    "curWinStreak": 0
   },
   "days": [
     {
@@ -748,8 +748,8 @@
               "pick": "h",
               "pickLabel": "主胜",
               "odds": 1.48,
-              "score": null,
-              "result": "pending"
+              "score": "0:0",
+              "result": "miss"
             },
             {
               "matchId": 2041571,
@@ -762,15 +762,104 @@
               "pick": "h",
               "pickLabel": "主胜",
               "odds": 1.41,
+              "score": "2:1",
+              "result": "hit"
+            }
+          ],
+          "date": "2026-09-19",
+          "result": "miss",
+          "payout": 0,
+          "void": false,
+          "id": "20260919-T1"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-20",
+      "generatedAt": "2026-09-20T04:45:07.377Z",
+      "rest": false,
+      "tickets": [
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 2.14,
+          "legs": [
+            {
+              "matchId": 2041607,
+              "matchNumStr": "周日022",
+              "league": "意甲",
+              "match": "尤文图斯 vs 亚特兰大",
+              "kickoff": "2026-09-21 00:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.55,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2041608,
+              "matchNumStr": "周日023",
+              "league": "西甲",
+              "match": "比利亚雷亚尔 vs 莱万特",
+              "kickoff": "2026-09-21 00:30",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.38,
               "score": null,
               "result": "pending"
             }
           ],
-          "date": "2026-09-19",
+          "date": "2026-09-21",
           "result": "pending",
           "payout": null,
           "void": false,
-          "id": "20260919-T1"
+          "id": "20260921-T1"
+        },
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 2.11,
+          "legs": [
+            {
+              "matchId": 2041610,
+              "matchNumStr": "周日025",
+              "league": "德甲",
+              "match": "帕德博恩 vs 霍芬海姆",
+              "kickoff": "2026-09-21 01:30",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "a",
+              "pickLabel": "客胜",
+              "odds": 1.56,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2041599,
+              "matchNumStr": "周日014",
+              "league": "意甲",
+              "match": "弗洛西诺内 vs 科莫",
+              "kickoff": "2026-09-20 21:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "a",
+              "pickLabel": "客胜",
+              "odds": 1.35,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-09-21",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20260921-T2"
         }
       ]
     }
