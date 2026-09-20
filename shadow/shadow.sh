@@ -31,7 +31,10 @@ SUMMARY_LOG="$WORK/summary.txt"; : > "$SUMMARY_LOG"
 # 唯一写入口 say() 统一脱敏：URL 中 user:pass@ 的凭据段替换为 user:***@，覆盖现有及未来全部调用点。
 redact() { sed -E 's#(https?://[^:/@[:space:]]+):[^@[:space:]]+@#\1:***@#g'; }
 say() { printf '%s %s\n' "$(NOW)" "$*" | redact | tee -a "$SUMMARY_LOG"; }
-retry() { local n="$1" i=1; shift; while [ "$i" -le "$n" ]; do if "$@"; then return 0; fi; say "retry ${i}/${n} failed: $*"; sleep 30; i=$((i+1)); done; return 1; }
+# 09-20 令（A 诊断增强）：连续两日 push_fail 却无从定性——重试失败时把 git stderr 末 300 字节落进摘要，
+# 用于区分「网络掐断 / 鉴权拒绝 / 分叉冲突」。stderr 里可能含带凭据的远端 URL，故必须经 say() 统一脱敏（09-11 教训）。
+ERRLOG="$WORK/err.txt"
+retry() { local n="$1" i=1; shift; while [ "$i" -le "$n" ]; do if "$@" 2>"$ERRLOG"; then return 0; fi; say "retry ${i}/${n} failed: $*"; say "  └ stderr: $(tail -c 300 "$ERRLOG" 2>/dev/null | tr '\n' '|')"; sleep 30; i=$((i+1)); done; return 1; }
 # 09-08 #7 教训：苏州→GitHub 半死链路单发 clone 挂 16.5 分钟，×5 重试空烧额度。git 原生掐速：60s 内低于 1KB/s 即 abort。
 STALL="-c http.lowSpeedLimit=1024 -c http.lowSpeedTime=60"
 gitid() { git -C "$1" config user.name wc-cloud-shadow && git -C "$1" config user.email cloud-shadow@users.noreply.github.com; }
