@@ -1646,3 +1646,9 @@ body {
 .advice-modal-box{max-height:85vh;overflow-y:auto;min-width:480px}
 .advice-modal-head{color:#ffd700;font-weight:700;font-size:.95rem;padding:12px 14px;border-bottom:1px solid rgba(255,215,0,.15)}
 @media (max-width:640px){ .advice-modal-box{min-width:0;width:94vw} }
+
+.advice-dispatch{display:flex;align-items:center;gap:.6rem;margin:.6rem 0 1rem}
+.advice-dispatch button{background:#1f3d1f;color:#ffd700;border:1px solid #3a5a3a;border-radius:6px;padding:.4rem .9rem;font-size:.85rem;cursor:pointer}
+.advice-dispatch button:hover:not(:disabled){background:#2a4f2a}
+.advice-dispatch button:disabled{opacity:.5;cursor:default;color:#9aa79a}
+.advice-dispatch-note{color:#6b7d6b;font-size:.75rem}

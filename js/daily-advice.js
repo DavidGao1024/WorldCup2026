@@ -1,4 +1,7 @@
 // js/daily-advice.js — 每日推荐页签(功能版, 视觉待 Figma)
+// 补出按钮：部署 Worker 后回填 URL（见 scripts/shadow-trigger-worker.js 头部说明）
+var ADVICE_WORKER = 'https://shadow-trigger.REPLACE_ME.workers.dev';
+var ADVICE_PASS_KEY = 'advice_dispatch_pass';
 function adviceRound2(x){ return Math.round(x*100)/100; }
 function adviceFetch() {
   return fetch('data/daily-advice.json?_=' + Date.now()).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); });
@@ -61,7 +64,49 @@ function curveSvg(days) {
     '<line x1="0" y1="'+zeroY+'" x2="'+W+'" y2="'+zeroY+'" stroke="#3a5a3a" stroke-dasharray="4 4"/>'+
     '<polyline fill="none" stroke="#ffd700" stroke-width="2" points="'+coords+'"/></svg>';
 }
-var adviceDaysCache = [], adviceHistBound = false, adviceModalEsc = null;
+var adviceDaysCache = [], adviceHistBound = false, adviceModalEsc = null, adviceLatest = null;
+function adviceTodayBJ(){ return new Date(Date.now()+8*3600e3).toISOString().slice(0,10); }
+function adviceDispatchState(latest){
+  if (!latest || latest.date !== adviceTodayBJ()) return { ok:true, label:'今日暂无批次 · 补出' };
+  if (latest.rest) return { ok:true, label:'引擎判定休战 · 仍要补出' };
+  if (latest.tickets && latest.tickets.length) return { ok:false, label:'今日已出 '+latest.tickets.length+' 张' };
+  return { ok:true, label:'今日暂无票 · 补出' };
+}
+async function adviceDispatch(btn, latest){
+  var pass = localStorage.getItem(ADVICE_PASS_KEY) || '';
+  if (!pass) { pass = (window.prompt('请输入补出口令')||'').trim(); if (!pass) return; }
+  var oldText = btn.textContent;
+  btn.disabled = true; btn.textContent = '已受理 · 云端处理中，约 5~10 分钟';
+  try {
+    var r = await fetch(ADVICE_WORKER + '/dispatch', {
+      method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({pass:pass})
+    });
+    var j = {}; try { j = await r.json(); } catch(e){}
+    if (r.status === 401) { localStorage.removeItem(ADVICE_PASS_KEY); btn.disabled=false; btn.textContent='口令不正确 · 重试'; return; }
+    if (!r.ok) { btn.disabled=false; btn.textContent=(j.error||'触发失败')+' · 重试'; return; }
+    localStorage.setItem(ADVICE_PASS_KEY, pass);
+    advicePollTicket(0);
+  } catch(e) {
+    btn.disabled = false; btn.textContent = '触发通道不可用 · 重试';
+    window.setTimeout(function(){ btn.textContent = oldText; }, 4000);
+  }
+}
+function advicePollTicket(tries){
+  if (tries > 40) {                  // 30 秒 × 40 = 20 分钟窗口（实测起班排队最长约 9 分钟）
+    var el = document.getElementById('advice-dispatch-msg');
+    if (el) el.textContent = '未检测到新票 · 请稍后手动刷新，或查看哨兵/status 记录';
+    return;
+  }
+  window.setTimeout(async function(){
+    try {
+      var d = await adviceFetch();
+      adviceDaysCache = d.days || [];
+      var last = adviceDaysCache[adviceDaysCache.length-1];
+      if (last && last.date === adviceTodayBJ() && last.tickets && last.tickets.length) { renderAdvice(); return; }
+    } catch(e) {}
+    advicePollTicket(tries+1);
+  }, 30000);
+}
 function adviceDayByDate(dateStr){ for (var i=0;i<adviceDaysCache.length;i++){ if(adviceDaysCache[i].date===dateStr) return adviceDaysCache[i]; } return null; }
 function adviceDayHeadHtml(d){
   if (d.rest || !d.tickets.length) return d.date+' · 休战';
@@ -102,10 +147,13 @@ async function renderAdvice() {
     if (!adviceHistBound) {
       adviceHistBound = true;
       document.getElementById('advice-content').addEventListener('click', function(e){
+        var btn = e.target.closest && e.target.closest('#advice-dispatch-btn');
+        if (btn && !btn.disabled) { adviceDispatch(btn, adviceLatest); return; }
         var tr = e.target.closest && e.target.closest('tr[data-date]');
         if (tr) openAdviceDayModal(tr.getAttribute('data-date'));
       });
     }
+    adviceLatest = (d.days||[])[(d.days||[]).length-1];
     var s = d.summary || {}, latest = (d.days||[])[(d.days||[]).length-1];
     var html = '<div class="advice-wrap">' + freshnessHtml(d) +
       '<div class="advice-stats"><span>累计收益率 <b class="'+((s.roi||0)>=0?'pos':'neg')+'">'+advicePct(s.roi)+'</b></span>'+
@@ -119,6 +167,9 @@ async function renderAdvice() {
         html += '<div class="advice-budget">'+t('adviceBudget')+' ¥'+stake+' / ¥20</div>';
       }
     }
+    var ds = adviceDispatchState(latest);
+    html += '<div class="advice-dispatch"><button id="advice-dispatch-btn"'+(ds.ok?'':' disabled')+'>'+ds.label+'</button>'+
+      '<span class="advice-dispatch-note" id="advice-dispatch-msg">补出仅在当日无票时生效；引擎判定休战则不会出票。云端排队 + 出票 + 站点构建共需 5~15 分钟，等得久 ≠ 没生效</span></div>';
     html += '<h2 class="advice-h">'+t('adviceHistory')+'</h2>'+historyHtml(d.days||[])+
       '<h2 class="advice-h">'+t('adviceCurve')+'</h2><div class="advice-curvebox">'+curveSvg(d.days||[])+'</div>'+
       '<div class="advice-disc">系统按五条黄金法则生成模拟票并如实记录 · 不构成投注建议 · 亏¥30停手/赚¥50收手</div></div>';
