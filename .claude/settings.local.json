@@ -328,7 +328,10 @@
       "Bash(MSYS_NO_PATHCONV=1 schtasks /query /tn \"DailyBettingAdvisor\" /v /fo LIST)",
       "Bash(MSYS_NO_PATHCONV=1 schtasks /query /fo CSV)",
       "Bash(MSYS_NO_PATHCONV=1 grep -n \"09-17 |\" projectDoc/plan/2026-09-04-gitee-go-shadow-channel.md)",
-      "Bash(sed 's/\\\\$$//')"
+      "Bash(sed 's/\\\\$$//')",
+      "Bash(schtasks /query /fo CSV)",
+      "Bash(awk -F'|' '$1>=\"2026-09-01\"')",
+      "Bash(printf 'x')"
     ]
   }
 }
