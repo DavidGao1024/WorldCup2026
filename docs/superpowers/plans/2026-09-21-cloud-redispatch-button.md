@@ -10,6 +10,9 @@
 
 **规格：** `docs/superpowers/specs/2026-09-21-cloud-redispatch-button-design.md`
 
+> **状态（2026-09-22 更新）**：**阶段 1 已完成**（Task 1 retry 压缩已推送上云并实证生效、Task 2 额度哨兵、Task 3 双窗口 cron 已网页保存生效；Task 4 验收记录待 13:30 首班观察）。
+> **阶段 2 暂缓**（09-22 总司令令）：Task 7 Worker 不部署、Task 9 端到端挂起；Task 8 已完成的按钮改由 `ADVICE_DISPATCH_READY = false` 开关托管，点击只显示「敬请期待」且不发请求。Task 6 Worker 源码保留留档。Task 10 收尾随阶段 1 验收一并完成。
+
 ---
 
 ## 交付分期与硬前置

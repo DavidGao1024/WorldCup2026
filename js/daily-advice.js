@@ -1,7 +1,10 @@
 // js/daily-advice.js — 每日推荐页签(功能版, 视觉待 Figma)
-// 补出按钮：部署 Worker 后回填 URL（见 scripts/shadow-trigger-worker.js 头部说明）
+// 补出按钮：云端中继(Worker)尚未部署 → 点击显示「敬请期待」占位。
+// 部署后：ADVICE_WORKER 回填真实 URL，并把 ADVICE_DISPATCH_READY 置 true。
+// Worker 源码留档见 scripts/shadow-trigger-worker.js 头部说明。
 var ADVICE_WORKER = 'https://shadow-trigger.REPLACE_ME.workers.dev';
 var ADVICE_PASS_KEY = 'advice_dispatch_pass';
+var ADVICE_DISPATCH_READY = false;
 function adviceRound2(x){ return Math.round(x*100)/100; }
 function adviceFetch() {
   return fetch('data/daily-advice.json?_=' + Date.now()).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); });
@@ -73,6 +76,11 @@ function adviceDispatchState(latest){
   return { ok:true, label:'今日暂无票 · 补出' };
 }
 async function adviceDispatch(btn, latest){
+  if (!ADVICE_DISPATCH_READY) {
+    var hint = document.getElementById('advice-dispatch-msg');
+    if (hint) hint.textContent = '人工补出敬请期待 · 云端中继尚未部署，当前靠云端 11:30 / 13:30 双窗口与本机 12:45 兜底';
+    return;
+  }
   var pass = localStorage.getItem(ADVICE_PASS_KEY) || '';
   if (!pass) { pass = (window.prompt('请输入补出口令')||'').trim(); if (!pass) return; }
   var oldText = btn.textContent;
@@ -168,8 +176,11 @@ async function renderAdvice() {
       }
     }
     var ds = adviceDispatchState(latest);
+    var noteTxt = ADVICE_DISPATCH_READY
+      ? '补出仅在当日无票时生效；引擎判定休战则不会出票。云端排队 + 出票 + 站点构建共需 5~15 分钟，等得久 ≠ 没生效'
+      : '人工补出功能开发中 · 当前由云端 11:30 / 13:30 双窗口与本机 12:45 兜底自动出票';
     html += '<div class="advice-dispatch"><button id="advice-dispatch-btn"'+(ds.ok?'':' disabled')+'>'+ds.label+'</button>'+
-      '<span class="advice-dispatch-note" id="advice-dispatch-msg">补出仅在当日无票时生效；引擎判定休战则不会出票。云端排队 + 出票 + 站点构建共需 5~15 分钟，等得久 ≠ 没生效</span></div>';
+      '<span class="advice-dispatch-note" id="advice-dispatch-msg">'+noteTxt+'</span></div>';
     html += '<h2 class="advice-h">'+t('adviceHistory')+'</h2>'+historyHtml(d.days||[])+
       '<h2 class="advice-h">'+t('adviceCurve')+'</h2><div class="advice-curvebox">'+curveSvg(d.days||[])+'</div>'+
       '<div class="advice-disc">系统按五条黄金法则生成模拟票并如实记录 · 不构成投注建议 · 亏¥30停手/赚¥50收手</div></div>';
