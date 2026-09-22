@@ -331,7 +331,8 @@
       "Bash(sed 's/\\\\$$//')",
       "Bash(schtasks /query /fo CSV)",
       "Bash(awk -F'|' '$1>=\"2026-09-01\"')",
-      "Bash(printf 'x')"
+      "Bash(printf 'x')",
+      "Bash(awk -F'|' '$1==\"2026-09-22\"')"
     ]
   }
 }
