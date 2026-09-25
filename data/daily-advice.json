@@ -1,7 +1,7 @@
 {
-  "updateTime": "2026-09-24T03:30:59.215Z",
+  "updateTime": "2026-09-25T05:36:29.467Z",
   "summary": {
-    "days": 21,
+    "days": 22,
     "tickets": 19,
     "legsHit": 20,
     "legsTotal": 35,
@@ -884,6 +884,12 @@
     {
       "date": "2026-09-24",
       "generatedAt": "2026-09-24T03:30:59.046Z",
+      "rest": true,
+      "tickets": []
+    },
+    {
+      "date": "2026-09-25",
+      "generatedAt": "2026-09-25T05:36:29.319Z",
       "rest": true,
       "tickets": []
     }
