@@ -1,13 +1,13 @@
 {
-  "updateTime": "2026-10-08T05:42:50.533Z",
+  "updateTime": "2026-10-10T03:32:26.746Z",
   "summary": {
-    "days": 33,
-    "tickets": 19,
+    "days": 34,
+    "tickets": 23,
     "legsHit": 20,
     "legsTotal": 35,
     "legHitRate": 0.571,
     "ticketsHit": 9,
-    "ticketHitRate": 0.474,
+    "ticketHitRate": 0.391,
     "staked": 66,
     "returned": 63.599999999999994,
     "roi": -0.0364,
@@ -958,6 +958,163 @@
       "generatedAt": "2026-10-08T05:42:50.392Z",
       "rest": true,
       "tickets": []
+    },
+    {
+      "date": "2026-10-10",
+      "generatedAt": "2026-10-10T03:32:26.589Z",
+      "rest": false,
+      "tickets": [
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 2.16,
+          "legs": [
+            {
+              "matchId": 2041873,
+              "matchNumStr": "周六011",
+              "league": "德甲",
+              "match": "帕德博恩 vs 斯图加特",
+              "kickoff": "2026-10-10 21:30",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "a",
+              "pickLabel": "客胜",
+              "odds": 1.45,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2041883,
+              "matchNumStr": "周六021",
+              "league": "德甲",
+              "match": "莱比锡红牛 vs 法兰克福",
+              "kickoff": "2026-10-11 00:30",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.49,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-10-10",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20261010-T1"
+        },
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 2.24,
+          "legs": [
+            {
+              "matchId": 2041911,
+              "matchNumStr": "周日019",
+              "league": "德甲",
+              "match": "弗赖堡 vs 沙尔克04",
+              "kickoff": "2026-10-11 23:30",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.49,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2041909,
+              "matchNumStr": "周日017",
+              "league": "西甲",
+              "match": "皇家社会 vs 拉科鲁尼亚",
+              "kickoff": "2026-10-11 22:15",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.5,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-10-11",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20261011-T2"
+        },
+        {
+          "kind": "single",
+          "rule": "可单关场次·黄金中段",
+          "stake": 4,
+          "combinedOdds": 1.6,
+          "legs": [
+            {
+              "matchId": 2041882,
+              "matchNumStr": "周六020",
+              "league": "英超",
+              "match": "曼彻斯特联 vs 托特纳姆热刺",
+              "kickoff": "2026-10-11 00:30",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.6,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-10-11",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20261011-T3"
+        },
+        {
+          "kind": "bonus",
+          "rule": "此场只开让球玩法·赔率1.6~2.6之间·需净胜3球以上",
+          "stake": 2,
+          "combinedOdds": 3.68,
+          "legs": [
+            {
+              "matchId": 2041881,
+              "matchNumStr": "周六019",
+              "league": "意甲",
+              "match": "国际米兰 vs 帕尔马",
+              "kickoff": "2026-10-11 00:00",
+              "pool": "HHAD",
+              "goalLine": "-2",
+              "pick": "h",
+              "pickLabel": "主胜(让-2)",
+              "odds": 1.97,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2041871,
+              "matchNumStr": "周六009",
+              "league": "德甲",
+              "match": "奥格斯堡 vs 拜仁慕尼黑",
+              "kickoff": "2026-10-10 21:30",
+              "pool": "HHAD",
+              "goalLine": "+2",
+              "pick": "a",
+              "pickLabel": "客胜(让+2)",
+              "odds": 1.87,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-10-11",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20261011-T4"
+        }
+      ]
     }
   ]
 }
