@@ -1,17 +1,17 @@
 {
-  "updateTime": "2026-10-12T13:20:21.621Z",
+  "updateTime": "2026-10-13T07:46:19.848Z",
   "summary": {
-    "days": 36,
-    "tickets": 25,
-    "legsHit": 27,
-    "legsTotal": 45,
-    "legHitRate": 0.6,
-    "ticketsHit": 11,
-    "ticketHitRate": 0.44,
-    "staked": 84,
-    "returned": 81.19999999999999,
-    "roi": -0.0333,
-    "curWinStreak": 0
+    "days": 37,
+    "tickets": 26,
+    "legsHit": 28,
+    "legsTotal": 46,
+    "legHitRate": 0.609,
+    "ticketsHit": 12,
+    "ticketHitRate": 0.462,
+    "staked": 88,
+    "returned": 89.91999999999999,
+    "roi": 0.0218,
+    "curWinStreak": 3
   },
   "days": [
     {
@@ -1138,8 +1138,8 @@
               "pick": "h",
               "pickLabel": "主胜",
               "odds": 1.46,
-              "score": null,
-              "result": "pending"
+              "score": "3:1",
+              "result": "hit"
             },
             {
               "matchId": 2041905,
@@ -1157,8 +1157,8 @@
             }
           ],
           "date": "2026-10-13",
-          "result": "pending",
-          "payout": null,
+          "result": "hit",
+          "payout": 8.72,
           "void": false,
           "id": "20261013-T1"
         },
@@ -1210,6 +1210,54 @@
       "generatedAt": "2026-10-12T13:20:20.944Z",
       "rest": true,
       "tickets": []
+    },
+    {
+      "date": "2026-10-13",
+      "generatedAt": "2026-10-13T07:46:19.455Z",
+      "rest": false,
+      "tickets": [
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 2.26,
+          "legs": [
+            {
+              "matchId": 2041958,
+              "matchNumStr": "周二009",
+              "league": "欧冠",
+              "match": "莱比锡红牛 vs PSV埃因霍温",
+              "kickoff": "2026-10-14 03:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.49,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2041972,
+              "matchNumStr": "周三012",
+              "league": "欧冠",
+              "match": "阿斯顿维拉 vs 费内巴切",
+              "kickoff": "2026-10-15 03:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.52,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-10-14",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20261014-T1"
+        }
+      ]
     }
   ]
 }
