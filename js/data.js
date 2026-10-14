@@ -9,6 +9,8 @@ async function loadData() {
   var cached = localStorage.getItem(CACHE_KEY);
   if (cached) {
     worldCupData = JSON.parse(cached);
+    // 兼容旧缓存里未归一化的 CDN 格式（见 normalizeCdnMatch 注释）
+    if (worldCupData.matches) worldCupData.matches.forEach(normalizeCdnMatch);
   }
 
   // 后台拉取最新数据（CDN + ESPN + 球员中英文映射 并行）
@@ -148,6 +150,28 @@ function saveToCache() {
   } catch (e) { console.warn('data: localStorage save failed'); }
 }
 
+// openfootball CDN 用 score:{ft,et,p} 表示赛果（2026-08 起填入了全部比分），
+// 本站统一用 score1/score2/status/hadET/hadPen/score1p/score2p/winner。
+// 整包替换前必须归一化，否则比分与状态字段全部缺失、页面大面积显示空白。
+function normalizeCdnMatch(m) {
+  var s = m.score;
+  if (!s) return;
+  var main = s.et || s.ft;
+  if (!main) return;
+  m.score1 = main[0];
+  m.score2 = main[1];
+  m.status = 'post';
+  if (s.et) m.hadET = true;
+  if (s.p) {
+    m.hadPen = true;
+    m.score1p = s.p[0];
+    m.score2p = s.p[1];
+    m.winner = s.p[0] > s.p[1] ? m.team1 : (s.p[1] > s.p[0] ? m.team2 : null);
+  } else if (m.score1 !== m.score2) {
+    m.winner = m.score1 > m.score2 ? m.team1 : m.team2;
+  }
+}
+
 async function fetchFreshData() {
   try {
     var resp = await fetch(CDN_URL);
@@ -168,6 +192,7 @@ async function fetchFreshData() {
           if (isPlaceholder(m.team2) && !isPlaceholder(old.team2)) m.team2 = old.team2;
         });
       }
+      if (newData.matches) newData.matches.forEach(normalizeCdnMatch);
       worldCupData = newData;
       saveToCache();
       // 重新拉 ESPN 比分覆盖 CDN 中可能为空的比分

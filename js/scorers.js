@@ -35,6 +35,35 @@ function renderScorers() {
 }
 
 function extractAllGoals() {
+  var goals = extractGoalsFromEspn();
+  if (goals.length) return goals;
+  return extractGoalsFromMatches();
+}
+
+// ESPN scoreboard 不可用时的回退：直接用赛程数据里逐场记录的进球（含球员名）
+function extractGoalsFromMatches() {
+  if (typeof getMatches !== 'function') return [];
+
+  var playerGoals = {}; // key: "playerName|teamName"
+
+  getMatches().forEach(function(m) {
+    if (m.score1 == null || m.status !== 'post') return;
+    [{ list: m.goals1, team: m.team1 }, { list: m.goals2, team: m.team2 }].forEach(function(side) {
+      (side.list || []).forEach(function(g) {
+        if (!g || !g.name || g.ownGoal) return;
+        var key = g.name + '|' + side.team;
+        if (!playerGoals[key]) {
+          playerGoals[key] = { player: g.name, team: side.team, goals: 0 };
+        }
+        playerGoals[key].goals++;
+      });
+    });
+  });
+
+  return Object.values(playerGoals);
+}
+
+function extractGoalsFromEspn() {
   if (typeof espnRawEvents === 'undefined' || !espnRawEvents || !espnRawEvents.length) {
     return [];
   }
