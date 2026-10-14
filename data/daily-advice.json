@@ -1,11 +1,11 @@
 {
-  "updateTime": "2026-10-13T07:46:19.848Z",
+  "updateTime": "2026-10-14T04:59:43.756Z",
   "summary": {
-    "days": 37,
+    "days": 38,
     "tickets": 26,
-    "legsHit": 28,
-    "legsTotal": 46,
-    "legHitRate": 0.609,
+    "legsHit": 29,
+    "legsTotal": 47,
+    "legHitRate": 0.617,
     "ticketsHit": 12,
     "ticketHitRate": 0.462,
     "staked": 88,
@@ -1233,8 +1233,8 @@
               "pick": "h",
               "pickLabel": "主胜",
               "odds": 1.49,
-              "score": null,
-              "result": "pending"
+              "score": "1:0",
+              "result": "hit"
             },
             {
               "matchId": 2041972,
@@ -1258,6 +1258,12 @@
           "id": "20261014-T1"
         }
       ]
+    },
+    {
+      "date": "2026-10-14",
+      "generatedAt": "2026-10-14T04:59:43.559Z",
+      "rest": true,
+      "tickets": []
     }
   ]
 }
