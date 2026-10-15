@@ -1,17 +1,17 @@
 {
-  "updateTime": "2026-10-14T04:59:43.756Z",
+  "updateTime": "2026-10-15T06:41:37.952Z",
   "summary": {
-    "days": 38,
+    "days": 39,
     "tickets": 26,
-    "legsHit": 29,
-    "legsTotal": 47,
-    "legHitRate": 0.617,
-    "ticketsHit": 12,
-    "ticketHitRate": 0.462,
-    "staked": 88,
-    "returned": 89.91999999999999,
-    "roi": 0.0218,
-    "curWinStreak": 3
+    "legsHit": 30,
+    "legsTotal": 48,
+    "legHitRate": 0.625,
+    "ticketsHit": 13,
+    "ticketHitRate": 0.5,
+    "staked": 92,
+    "returned": 98.95999999999998,
+    "roi": 0.0757,
+    "curWinStreak": 4
   },
   "days": [
     {
@@ -1247,13 +1247,13 @@
               "pick": "h",
               "pickLabel": "主胜",
               "odds": 1.52,
-              "score": null,
-              "result": "pending"
+              "score": "6:0",
+              "result": "hit"
             }
           ],
           "date": "2026-10-14",
-          "result": "pending",
-          "payout": null,
+          "result": "hit",
+          "payout": 9.04,
           "void": false,
           "id": "20261014-T1"
         }
@@ -1262,6 +1262,12 @@
     {
       "date": "2026-10-14",
       "generatedAt": "2026-10-14T04:59:43.559Z",
+      "rest": true,
+      "tickets": []
+    },
+    {
+      "date": "2026-10-15",
+      "generatedAt": "2026-10-15T06:41:37.782Z",
       "rest": true,
       "tickets": []
     }
