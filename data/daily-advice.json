@@ -1,13 +1,13 @@
 {
-  "updateTime": "2026-10-15T06:41:37.952Z",
+  "updateTime": "2026-10-16T05:40:48.798Z",
   "summary": {
-    "days": 39,
-    "tickets": 26,
+    "days": 40,
+    "tickets": 28,
     "legsHit": 30,
     "legsTotal": 48,
     "legHitRate": 0.625,
     "ticketsHit": 13,
-    "ticketHitRate": 0.5,
+    "ticketHitRate": 0.464,
     "staked": 92,
     "returned": 98.95999999999998,
     "roi": 0.0757,
@@ -1270,6 +1270,95 @@
       "generatedAt": "2026-10-15T06:41:37.782Z",
       "rest": true,
       "tickets": []
+    },
+    {
+      "date": "2026-10-16",
+      "generatedAt": "2026-10-16T05:40:48.635Z",
+      "rest": false,
+      "tickets": [
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 2.15,
+          "legs": [
+            {
+              "matchId": 2042040,
+              "matchNumStr": "周六023",
+              "league": "意甲",
+              "match": "博洛尼亚 vs 国际米兰",
+              "kickoff": "2026-10-18 00:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "a",
+              "pickLabel": "客胜",
+              "odds": 1.47,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2042037,
+              "matchNumStr": "周六020",
+              "league": "英超",
+              "match": "富勒姆 vs 赫尔城",
+              "kickoff": "2026-10-17 22:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.46,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-10-18",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20261018-T1"
+        },
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 2.26,
+          "legs": [
+            {
+              "matchId": 2042034,
+              "matchNumStr": "周六017",
+              "league": "德甲",
+              "match": "柏林联合 vs 多特蒙德",
+              "kickoff": "2026-10-17 21:30",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "a",
+              "pickLabel": "客胜",
+              "odds": 1.44,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2042026,
+              "matchNumStr": "周六009",
+              "league": "西甲",
+              "match": "西班牙人 vs 马德里竞技",
+              "kickoff": "2026-10-17 20:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "a",
+              "pickLabel": "客胜",
+              "odds": 1.57,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-10-17",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20261017-T2"
+        }
+      ]
     }
   ]
 }
