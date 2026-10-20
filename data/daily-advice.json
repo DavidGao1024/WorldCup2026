@@ -1,17 +1,17 @@
 {
-  "updateTime": "2026-10-19T05:38:37.620Z",
+  "updateTime": "2026-10-20T03:36:52.463Z",
   "summary": {
-    "days": 43,
-    "tickets": 32,
-    "legsHit": 38,
-    "legsTotal": 59,
-    "legHitRate": 0.644,
-    "ticketsHit": 16,
-    "ticketHitRate": 0.5,
-    "staked": 110,
-    "returned": 125.43999999999998,
-    "roi": 0.1404,
-    "curWinStreak": 6
+    "days": 44,
+    "tickets": 36,
+    "legsHit": 39,
+    "legsTotal": 60,
+    "legHitRate": 0.65,
+    "ticketsHit": 17,
+    "ticketHitRate": 0.472,
+    "staked": 114,
+    "returned": 134.16,
+    "roi": 0.1768,
+    "curWinStreak": 7
   },
   "days": [
     {
@@ -1512,8 +1512,8 @@
               "pick": "h",
               "pickLabel": "主胜",
               "odds": 1.36,
-              "score": null,
-              "result": "pending"
+              "score": "3:1",
+              "result": "hit"
             },
             {
               "matchId": 2042070,
@@ -1531,8 +1531,8 @@
             }
           ],
           "date": "2026-10-20",
-          "result": "pending",
-          "payout": null,
+          "result": "hit",
+          "payout": 8.72,
           "void": false,
           "id": "20261020-T1"
         }
@@ -1543,6 +1543,163 @@
       "generatedAt": "2026-10-19T05:38:36.801Z",
       "rest": true,
       "tickets": []
+    },
+    {
+      "date": "2026-10-20",
+      "generatedAt": "2026-10-20T03:36:52.179Z",
+      "rest": false,
+      "tickets": [
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 2.15,
+          "legs": [
+            {
+              "matchId": 2042099,
+              "matchNumStr": "周二004",
+              "league": "欧冠",
+              "match": "那不勒斯 vs 博德闪耀",
+              "kickoff": "2026-10-21 03:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.5,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2042096,
+              "matchNumStr": "周二001",
+              "league": "欧冠",
+              "match": "费内巴切 vs 布拉格斯拉维亚",
+              "kickoff": "2026-10-21 00:45",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.43,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-10-21",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20261021-T1"
+        },
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 1.94,
+          "legs": [
+            {
+              "matchId": 2042114,
+              "matchNumStr": "周三009",
+              "league": "欧冠",
+              "match": "皇家贝蒂斯 vs 费耶诺德",
+              "kickoff": "2026-10-22 03:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.43,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2042105,
+              "matchNumStr": "周二010",
+              "league": "欧冠",
+              "match": "波尔图 vs PSV埃因霍温",
+              "kickoff": "2026-10-21 03:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.36,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-10-22",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20261022-T2"
+        },
+        {
+          "kind": "single",
+          "rule": "赔率接近黄金区间下限·只买最小一注",
+          "stake": 2,
+          "combinedOdds": 1.34,
+          "legs": [
+            {
+              "matchId": 2042102,
+              "matchNumStr": "周二007",
+              "league": "欧冠",
+              "match": "利物浦 vs 比利亚雷亚尔",
+              "kickoff": "2026-10-21 03:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.34,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-10-21",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20261021-T3"
+        },
+        {
+          "kind": "bonus",
+          "rule": "此场只开让球玩法·赔率1.6~2.6之间·需净胜3球以上",
+          "stake": 2,
+          "combinedOdds": 4,
+          "legs": [
+            {
+              "matchId": 2042116,
+              "matchNumStr": "周三011",
+              "league": "欧冠",
+              "match": "里斯本竞技 vs LASK林茨",
+              "kickoff": "2026-10-22 03:00",
+              "pool": "HHAD",
+              "goalLine": "-2",
+              "pick": "h",
+              "pickLabel": "主胜(让-2)",
+              "odds": 2.22,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2042100,
+              "matchNumStr": "周二005",
+              "league": "欧冠",
+              "match": "罗马 vs 布拉迪斯拉发",
+              "kickoff": "2026-10-21 03:00",
+              "pool": "HHAD",
+              "goalLine": "-2",
+              "pick": "h",
+              "pickLabel": "主胜(让-2)",
+              "odds": 1.8,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-10-22",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20261022-T4"
+        }
+      ]
     }
   ]
 }
