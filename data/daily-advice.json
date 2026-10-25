@@ -1,16 +1,16 @@
 {
-  "updateTime": "2026-10-24T03:32:58.131Z",
+  "updateTime": "2026-10-25T03:31:37.584Z",
   "summary": {
-    "days": 47,
-    "tickets": 41,
+    "days": 48,
+    "tickets": 42,
     "legsHit": 44,
-    "legsTotal": 71,
-    "legHitRate": 0.62,
+    "legsTotal": 73,
+    "legHitRate": 0.603,
     "ticketsHit": 18,
-    "ticketHitRate": 0.439,
-    "staked": 134,
+    "ticketHitRate": 0.429,
+    "staked": 138,
     "returned": 136.84,
-    "roi": 0.0212,
+    "roi": -0.0084,
     "curWinStreak": 0
   },
   "days": [
@@ -1832,8 +1832,8 @@
               "pick": "a",
               "pickLabel": "客胜",
               "odds": 1.45,
-              "score": null,
-              "result": "pending"
+              "score": "2:1",
+              "result": "miss"
             }
           ],
           "date": "2026-10-25",
@@ -1900,15 +1900,63 @@
               "pick": "h",
               "pickLabel": "主胜",
               "odds": 1.59,
+              "score": "2:3",
+              "result": "miss"
+            }
+          ],
+          "date": "2026-10-24",
+          "result": "miss",
+          "payout": 0,
+          "void": false,
+          "id": "20261024-T3"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-25",
+      "generatedAt": "2026-10-25T03:31:37.347Z",
+      "rest": false,
+      "tickets": [
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 2.43,
+          "legs": [
+            {
+              "matchId": 2042238,
+              "matchNumStr": "周日026",
+              "league": "意甲",
+              "match": "乌迪内斯 vs AC米兰",
+              "kickoff": "2026-10-26 03:45",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "a",
+              "pickLabel": "客胜",
+              "odds": 1.55,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2042232,
+              "matchNumStr": "周日020",
+              "league": "法甲",
+              "match": "雷恩 vs 斯特拉斯堡",
+              "kickoff": "2026-10-26 00:15",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.57,
               "score": null,
               "result": "pending"
             }
           ],
-          "date": "2026-10-24",
+          "date": "2026-10-26",
           "result": "pending",
           "payout": null,
           "void": false,
-          "id": "20261024-T3"
+          "id": "20261026-T1"
         }
       ]
     }
