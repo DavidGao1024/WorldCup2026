@@ -1,17 +1,17 @@
 {
-  "updateTime": "2026-10-25T03:31:37.584Z",
+  "updateTime": "2026-10-26T03:32:43.255Z",
   "summary": {
-    "days": 48,
+    "days": 49,
     "tickets": 42,
-    "legsHit": 44,
-    "legsTotal": 73,
-    "legHitRate": 0.603,
-    "ticketsHit": 18,
-    "ticketHitRate": 0.429,
-    "staked": 138,
-    "returned": 136.84,
-    "roi": -0.0084,
-    "curWinStreak": 0
+    "legsHit": 48,
+    "legsTotal": 78,
+    "legHitRate": 0.615,
+    "ticketsHit": 19,
+    "ticketHitRate": 0.452,
+    "staked": 150,
+    "returned": 146.56,
+    "roi": -0.0229,
+    "curWinStreak": 1
   },
   "days": [
     {
@@ -1818,8 +1818,8 @@
               "pick": "h",
               "pickLabel": "主胜",
               "odds": 1.48,
-              "score": null,
-              "result": "pending"
+              "score": "4:0",
+              "result": "hit"
             },
             {
               "matchId": 2042188,
@@ -1837,8 +1837,8 @@
             }
           ],
           "date": "2026-10-25",
-          "result": "pending",
-          "payout": null,
+          "result": "miss",
+          "payout": 0,
           "void": false,
           "id": "20261025-T1"
         },
@@ -1859,8 +1859,8 @@
               "pick": "h",
               "pickLabel": "主胜",
               "odds": 1.49,
-              "score": null,
-              "result": "pending"
+              "score": "1:2",
+              "result": "miss"
             },
             {
               "matchId": 2042236,
@@ -1873,13 +1873,13 @@
               "pick": "h",
               "pickLabel": "主胜",
               "odds": 1.53,
-              "score": null,
-              "result": "pending"
+              "score": "2:1",
+              "result": "hit"
             }
           ],
           "date": "2026-10-26",
-          "result": "pending",
-          "payout": null,
+          "result": "miss",
+          "payout": 0,
           "void": false,
           "id": "20261026-T2"
         },
@@ -1934,8 +1934,8 @@
               "pick": "a",
               "pickLabel": "客胜",
               "odds": 1.55,
-              "score": null,
-              "result": "pending"
+              "score": "0:2",
+              "result": "hit"
             },
             {
               "matchId": 2042232,
@@ -1948,17 +1948,23 @@
               "pick": "h",
               "pickLabel": "主胜",
               "odds": 1.57,
-              "score": null,
-              "result": "pending"
+              "score": "3:0",
+              "result": "hit"
             }
           ],
           "date": "2026-10-26",
-          "result": "pending",
-          "payout": null,
+          "result": "hit",
+          "payout": 9.72,
           "void": false,
           "id": "20261026-T1"
         }
       ]
+    },
+    {
+      "date": "2026-10-26",
+      "generatedAt": "2026-10-26T03:32:42.773Z",
+      "rest": true,
+      "tickets": []
     }
   ]
 }
