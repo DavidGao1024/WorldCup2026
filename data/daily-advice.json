@@ -1,13 +1,13 @@
 {
-  "updateTime": "2026-10-26T03:32:43.255Z",
+  "updateTime": "2026-10-27T03:37:25.942Z",
   "summary": {
-    "days": 49,
-    "tickets": 42,
+    "days": 50,
+    "tickets": 44,
     "legsHit": 48,
     "legsTotal": 78,
     "legHitRate": 0.615,
     "ticketsHit": 19,
-    "ticketHitRate": 0.452,
+    "ticketHitRate": 0.432,
     "staked": 150,
     "returned": 146.56,
     "roi": -0.0229,
@@ -1965,6 +1965,95 @@
       "generatedAt": "2026-10-26T03:32:42.773Z",
       "rest": true,
       "tickets": []
+    },
+    {
+      "date": "2026-10-27",
+      "generatedAt": "2026-10-27T03:37:24.931Z",
+      "rest": false,
+      "tickets": [
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 2.19,
+          "legs": [
+            {
+              "matchId": 2042306,
+              "matchNumStr": "周三006",
+              "league": "意甲",
+              "match": "AC米兰 vs 博洛尼亚",
+              "kickoff": "2026-10-29 01:30",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.46,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2042314,
+              "matchNumStr": "周三014",
+              "league": "意甲",
+              "match": "热那亚 vs 尤文图斯",
+              "kickoff": "2026-10-29 03:45",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "a",
+              "pickLabel": "客胜",
+              "odds": 1.5,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-10-29",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20261029-T1"
+        },
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 2.45,
+          "legs": [
+            {
+              "matchId": 2042300,
+              "matchNumStr": "周二010",
+              "league": "意甲",
+              "match": "都灵 vs 科莫",
+              "kickoff": "2026-10-28 03:45",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "a",
+              "pickLabel": "客胜",
+              "odds": 1.53,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2042313,
+              "matchNumStr": "周三013",
+              "league": "意甲",
+              "match": "蒙扎 vs 那不勒斯",
+              "kickoff": "2026-10-29 03:45",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "a",
+              "pickLabel": "客胜",
+              "odds": 1.6,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-10-28",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20261028-T2"
+        }
+      ]
     }
   ]
 }
