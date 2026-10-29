@@ -1,17 +1,17 @@
 {
-  "updateTime": "2026-10-28T03:33:29.609Z",
+  "updateTime": "2026-10-29T03:37:27.922Z",
   "summary": {
-    "days": 51,
+    "days": 52,
     "tickets": 44,
-    "legsHit": 49,
-    "legsTotal": 79,
-    "legHitRate": 0.62,
-    "ticketsHit": 19,
-    "ticketHitRate": 0.432,
-    "staked": 150,
-    "returned": 146.56,
-    "roi": -0.0229,
-    "curWinStreak": 1
+    "legsHit": 50,
+    "legsTotal": 82,
+    "legHitRate": 0.61,
+    "ticketsHit": 20,
+    "ticketHitRate": 0.455,
+    "staked": 158,
+    "returned": 156.36,
+    "roi": -0.0104,
+    "curWinStreak": 2
   },
   "days": [
     {
@@ -1988,8 +1988,8 @@
               "pick": "h",
               "pickLabel": "主胜",
               "odds": 1.46,
-              "score": null,
-              "result": "pending"
+              "score": "2:4",
+              "result": "miss"
             },
             {
               "matchId": 2042314,
@@ -2002,13 +2002,13 @@
               "pick": "a",
               "pickLabel": "客胜",
               "odds": 1.5,
-              "score": null,
-              "result": "pending"
+              "score": "2:0",
+              "result": "miss"
             }
           ],
           "date": "2026-10-29",
-          "result": "pending",
-          "payout": null,
+          "result": "miss",
+          "payout": 0,
           "void": false,
           "id": "20261029-T1"
         },
@@ -2043,13 +2043,13 @@
               "pick": "a",
               "pickLabel": "客胜",
               "odds": 1.6,
-              "score": null,
-              "result": "pending"
+              "score": "1:4",
+              "result": "hit"
             }
           ],
           "date": "2026-10-28",
-          "result": "pending",
-          "payout": null,
+          "result": "hit",
+          "payout": 9.8,
           "void": false,
           "id": "20261028-T2"
         }
@@ -2058,6 +2058,12 @@
     {
       "date": "2026-10-28",
       "generatedAt": "2026-10-28T03:33:27.731Z",
+      "rest": true,
+      "tickets": []
+    },
+    {
+      "date": "2026-10-29",
+      "generatedAt": "2026-10-29T03:37:27.627Z",
       "rest": true,
       "tickets": []
     }
