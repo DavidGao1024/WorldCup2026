@@ -1,13 +1,13 @@
 {
-  "updateTime": "2026-10-29T03:37:27.922Z",
+  "updateTime": "2026-10-30T03:32:04.275Z",
   "summary": {
-    "days": 52,
-    "tickets": 44,
+    "days": 53,
+    "tickets": 46,
     "legsHit": 50,
     "legsTotal": 82,
     "legHitRate": 0.61,
     "ticketsHit": 20,
-    "ticketHitRate": 0.455,
+    "ticketHitRate": 0.435,
     "staked": 158,
     "returned": 156.36,
     "roi": -0.0104,
@@ -2066,6 +2066,95 @@
       "generatedAt": "2026-10-29T03:37:27.627Z",
       "rest": true,
       "tickets": []
+    },
+    {
+      "date": "2026-10-30",
+      "generatedAt": "2026-10-30T03:32:04.106Z",
+      "rest": false,
+      "tickets": [
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 2.17,
+          "legs": [
+            {
+              "matchId": 2042405,
+              "matchNumStr": "周六021",
+              "league": "意甲",
+              "match": "乌迪内斯 vs 罗马",
+              "kickoff": "2026-11-01 01:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "a",
+              "pickLabel": "客胜",
+              "odds": 1.45,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2042406,
+              "matchNumStr": "周六022",
+              "league": "英超",
+              "match": "托特纳姆热刺 vs 水晶宫",
+              "kickoff": "2026-11-01 01:30",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.5,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-11-01",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20261101-T1"
+        },
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 2.13,
+          "legs": [
+            {
+              "matchId": 2042393,
+              "matchNumStr": "周六009",
+              "league": "意甲",
+              "match": "博洛尼亚 vs 蒙扎",
+              "kickoff": "2026-10-31 22:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.58,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2042392,
+              "matchNumStr": "周六008",
+              "league": "西甲",
+              "match": "莱万特 vs 马德里竞技",
+              "kickoff": "2026-10-31 21:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "a",
+              "pickLabel": "客胜",
+              "odds": 1.35,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-10-31",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20261031-T2"
+        }
+      ]
     }
   ]
 }
