@@ -1,17 +1,17 @@
 {
-  "updateTime": "2026-10-30T03:32:04.275Z",
+  "updateTime": "2026-11-01T03:32:51.808Z",
   "summary": {
-    "days": 53,
-    "tickets": 46,
-    "legsHit": 50,
-    "legsTotal": 82,
-    "legHitRate": 0.61,
-    "ticketsHit": 20,
-    "ticketHitRate": 0.435,
-    "staked": 158,
-    "returned": 156.36,
-    "roi": -0.0104,
-    "curWinStreak": 2
+    "days": 54,
+    "tickets": 47,
+    "legsHit": 54,
+    "legsTotal": 86,
+    "legHitRate": 0.628,
+    "ticketsHit": 22,
+    "ticketHitRate": 0.468,
+    "staked": 166,
+    "returned": 173.56000000000003,
+    "roi": 0.0455,
+    "curWinStreak": 3
   },
   "days": [
     {
@@ -2089,8 +2089,8 @@
               "pick": "a",
               "pickLabel": "客胜",
               "odds": 1.45,
-              "score": null,
-              "result": "pending"
+              "score": "2:5",
+              "result": "hit"
             },
             {
               "matchId": 2042406,
@@ -2103,13 +2103,13 @@
               "pick": "h",
               "pickLabel": "主胜",
               "odds": 1.5,
-              "score": null,
-              "result": "pending"
+              "score": "2:0",
+              "result": "hit"
             }
           ],
           "date": "2026-11-01",
-          "result": "pending",
-          "payout": null,
+          "result": "hit",
+          "payout": 8.68,
           "void": false,
           "id": "20261101-T1"
         },
@@ -2130,8 +2130,8 @@
               "pick": "h",
               "pickLabel": "主胜",
               "odds": 1.58,
-              "score": null,
-              "result": "pending"
+              "score": "2:1",
+              "result": "hit"
             },
             {
               "matchId": 2042392,
@@ -2144,15 +2144,63 @@
               "pick": "a",
               "pickLabel": "客胜",
               "odds": 1.35,
+              "score": "0:2",
+              "result": "hit"
+            }
+          ],
+          "date": "2026-10-31",
+          "result": "hit",
+          "payout": 8.52,
+          "void": false,
+          "id": "20261031-T2"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-01",
+      "generatedAt": "2026-11-01T03:32:49.586Z",
+      "rest": false,
+      "tickets": [
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 1.97,
+          "legs": [
+            {
+              "matchId": 2042429,
+              "matchNumStr": "周日017",
+              "league": "德甲",
+              "match": "法兰克福 vs 汉堡",
+              "kickoff": "2026-11-02 00:30",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.41,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2042441,
+              "matchNumStr": "周一004",
+              "league": "意甲",
+              "match": "亚特兰大 vs 帕尔马",
+              "kickoff": "2026-11-03 03:45",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.4,
               "score": null,
               "result": "pending"
             }
           ],
-          "date": "2026-10-31",
+          "date": "2026-11-02",
           "result": "pending",
           "payout": null,
           "void": false,
-          "id": "20261031-T2"
+          "id": "20261102-T1"
         }
       ]
     }
