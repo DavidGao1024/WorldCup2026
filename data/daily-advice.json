@@ -1,16 +1,16 @@
 {
-  "updateTime": "2026-11-03T05:39:12.848Z",
+  "updateTime": "2026-11-04T05:42:50.295Z",
   "summary": {
-    "days": 55,
-    "tickets": 50,
-    "legsHit": 55,
-    "legsTotal": 88,
-    "legHitRate": 0.625,
+    "days": 56,
+    "tickets": 51,
+    "legsHit": 57,
+    "legsTotal": 91,
+    "legHitRate": 0.626,
     "ticketsHit": 22,
-    "ticketHitRate": 0.44,
-    "staked": 170,
+    "ticketHitRate": 0.431,
+    "staked": 174,
     "returned": 173.56000000000003,
-    "roi": 0.0209,
+    "roi": -0.0025,
     "curWinStreak": 0
   },
   "days": [
@@ -2226,8 +2226,8 @@
               "pick": "h",
               "pickLabel": "主胜",
               "odds": 1.47,
-              "score": null,
-              "result": "pending"
+              "score": "0:0",
+              "result": "miss"
             },
             {
               "matchId": 2042504,
@@ -2240,13 +2240,13 @@
               "pick": "a",
               "pickLabel": "客胜",
               "odds": 1.43,
-              "score": null,
-              "result": "pending"
+              "score": "0:6",
+              "result": "hit"
             }
           ],
           "date": "2026-11-04",
-          "result": "pending",
-          "payout": null,
+          "result": "miss",
+          "payout": 0,
           "void": false,
           "id": "20261104-T1"
         },
@@ -2281,8 +2281,8 @@
               "pick": "a",
               "pickLabel": "客胜",
               "odds": 1.56,
-              "score": null,
-              "result": "pending"
+              "score": "0:3",
+              "result": "hit"
             }
           ],
           "date": "2026-11-05",
@@ -2317,6 +2317,54 @@
           "payout": null,
           "void": false,
           "id": "20261105-T3"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-04",
+      "generatedAt": "2026-11-04T05:42:50.037Z",
+      "rest": false,
+      "tickets": [
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 2.13,
+          "legs": [
+            {
+              "matchId": 2042515,
+              "matchNumStr": "周三010",
+              "league": "欧冠",
+              "match": "朗斯 vs 科莫",
+              "kickoff": "2026-11-05 04:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "a",
+              "pickLabel": "客胜",
+              "odds": 1.58,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2042510,
+              "matchNumStr": "周三005",
+              "league": "欧冠",
+              "match": "莱比锡红牛 vs 曼彻斯特城",
+              "kickoff": "2026-11-05 04:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "a",
+              "pickLabel": "客胜",
+              "odds": 1.35,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-11-05",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20261105-T1"
         }
       ]
     }
