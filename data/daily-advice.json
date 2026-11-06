@@ -1,13 +1,13 @@
 {
-  "updateTime": "2026-11-05T03:59:58.147Z",
+  "updateTime": "2026-11-06T03:33:54.581Z",
   "summary": {
-    "days": 57,
-    "tickets": 51,
+    "days": 58,
+    "tickets": 53,
     "legsHit": 60,
     "legsTotal": 95,
     "legHitRate": 0.632,
     "ticketsHit": 24,
-    "ticketHitRate": 0.471,
+    "ticketHitRate": 0.453,
     "staked": 186,
     "returned": 188.48000000000005,
     "roi": 0.0133,
@@ -2373,6 +2373,95 @@
       "generatedAt": "2026-11-05T03:59:57.906Z",
       "rest": true,
       "tickets": []
+    },
+    {
+      "date": "2026-11-06",
+      "generatedAt": "2026-11-06T03:33:54.379Z",
+      "rest": false,
+      "tickets": [
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 2.25,
+          "legs": [
+            {
+              "matchId": 2042564,
+              "matchNumStr": "周五010",
+              "league": "英超",
+              "match": "埃弗顿 vs 考文垂",
+              "kickoff": "2026-11-07 04:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.49,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2042605,
+              "matchNumStr": "周六024",
+              "league": "德甲",
+              "match": "斯图加特 vs 云达不来梅",
+              "kickoff": "2026-11-08 01:30",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.51,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-11-07",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20261107-T1"
+        },
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 2.56,
+          "legs": [
+            {
+              "matchId": 2042604,
+              "matchNumStr": "周六023",
+              "league": "英超",
+              "match": "诺丁汉森林 vs 曼彻斯特城",
+              "kickoff": "2026-11-08 01:30",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "a",
+              "pickLabel": "客胜",
+              "odds": 1.6,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2042607,
+              "matchNumStr": "周六026",
+              "league": "法甲",
+              "match": "欧塞尔 vs 巴黎FC",
+              "kickoff": "2026-11-08 02:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "a",
+              "pickLabel": "客胜",
+              "odds": 1.6,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-11-08",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20261108-T2"
+        }
+      ]
     }
   ]
 }
