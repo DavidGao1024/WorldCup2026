@@ -1,13 +1,13 @@
 {
-  "updateTime": "2026-11-06T03:33:54.581Z",
+  "updateTime": "2026-11-07T03:36:20.525Z",
   "summary": {
-    "days": 58,
-    "tickets": 53,
-    "legsHit": 60,
-    "legsTotal": 95,
-    "legHitRate": 0.632,
+    "days": 59,
+    "tickets": 55,
+    "legsHit": 61,
+    "legsTotal": 96,
+    "legHitRate": 0.635,
     "ticketsHit": 24,
-    "ticketHitRate": 0.453,
+    "ticketHitRate": 0.436,
     "staked": 186,
     "returned": 188.48000000000005,
     "roi": 0.0133,
@@ -2396,8 +2396,8 @@
               "pick": "h",
               "pickLabel": "主胜",
               "odds": 1.49,
-              "score": null,
-              "result": "pending"
+              "score": "3:1",
+              "result": "hit"
             },
             {
               "matchId": 2042605,
@@ -2451,6 +2451,95 @@
               "pick": "a",
               "pickLabel": "客胜",
               "odds": 1.6,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-11-08",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20261108-T2"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-07",
+      "generatedAt": "2026-11-07T03:36:20.321Z",
+      "rest": false,
+      "tickets": [
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 2.2,
+          "legs": [
+            {
+              "matchId": 2042624,
+              "matchNumStr": "周日013",
+              "league": "英超",
+              "match": "水晶宫 vs 利物浦",
+              "kickoff": "2026-11-08 22:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "a",
+              "pickLabel": "客胜",
+              "odds": 1.46,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2042638,
+              "matchNumStr": "周日027",
+              "league": "德甲",
+              "match": "霍芬海姆 vs 沙尔克04",
+              "kickoff": "2026-11-09 02:30",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.51,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-11-08",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20261108-T1"
+        },
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 2.4,
+          "legs": [
+            {
+              "matchId": 2042627,
+              "matchNumStr": "周日016",
+              "league": "德甲",
+              "match": "科隆 vs 勒沃库森",
+              "kickoff": "2026-11-08 22:30",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "a",
+              "pickLabel": "客胜",
+              "odds": 1.55,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2042628,
+              "matchNumStr": "周日017",
+              "league": "西甲",
+              "match": "皇家社会 vs 巴列卡诺",
+              "kickoff": "2026-11-08 23:15",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.55,
               "score": null,
               "result": "pending"
             }
