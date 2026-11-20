@@ -1,13 +1,13 @@
 {
-  "updateTime": "2026-11-19T05:39:07.317Z",
+  "updateTime": "2026-11-20T03:33:58.217Z",
   "summary": {
-    "days": 69,
-    "tickets": 55,
+    "days": 70,
+    "tickets": 57,
     "legsHit": 67,
     "legsTotal": 103,
     "legHitRate": 0.65,
     "ticketsHit": 27,
-    "ticketHitRate": 0.491,
+    "ticketHitRate": 0.474,
     "staked": 202,
     "returned": 215.88000000000005,
     "roi": 0.0687,
@@ -2611,6 +2611,95 @@
       "generatedAt": "2026-11-19T05:39:07.162Z",
       "rest": true,
       "tickets": []
+    },
+    {
+      "date": "2026-11-20",
+      "generatedAt": "2026-11-20T03:33:58.037Z",
+      "rest": false,
+      "tickets": [
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 1.96,
+          "legs": [
+            {
+              "matchId": 2042909,
+              "matchNumStr": "周六008",
+              "league": "德甲",
+              "match": "门兴格拉德巴赫 vs 多特蒙德",
+              "kickoff": "2026-11-21 22:30",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "a",
+              "pickLabel": "客胜",
+              "odds": 1.41,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2042920,
+              "matchNumStr": "周六019",
+              "league": "英超",
+              "match": "纽卡斯尔联 vs 阿森纳",
+              "kickoff": "2026-11-22 01:30",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "a",
+              "pickLabel": "客胜",
+              "odds": 1.39,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-11-21",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20261121-T1"
+        },
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 1.88,
+          "legs": [
+            {
+              "matchId": 2042912,
+              "matchNumStr": "周六011",
+              "league": "德甲",
+              "match": "柏林联合 vs 莱比锡红牛",
+              "kickoff": "2026-11-21 22:30",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "a",
+              "pickLabel": "客胜",
+              "odds": 1.37,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2042914,
+              "matchNumStr": "周六013",
+              "league": "英超",
+              "match": "托特纳姆热刺 vs 伊普斯维奇",
+              "kickoff": "2026-11-21 23:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.37,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-11-21",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20261121-T2"
+        }
+      ]
     }
   ]
 }
