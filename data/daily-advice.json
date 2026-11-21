@@ -1,13 +1,13 @@
 {
-  "updateTime": "2026-11-20T03:33:58.217Z",
+  "updateTime": "2026-11-21T03:32:21.191Z",
   "summary": {
-    "days": 70,
-    "tickets": 57,
+    "days": 71,
+    "tickets": 60,
     "legsHit": 67,
     "legsTotal": 103,
     "legHitRate": 0.65,
     "ticketsHit": 27,
-    "ticketHitRate": 0.474,
+    "ticketHitRate": 0.45,
     "staked": 202,
     "returned": 215.88000000000005,
     "roi": 0.0687,
@@ -2698,6 +2698,122 @@
           "payout": null,
           "void": false,
           "id": "20261121-T2"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-21",
+      "generatedAt": "2026-11-21T03:32:20.971Z",
+      "rest": false,
+      "tickets": [
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 2.16,
+          "legs": [
+            {
+              "matchId": 2042936,
+              "matchNumStr": "周日013",
+              "league": "德甲",
+              "match": "云达不来梅 vs 汉堡",
+              "kickoff": "2026-11-23 00:30",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.49,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2042939,
+              "matchNumStr": "周日016",
+              "league": "意甲",
+              "match": "亚特兰大 vs 国际米兰",
+              "kickoff": "2026-11-23 03:45",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "a",
+              "pickLabel": "客胜",
+              "odds": 1.45,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-11-23",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20261123-T1"
+        },
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 1.96,
+          "legs": [
+            {
+              "matchId": 2042937,
+              "matchNumStr": "周日014",
+              "league": "意甲",
+              "match": "AC米兰 vs 弗洛西诺内",
+              "kickoff": "2026-11-23 01:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.41,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2042941,
+              "matchNumStr": "周日018",
+              "league": "西甲",
+              "match": "赫塔费 vs 马德里竞技",
+              "kickoff": "2026-11-23 04:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "a",
+              "pickLabel": "客胜",
+              "odds": 1.39,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-11-23",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20261123-T2"
+        },
+        {
+          "kind": "single",
+          "rule": "可单关场次·黄金中段",
+          "stake": 4,
+          "combinedOdds": 1.58,
+          "legs": [
+            {
+              "matchId": 2042935,
+              "matchNumStr": "周日012",
+              "league": "英超",
+              "match": "利物浦 vs 曼彻斯特联",
+              "kickoff": "2026-11-23 00:30",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.58,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-11-23",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20261123-T3"
         }
       ]
     }
