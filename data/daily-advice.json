@@ -1,17 +1,17 @@
 {
-  "updateTime": "2026-11-21T03:32:21.191Z",
+  "updateTime": "2026-11-22T05:36:02.468Z",
   "summary": {
-    "days": 71,
+    "days": 72,
     "tickets": 60,
-    "legsHit": 67,
-    "legsTotal": 103,
-    "legHitRate": 0.65,
-    "ticketsHit": 27,
-    "ticketHitRate": 0.45,
-    "staked": 202,
-    "returned": 215.88000000000005,
-    "roi": 0.0687,
-    "curWinStreak": 4
+    "legsHit": 70,
+    "legsTotal": 107,
+    "legHitRate": 0.654,
+    "ticketsHit": 28,
+    "ticketHitRate": 0.467,
+    "staked": 210,
+    "returned": 223.40000000000006,
+    "roi": 0.0638,
+    "curWinStreak": 5
   },
   "days": [
     {
@@ -2634,8 +2634,8 @@
               "pick": "a",
               "pickLabel": "客胜",
               "odds": 1.41,
-              "score": null,
-              "result": "pending"
+              "score": "0:1",
+              "result": "hit"
             },
             {
               "matchId": 2042920,
@@ -2648,13 +2648,13 @@
               "pick": "a",
               "pickLabel": "客胜",
               "odds": 1.39,
-              "score": null,
-              "result": "pending"
+              "score": "2:2",
+              "result": "miss"
             }
           ],
           "date": "2026-11-21",
-          "result": "pending",
-          "payout": null,
+          "result": "miss",
+          "payout": 0,
           "void": false,
           "id": "20261121-T1"
         },
@@ -2675,8 +2675,8 @@
               "pick": "a",
               "pickLabel": "客胜",
               "odds": 1.37,
-              "score": null,
-              "result": "pending"
+              "score": "1:5",
+              "result": "hit"
             },
             {
               "matchId": 2042914,
@@ -2689,13 +2689,13 @@
               "pick": "h",
               "pickLabel": "主胜",
               "odds": 1.37,
-              "score": null,
-              "result": "pending"
+              "score": "2:0",
+              "result": "hit"
             }
           ],
           "date": "2026-11-21",
-          "result": "pending",
-          "payout": null,
+          "result": "hit",
+          "payout": 7.52,
           "void": false,
           "id": "20261121-T2"
         }
@@ -2816,6 +2816,12 @@
           "id": "20261123-T3"
         }
       ]
+    },
+    {
+      "date": "2026-11-22",
+      "generatedAt": "2026-11-22T05:36:02.029Z",
+      "rest": true,
+      "tickets": []
     }
   ]
 }
