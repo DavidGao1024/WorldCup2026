@@ -1,13 +1,13 @@
 {
-  "updateTime": "2026-11-23T03:33:44.637Z",
+  "updateTime": "2026-11-24T03:32:19.806Z",
   "summary": {
-    "days": 73,
-    "tickets": 60,
+    "days": 74,
+    "tickets": 61,
     "legsHit": 74,
     "legsTotal": 112,
     "legHitRate": 0.661,
     "ticketsHit": 30,
-    "ticketHitRate": 0.5,
+    "ticketHitRate": 0.492,
     "staked": 222,
     "returned": 237.56000000000006,
     "roi": 0.0701,
@@ -2828,6 +2828,54 @@
       "generatedAt": "2026-11-23T03:33:44.414Z",
       "rest": true,
       "tickets": []
+    },
+    {
+      "date": "2026-11-24",
+      "generatedAt": "2026-11-24T03:32:19.651Z",
+      "rest": false,
+      "tickets": [
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 2.17,
+          "legs": [
+            {
+              "matchId": 2043013,
+              "matchNumStr": "周三010",
+              "league": "欧冠",
+              "match": "里尔 vs 拜仁慕尼黑",
+              "kickoff": "2026-11-26 04:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "a",
+              "pickLabel": "客胜",
+              "odds": 1.45,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2043010,
+              "matchNumStr": "周三007",
+              "league": "欧冠",
+              "match": "布鲁日 vs 利物浦",
+              "kickoff": "2026-11-26 04:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "a",
+              "pickLabel": "客胜",
+              "odds": 1.5,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-11-26",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20261126-T1"
+        }
+      ]
     }
   ]
 }
