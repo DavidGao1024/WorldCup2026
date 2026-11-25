@@ -1,13 +1,13 @@
 {
-  "updateTime": "2026-11-24T03:32:19.806Z",
+  "updateTime": "2026-11-25T03:33:00.295Z",
   "summary": {
-    "days": 74,
-    "tickets": 61,
+    "days": 75,
+    "tickets": 62,
     "legsHit": 74,
     "legsTotal": 112,
     "legHitRate": 0.661,
     "ticketsHit": 30,
-    "ticketHitRate": 0.492,
+    "ticketHitRate": 0.484,
     "staked": 222,
     "returned": 237.56000000000006,
     "roi": 0.0701,
@@ -2874,6 +2874,54 @@
           "payout": null,
           "void": false,
           "id": "20261126-T1"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-25",
+      "generatedAt": "2026-11-25T03:33:00.088Z",
+      "rest": false,
+      "tickets": [
+        {
+          "kind": "bonus",
+          "rule": "此场只开让球玩法·赔率1.6~2.6之间·需净胜3球以上",
+          "stake": 2,
+          "combinedOdds": 3.94,
+          "legs": [
+            {
+              "matchId": 2043022,
+              "matchNumStr": "周四008",
+              "league": "欧罗巴",
+              "match": "桑德兰 vs 比亚韦斯托克",
+              "kickoff": "2026-11-27 04:00",
+              "pool": "HHAD",
+              "goalLine": "-2",
+              "pick": "h",
+              "pickLabel": "主胜(让-2)",
+              "odds": 2.25,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2043011,
+              "matchNumStr": "周三008",
+              "league": "欧冠",
+              "match": "马德里竞技 vs 维京",
+              "kickoff": "2026-11-26 04:00",
+              "pool": "HHAD",
+              "goalLine": "-2",
+              "pick": "h",
+              "pickLabel": "主胜(让-2)",
+              "odds": 1.75,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-11-27",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20261127-T1"
         }
       ]
     }
