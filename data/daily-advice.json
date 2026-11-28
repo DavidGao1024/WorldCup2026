@@ -1,13 +1,13 @@
 {
-  "updateTime": "2026-11-27T03:33:56.460Z",
+  "updateTime": "2026-11-28T03:35:38.403Z",
   "summary": {
-    "days": 77,
-    "tickets": 64,
+    "days": 78,
+    "tickets": 65,
     "legsHit": 75,
-    "legsTotal": 116,
-    "legHitRate": 0.647,
+    "legsTotal": 117,
+    "legHitRate": 0.641,
     "ticketsHit": 30,
-    "ticketHitRate": 0.469,
+    "ticketHitRate": 0.462,
     "staked": 228,
     "returned": 237.56000000000006,
     "roi": 0.0419,
@@ -2953,8 +2953,8 @@
               "pick": "h",
               "pickLabel": "主胜",
               "odds": 1.48,
-              "score": null,
-              "result": "pending"
+              "score": "3:3",
+              "result": "miss"
             },
             {
               "matchId": 2043091,
@@ -3017,6 +3017,54 @@
           "payout": null,
           "void": false,
           "id": "20261128-T2"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-28",
+      "generatedAt": "2026-11-28T03:35:37.960Z",
+      "rest": false,
+      "tickets": [
+        {
+          "kind": "parlay2",
+          "rule": "两场赔率都在黄金区间中段·配成一票",
+          "stake": 4,
+          "combinedOdds": 2.39,
+          "legs": [
+            {
+              "matchId": 2043127,
+              "matchNumStr": "周日018",
+              "league": "德甲",
+              "match": "霍芬海姆 vs 奥格斯堡",
+              "kickoff": "2026-11-30 00:30",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "h",
+              "pickLabel": "主胜",
+              "odds": 1.53,
+              "score": null,
+              "result": "pending"
+            },
+            {
+              "matchId": 2043118,
+              "matchNumStr": "周日009",
+              "league": "意甲",
+              "match": "萨索洛 vs 那不勒斯",
+              "kickoff": "2026-11-29 22:00",
+              "pool": "HAD",
+              "goalLine": null,
+              "pick": "a",
+              "pickLabel": "客胜",
+              "odds": 1.56,
+              "score": null,
+              "result": "pending"
+            }
+          ],
+          "date": "2026-11-30",
+          "result": "pending",
+          "payout": null,
+          "void": false,
+          "id": "20261130-T1"
         }
       ]
     }
